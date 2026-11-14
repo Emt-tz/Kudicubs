@@ -1,0 +1,24 @@
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Claude Code: keep only the project's Spec Kit skills; never commit local settings or credentials
+.claude/*
+!.claude/skills/
+
+# Flutter / Dart (for later stages)
+.dart_tool/
+build/
+*.iml
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+.env
+.env.*
+env/*.json
+!env/*.example.json
