@@ -1,0 +1,213 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "mc.lost_coins",
+  "version": "1.0.0",
+  "world": "money_choices",
+  "ageBand": "b4_6",
+  "stage": 1,
+  "order": 1,
+  "pillars": [
+    "know",
+    "understand"
+  ],
+  "concepts": [
+    "concept.what_is_money",
+    "concept.saving_vs_spending"
+  ],
+  "vars": {
+    "foundCount": 0,
+    "allCorrectFirstTry": false,
+    "choice": ""
+  },
+  "intro": {
+    "titleKey": "mc.lost_coins.title",
+    "goalKey": "mc.lost_coins.goal",
+    "narrationKey": "mc.lost_coins.intro",
+    "sceneArt": "art/money_choices/lost_coins/intro.webp",
+    "kudiState": "talk"
+  },
+  "steps": [
+    {
+      "id": "find",
+      "kind": "activity",
+      "game": "find_items",
+      "promptKey": "mc.lost_coins.find.prompt",
+      "narrationKey": "mc.lost_coins.find.narration",
+      "art": "art/money_choices/lost_coins/park.webp",
+      "params": {
+        "itemSource": "region.denominations.coins",
+        "count": 8,
+        "scene": "park"
+      },
+      "outputs": {
+        "found": "foundCount"
+      }
+    },
+    {
+      "id": "sort",
+      "kind": "activity",
+      "game": "sort_into_jars",
+      "promptKey": "mc.lost_coins.sort.prompt",
+      "narrationKey": "mc.lost_coins.sort.narration",
+      "params": {
+        "jarsBy": "faceValueMinor",
+        "jarCount": 3,
+        "hintEscalation": true
+      },
+      "outputs": {
+        "allCorrectFirstTry": "allCorrectFirstTry"
+      }
+    },
+    {
+      "id": "count",
+      "kind": "activity",
+      "game": "count_items",
+      "promptKey": "mc.lost_coins.count.prompt",
+      "narrationKey": "mc.lost_coins.count.narration",
+      "params": {
+        "countPer": "jar",
+        "maxNumber": 20,
+        "visualSupport": true
+      },
+      "effects": [
+        {
+          "type": "wallet",
+          "kind": "earn",
+          "coinsFromVar": "foundCount",
+          "category": "missions"
+        }
+      ]
+    },
+    {
+      "id": "decide_save_spend",
+      "kind": "decision",
+      "promptKey": "mc.lost_coins.decide.prompt",
+      "narrationKey": "mc.lost_coins.decide.narration",
+      "art": "art/money_choices/lost_coins/decide.webp",
+      "storeAs": "choice",
+      "explainer": {
+        "textKey": "mc.lost_coins.decide.explainer",
+        "narrationKey": "mc.lost_coins.decide.explainer_audio"
+      },
+      "choices": [
+        {
+          "id": "save",
+          "labelKey": "mc.lost_coins.choice.save",
+          "narrationKey": "mc.lost_coins.choice.save_audio",
+          "icon": "art/icons/piggy_bank.webp",
+          "effects": [
+            {
+              "type": "wallet",
+              "kind": "save",
+              "category": "savings",
+              "coinsFromVar": "foundCount"
+            }
+          ]
+        },
+        {
+          "id": "spend",
+          "labelKey": "mc.lost_coins.choice.spend",
+          "narrationKey": "mc.lost_coins.choice.spend_audio",
+          "icon": "art/icons/treat.webp",
+          "effects": [
+            {
+              "type": "wallet",
+              "kind": "spend",
+              "category": "treats",
+              "itemId": "sticker.sun",
+              "coinsFromVar": "foundCount"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "kind": "action_result",
+      "promptKey": "mc.lost_coins.result.prompt",
+      "narrationKey": "mc.lost_coins.result.narration",
+      "outcomes": [
+        {
+          "when": {
+            "var": "choice",
+            "op": "eq",
+            "value": "save"
+          },
+          "tone": "positive",
+          "messageKey": "mc.lost_coins.result.saved",
+          "narrationKey": "mc.lost_coins.result.saved_audio",
+          "animation": "rive/rewards/coins_to_piggy.riv"
+        },
+        {
+          "tone": "positive",
+          "messageKey": "mc.lost_coins.result.spent",
+          "narrationKey": "mc.lost_coins.result.spent_audio",
+          "animation": "rive/rewards/treat_unwrap.riv"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "kind": "round_summary",
+      "promptKey": "mc.lost_coins.summary.prompt",
+      "narrationKey": "mc.lost_coins.summary.narration",
+      "recap": [
+        {
+          "textKey": "mc.lost_coins.recap.found",
+          "narrationKey": "mc.lost_coins.recap.found_audio"
+        },
+        {
+          "textKey": "mc.lost_coins.recap.sorted",
+          "narrationKey": "mc.lost_coins.recap.sorted_audio"
+        },
+        {
+          "textKey": "mc.lost_coins.recap.counted",
+          "narrationKey": "mc.lost_coins.recap.counted_audio"
+        },
+        {
+          "when": {
+            "var": "choice",
+            "op": "eq",
+            "value": "save"
+          },
+          "textKey": "mc.lost_coins.recap.saved",
+          "narrationKey": "mc.lost_coins.recap.saved_audio"
+        },
+        {
+          "when": {
+            "var": "choice",
+            "op": "eq",
+            "value": "spend"
+          },
+          "textKey": "mc.lost_coins.recap.spent",
+          "narrationKey": "mc.lost_coins.recap.spent_audio"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "firstCompletion": {
+      "coins": 30,
+      "xp": 40,
+      "badges": [
+        "badge.hard_worker"
+      ]
+    },
+    "replay": {
+      "xp": 5
+    },
+    "bonuses": [
+      {
+        "id": "bonus.perfect_sort",
+        "when": {
+          "var": "allCorrectFirstTry",
+          "op": "eq",
+          "value": true
+        },
+        "coins": 10,
+        "xp": 10,
+        "badge": "badge.smart_sorter"
+      }
+    ]
+  }
+}

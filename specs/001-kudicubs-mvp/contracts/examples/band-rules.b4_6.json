@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0.0",
+  "version": "1.0.0",
+  "band": "b4_6",
+  "outcomes": { "failureAllowed": false, "negativeToneHandling": "render_gentle_variant" },
+  "retry": { "offer": "not_applicable", "keepsEarnedRewards": true },
+  "timePressure": { "mode": "off", "timerEndsRound": false },
+  "narration": { "requiredForAllPrompts": true, "autoplay": true, "playableWithoutReading": true },
+  "text": { "maxWordsPerPrompt": 3, "iconRequiredOnChoices": true },
+  "numeracy": { "maxNumber": 20, "operations": ["count"] },
+  "idleHints": { "firstAfterSeconds": 6, "escalateAfterSeconds": [12, 20] },
+  "decision": { "minChoices": 2, "maxChoices": 2 }
+}

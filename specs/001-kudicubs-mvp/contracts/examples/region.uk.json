@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0",
+  "version": "1.0.0",
+  "code": "uk",
+  "nameKey": "region.uk.name",
+  "locale": "en_GB",
+  "fallback": "gh",
+  "currency": {
+    "isoCode": "GBP",
+    "symbol": "£",
+    "symbolPosition": "prefix",
+    "major": { "singularKey": "region.uk.pound", "pluralKey": "region.uk.pounds" },
+    "minor": { "singularKey": "region.uk.penny", "pluralKey": "region.uk.pence" },
+    "minorPerMajor": 100,
+    "coinDisplay": "coin_icon_amount"
+  },
+  "denominations": [
+    { "id": "p10", "kind": "coin", "faceValueMinor": 10, "labelKey": "region.uk.denom.p10", "art": "art/regions/uk/coin_10p.webp" },
+    { "id": "p20", "kind": "coin", "faceValueMinor": 20, "labelKey": "region.uk.denom.p20", "art": "art/regions/uk/coin_20p.webp" },
+    { "id": "p50", "kind": "coin", "faceValueMinor": 50, "labelKey": "region.uk.denom.p50", "art": "art/regions/uk/coin_50p.webp" },
+    { "id": "gbp1", "kind": "coin", "faceValueMinor": 100, "labelKey": "region.uk.denom.gbp1", "art": "art/regions/uk/coin_1.webp" },
+    { "id": "gbp5", "kind": "note", "faceValueMinor": 500, "labelKey": "region.uk.denom.gbp5", "art": "art/regions/uk/note_5.webp" }
+  ],
+  "marketExamples": {
+    "drink": { "labelKey": "region.uk.market.lemonade", "art": "art/regions/uk/lemonade.webp" },
+    "snack": { "labelKey": "region.uk.market.crisps", "art": "art/regions/uk/crisps.webp" }
+  },
+  "narrationVoice": "voice_uk_1"
+}

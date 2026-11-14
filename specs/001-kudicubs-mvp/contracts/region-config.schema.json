@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kudicubs.app/region-config/1.0.0",
+  "title": "KudiCubs Region Configuration",
+  "description": "Per-region currency, denominations and market examples (Constitution VI, FR-043). Shipped in region.{code} packs. In-game coin amounts are region-neutral integers; this file only controls how money looks and sounds.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "version", "code", "nameKey", "locale", "currency", "denominations", "marketExamples", "narrationVoice"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "version": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+    "code": { "enum": ["gh", "ng", "uk"] },
+    "nameKey": { "type": "string" },
+    "locale": { "enum": ["en_GH", "en_NG", "en_GB"] },
+    "fallback": { "const": "gh", "description": "Missing keys resolve from the Ghana config (spec edge case)" },
+    "currency": {
+      "type": "object", "additionalProperties": false,
+      "required": ["isoCode", "symbol", "symbolPosition", "major", "minor", "minorPerMajor"],
+      "properties": {
+        "isoCode": { "enum": ["GHS", "NGN", "GBP"] },
+        "symbol": { "type": "string", "examples": ["GH₵", "₦", "£"] },
+        "symbolPosition": { "enum": ["prefix", "suffix"] },
+        "major": { "$ref": "#/$defs/unitName" },
+        "minor": { "$ref": "#/$defs/unitName" },
+        "minorPerMajor": { "type": "integer", "minimum": 1 },
+        "coinDisplay": { "enum": ["symbol_amount", "coin_icon_amount"], "default": "coin_icon_amount", "description": "How in-game coin counts are shown; b4_6 always uses coin pictures" }
+      }
+    },
+    "denominations": {
+      "type": "array", "minItems": 3,
+      "description": "Physical-money art for money-handling activities (e.g. The Lost Coins sorting). faceValueMinor is used for sorting/ordering/labels in activities only.",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "kind", "faceValueMinor", "labelKey", "art"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "kind": { "enum": ["coin", "note"] },
+          "faceValueMinor": { "type": "integer", "minimum": 1 },
+          "labelKey": { "type": "string", "examples": ["region.uk.denom.p50"] },
+          "art": { "type": "string", "pattern": "^art/[a-z0-9_/.-]+$" },
+          "narrationKey": { "type": "string" }
+        }
+      }
+    },
+    "marketExamples": {
+      "type": "object",
+      "description": "Keyed substitutions referenced by missions (e.g. drink, snack, party_food, toy, shop_place).",
+      "additionalProperties": {
+        "type": "object", "additionalProperties": false, "required": ["labelKey", "art"],
+        "properties": { "labelKey": { "type": "string" }, "art": { "type": "string" }, "narrationKey": { "type": "string" } }
+      }
+    },
+    "narrationVoice": { "type": "string", "description": "Voice id used to select audio/{locale}/ folders" }
+  },
+  "$defs": {
+    "unitName": {
+      "type": "object", "additionalProperties": false, "required": ["singularKey", "pluralKey"],
+      "properties": { "singularKey": { "type": "string" }, "pluralKey": { "type": "string" } }
+    }
+  }
+}
