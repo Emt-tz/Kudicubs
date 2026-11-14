@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kudicubs.app/pack-manifest/1.0.0",
+  "title": "KudiCubs Content Pack Manifest",
+  "description": "manifest.json at the root of every pack.zip. Packs are immutable once released; changes ship as a new semver.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "packId", "packType", "version", "minAppVersion", "contentSchemaVersion", "locales", "files", "createdAt"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "packId": { "type": "string", "pattern": "^(world|region|parent)\\.[a-z0-9_]+$" },
+    "packType": { "enum": ["world", "region", "parent"], "description": "'parent' reserved for a future parent curriculum (research R30)" },
+    "version": { "$ref": "#/$defs/semver" },
+    "minAppVersion": { "$ref": "#/$defs/semver" },
+    "contentSchemaVersion": { "$ref": "#/$defs/semver" },
+    "world": { "enum": ["money_choices", "build_grow", "founder_mode", "side_hustle"] },
+    "ageBand": { "enum": ["b4_6", "b7_9", "b10_12", "b13_15"] },
+    "region": { "enum": ["gh", "ng", "uk"] },
+    "locales": { "type": "array", "minItems": 1, "items": { "enum": ["en", "en_GH", "en_NG", "en_GB"] } },
+    "missions": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "version", "path", "order"],
+        "properties": {
+          "id": { "type": "string" },
+          "version": { "$ref": "#/$defs/semver" },
+          "order": { "type": "integer", "minimum": 1 },
+          "path": { "type": "string", "pattern": "^missions/[a-z0-9_.]+\\.json$" }
+        }
+      }
+    },
+    "world_config": { "type": "string", "pattern": "^world\\.json$", "description": "Levels (names + XP thresholds), badges, daily-challenge pool, cosmetic items" },
+    "files": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["path", "sha256", "bytes"],
+        "properties": {
+          "path": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "bytes": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "createdAt": { "type": "string", "format": "date-time" }
+  },
+  "allOf": [
+    { "if": { "properties": { "packType": { "const": "world" } } }, "then": { "required": ["world", "ageBand", "missions", "world_config"] } },
+    { "if": { "properties": { "packType": { "const": "region" } } }, "then": { "required": ["region"] } }
+  ],
+  "$defs": {
+    "semver": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" }
+  }
+}
