@@ -21,6 +21,21 @@ single-action buttons and celebration moments; Khan Academy Kids and Toca Boca f
 navigation and gentle feedback. KudiCubs must look like its own brand: lion-cub character, warm
 African-market feel, localised coins."
 
+## Clarifications
+
+### Session 2026-11-14 (from `/speckit-analyze`, approved by the developer)
+
+- Q: How is "exactly one main action" met on choice and activity screens? → A: One `data-primary`
+  button, or one group of equal choices or targets while a choice or activity is in progress
+  (FR-013).
+- Q: How are coins shown for 4–6 when the region changes? → A: As the region's coin picture plus
+  a number, never as a currency-symbol price. The currency name and symbol go in labels and
+  narration (FR-022, SC-006, US4; matches spec 001's coin display rule).
+- Q: Which components were missing from the list? → A: `illustration` and `action-result` are
+  added, and `gentle-hint` is a state of the main action (FR-004, now 25 components).
+- Q: Must the prototype narrate every prompt? → A: Yes, every child-facing prompt is spoken, with
+  a placeholder voice allowed (FR-015).
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - The client clicks through the whole 4–6 journey on a phone (Priority: P1)
@@ -143,8 +158,11 @@ loss"), what Kudi does and what the screen shows. Their answers match the protot
 ### User Story 4 - The client sees that coins and examples change by country (Priority: P2)
 
 From a reviewer menu in the prototype, the client switches the region between Ghana, Nigeria and
-the United Kingdom. The coin art, currency name and symbol, and the market examples change on
-every prototype screen, including the coins found and sorted in The Lost Coins.
+the United Kingdom. The coin art and the market examples change on every prototype screen,
+including the coins found and sorted in The Lost Coins. The currency name and symbol change in
+labels and narration. In-game coins on 4–6 screens are always shown as the region's coin picture
+plus a number, never as a price such as "GH₵120" (spec 001: coins are not real money, and 4–6
+uses coin pictures).
 
 **Why this priority**: Localised coins are a core brand promise and a constitution principle
 (VI). Seeing it working reassures the client before regional art is commissioned.
@@ -155,10 +173,10 @@ Home screens show the right currency for each, with the coin counts unchanged.
 **Acceptance Scenarios**:
 
 1. **Given** the reviewer menu, **When** the region is set to Ghana, Nigeria or the UK, **Then**
-   the cedi (GH₵), naira (₦) or pound (£) appears with that country's coin designs on the
-   find, sort and count screens.
+   that country's coin designs appear on the find, sort and count screens and in every coin
+   counter. The cedi (GH₵), naira (₦) or pound (£) is named in labels and narration.
 2. **Given** a region change, **When** the client returns to Wallet, **Then** the same number of
-   coins is shown in the new currency style, as spec 001 FR-043 requires.
+   coins is shown with the new region's coin picture, as spec 001 FR-043 requires.
 
 ---
 
@@ -215,14 +233,16 @@ The facilitator records where any child hesitated for more than 10 seconds.
 - **FR-003**: Typography tokens MUST include a friendly, highly legible display style and a body
   style. Child-facing body text MUST be at least 18 pt, and button labels for 4–6 at least 22 pt.
   The fonts used MUST be licensed for commercial app use.
-- **FR-004**: The documents MUST include a **component list** covering at least these 23
+- **FR-004**: The documents MUST include a **component list** covering at least these 25
   components:
   - Primary button, secondary button, icon button
   - Choice card, narration speaker cue
-  - Kudi speech bubble, coin counter, XP bar, level badge, streak or daily indicator
+  - Kudi speech bubble, illustration (scenes and a standalone Kudi), coin counter, XP bar,
+    level badge, daily sun (`streak-daily`)
   - Badge tile, jar, coin and note token, progress dots
   - Bottom navigation, region coin set, parent-gate pad, PIN pad
-  - Bar chart, level-path node, celebration overlay, gentle hint highlight, reviewer menu
+  - Action result, bar chart, level-path node, celebration overlay, gentle hint (a state of the
+    main action), reviewer menu
 
   Each component lists its purpose, states, minimum touch size, and the screens that use it.
 - **FR-005**: The documents MUST include **Kudi the Cub usage rules**:
@@ -269,14 +289,17 @@ The facilitator records where any child hesitated for more than 10 seconds.
 - **FR-012**: All data in the prototype MUST be example data, for example a child called "Ama"
   with 120 coins, level 2 and 3 badges. The prototype MUST NOT send or store any real personal
   information anywhere.
-- **FR-013**: Each child-facing screen MUST have exactly **one visually dominant main action**,
-  and MUST show an idle hint (a Kudi pose plus a pulsing highlight on the main action) after
-  about 6 seconds without input.
+- **FR-013**: At any moment, each child-facing screen MUST have exactly **one visually dominant
+  main action**. That is either a single main button, or, on choice and activity screens, a
+  single group of equal choices or activity targets (for example the two Save/Spend cards, or
+  the coins to find), which becomes a single main button once the choice or activity is done.
+  Each screen MUST show an idle hint (a Kudi pose plus a pulsing highlight on the main action)
+  after about 6 seconds without input.
 - **FR-014**: Child-facing screens MUST be **icon-first**. The 4–6 screens MUST be usable by
   someone who can't read: pictures, coin images, numerals and Kudi's gestures carry the meaning.
 - **FR-015**: Each child-facing prompt MUST show a narration cue (a speaker icon the child can tap
-  to replay). The prototype SHOULD play example spoken audio for at least the Welcome, Mission
-  Intro, Decision and Reward screens. Audio can be placeholder recordings, labelled as such.
+  to replay). The prototype MUST speak every child-facing prompt aloud. A placeholder voice is
+  allowed, labelled as such.
 - **FR-016**: No 4–6 screen in the prototype may show a failure, "wrong", game-over or red-cross
   state.
 - **FR-017**: The Parent Gate screen MUST show the gate challenge from spec 001: press and hold,
@@ -284,9 +307,8 @@ The facilitator records where any child hesitated for more than 10 seconds.
   region choice, and a parent email field. These are clearly separated from child screens by a
   calmer, more grown-up style.
 - **FR-018**: The Home screen MUST show the avatar, XP bar, coin balance, current level,
-  a Continue button, a daily challenge card with a gentle daily indicator, and a badge preview.
-  The daily indicator MUST NOT show any penalty or "streak lost" message for 4–6 (spec 001 edge
-  case).
+  a Continue button, a daily challenge card with the daily sun, and a badge preview. The daily
+  sun MUST NOT show any penalty or "streak lost" message for 4–6 (spec 001 edge case).
 - **FR-019**: The Reward screen MUST include a celebration moment (an animated burst, Kudi
   cheering) and show coins, XP and the badge earned, with a single "Back to Home" button.
 - **FR-020**: The Wallet MUST show the balance, savings (a piggy bank or jar), a picture-based
@@ -301,8 +323,10 @@ The facilitator records where any child hesitated for more than 10 seconds.
   - Restart the prototype
 
   It MUST NOT be reachable by an accidental child tap.
-- **FR-022**: Region switching MUST change the coin art, currency name and symbol, and market
-  examples on all prototype screens, while keeping the coin counts the same.
+- **FR-022**: Region switching MUST change the coin art and market examples on all prototype
+  screens, and the currency name and symbol in labels and narration, while keeping the coin
+  counts the same. For 4–6, coin amounts MUST be shown as the region's coin picture plus a
+  number, never as a currency-symbol price.
 - **FR-023**: The prototype MUST keep working without an internet connection once opened or
   downloaded.
 - **FR-024**: The prototype MUST use only the documented tokens and components (FR-001, FR-004).
@@ -357,8 +381,8 @@ The facilitator records where any child hesitated for more than 10 seconds.
   and at least 64 × 64 points for 4–6 main actions.
 - **SC-005**: On an audit of 3 random screens, 100% of colours, sizes and elements trace back to a
   named token or a listed component.
-- **SC-006**: Switching between the 3 regions changes the currency and coin art on 100% of the
-  screens that show money, with the coin counts unchanged.
+- **SC-006**: Switching between the 3 regions changes the coin art on 100% of the screens that
+  show money, and the currency name in labels and narration, with the coin counts unchanged.
 - **SC-007**: In an originality review, 0 assets, colours, mascots or layouts are found to be
   copied from the reference apps.
 - **SC-008**: The client gives written sign-off on the look and feel, Kudi the Cub and the flow,

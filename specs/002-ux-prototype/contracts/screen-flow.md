@@ -20,7 +20,7 @@ opens the reviewer menu.
 | 7a | `activity-find` | child | Tap the hidden coins (the screen finishes when all 8 are found) → "Next" | `activity-sort` | FR-011 |
 | 7b | `activity-sort` | child | Drag or tap-tap coins into jars → "Next" | `activity-count` | FR-011 |
 | 7c | `activity-count` | child | Tap to count each jar → "Next" | `decision` | FR-011 |
-| 8 | `decision` | child | Choice card "Save it" or "Spend it" (2 cards, both equally prominent; the chosen card then shows a single "OK" primary) | `result-save` / `result-spend` | FR-010 |
+| 8 | `decision` | child | `data-primary-group`: the two choice cards "Save it" and "Spend it" (equally prominent); after a card is chosen, a single `data-primary` "OK" | `result-save` / `result-spend` | FR-010 |
 | 9 | `result-save` · `result-spend` | child | "Next" | `summary` | FR-010, US1-4 |
 | 10 | `summary` | child | "Next" | `reward` | FR-016 |
 | 11 | `reward` | child | "Back to Home" | `home` | FR-019 |
@@ -57,7 +57,9 @@ nothing (spec edge case).
 | `data-screen="{id}"` | The root element of the active screen | The current screen |
 | `data-audience="child\|parent\|reviewer"` | The screen root | Which rules apply |
 | `data-band="b4_6"` | Child screen roots | Band rules |
-| `data-primary` | **Exactly one** visible element per child screen | The dominant main action (FR-013) |
+| `data-primary` | At most one visible element per child screen | The dominant main button (FR-013) |
+| `data-primary-group` | The container of a group of equal choices or activity targets, used **instead of** `data-primary` while a choice or activity is in progress | The dominant main action on choice and activity screens (FR-013) |
+| `data-region="{gh\|ng\|uk}"` | Every `[data-money]` element and every coin or note image | Which region's art is shown (SC-006) |
 | `data-narration="{key}"` | The speaker cue | Has a narration line (FR-015) |
 | `data-money` | Any element showing currency | Checked by the region-switch test (SC-006) |
 | `data-component="{component-id}"` | Every component instance | Traceability (SC-005) |
@@ -71,12 +73,20 @@ nothing (spec edge case).
 1. Starting at `#/welcome` and tapping only `[data-primary]` (plus the required choices on
    `age-select`, `avatar`, the gate steps, the activities and `decision`), it reaches `reward`,
    then `home`, `wallet` and `progress`. All 13 screens are visited (SC-002).
-2. On every child screen, `count([data-primary]:visible) === 1`.
+2. At every step of every child screen, `count([data-primary]:visible) + count([data-primary-group]:visible) === 1`.
+   So exactly one main action is shown at a time: a button, or a group of choices or targets.
 3. No `[data-failure]` exists anywhere during the run.
 4. Every `[data-primary]`, `button`, `[role=button]` and `[data-component=choice-card]` has a
    bounding box ≥ 48 × 48. Child primaries are ≥ 64 × 64 (SC-004).
 5. After 6.5 s idle on `home`, the screen root has `data-hint-active` (FR-013).
-6. For each region in `gh`, `ng` and `uk`: every `[data-money]` contains that region's symbol,
+6. For each region in `gh`, `ng` and `uk`: every `[data-money]` and every coin image has
+   `data-region` equal to that region, 4–6 screens show **no** currency symbol inside
+   `[data-money]` (coin picture plus number only), the reviewer-visible currency label names the
+   region's currency,
    and the coin counts are unchanged (SC-006).
 7. No request leaves the page's own origin during the run (FR-012).
 8. The Save path and the Spend path both reach `reward`. A second run gives only replay XP.
+9. No visible text in the prototype matches `/bizkid/i` (FR-027).
+
+The test sorts coins with the **tap-coin-then-tap-jar** path, because touch drags are unreliable
+under automation. Dragging is checked by hand (quickstart V3).

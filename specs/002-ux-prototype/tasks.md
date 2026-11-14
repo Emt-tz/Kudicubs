@@ -35,7 +35,9 @@ own.
 - All art is **original** (FR-025). Use the name "KudiCubs" everywhere, never "BizKids" (FR-027).
 - Use **classic `<script>` files** (no ES modules) and no `fetch()` of local files, so
   `file://` works (research D1).
-- Every child screen has **exactly one** `data-primary` element and follows the DOM hooks in
+- Every child screen shows **exactly one main action at a time**: one `data-primary` button, or
+  one `data-primary-group` of equal choices or activity targets while a choice or activity is in
+  progress (FR-013 as clarified). It also follows the DOM hooks in
   [contracts/screen-flow.md §3](./contracts/screen-flow.md).
 - Commits are authored by the developer. There is one PR for the feature.
 
@@ -125,14 +127,17 @@ own.
 - [ ] T013 Implement the core of `prototype/assets/app.js`, under a `KC` namespace:
   - **Router**: a hash router (`#/{screen-id}`) that calls `KC.screens[id].render(root)`. It sets `data-screen`, `data-audience` and `data-band` on `#kc-screen`, and updates the back button and bottom-nav visibility. Bottom nav shows only on `home`, `wallet` and `progress` (screen-flow §1).
   - **State**: `KC.state` is initialised from `KC.data.start` (coins, savings, xp, badges, level, `lostCoins: { found: 0, sortedCorrectFirstTry: true, choice: null, completedOnce: false }`). Only `region`, `sound` and `screen` persist in `sessionStorage` (research D11). Nothing goes in `localStorage`.
-  - **Helpers**: `KC.money(amount)`, which formats an amount with the active region's symbol and wraps it in `data-money`; `KC.t(key)`, which looks up strings.
+  - **Helpers**:
+    - `KC.money(amount)` renders in-game coins as the active region's **coin picture plus a number**, wrapped in `<span data-money data-region="{region}">`. It **never** outputs a currency symbol (spec 001 `coinDisplay: coin_icon_amount`; 4–6 always uses coin pictures).
+    - `KC.currencyLabel()` returns the currency name and symbol (e.g. "Ghana cedis · GH₵") for labels and narration only.
+    - `KC.t(key)` looks up strings.
   - **Level**: `KC.levelFor(xp)`, computed from `KC.data.levels`.
 - [ ] T014 Add narration to `prototype/assets/app.js`:
   - `KC.say(key)` uses `speechSynthesis`, picking a voice whose `lang` matches the region's `voiceLang`, with any `en-*` as the fallback. It's unlocked on the first user gesture and respects `KC.state.sound` (research D8).
   - `KC.speakerCue(key)` returns a `data-component="speaker-cue"` button with `data-narration="{key}"`. Tapping it replays the line, and it animates while speaking. If no voice is available it still animates, and a caption is shown only when the reviewer notes are on.
 - [ ] T015 Add the idle-hint engine to `prototype/assets/app.js`:
   - On each child screen, a timer starts at **6 s**, then **12 s** and **20 s** (band rules `b4_6`). Any pointer or key input resets it.
-  - Level 1: `#kc-screen` gets `data-hint-active`, the `[data-primary]` element pulses, and Kudi switches to `point`.
+  - Level 1: `#kc-screen` gets `data-hint-active`, the current `[data-primary]` or `[data-primary-group]` gets the `hint` state (the documented `gentle-hint` state: a pulsing ring), and Kudi switches to `point`.
   - Level 2: the prompt is narrated again.
   - Level 3: a stronger pulse plus the narration again.
   - All timers are cleared when the route changes (FR-013, research D9).
@@ -144,6 +149,8 @@ own.
 - [ ] T018 Create the foundation of `prototype/assets/components.css`: the shared components every screen needs, each styled by `[data-component="…"]` and using only `var(--kc-*)`:
   - `primary-button`: gold background with cocoa text; height `--kc-size-button-height-4-6` on `[data-band=b4_6]`; states default, pressed, disabled, hint (pulse).
   - `secondary-button`, `icon-button` (minimum `--kc-size-touch-min`), `speaker-cue`, `kudi-bubble` (Kudi image plus speech bubble; Kudi at least `--kc-size-kudi-min`), `progress-dots`.
+  - `illustration`: a wrapper for every scene image and every Kudi image shown without a speech bubble (decorative ones get `aria-hidden="true"`).
+  - The `hint` state (the `gentle-hint` component in FR-004): a pulsing ring applied to `[data-primary]` or `[data-primary-group]`.
 - [ ] T019 Create the screen registry skeleton in `prototype/assets/screens.js`. `KC.screens` holds an entry for every id in [contracts/screen-flow.md §1](./contracts/screen-flow.md) (`welcome`, `age-select`, `avatar`, `parent-gate`, `home`, `mission-intro`, `activity-find`, `activity-sort`, `activity-count`, `decision`, `result-save`, `result-spend`, `summary`, `reward`, `wallet`, `progress`).
   - Each entry is `{ id, title, audience, band, primary, next, narration, components, notes, render }`, following data-model §5.
   - At this stage each `render` is a placeholder that shows the title and one `data-primary` "Next" button going to `next`, so the full route chain works end to end.
@@ -173,7 +180,7 @@ taps, with no dead ends (spec US1). Automated by T040.
   - One `data-primary` "Let's Go" button (76 px, gold). Tapping it unlocks audio and goes to `age-select` (US1-1).
 - [ ] T024 [US1] Implement `age-select` in `prototype/assets/screens.js`:
   - 4 large picture cards: 4–6 (active), and 7–9, 10–12, 13–15 shown greyed with a lock icon and "Coming soon" (spec 001 FR-015b). Locked cards are not selectable and give a gentle wiggle when tapped.
-  - Choosing 4–6 reveals a single `data-primary` "Next" button. Narrated.
+  - The band cards form the `data-primary-group`. Choosing 4–6 replaces the group's main-action role with a single `data-primary` "Next" button. Narrated.
 - [ ] T025 [US1] Implement `avatar` in `prototype/assets/screens.js`:
   - Pick 1 of 4 avatars (T020) from a carousel or grid of `choice-card`s.
   - A nickname chosen from suggestion chips: "Ama" (default), "Kofi", "Zara", "Tobi". There is no free-text field in the prototype, and the nickname rule is "2–16 characters".
@@ -199,23 +206,23 @@ taps, with no dead ends (spec US1). Automated by T040.
 - [ ] T031 [US1] Implement the find activity in `prototype/assets/activities.js` and register `activity-find` in `prototype/assets/screens.js`:
   - Render `market-park.svg` and place 8 `coin-token`s from the active region's coin denominations at `#spot-1…8`.
   - Each tap pops the coin with a sparkle, a soft sound and Kudi `cheer` for a moment. `KC.state.lostCoins.found` goes up, and the progress dots update.
-  - When all 8 are found, a single `data-primary` "Next" appears. **No timer** (FR-011).
+  - While searching, the hidden coins' container is the `data-primary-group`. When all 8 are found, a single `data-primary` "Next" replaces it. **No timer** (FR-011).
 - [ ] T032 [US1] Implement the sort activity in `prototype/assets/activities.js` and register `activity-sort`:
   - Show 3 `jar`s, each labelled with a big picture of one denomination from the found coins; the 8 found coins sit in a tray.
   - Moving coins works by **drag** (Pointer Events, snapping on drop) **or tap-coin-then-tap-jar**.
   - **Correct jar**: the coin drops in and the fill rises.
   - **Wrong jar**: the coin bounces back with a soft "boing", Kudi switches to `gentle`, and a narrated hint plays ("Hmm, let's find this coin's jar!"). `sortedCorrectFirstTry = false`. After **2 wrong tries for the same coin**, the right jar glows.
   - **No red, no X, no buzzer, no `data-failure`** (FR-011, FR-016).
-  - When all coins are placed, a single `data-primary` "Next".
+  - While sorting, the coin tray is the `data-primary-group`. When all coins are placed, a single `data-primary` "Next" replaces it.
 - [ ] T033 [US1] Implement the count activity in `prototype/assets/activities.js` and register `activity-count`:
-  - Tapping each coin in each jar counts it: a big numeral (Baloo 2, `display-xl`) ticks up and the number is spoken.
-  - When a jar is done, its total is shown with `KC.money`.
+  - The coins in the current jar are the `data-primary-group`. Tapping each coin counts it: a big numeral (Baloo 2, `display-xl`) ticks up and the number is spoken.
+  - When a jar is done, show **how many coins** it holds, as a numeral from 1 to 8 next to the jar's coin picture. **Do not show a money total or add up face values**, because 4–6 numbers are limited to "count to 20" (data-model §4).
   - When all jars are done, run `KC.state.coins += found` (earn) and show a single `data-primary` "Next" (data-model §8).
 - [ ] T034 [US1] Implement `decision` in `prototype/assets/screens.js`:
   - A Kudi `think` prompt "What will you do with your coins?" with a speaker cue.
   - A short, skippable narrated explainer: "Saving keeps coins for later. Spending gets something now."
-  - Two equally prominent `choice-card`s: **Save it** (piggy/jar icon) and **Spend it** (treat-sticker icon, using the region's `marketExamples.treat`).
-  - Selecting a card highlights it and shows one `data-primary` "OK", leading to `result-save` or `result-spend`.
+  - Two equally prominent `choice-card`s inside one `data-primary-group`: **Save it** (piggy/jar icon) and **Spend it** (treat-sticker icon, using the region's `marketExamples.treat`).
+  - Selecting a card highlights it, removes the group's main-action role, and shows one `data-primary` "OK", leading to `result-save` or `result-spend`.
   - Add the `choice-card` component (states default, selected, hint; at least 64 px) to `prototype/assets/components.css`.
 - [ ] T035 [US1] Implement `result-save` and `result-spend` in `prototype/assets/screens.js` (US1-4):
   - **Save**: coins fly from the counter into the piggy/jar (CSS animation; reduced-motion just fades). Run `savings += found; coins -= found`. Kudi `cheer`: "Great saving! Your coins are safe for later."
@@ -254,7 +261,9 @@ taps, with no dead ends (spec US1). Automated by T040.
   - Retries 0; reporter `list`.
 - [ ] T043 [US1] Implement `tools/design/tests/flow.spec.mjs`, covering assertions 1, 2, 3, 4, 5, 7 and 8 of [contracts/screen-flow.md §4](./contracts/screen-flow.md):
   - Walk welcome → progress tapping only `[data-primary]` plus the required choices (band 4–6, an avatar, the gate steps with the maths answer read from the DOM, all find/sort/count interactions, Save). **All 13 screens are visited.**
-  - Exactly 1 visible `[data-primary]` on each child screen. No `[data-failure]` ever.
+  - At every step of every child screen, exactly 1 visible `[data-primary]` **or** `[data-primary-group]` (assertion 2). No `[data-failure]` ever.
+  - Sort coins with the **tap-coin-then-tap-jar** path (dragging is checked by hand).
+  - No visible text matches `/bizkid/i` (assertion 9, FR-027).
   - Interactive elements are at least 48 × 48, and child primaries at least 64 × 64.
   - `data-hint-active` is set after 6.5 s idle on `home`.
   - **No request leaves the origin** (`page.on('request')` allows only `file:` URLs).
@@ -276,17 +285,20 @@ listed component (SC-005).
   - The principles: warm market palette, gold uses cocoa text, no error colour on child screens, a 4-pt spacing scale, 48/64/76 px touch sizes.
   - **When to use and when not to use** each colour family, the type pairing rationale (Baloo 2 + Nunito, OFL), and how the tokens will later map to Flutter `ThemeData` (spec 001).
   - Re-run `node tools/design/build-tokens.mjs` to refresh the tables.
-- [ ] T045 [P] [US2] Write `docs/design/components.md`, with one section for each of the **23 components** in spec FR-004:
-  - `primary-button`, `secondary-button`, `icon-button`, `choice-card`, `speaker-cue`, `kudi-bubble`, `coin-counter`, `xp-bar`, `level-badge`, `streak-daily`, `badge-tile`, `jar`, `coin-token`, `progress-dots`, `bottom-nav`, `region-coin-set`, `parent-gate-pad`, `pin-pad`, `bar-chart`, `level-path-node`, `celebration-overlay`, `gentle-hint`, `reviewer-menu`.
+- [ ] T045 [P] [US2] Write `docs/design/components.md`, with one section for each of the **25 components** in spec FR-004:
+  - `primary-button`, `secondary-button`, `icon-button`, `choice-card`, `speaker-cue`, `kudi-bubble`, `illustration`, `coin-counter`, `xp-bar`, `level-badge`, `streak-daily`, `badge-tile`, `jar`, `coin-token`, `progress-dots`, `bottom-nav`, `region-coin-set`, `parent-gate-pad`, `pin-pad`, `action-result`, `bar-chart`, `level-path-node`, `celebration-overlay`, `gentle-hint`, `reviewer-menu`.
+  - Document `gentle-hint` as a **state** (the pulsing ring applied to the main action), not a separate element.
+  - Add a section "**One main action at a time**" that defines `data-primary` and `data-primary-group`, so Constitution I is met literally on choice and activity screens.
   - Each section has: purpose (one sentence), states, minimum touch size (≥ 48; 4–6 primaries ≥ 64), tokens used, the screen ids that use it, and band notes for 4–6, 7–9, 10–12 and 13–15 (data-model §2).
   - Add a static thumbnail of each, taken from the prototype, as `docs/design/img/components/{id}.png` (captured in T047).
 - [ ] T046 [US2] Implement `tools/design/check-tokens-usage.mjs`:
   - Scan `prototype/assets/base.css` and `components.css` (**not** the generated `tokens.css`) plus inline `style=` attributes in `screens.js` and `activities.js`.
   - Fail on hex or rgb colours, on `px` `font-size`, `border-radius`, `padding`, `margin` and `gap` values not written as `var(--kc-…)`, and on `font-family` declarations other than `var(--kc-…)`.
   - Allow `0`, `1px` hairlines, `%`, and `vw`/`vh`. Print the file and line for each violation (SC-005, FR-024).
+  - Also fail if any file in `prototype/` or `docs/design/` contains `BizKid` (case-insensitive; FR-027). `docs/design/design-references.md` may mention the old name only inside a clearly marked "former name" note.
 - [ ] T047 [US2] Add a component-traceability check to `tools/design/tests/flow.spec.mjs`. On every visited screen:
   - Every visible `button`, `[role=button]`, `img` and `svg` sits inside an element with `data-component`.
-  - Every `data-component` value is one of the 23 ids in `docs/design/components.md`.
+  - Every `data-component` value is one of the 25 ids in `docs/design/components.md` (`gentle-hint` is checked as the `hint` state, not as an element).
   - Also write `tools/design/tests/capture-components.spec.mjs`, which saves one screenshot per component id to `docs/design/img/components/{id}.png`. It is run on demand, not part of `npm run check`.
 - [ ] T048 [US2] Write `docs/design/README.md` as the index of the design system. It covers:
   - What each file is for, with links to `tokens.md`, `components.md`, `kudi-the-cub.md`, `age-band-rules.md`, `design-references.md`, `review-guide.md` and `diagrams.md`.
@@ -344,7 +356,7 @@ currency, and the counts are unchanged (SC-006).
 - [ ] T053 [P] [US4] Draw the UK tokens in `prototype/assets/art/coins/uk/` (`p10.svg`, `p20.svg`, `p50.svg`, `gbp1.svg`, `gbp2.svg`, `gbp5-note.svg`), in the same stylised, non-replica style.
 - [ ] T054 [US4] Add a **Region** control (Ghana · Nigeria · UK) to the reviewer menu in `prototype/assets/app.js`:
   - It sets `KC.state.region`, persists it in `sessionStorage`, and re-renders the current screen.
-  - Every money display goes through `KC.money` (`data-money`), and every coin image is resolved from `KC.regions[region].denominations`.
+  - Every money display goes through `KC.money` (`data-money` and `data-region`, coin picture plus number, **no currency symbol**). Every coin image is resolved from `KC.regions[region].denominations` and carries `data-region`. The currency name and symbol appear only through `KC.currencyLabel()` in labels and narration.
   - **Coin counts in `KC.state` never change** on a switch (FR-022, data-model §7).
   - The find, sort and count activities use the active region's coins. The Decision's treat label uses `marketExamples.treat`.
   - Narration voice lang follows `voiceLang`.
@@ -352,7 +364,7 @@ currency, and the counts are unchanged (SC-006).
 - [ ] T056 [US4] Add assertion 6 of [contracts/screen-flow.md §4](./contracts/screen-flow.md) to `tools/design/tests/flow.spec.mjs`. For each of `gh`, `ng` and `uk`:
   - Switch the region through the reviewer menu.
   - Visit `home`, `activity-find`, `activity-count`, `wallet` and `reward`.
-  - Assert that every `[data-money]` contains the region's symbol (`GH₵`, `₦`, `£`) and that the numbers match the previous region's.
+  - Assert that every `[data-money]` and coin image has `data-region` equal to the region, that **no** `[data-money]` contains a currency symbol, that the numbers match the previous region's, and that the reviewer menu's currency label shows `GH₵`, `₦` or `£`.
 
 **Checkpoint**: quickstart V5 passes, and the flow test with assertion 6 passes.
 

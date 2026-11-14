@@ -275,7 +275,7 @@ Items marked **⚠ Flag** need attention or a confirmation.
   | `build-tokens.mjs` | Generates the tokens CSS and markdown (D3) |
   | `check-contrast.mjs` | Reads `tokens.json` and the list of *declared text/background pairs* in `docs/design/tokens.json → pairs`; fails if any is below WCAG AA (SC-003) |
   | `check-tokens-usage.mjs` | Scans `prototype/assets/*.css` for raw hex colours, px font sizes or radii not taken from `var(--kc-…)` (SC-005, FR-024) |
-  | **Playwright** smoke test `tools/design/tests/flow.spec.mjs` | At a 390×844 viewport: walks Welcome → … → Progress; every one of the 13 screens is reachable; each child screen has exactly one `[data-primary]` action; no 4–6 screen contains `[data-failure]`; touch targets ≥ 48 px (≥ 64 px for 4–6 primary actions); region switch changes the currency symbol on every money screen; **zero network requests leave the origin** (SC-002, SC-004, SC-006, FR-012, FR-016) |
+  | **Playwright** smoke test `tools/design/tests/flow.spec.mjs` | At a 390×844 viewport: walks Welcome → … → Progress; every one of the 13 screens is reachable; each child screen has exactly one `[data-primary]` action; no 4–6 screen contains `[data-failure]`; touch targets ≥ 48 px (≥ 64 px for 4–6 primary actions); region switch changes the coin art (`data-region`) on every money screen, with no currency symbol inside 4–6 coin amounts; **zero network requests leave the origin** (SC-002, SC-004, SC-006, FR-012, FR-016) |
 
 - **Rationale**: the success criteria are measurable, so they're measured by machine. These are
   checks, not app tests, and they run from the command line.

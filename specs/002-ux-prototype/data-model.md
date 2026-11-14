@@ -42,7 +42,7 @@ The full contract is in [contracts/tokens.schema.json](./contracts/tokens.schema
 
 | Field | Rule |
 |---|---|
-| `name` | One of the 23 components in spec FR-004. The ids are kebab-case, e.g. `choice-card`. |
+| `name` | One of the 25 components in spec FR-004. The ids are kebab-case, e.g. `choice-card`. |
 | `purpose` | One sentence |
 | `states` | At least `default`; plus any of `pressed`, `disabled`, `selected`, `hint` (pulsing), `celebrate`, `gentle` (soft bounce), `locked` |
 | `minTouch` | ≥ `size.touch.min`. 4–6 primary actions ≥ `size.touch.primary_4_6`. |
@@ -152,6 +152,11 @@ typed into the parent gate are not added to `KC.data`.
 
 **Rule**: switching region changes **only** the presentation. Coin counts in `KC.state` stay
 the same (FR-022, spec 001 FR-043).
+
+**Coin display rule** (spec 001 region config, `coinDisplay`): in-game coins on 4–6 screens are
+always the region's **coin picture plus a number** (`coin_icon_amount`), never a currency-symbol
+price. The currency name and symbol appear only in labels and narration (for example "These are
+Ghana cedis and pesewas").
 
 ## 8. Prototype State (`window.KC.state`, partly in `sessionStorage`)
 

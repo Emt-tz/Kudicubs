@@ -24,7 +24,7 @@ code is written. The deliverables are:
 
 1. **A design system in `docs/design/`**:
    - Tokens with one source, `tokens.json`. It generates CSS now, and Flutter theme values later.
-   - A component list (23 components).
+   - A component list (25 components).
    - Kudi the Cub rules (7 poses, with no sad or angry pose).
    - The four age-band UI rules.
    - The design-references record.
@@ -55,7 +55,7 @@ sizes, region switching and "nothing sent".
 | **Project Type** | Static design prototype plus design documentation. **Not** app code. |
 | **Performance Goals** | First load ≤ 2 s on 4G; tap feedback ≤ 100 ms; animations at 60 fps on a mid-range phone (SC-010). |
 | **Constraints** | Works offline once opened (FR-023). Total prototype size ≤ 3 MB, including fonts. No third-party scripts, CDNs, analytics or trackers. Respects `prefers-reduced-motion`. |
-| **Scale/Scope** | 13 screens (17 including sub-screens), 23 components, 7 Kudi poses, 4 avatars, 3 region coin sets, 1 mission. |
+| **Scale/Scope** | 13 screens (17 including sub-screens), 25 components, 7 Kudi poses, 4 avatars, 3 region coin sets, 1 mission. |
 
 There are no remaining NEEDS CLARIFICATION items. Every unknown is resolved in research D1–D14.
 
@@ -67,7 +67,7 @@ There are no remaining NEEDS CLARIFICATION items. Every unknown is resolved in r
 
 | Principle | Pre-design | Post-design evidence |
 |---|---|---|
-| I. Child-First Flow | ✅ | Exactly one `data-primary` per child screen (asserted by test); a 6-second idle hint; no dead ends ([screen-flow.md §1, §4](./contracts/screen-flow.md)) |
+| I. Child-First Flow | ✅ | Exactly one main action at a time per child screen: one `data-primary` button or one `data-primary-group` of equal choices (asserted by test); a 6-second idle hint; no dead ends ([screen-flow.md §1, §4](./contracts/screen-flow.md)) |
 | II. Learn by Doing | ✅ | The Lost Coins is shown as do, decide, outcome. The saving/spending explainer is a skippable narrated line, not a lesson. |
 | III. Failure Is Safe | ✅ | No `data-failure` anywhere for 4–6 (asserted); no error colour; Kudi has no sad pose; a wrong jar gives a gentle bounce |
 | IV. Age-Adaptive | ✅ | `age-band-rules.md` covers all four bands with the values from spec 001; the prototype shows 4–6 only, which matches the spec's scope |
@@ -132,7 +132,7 @@ docs/design/
 ├── README.md               # Index of the design system + how to use it
 ├── tokens.json             # SOURCE OF TRUTH (contracts/tokens.schema.json)
 ├── tokens.md               # Usage guidance + generated token tables
-├── components.md           # 23 components: purpose, states, min touch, tokens, screens, band notes
+├── components.md           # 25 components: purpose, states, min touch, tokens, screens, band notes
 ├── kudi-the-cub.md         # Character, personality, 7 poses, voice and line rules, placement, never-do list
 ├── age-band-rules.md       # 4–6 / 7–9 / 10–12 / 13–15 table + examples (matches spec 001 R9)
 ├── design-references.md    # Patterns adopted from Duolingo, Khan Academy Kids, Toca Boca + differences + originality review record
