@@ -1,0 +1,131 @@
+/* KudiCubs prototype — base layout (T009). Only var(--kc-*) values; see docs/design/tokens.md. */
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; padding: 0; height: 100%; }
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; border: 0; background: none; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+input { font: inherit; }
+
+body {
+  font-family: var(--kc-typography-body-family);
+  font-size: var(--kc-typography-body-size);
+  line-height: var(--kc-typography-body-line);
+  font-weight: var(--kc-typography-body-weight);
+  color: var(--kc-color-text-primary);
+  background: var(--kc-color-bg-desk);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible { outline: 3px solid var(--kc-color-teal-700); outline-offset: 3px; }
+
+.kc-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---- Phone frame: full screen on phones, centred device on large screens (FR-008) ---- */
+.kc-desk { min-height: 100%; display: flex; align-items: center; justify-content: center; }
+.kc-phone {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--kc-color-bg-app);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+@media (min-width: 500px) {
+  .kc-desk { padding: var(--kc-space-6); }
+  .kc-phone {
+    width: var(--kc-size-frame-width);
+    height: min(var(--kc-size-frame-height), calc(100vh - var(--kc-space-12)));
+    border-radius: var(--kc-radius-xl);
+    box-shadow: var(--kc-elevation-3);
+    border: 10px solid var(--kc-color-cocoa-900);
+  }
+}
+
+/* ---- Screen chrome ---- */
+.kc-header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--kc-space-2);
+  padding: var(--kc-space-2) var(--kc-space-3);
+  min-height: calc(var(--kc-size-touch-min) + var(--kc-space-4));
+}
+.kc-header [data-component="icon-button"].kc-logo { min-width: var(--kc-size-touch-min); }
+.kc-header .kc-spacer { width: var(--kc-size-touch-min); }
+
+.kc-screen {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--kc-space-4) var(--kc-space-4);
+  gap: var(--kc-space-4);
+  -webkit-overflow-scrolling: touch;
+}
+.kc-screen[data-audience="parent"] {
+  background: var(--kc-color-parent-bg);
+  color: var(--kc-color-parent-fg);
+}
+.kc-phone[data-audience="parent"] { background: var(--kc-color-parent-bg); }
+.kc-phone[data-audience="parent"] .kc-header { color: var(--kc-color-parent-fg); }
+
+.kc-stack { display: flex; flex-direction: column; gap: var(--kc-space-4); }
+.kc-row { display: flex; align-items: center; gap: var(--kc-space-3); }
+.kc-center { align-items: center; text-align: center; }
+.kc-grow { flex: 1 1 auto; }
+.kc-actions { margin-top: auto; display: flex; flex-direction: column; gap: var(--kc-space-3); padding-top: var(--kc-space-4); }
+
+.kc-title {
+  font-family: var(--kc-typography-title-family);
+  font-size: var(--kc-typography-title-size);
+  font-weight: var(--kc-typography-title-weight);
+  line-height: var(--kc-typography-title-line);
+  margin: 0;
+}
+.kc-display {
+  font-family: var(--kc-typography-display-xl-family);
+  font-size: var(--kc-typography-display-xl-size);
+  font-weight: var(--kc-typography-display-xl-weight);
+  line-height: var(--kc-typography-display-xl-line);
+  margin: 0;
+}
+.kc-big {
+  font-family: var(--kc-typography-display-l-family);
+  font-size: var(--kc-typography-display-l-size);
+  font-weight: var(--kc-typography-display-l-weight);
+  line-height: var(--kc-typography-display-l-line);
+}
+.kc-child-text {
+  font-family: var(--kc-typography-body-child-family);
+  font-size: var(--kc-typography-body-child-size);
+  font-weight: var(--kc-typography-body-child-weight);
+  line-height: var(--kc-typography-body-child-line);
+  margin: 0;
+}
+.kc-label {
+  font-family: var(--kc-typography-label-family);
+  font-size: var(--kc-typography-label-size);
+  font-weight: var(--kc-typography-label-weight);
+  line-height: var(--kc-typography-label-line);
+}
+.kc-caption {
+  font-family: var(--kc-typography-caption-family);
+  font-size: var(--kc-typography-caption-size);
+  line-height: var(--kc-typography-caption-line);
+}
+.kc-muted { color: var(--kc-color-text-secondary); }
+[data-audience="parent"] .kc-muted { color: var(--kc-color-parent-muted); }
+
+/* Screen enter transition */
+.kc-screen > * { animation: kc-enter var(--kc-motion-base) ease-out both; }
+@keyframes kc-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* Reduced motion: no non-essential animation (research D9) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
+}

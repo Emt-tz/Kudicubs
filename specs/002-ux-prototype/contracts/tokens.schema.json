@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kudicubs.app/design-tokens/1.0.0",
+  "title": "KudiCubs Design Tokens",
+  "description": "Source of truth for docs/design/tokens.json (research D3). Token leaves follow the W3C design-tokens community-group shape ($value/$type/$description). Generates prototype/assets/tokens.css and later Flutter ThemeData.",
+  "type": "object",
+  "required": ["version", "color", "typography", "space", "radius", "elevation", "size", "motion", "pairs"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+    "color": { "$ref": "#/$defs/group" },
+    "typography": { "$ref": "#/$defs/group" },
+    "space": { "$ref": "#/$defs/group" },
+    "radius": { "$ref": "#/$defs/group" },
+    "elevation": { "$ref": "#/$defs/group" },
+    "size": { "$ref": "#/$defs/group" },
+    "motion": { "$ref": "#/$defs/group" },
+    "font": { "$ref": "#/$defs/group" },
+    "pairs": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Every foreground/background combination used for text or meaningful icons; checked by tools/design/check-contrast.mjs (SC-003).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fg", "bg", "usage", "minRatio"],
+        "properties": {
+          "fg": { "$ref": "#/$defs/tokenRef" },
+          "bg": { "$ref": "#/$defs/tokenRef" },
+          "usage": { "type": "string" },
+          "minRatio": { "enum": [3, 4.5] }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "tokenRef": { "type": "string", "pattern": "^\\{[a-z0-9_]+(\\.[a-z0-9_]+)+\\}$", "description": "Alias syntax, e.g. {color.cocoa.900}" },
+    "token": {
+      "type": "object",
+      "required": ["$value", "$type", "$description"],
+      "additionalProperties": false,
+      "properties": {
+        "$type": { "enum": ["color", "dimension", "fontFamily", "fontWeight", "typography", "shadow", "duration", "number"] },
+        "$value": {},
+        "$description": { "type": "string", "minLength": 5 }
+      },
+      "allOf": [
+        { "if": { "properties": { "$type": { "const": "color" } } }, "then": { "properties": { "$value": { "anyOf": [ { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }, { "$ref": "#/$defs/tokenRef" } ] } } } },
+        { "if": { "properties": { "$type": { "const": "dimension" } } }, "then": { "properties": { "$value": { "anyOf": [ { "type": "string", "pattern": "^\\d+(\\.\\d+)?px$" }, { "$ref": "#/$defs/tokenRef" } ] } } } },
+        { "if": { "properties": { "$type": { "const": "duration" } } }, "then": { "properties": { "$value": { "type": "string", "pattern": "^\\d+ms$" } } } },
+        { "if": { "properties": { "$type": { "const": "typography" } } }, "then": { "properties": { "$value": { "type": "object", "required": ["fontFamily", "fontWeight", "fontSize", "lineHeight"] } } } }
+      ]
+    },
+    "group": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-z0-9_]+$" },
+      "additionalProperties": { "anyOf": [ { "$ref": "#/$defs/token" }, { "$ref": "#/$defs/group" } ] }
+    }
+  }
+}

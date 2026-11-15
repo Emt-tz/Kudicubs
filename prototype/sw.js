@@ -1,0 +1,86 @@
+/* KudiCubs prototype — offline cache (FR-023, research D2). Cache-first; registered only over http(s). */
+var CACHE = 'kc-proto-0.1.0';
+var FILES = [
+  './',
+  'assets/activities.js',
+  'assets/app.js',
+  'assets/art/avatars/cub-friend-1.svg',
+  'assets/art/avatars/cub-friend-2.svg',
+  'assets/art/avatars/cub-friend-3.svg',
+  'assets/art/avatars/cub-friend-4.svg',
+  'assets/art/coins/gh/ghs1.svg',
+  'assets/art/coins/gh/ghs2.svg',
+  'assets/art/coins/gh/ghs5-note.svg',
+  'assets/art/coins/gh/p10.svg',
+  'assets/art/coins/gh/p20.svg',
+  'assets/art/coins/gh/p50.svg',
+  'assets/art/coins/ng/k50.svg',
+  'assets/art/coins/ng/ngn1.svg',
+  'assets/art/coins/ng/ngn10-note.svg',
+  'assets/art/coins/ng/ngn2.svg',
+  'assets/art/coins/ng/ngn5-note.svg',
+  'assets/art/coins/uk/gbp1.svg',
+  'assets/art/coins/uk/gbp2.svg',
+  'assets/art/coins/uk/gbp5-note.svg',
+  'assets/art/coins/uk/p10.svg',
+  'assets/art/coins/uk/p20.svg',
+  'assets/art/coins/uk/p50.svg',
+  'assets/art/icons/back.svg',
+  'assets/art/icons/badge-early-bird.svg',
+  'assets/art/icons/badge-first-coins.svg',
+  'assets/art/icons/badge-hard-worker.svg',
+  'assets/art/icons/badge-kind-friend.svg',
+  'assets/art/icons/badge-market-explorer.svg',
+  'assets/art/icons/badge-pride-star.svg',
+  'assets/art/icons/badge-smart-saver.svg',
+  'assets/art/icons/badge-smart-sorter.svg',
+  'assets/art/icons/check.svg',
+  'assets/art/icons/close.svg',
+  'assets/art/icons/goal-coins.svg',
+  'assets/art/icons/home.svg',
+  'assets/art/icons/lock.svg',
+  'assets/art/icons/path.svg',
+  'assets/art/icons/piggy.svg',
+  'assets/art/icons/save.svg',
+  'assets/art/icons/speaker.svg',
+  'assets/art/icons/sun-daily.svg',
+  'assets/art/icons/treat-sticker.svg',
+  'assets/art/icons/wallet-jar.svg',
+  'assets/art/kudi/cheer.svg',
+  'assets/art/kudi/explain.svg',
+  'assets/art/kudi/gentle.svg',
+  'assets/art/kudi/icon-192.png',
+  'assets/art/kudi/icon-512.png',
+  'assets/art/kudi/icon.svg',
+  'assets/art/kudi/idle.svg',
+  'assets/art/kudi/point.svg',
+  'assets/art/kudi/think.svg',
+  'assets/art/kudi/welcome.svg',
+  'assets/art/scenes/jars.svg',
+  'assets/art/scenes/market-park.svg',
+  'assets/art/scenes/stall.svg',
+  'assets/base.css',
+  'assets/celebrate.js',
+  'assets/components.css',
+  'assets/data/mock-data.js',
+  'assets/data/regions.js',
+  'assets/fonts/Baloo2-Variable.woff2',
+  'assets/fonts/Nunito-Variable.woff2',
+  'assets/fonts/OFL.txt',
+  'assets/screens.js',
+  'assets/tokens.css',
+  'index.html',
+  'manifest.webmanifest',
+];
+self.addEventListener('install', function (e) {
+  e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(FILES); }).then(function () { return self.skipWaiting(); }));
+});
+self.addEventListener('activate', function (e) {
+  e.waitUntil(caches.keys().then(function (keys) {
+    return Promise.all(keys.filter(function (k) { return k !== CACHE; }).map(function (k) { return caches.delete(k); }));
+  }).then(function () { return self.clients.claim(); }));
+});
+self.addEventListener('fetch', function (e) {
+  if (e.request.method !== 'GET') return;
+  e.respondWith(caches.match(e.request, { ignoreSearch: true }).then(function (hit) { return hit || fetch(e.request); }));
+});
