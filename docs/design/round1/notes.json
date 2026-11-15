@@ -1,0 +1,68 @@
+{
+  "screens": {
+    "welcome": { "title": "Welcome", "changes": [
+      { "category": "brand", "note": "The official KudiCubs logo (the cub holding the K coin, with \"Play. Earn. Roar!\") replaces the placeholder wordmark." },
+      { "category": "brand", "note": "Kudi is now your official mascot (the wave pose). The placeholder cub drawing is gone." },
+      { "category": "voice", "note": "The robot voice is removed. Kudi's line will be a real recorded voice; until then it shows \"Recording pending\"." },
+      { "category": "interaction", "note": "Tap Kudi to hear \"Hello, friend!\", or tap the logo to hear \"Play. Earn. Roar!\"." } ] },
+    "age-select": { "title": "Age selection", "changes": [
+      { "category": "brand", "note": "Yellow and white cards with Mane Brown outlines, in the brand colours." },
+      { "category": "interaction", "note": "Each age card speaks when tapped; Kudi gives a thumbs up, or a gentle fist for \"coming soon\"." } ] },
+    "avatar": { "title": "Pick a friend", "changes": [
+      { "category": "interaction", "note": "Each friend introduces themselves when tapped (\"Hi! I'm Hopper the hare!\"); each name chip says the name." },
+      { "category": "brand", "note": "The selected card is highlighted in Soft Gold, the brand's character highlight." } ] },
+    "parent-gate": { "title": "For grown-ups", "changes": [
+      { "category": "brand", "note": "The grown-up screens are now Mane Brown with the official logo on brown (previously indigo)." },
+      { "category": "brand", "note": "The hold button and keypads use Sunshine Yellow and Warm Cream on Mane Brown." } ] },
+    "home": { "title": "Home", "changes": [
+      { "category": "brand", "note": "A white header with the logo; the yellow Continue button with a Mane Brown outline; Golden Orange coins with brown rims." },
+      { "category": "interaction", "note": "Tap your coins, a badge, your level or the market-day sun to hear it." },
+      { "category": "voice", "note": "A replay button (↻, top right) on every screen repeats what Kudi last said." } ] },
+    "mission-intro": { "title": "Mission intro", "changes": [
+      { "category": "interaction", "note": "Call and response: Kudi asks \"Can you help me find them?\" and the child taps 👍 before Start appears." },
+      { "category": "interaction", "note": "Tap the market stall to hear \"The market!\"." } ] },
+    "activity-find": { "title": "Find the coins", "changes": [
+      { "category": "interaction", "note": "Every coin says its name when found (\"Fifty pesewas!\"), with a pop sound and Kudi's thumbs up." },
+      { "category": "brand", "note": "The scene and coins use the brand palette; coins have Mane Brown rims." } ] },
+    "activity-sort": { "title": "Sort into jars", "changes": [
+      { "category": "interaction", "note": "Coins are dragged by hand into the jars. Each jar has a count badge that goes up by one with every coin." },
+      { "category": "interaction", "note": "Right jar: a chime and thumbs up. Wrong jar: the coin floats back, Kudi's fist (\"Let's try a different jar!\") and a soft boop. Never a failure." } ] },
+    "activity-count": { "title": "Count the coins", "changes": [
+      { "category": "interaction", "note": "Each tapped coin says its number (\"One! Two! Three!\")." },
+      { "category": "interaction", "note": "Call and response: \"Which jar has the most coins?\" The child taps a jar. A wrong guess gets a kind \"Let's look again\"." } ] },
+    "decision": { "title": "Save or spend", "changes": [
+      { "category": "interaction", "note": "Each choice card speaks when tapped (\"Save them for later!\" / \"Spend them on a kelewele sticker!\")." },
+      { "category": "voice", "note": "The treat changes by country: kelewele (Ghana), puff-puff (Nigeria), biscuit (UK)." } ] },
+    "result-save": { "title": "Result: save", "changes": [
+      { "category": "interaction", "note": "The child taps the jar to drop in the last coin, with a sparkle and Kudi celebrating." },
+      { "category": "brand", "note": "The positive message uses the proposed success green (pending your approval)." } ] },
+    "result-spend": { "title": "Result: spend", "changes": [
+      { "category": "interaction", "note": "The child taps the sticker to stick it on. Spending is still a happy choice." } ] },
+    "summary": { "title": "Summary", "changes": [
+      { "category": "interaction", "note": "Call and response: \"What did you do with your coins?\" The child taps the save or spend picture." },
+      { "category": "interaction", "note": "Each recap tile says what the child did when tapped." } ] },
+    "reward": { "title": "Reward", "changes": [
+      { "category": "interaction", "note": "Tap the reward burst to pop the celebration again (\"Woo-hoo!\"); tap a badge to hear its name." },
+      { "category": "brand", "note": "Kudi's celebrate pose, the brand-yellow Level Up banner, and Golden Orange coins." } ] },
+    "wallet": { "title": "Wallet", "changes": [
+      { "category": "voice", "note": "Kudi names the money for each country (\"These are Ghana cedis and pesewas.\")." },
+      { "category": "interaction", "note": "Tap any bar or history line to hear it." } ] },
+    "progress": { "title": "Progress", "changes": [
+      { "category": "interaction", "note": "Tap a level, badge or pillar to hear its name." },
+      { "category": "brand", "note": "The market-road level path in brand colours; the current level is Sunshine Yellow." } ] }
+  },
+  "openDecisions": [
+    { "title": "B1 Yellow logo tagline", "question": "The yellow logo version has a white tagline, which is hard to read. Is there a version with a Mane Brown tagline, or shall we keep using the white and brown logo versions?" },
+    { "title": "B2 Peace-sign pose", "question": "You asked for a \"peace sign\" pose for celebrating, but none of the five poses shows one. Can we use the wink pose with the sparkling coin, or will you send a peace-sign pose?" },
+    { "title": "B3 Success green", "question": "The guide asks for a separate green for success messages. We propose #16793A. OK?" },
+    { "title": "B4 Warm Cream", "question": "The guide prints the Warm Cream code as #F68C1F (that's the orange). We used the swatch colour, #FEF5E0. Correct?" },
+    { "title": "B5 Charcoal", "question": "The guide says #000000, but the swatch looks like #231F20. Which one? (It isn't used in the app yet.)" },
+    { "title": "B6 Button pressed shades", "question": "We made slightly darker versions of yellow and orange for pressed buttons, and a lighter brown for small text. Are you happy with them? (See brand.md.)" },
+    { "title": "B7 Product name in text", "question": "Should app text say \"KudiCubs\", \"Kudicubs\" or \"Kudicub's\" (as in the logo)?" },
+    { "title": "B8 Master files", "question": "Please send the original logo (vector) and the five mascot images (transparent PNG) for the final app." },
+    { "title": "B9 App fonts", "question": "We propose Baloo 2 and Nunito (free, licensed for apps) for buttons and text, to match the rounded logo. OK?" },
+    { "title": "B10 Placeholder art colours", "question": "Our draft coins and scenes use a few extra colours (silver, bronze, flag colours on coins, greens). OK until final illustrations?" },
+    { "title": "B11 App icon", "question": "For the phone home-screen icon we used just the cub and K coin from your yellow logo (the full logo is too small to read at icon size). Nothing is redrawn. OK, or would you prefer the full logo?" },
+    { "title": "V1 First voice", "question": "Shall we record Ghanaian English first, with a warm female storyteller voice?" }
+  ]
+}

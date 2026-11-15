@@ -1,68 +1,119 @@
 # KudiCubs Design System
 
-This is the design system for KudiCubs: the **durable** source that both the clickable prototype
-and the real app (spec 001) are built from. **`prototype/` is a throwaway demonstration. This
-folder is what lasts.**
+This is the design system for KudiCubs: the **durable** source the clickable prototype and the
+real app (spec 001) are built from. **`prototype/` is a throwaway demonstration. This folder is
+what lasts.**
 
-- **Spec**: [specs/002-ux-prototype/spec.md](../../specs/002-ux-prototype/spec.md)
-- **Tokens version**: `0.1.0`, which becomes `1.0.0` when the client signs off.
-- **Prototype version**: `0.1.0`
+- **Specs**:
+  - [002](../../specs/002-ux-prototype/spec.md): UX design system and prototype v0.1.0.
+  - [003](../../specs/003-brand-voice-interactive/spec.md): client feedback round 1. **Official
+    brand, human voice, more interaction**: prototype v0.2.0.
+- **Tokens version**: `0.2.0`, which becomes `1.0.0` when the client signs off.
+- **Prototype version**: `0.2.0`. The "before" state is tagged `prototype-v0.1.0`.
 
 ## Files
 
 | File | What it's for |
 |---|---|
-| [tokens.json](./tokens.json) | **Source of truth** for colour, type, space, radius, elevation, size and motion |
-| [tokens.md](./tokens.md) | Principles, when to use what, and the generated token tables |
-| [components.md](./components.md) | The 25 components: purpose, states, touch sizes, tokens, screens, band notes. Also the "one main action at a time" rule. |
-| [kudi-the-cub.md](./kudi-the-cub.md) | Kudi's character, visual spec, 7 poses, voice and lines, placement, and the never-do list |
-| [age-band-rules.md](./age-band-rules.md) | 4–6 / 7–9 / 10–12 / 13–15 UI rules, one screen at four bands, tablets, 5 worked situations |
-| [design-references.md](./design-references.md) | Patterns learned from Duolingo, Khan Academy Kids and Toca Boca, how KudiCubs differs, and the originality record |
-| [review-guide.md](./review-guide.md) | A plain-language guide for the client to review the prototype |
-| [child-session-protocol.md](./child-session-protocol.md) and [child-session-results.md](./child-session-results.md) | An optional, consent-first test with 4–6 year olds |
-| [diagrams.md](./diagrams.md) | Architecture and flow diagrams (from spec 001) |
-| `img/components/` | Component thumbnails, captured from the prototype |
+| [brand.md](./brand.md) | **How the brand guide is applied**: logo versions, the five Kudi poses, colour rules, fonts, open decisions B1–B11 and V1 |
+| [tokens.json](./tokens.json) | **Source of truth**: brand, derived, success and illustration colours, type, space, radius, elevation, size, motion, and the contrast pairs |
+| [tokens.md](./tokens.md) | Principles and the generated token tables |
+| [contrast-report.md](./contrast-report.md) | Generated: every pairing with its ratio; failures and how they're avoided |
+| [components.md](./components.md) | **28 components**, the one-main-action rule and child actions |
+| [kudi-the-cub.md](./kudi-the-cub.md) | Kudi's character, the five poses and their states, pose order, size, voice, never-do list, idle behaviour |
+| [age-band-rules.md](./age-band-rules.md) | 4–6 / 7–9 / 10–12 / 13–15 UI rules |
+| [narration/lines.json](./narration/lines.json) | **Source of truth for every spoken line**: 142 lines × 3 language slots |
+| [narration-script.md](./narration-script.md) | Generated: the voice actor's script, with the file-naming table |
+| [voice-direction-brief.md](./voice-direction-brief.md) | Casting and recording brief: a warm, friendly female storyteller with a natural Ghanaian accent; consent; tone reference only, never copied |
+| [round1-before-after.md](./round1-before-after.md) | **The client summary**: every screen before and after, the changes, and the open decisions |
+| [design-references.md](./design-references.md) | Patterns learned from the references, how KudiCubs differs, and the originality record |
+| [review-guide.md](./review-guide.md) | A plain-language guide for Jefferson (round 1) |
+| [child-session-protocol.md](./child-session-protocol.md) and [child-session-results.md](./child-session-results.md) | Optional child test. **Waits for the recordings.** |
+| [diagrams.md](./diagrams.md) | Architecture and flow diagrams (spec 001) |
+| `img/components/`, `round1/` | Generated screenshots |
 
 ## How to change something
 
 ```bash
 cd tools/design
-npm ci                      # first time only; then `npx playwright install chromium webkit`
-# edit ../../docs/design/tokens.json
-npm run check               # rebuild tokens.css + tables → contrast → token usage → flow tests
-node capture-components.mjs # optional: refresh component thumbnails
+npm ci && npx playwright install chromium webkit   # first time
+npm run check                 # tokens → contrast → brand (+art) → no-TTS → token usage → narration --check → sw.js → flow tests
+node extract-brand-assets.mjs # re-extract the logo and poses from docs/source/KudiCubs Brand.pdf (or the client's master files)
+node build-narration.mjs      # after editing lines.json or adding recordings
+node encode-audio.mjs         # optional: studio .wav → .m4a (needs ffmpeg)
+node capture-components.mjs   # refresh component thumbnails
+node capture-before-after.mjs # refresh the before/after summary
 ```
 
 **Rules:**
 
-- Never edit `prototype/assets/tokens.css` or the generated block in `tokens.md` by hand.
-- Prototype CSS may use only `var(--kc-*)`. `check-tokens-usage.mjs` fails on raw colours, sizes
-  or radii, and on the old product name.
-- New text and background pairings must be added to `tokens.json → pairs`, so their contrast is
-  checked.
+- **Brand colours are never changed.** `check-brand.mjs` compares them with the guide.
+- **No synthetic voice, ever.** `check-no-tts.mjs` scans for it, and a test stub fails on any use.
+- Never edit generated files: `tokens.css`, the token tables, `contrast-report.md`,
+  `narration-script.md`, `audio-manifest.js`, `sw.js`, and the screenshots.
+- **Adding a recording:** put `prototype/assets/audio/<lang>/<lineId>.m4a` in place and run
+  `node build-narration.mjs`. No code change is needed.
+- **Stored preferences** (sessionStorage only): `region`, `sound`, `notes` and `voiceLang`. No
+  personal data. This supersedes 002 research D11's list.
 
-## Validation record
+## Validation record: round 1 (2026-11-15)
 
-### Automated (2026-11-14)
+### Automated
 
-| Check | Result |
-|---|---|
-| `build-tokens.mjs`: schema-valid, deterministic | ✅ 72 tokens; identical output on re-run |
-| `check-contrast.mjs` (SC-003) | ✅ All 19 declared pairs meet WCAG AA (lowest is 4.14:1, for a large-only pair with a 3:1 minimum) |
-| `check-tokens-usage.mjs` (SC-005, FR-024, FR-027) | ✅ Only `var(--kc-*)`; no old product name. A planted violation was caught. |
-| `flow.spec.mjs`, Chromium + WebKit, 390 × 844 touch (SC-002, SC-004, SC-006, FR-012/013/016) | ✅ 4/4 passed. Every required screen is reached. There is exactly one main action at every step, no failure state, all targets ≥ 48 (4–6 main actions ≥ 64), and every element maps to one of the 25 components. The idle hint fires at 6.5 s. Save and Spend paths both work, and a replay gives 5 XP only. Region switching changes the coin art but never the counts, with no currency symbol in 4–6 amounts. No off-origin requests; the gate email and PIN are never stored. |
-| Accessible names and alt text (T063) | ✅ Every control has a name, and every image has `alt` |
-| Offline (V7) | ✅ Served over http, loaded once, then offline: still works, fonts included |
-| Large screen (V9) | ✅ A centred 390 px phone frame at 1280 px width |
-| Size (T062) | ✅ `prototype/` is **488 KB** in total (budget 3 MB): fonts 80 KB, art 264 KB |
-| Speed (SC-010) | ✅ First load 110 ms; the slowest screen renders in 17 ms, both with 4× CPU throttling |
+| Scenario | Check | Result |
+|---|---|---|
+| W1–W3 Brand | `check-brand.mjs --art`, `check-contrast.mjs`, `check-tokens-usage.mjs` | ✅ The 9 brand colours match the guide. 17 UI and 31 art colours are all recorded, and every see-through tint and faded state is a token (`tint.*`, `opacity.*`). All **29** pairings in use pass WCAG AA, and 12 failing pairings are listed with how they're avoided. Only **defined** `var(--kc-*)` tokens in the prototype (the check now fails on a removed or misspelt token). |
+| W4 No synthetic voice | `check-no-tts.mjs` + the runtime stub in `flow.spec.mjs` | ✅ 0 references, and `speechSynthesis.speak` was called 0 times |
+| W5 Pending captions | flow test "voice: no recordings" | ✅ Every line shows its caption and "Recording pending" |
+| W6 Drop-in recordings | flow test "voice: dropping in 3 recordings" (ffmpeg-generated silent samples) | ✅ They play, with no code change |
+| W7 Replay | flow test + audit | ✅ A replay button on every screen re-shows or replays the last line |
+| W8 Something to do | flow test `checkChildActions` | ✅ Every Lost Coins screen has at least one enabled child action at render, and each one reacts without navigating |
+| W9 Drag with live counts | flow test (real pointer drags) | ✅ Count badge +1 per coin. A wrong jar leaves the count unchanged, shows `fist` and plays a boop. No failure state. |
+| W10 Kudi reacts | flow test (pose and sound-effect log) | ✅ |
+| W11 Call and response | flow test | ✅ Intro, Count and Summary hold Next back until the child answers. Decision is answered by the choice. |
+| W12 Script and brief | `build-narration.mjs --check` | ✅ 142 lines, each ≤ 8 s at 130 wpm, one idea each; every spoken key exists |
+| W13 Before/after | `capture-before-after.mjs` | ✅ 16 screens × 2, with change notes and 12 open decisions |
+| 002 regressions | flow tests on Chromium and WebKit | ✅ **14/14 passed.** The replay economy regression test still fails when the bug is put back (re-proven). |
+| Code review (T058) | 2 new flow tests: keyboard-only play, and confetti / tab label / long idle / tapped word | ✅ Both fail when the review's bugs are put back (re-proven) |
+| Offline | Served over HTTP, loaded once, then offline | ✅ The service worker takes control; Kudi and the logo load offline |
+| Size | `du` | ✅ `prototype/` is **2.2 MB** without audio (budget 3 MB; 8 MB with recordings) |
+| Speed | 4× CPU throttling | ✅ First load 238 ms; the slowest screen renders in 17 ms (budget 50 ms) |
 
-### Manual, on real devices (still to do before sending to the client)
+### Bugs found and fixed while validating
+
+- **Count question:** tapping a jar did nothing, because the counted coins caught the tap.
+- **Layout shifts while dragging:** they came from the caption appearing and from the five poses'
+  different proportions. Fixed with a fixed caption slot and a fixed Kudi box.
+- **Caption text clipped.**
+- **Placeholder speaker icon** was white on orange. It's now Mane Brown.
+- **Wrapper elements** were missing component IDs.
+- **Parent-gate logo** moved the hold button while it loaded.
+- **Mascot PNG fallbacks** were 4.1 MB in total, now 0.1 MB.
+
+### Fixed after the round-1 code review (T058)
+
+- **Keyboard**: the Sort coins couldn't be picked with Enter/Space, and the avatar and nickname
+  cards spoke but never got selected. Both work now, and a test plays Sort by keyboard alone.
+- **Confetti** was invisible: it still used the removed v0.1.0 colour names.
+- **Bottom-nav labels** were cut off or replaced by the screen prompt. The label now plays in
+  place of the prompt.
+- **Long idle** (20 s) now shows `wave` with "Welcome back!", as FR-038 asks. The extra 45 s
+  state is gone.
+- **Tap any word**: titles and Kudi's words play their line, and with no recording the caption
+  flashes Soft Gold (FR-026).
+- **Bars, dots and fills** have Mane Brown edges, with their contrast recorded (FR-004/006).
+- **Wallet bars and Progress pillars** had collapsed: the child-action layout rule overrode
+  their grid. Found while checking the new screenshots.
+- CSS overrides were folded into the rules they changed (checked with a computed-style
+  comparison of every screen), raw sizes became tokens, and the screen-reader labels left in
+  `index.html` moved to the strings file.
+
+### Manual, on real devices (still to do, 002 T064 and 003 W14)
 
 | Scenario | Status |
 |---|---|
-| V1: first-time walkthrough in under 5 min on a phone (SC-001) | ☐ To run on an iPhone (Safari) and an Android phone (Chrome) |
-| V3: drag-to-sort feel on a real touch screen | ☐ To check (drag is automated only through tap-tap) |
-| V8: sound off, and speech voices on each phone | ☐ To check (voices differ by device) |
-| V11: originality countersignature | ☐ The developer countersigns [design-references.md](./design-references.md) |
-| V12: optional child session | ☐ Optional |
+| Drag-to-sort feel by finger on an iPhone (Safari) and an Android phone (Chrome) | ☐ |
+| Audio plays after the first tap; captions readable in daylight | ☐ (needs at least a few recordings) |
+| First-time walkthrough in under 5–7 minutes | ☐ |
+| Originality countersignature ([design-references.md](./design-references.md)) | ☐ The developer signs |
+| Child session (optional) | ☐ **Only after the recordings exist** |

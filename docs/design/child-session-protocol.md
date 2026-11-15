@@ -3,6 +3,11 @@
 The goal is to see whether 4–6 year olds can play **The Lost Coins** in the prototype **without
 being read to**: spec 002 US5 and SC-009. This session is **optional** for client sign-off.
 
+> **⚠ Round 1 (spec 003): wait for the recordings.** Sessions with children **must not run until
+> the human voice recordings exist** for The Lost Coins (`en-GH`; check the reviewer menu's
+> "Recordings" count). Pre-readers can't use the "Recording pending" captions, so a session
+> without audio would test the captions, not the game (plan 003, flag N1).
+
 ## 1. Consent first (Constitution V)
 
 - [ ] **Each parent or guardian is present and agrees before anything starts.** Read aloud:

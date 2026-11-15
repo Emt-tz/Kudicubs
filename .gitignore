@@ -28,3 +28,7 @@ tools/design/node_modules/
 tools/design/test-results/
 tools/design/playwright-report/
 prototype-*.zip
+
+# Round 1 (003)
+tools/design/.tmp/
+prototype/assets/audio/**/*.wav

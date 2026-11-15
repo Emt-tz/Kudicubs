@@ -27,9 +27,22 @@ for (const [p, t] of map) {
     lines.push(`  ${base}-size: ${v.fontSize};`);
     lines.push(`  ${base}-line: ${v.lineHeight};`);
     rows.typography.push(`| \`${p}\` | ${v.fontSize} / ${v.lineHeight} · ${v.fontWeight} · ${v.fontFamily.split(',')[0]} | ${t.$description} |`);
+  } else if (t.$type === 'tint') {
+    // A recorded colour at a recorded alpha (FR-002): the only way CSS may make a see-through colour.
+    const base = t.$value.color.slice(1, -1);
+    const css = `color-mix(in srgb, var(${cssName(base)}) ${t.$value.alpha}%, transparent)`;
+    lines.push(`  ${cssName(p)}: ${css};`);
+    rows.color.push(`| \`${p}\` | \`${t.$value.color}\` at ${t.$value.alpha}% | Tint of a recorded colour | ${t.$description} |`);
   } else {
     lines.push(`  ${cssName(p)}: ${v};`);
-    const row = `| \`${p}\` | \`${v}\`${alias ? ` (= \`${alias}\`)` : ''} | ${t.$description} |`;
+    const x = (t.$extensions && t.$extensions.kudicubs) || {};
+    const prov = x.source === 'brand-guide' ? `Brand guide (${x.tier}${x.status !== 'confirmed' ? ', **' + x.status + '**' : ''})`
+      : x.derivedFrom ? `Derived from \`${x.derivedFrom}\`: ${x.rule}`
+      : x.notInPalette ? '**Not in brand palette**' : x.purpose ? 'Illustration palette' : alias ? 'Alias' : '';
+    const flag = x.needsApproval ? ' ⚠ needs client approval' : '';
+    const row = t.$type === 'color'
+      ? `| \`${p}\` | \`${v}\`${alias ? ` (= \`${alias}\`)` : ''} | ${prov}${flag} | ${t.$description} |`
+      : `| \`${p}\` | \`${v}\`${alias ? ` (= \`${alias}\`)` : ''} | ${t.$description} |`;
     (t.$type === 'color' ? rows.color : rows.other).push(row);
   }
 }
@@ -65,7 +78,9 @@ const generated = `<!-- tokens:start -->
 
 ### Colour
 
-${table('Colour', rows.color)}
+| Token | Value | Source | When to use |
+|---|---|---|---|
+${rows.color.join('\n')}
 
 ### Typography
 

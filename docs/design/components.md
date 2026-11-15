@@ -1,6 +1,6 @@
 # KudiCubs Components
 
-This page lists the **25 components** in spec 002 FR-004. Every element in the prototype carries
+This page lists **28 components**: the 25 in spec 002 FR-004, plus 3 added in round 1 (spec 003): `replay-button`, `narration-caption` and `count-badge`. Since round 1 they use the official brand ([brand.md](./brand.md)). Every element in the prototype carries
 `data-component="<id>"` and is one of these. That is checked by `tools/design/tests/flow.spec.mjs`.
 
 - The thumbnails come from the prototype (`node tools/design/capture-components.mjs`).
@@ -16,6 +16,8 @@ always exactly one of these two:
 |---|---|---|
 | `data-primary` | One main button | Let's Go, Start, Next, Back to Home |
 | `data-primary-group` | One group of *equal* choices or activity targets, used while a choice or activity is in progress | The two Save/Spend cards; the age cards; the coins to find, sort or count |
+
+**Child actions** (round 1): every tap or drag target that isn't the main action carries `data-child-action` (`hear`, `answer`, `drag`, `tap`, `find` or `count`). Child actions **never navigate and are never `data-primary`**, so the one-main-action rule still holds. They are enabled the moment a screen appears, and each one makes Kudi react and plays a sound or line ([interaction-moments](../../specs/003-brand-voice-interactive/contracts/interaction-moments.md)).
 
 When the child makes the choice or finishes the activity, the group stops being the main action
 and **a single main button replaces it**. So the child always sees one obvious thing to do. The
@@ -34,8 +36,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **States**: default · pressed (sinks 4 px onto its gold.600 edge) · disabled (50% opacity) ·
   `hint` (teal pulsing ring).
 - **Minimum touch size**: full width × 76 (4–6) or × 64 (other bands).
-- **Tokens**: `color.action.primary.*`, `typography.button_4_6` / `button`, `radius.lg`,
-  `size.button.height_4_6`.
+- **Tokens**: `color.action.primary.*` (Sunshine Yellow, Mane Brown label, **2 px Mane Brown outline**), `typography.button_4_6` / `button`, `radius.lg`, `size.button.height_4_6`.
 - **Screens**: every screen.
 - **Bands**: 4–6 uses one word or two plus an optional icon. Older bands may use short phrases.
 
@@ -46,7 +47,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **Purpose**: a less important action that must never compete with the main one.
 - **States**: default · pressed.
 - **Minimum touch size**: 48 high.
-- **Tokens**: `color.bg.card`, `color.gold.600` outline, `typography.label`.
+- **Tokens**: `color.action.secondary.*` (Adventure Orange, Mane Brown label and outline), `typography.label`.
 - **Screens**: reviewer menu (Restart). In the app: parent area, "Maybe later".
 - **Bands**: never on 4–6 child screens beside a main button.
 
@@ -82,7 +83,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **Purpose**: shows that a line is spoken; tap it to hear the line again (FR-015).
 - **States**: default · speaking (pulse).
 - **Minimum touch size**: 48 × 48.
-- **Tokens**: `color.teal.700`, white icon (6.7:1).
+- **Tokens**: Adventure Orange with a Mane Brown icon and outline (5.98:1). Never a white icon.
 - **Screens**: every child screen.
 - **Bands**: every band. 4–6 plays automatically; 10+ plays on tap.
 
@@ -94,7 +95,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **States**: one per Kudi pose ([kudi-the-cub.md](./kudi-the-cub.md)). Kudi switches to `point`
   during idle hints and to `gentle` after a wrong jar.
 - **Minimum size**: Kudi is at least `size.kudi.min` (96).
-- **Tokens**: `color.white` bubble, `radius.md`, `typography.body_child`.
+- **Tokens**: `color.character.highlight` (Soft Gold) bubble with a Mane Brown border, `radius.md`, `typography.body_child`. Kudi is one of the five official poses ([kudi-the-cub.md](./kudi-the-cub.md)).
 - **Screens**: most child screens.
 - **Bands**: 4–6 on every screen. Fewer screens as the bands get older.
 
@@ -129,7 +130,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **Purpose**: progress toward the next level. The same component draws the pillar bars.
 - **States**: default · filling (animated).
 - **Minimum size**: n/a.
-- **Tokens**: `color.green.700` fill on `color.sand.200`, `radius.pill`.
+- **Tokens**: `color.reward.coin` (Golden Orange) fill on White with a Mane Brown outline, `radius.pill`.
 - **Screens**: `home`, `progress`.
 - **Bands**: 4–6 shows the bar and the next level's name. Older bands also show XP numbers.
 
@@ -140,7 +141,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **Purpose**: the current level number and name (for example "2 Market Helper").
 - **States**: default.
 - **Minimum size**: n/a.
-- **Tokens**: `color.terracotta.600` with white text (5.5:1), `radius.pill`.
+- **Tokens**: `color.action.secondary.bg` (Adventure Orange) with a **Mane Brown** label and outline (5.98:1), `radius.pill`.
 - **Screens**: `home`.
 - **Bands**: level names come from each world (spec 001 FR-026).
 
@@ -152,7 +153,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
   **There is never a penalty or "streak lost" state** for 4–6 (FR-018).
 - **States**: default · complete.
 - **Minimum size**: 48 for the card's speaker cue.
-- **Tokens**: `color.gold.500`, `color.bg.card`.
+- **Tokens**: White card with a Mane Brown border; the sun is Golden Orange.
 - **Screens**: `home`.
 - **Bands**: 7–15 may show a gentle "come back tomorrow" line, but never a loss.
 
@@ -175,7 +176,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **States**: default · target (a coin is picked) · `hint` (teal glow after 2 wrong tries) ·
   done (green border plus the count).
 - **Minimum touch size**: 64 or more.
-- **Tokens**: `color.white`, `color.teal.700` dashed glass, `radius.md`.
+- **Tokens**: White with a Mane Brown border; the glass is dashed Mane Brown on Warm Cream; the target is Soft Gold; done is the success green; `radius.md`.
 - **Screens**: `activity-sort`, `activity-count`.
 - **Bands**: 4–6 counts coins. Older bands may total values.
 
@@ -207,7 +208,8 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 
 ![bottom-nav](./img/components/bottom-nav.png)
 
-- **Purpose**: three icon tabs, Home · Wallet · Progress. Each label is spoken when tapped.
+- **Purpose**: three icon tabs, Home · Wallet · Progress. Each label is spoken when tapped, in
+  place of the screen's prompt, so it always finishes (003 FR-036).
 - **States**: default · current.
 - **Minimum touch size**: 64 high.
 - **Tokens**: `color.white`, `radius.md`.
@@ -233,7 +235,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **Purpose**: the number pad that answers the written multiplication ("eight times six").
 - **States**: default · pressed.
 - **Minimum touch size**: 64.
-- **Tokens**: `color.parent.*`, `typography.title`.
+- **Tokens**: `color.parent.*` (Mane Brown, Warm Cream text), `typography.title`.
 - **Screens**: `parent-gate`.
 - **Bands**: parent only.
 
@@ -245,7 +247,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
   repeated digits) are gently refused.
 - **States**: default · pressed.
 - **Minimum touch size**: 64.
-- **Tokens**: `color.parent.*`, `color.gold.500` filled dots.
+- **Tokens**: `color.parent.*`, with filled dots in `color.parent.accent` (Sunshine Yellow).
 - **Screens**: `parent-gate`.
 - **Bands**: parent only.
 
@@ -257,7 +259,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **States**: save (coins fly to the jar) · spend (sticker unwraps). 7–15 add negative outcomes
   with a Try Again (spec 001 FR-029–031).
 - **Minimum size**: n/a.
-- **Tokens**: `color.white`, `color.feedback.positive`.
+- **Tokens**: White card, `color.feedback.success` for the positive message (success green, pending approval).
 - **Screens**: `result-save`, `result-spend`.
 - **Bands**: 4–6 never shows a negative outcome; the gentle variant is used instead.
 
@@ -268,7 +270,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **Purpose**: "where my coins came from and went", grouped by category with icons and numbers.
 - **States**: default.
 - **Minimum size**: n/a.
-- **Tokens**: gold (in), terracotta (treats), green (saved), `radius.pill`.
+- **Tokens**: Sunshine Yellow (in), Adventure Orange (treats), success green (saved), `radius.pill`.
 - **Screens**: `wallet`.
 - **Bands**: 4–6 shows icons plus numbers. Older bands add labels and percentages.
 
@@ -279,7 +281,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **Purpose**: one stop on the **market road** level path.
 - **States**: done (green) · current (gold with a glow) · locked (padlock).
 - **Minimum touch size**: 64.
-- **Tokens**: `size.touch.primary_4_6`, `color.gold.500`, `color.green.700`.
+- **Tokens**: `size.touch.primary_4_6`; current is Sunshine Yellow with a Mane Brown outline; done is the success green with white text.
 - **Screens**: `progress`.
 - **Bands**: same in every band; level names come from each world.
 
@@ -290,7 +292,7 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **Purpose**: the coin-and-confetti burst on Reward and on "joined the Pride".
 - **States**: playing · off (skipped entirely under `prefers-reduced-motion`).
 - **Minimum size**: n/a (not interactive).
-- **Tokens**: `motion.celebrate`, gold, terracotta, hibiscus, green, teal.
+- **Tokens**: `motion.celebrate`, brand colours (yellow, orange, Golden Orange, Soft Gold), plus Golden Orange coins.
 - **Screens**: `reward`, `parent-gate` (joined moment).
 - **Bands**: same in every band; 13–15 may use a smaller version.
 
@@ -298,11 +300,13 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 
 ![gentle-hint](./img/components/gentle-hint.png)
 
-- **Purpose**: the idle hint. A teal ring pulses on the current main action (`data-primary` or
-  `data-primary-group`), Kudi points, and the prompt is spoken again.
-- **States**: level 1 (at 6 s) · level 2 (12 s, spoken again) · level 3 (20 s, stronger pulse).
+- **Purpose**: the idle hint. A Mane Brown ring with a Sunshine Yellow glow pulses on the current
+  main action (`data-primary` or `data-primary-group`), Kudi shows `fist` (encourage), and the
+  prompt is spoken again.
+- **States**: level 1 (at 6 s, prompt spoken) · level 2 (12 s, hint line) · level 3 (20 s, long
+  idle: stronger pulse, Kudi `wave`, "Welcome back! Let's play!", FR-038).
 - **Minimum size**: n/a.
-- **Tokens**: `color.feedback.gentle`.
+- **Tokens**: `color.feedback.hint_ring` (Mane Brown) with a `color.feedback.hint_glow` (Sunshine Yellow) glow.
 - **Screens**: every child screen.
 - **Bands**: the first hint comes at 6 s (4–6), 8 s (7–9), 10 s (10–12) or 12 s (13–15).
 
@@ -315,6 +319,58 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
   `?review=1`), and is never `data-primary`.
 - **States**: open · closed.
 - **Minimum touch size**: 48.
-- **Tokens**: `color.parent.*`, `radius.xl`.
+- **Tokens**: `color.parent.*` (Mane Brown) with the official logo on brown, `radius.xl`. It also has a **Voice language** control and shows how many lines are recorded.
 - **Screens**: overlays every screen.
 - **Bands**: n/a (reviewers only; not part of the app).
+
+---
+
+## New in round 1 (spec 003)
+
+### 26. `replay-button`
+
+![replay-button](./img/components/replay-button.png)
+
+- **Purpose**: replays the last line Kudi said on this screen (FR-029). Before anything has
+  played, it plays the screen's first line.
+- **States**: default · pressed.
+- **Minimum touch size**: 48 × 48.
+- **Tokens**: `color.action.secondary.bg` (Adventure Orange), a Mane Brown outline and replay
+  icon.
+- **Screens**: every screen (header, right).
+- **Bands**: same in every band.
+
+### 27. `narration-caption`
+
+![narration-caption](./img/components/narration-caption.png)
+
+- **Purpose**: shows the words of the current line, with its status. It never covers the main
+  action and never blocks taps.
+- **States**:
+
+  | State | Meaning |
+  |---|---|
+  | `playing` | A recording is playing; there's a pulsing dot and Kudi shows `headphones` |
+  | `pending` | No recording yet: the **"Recording pending"** badge (FR-016) |
+  | `ready` | A recording exists but the browser needs a tap first: "Tap ↻ to listen" |
+  | `muted` | The sound is off |
+  | `done` | The line has finished |
+  | `hidden` | Nothing to show |
+
+- **Minimum size**: a fixed two-line slot, so the layout never moves while a child is dragging.
+- **Tokens**: White with a Mane Brown border; the badge is Mane Brown on Soft Gold.
+- **Screens**: every child screen.
+- **Bands**: same in every band. Captions are a reviewer and reader aid. Pre-readers rely on the
+  recordings.
+
+### 28. `count-badge`
+
+![count-badge](./img/components/count-badge.png)
+
+- **Purpose**: how many coins are in a jar during sorting. It **goes up by exactly one per coin**,
+  the moment the coin lands (FR-024).
+- **States**: default · bump (a pop animation on each increase).
+- **Minimum size**: n/a (not interactive).
+- **Tokens**: a Mane Brown pill with a Warm Cream numeral (13.31:1).
+- **Screens**: `activity-sort`.
+- **Bands**: 4–6 counts coins. Older bands may show values.
