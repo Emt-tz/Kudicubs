@@ -39,7 +39,10 @@ These are carried into the before/after summary (FR-031):
 5. Any derived shades proposed for accessibility (FR-004).
 6. The approved yellow logo's white tagline contrast.
 7. Product name in text: "KudiCubs", "Kudicubs" or "Kudicub's".
-8. The mascot pose mapping, identified visually.
+8. The mascot pose mapping, identified visually. No peace-sign pose was supplied.
+9. The UI font proposal: Baloo 2 and Nunito (OFL), to pair with Sobas Play and Skia (FR-012).
+10. The illustration palette for placeholder art (FR-047).
+11. The app icon: the cub-and-coin crop of the approved yellow logo (FR-009 exception, B11).
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -238,9 +241,11 @@ say, for each line, what to say, how to say it, how long it should be, and what 
     - Charcoal (value per Assumptions)
   - The placeholder palette from v0.1.0 MUST be removed.
 - **FR-002**: Every derived tint, shade and state colour (hover, pressed, disabled, focus,
-  selected) MUST be recorded in the tokens, with the brand colour it is derived from. No colour
-  may appear in the prototype that is not a brand colour, a recorded derivation, or the flagged
-  success green.
+  selected) MUST be recorded in the tokens, with the brand colour it is derived from.
+  - **UI colours** (styles, components, text, backgrounds, outlines) MUST be only a brand
+    colour, a recorded derivation, or the flagged success green.
+  - **Illustrations** follow FR-047.
+  - *(Narrowed after `/speckit-analyze` H1, 2026-11-15.)*
 - **FR-003**: Warm Cream MUST use **`#FEF5E0`**, the swatch value. **OPEN, provisional, pending
   Jefferson's confirmation**: the guide prints `#F68C1F` (Adventure Orange's value) by mistake. If
   Jefferson gives a different value, only the token changes.
@@ -268,6 +273,10 @@ say, for each line, what to say, how to say it, how long it should be, and what 
   "K" coin, the wordmark and the tagline "Play. Earn. Roar!". It MUST use only the three approved
   versions: on White, on Sunshine Yellow, and on Mane Brown. The logo MUST never be redrawn,
   recoloured, stretched, cropped or re-typeset.
+  - **One exception, pending client approval (B11)**: the home-screen app icon may show the
+    cub and "K" coin from the approved yellow version, cropped only by the frame (nothing
+    redrawn or recoloured), because the full lock-up is unreadable at icon size. If the client
+    declines, the icon becomes the full yellow logo on Sunshine Yellow.
 - **FR-010**: Kudi MUST be shown only with the **five supplied mascot poses**. No new or modified
   cub artwork may be made. The poses map to states:
 
@@ -286,6 +295,15 @@ say, for each line, what to say, how to say it, how long it should be, and what 
 - **FR-012**: A licensed, rounded, highly legible UI font for body text and buttons MUST be
   proposed, together with the reason it pairs with the logo and tagline fonts. Its licence MUST
   allow embedding in the web prototype and in Android and iOS apps.
+- **FR-047 (illustration colours)**:
+  - **Supplied brand artwork** (the logo versions and the five mascot poses) is used exactly as
+    supplied and is **exempt** from colour rules. This includes the mascots' own colours, such
+    as the navy vest.
+  - **Placeholder illustrations** (avatars, scenes, coins, icons) MUST use only brand colours,
+    recorded derivations, and a short recorded **illustration palette**: coin metals, flag
+    accents for each region's coins, and nature greens. Each illustration colour is a token
+    with its purpose and `needsApproval`.
+  - A check MUST fail on any fill or stroke in placeholder art that isn't on those lists.
 - **FR-013**: The design documents MUST be updated for the new brand: tokens, components, Kudi
   usage rules (now pose-based) and design references. Every rule that mentioned the old palette or
   the old Kudi drawing MUST be revised.

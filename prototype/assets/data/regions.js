@@ -11,12 +11,12 @@ KC.regions = {
     voiceLang: 'en-GH',
     coinIcon: 'ghs1',
     denominations: [
-      { id: 'p10', kind: 'coin', label: '10 pesewas', faceValueMinor: 10, accent: 'gold-500' },
-      { id: 'p20', kind: 'coin', label: '20 pesewas', faceValueMinor: 20, accent: 'gold-500' },
-      { id: 'p50', kind: 'coin', label: '50 pesewas', faceValueMinor: 50, accent: 'terracotta-600' },
-      { id: 'ghs1', kind: 'coin', label: '1 cedi', faceValueMinor: 100, accent: 'gold-600' },
-      { id: 'ghs2', kind: 'coin', label: '2 cedis', faceValueMinor: 200, accent: 'gold-600' },
-      { id: 'ghs5-note', kind: 'note', label: '5 cedis', faceValueMinor: 500, accent: 'green-700' }
+      { id: 'p10', kind: 'coin', label: '10 pesewas', faceValueMinor: 10 },
+      { id: 'p20', kind: 'coin', label: '20 pesewas', faceValueMinor: 20 },
+      { id: 'p50', kind: 'coin', label: '50 pesewas', faceValueMinor: 50 },
+      { id: 'ghs1', kind: 'coin', label: '1 cedi', faceValueMinor: 100 },
+      { id: 'ghs2', kind: 'coin', label: '2 cedis', faceValueMinor: 200 },
+      { id: 'ghs5-note', kind: 'note', label: '5 cedis', faceValueMinor: 500 }
     ],
     lostCoinsSet: ['p10', 'p50', 'ghs1'],
     marketExamples: {
@@ -31,11 +31,11 @@ KC.regions = {
     voiceLang: 'en-NG',
     coinIcon: 'ngn1',
     denominations: [
-      { id: 'k50', kind: 'coin', label: '50 kobo', faceValueMinor: 50, accent: 'terracotta-600' },
-      { id: 'ngn1', kind: 'coin', label: '1 naira', faceValueMinor: 100, accent: 'gold-500' },
-      { id: 'ngn2', kind: 'coin', label: '2 naira', faceValueMinor: 200, accent: 'gold-600' },
-      { id: 'ngn5-note', kind: 'note', label: '5 naira', faceValueMinor: 500, accent: 'green-700' },
-      { id: 'ngn10-note', kind: 'note', label: '10 naira', faceValueMinor: 1000, accent: 'green-700' }
+      { id: 'k50', kind: 'coin', label: '50 kobo', faceValueMinor: 50 },
+      { id: 'ngn1', kind: 'coin', label: '1 naira', faceValueMinor: 100 },
+      { id: 'ngn2', kind: 'coin', label: '2 naira', faceValueMinor: 200 },
+      { id: 'ngn5-note', kind: 'note', label: '5 naira', faceValueMinor: 500 },
+      { id: 'ngn10-note', kind: 'note', label: '10 naira', faceValueMinor: 1000 }
     ],
     lostCoinsSet: ['k50', 'ngn1', 'ngn2'],
     marketExamples: {
@@ -50,12 +50,12 @@ KC.regions = {
     voiceLang: 'en-GB',
     coinIcon: 'gbp1',
     denominations: [
-      { id: 'p10', kind: 'coin', label: '10 pence', faceValueMinor: 10, accent: 'gold-500' },
-      { id: 'p20', kind: 'coin', label: '20 pence', faceValueMinor: 20, accent: 'gold-500' },
-      { id: 'p50', kind: 'coin', label: '50 pence', faceValueMinor: 50, accent: 'gold-500' },
-      { id: 'gbp1', kind: 'coin', label: '1 pound', faceValueMinor: 100, accent: 'gold-600' },
-      { id: 'gbp2', kind: 'coin', label: '2 pounds', faceValueMinor: 200, accent: 'gold-600' },
-      { id: 'gbp5-note', kind: 'note', label: '5 pounds', faceValueMinor: 500, accent: 'green-700' }
+      { id: 'p10', kind: 'coin', label: '10 pence', faceValueMinor: 10 },
+      { id: 'p20', kind: 'coin', label: '20 pence', faceValueMinor: 20 },
+      { id: 'p50', kind: 'coin', label: '50 pence', faceValueMinor: 50 },
+      { id: 'gbp1', kind: 'coin', label: '1 pound', faceValueMinor: 100 },
+      { id: 'gbp2', kind: 'coin', label: '2 pounds', faceValueMinor: 200 },
+      { id: 'gbp5-note', kind: 'note', label: '5 pounds', faceValueMinor: 500 }
     ],
     lostCoinsSet: ['p10', 'p50', 'gbp1'],
     marketExamples: {

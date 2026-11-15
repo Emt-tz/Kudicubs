@@ -1,116 +1,126 @@
 # KudiCubs Design Tokens
 
-The **source of truth** is [`tokens.json`](./tokens.json), in the W3C design-tokens format. The
-tables at the bottom of this page are generated from it, so never edit them by hand.
+The **source of truth** is [`tokens.json`](./tokens.json) (v0.2.0, W3C design-tokens format). The
+tables below are generated from it, so never edit them by hand.
 
-**To change a token:**
+**To change a token:** edit `tokens.json`, then run `npm run check` in `tools/design/`. That:
 
-1. Edit `tokens.json`.
-2. Run `npm run check` in `tools/design/`.
-3. The check regenerates `prototype/assets/tokens.css` and the tables below, then verifies
-   contrast, token use and the screen flow.
+1. regenerates `prototype/assets/tokens.css`, these tables and `contrast-report.md`;
+2. checks contrast;
+3. checks the brand colours still match the brand guide (`check-brand.mjs`);
+4. checks the prototype uses only tokens;
+5. runs the flow tests.
 
-**Version**: `0.1.0` until the client signs off, then `1.0.0` (semver, constitution).
+**How the tokens relate to the brand:** [brand.md](./brand.md) explains how the brand guide is
+applied: the logo, the five poses, the colour rules and the open decisions.
 
-## Principles
+## Principles (round 1: official brand)
 
-1. **Warm market, not candy.** Sun-washed sand backgrounds, a lion-cub gold primary, and
-   market-fabric accents (terracotta awnings, adire indigo, deep leaf green, teal, hibiscus). The
-   palette is chosen so it can't be mistaken for any reference app: no bright lime, no pastels,
-   no neon.
-2. **Gold always carries cocoa text.** White on gold fails contrast (2.8:1), so it is never used.
-   Main buttons are `color.action.primary.bg` (gold.500) with `color.action.primary.fg`
-   (cocoa.900), and a gold.600 bottom edge.
-3. **There is no error colour on child screens** (Constitution III). Mistakes get the *gentle*
-   treatment: `color.feedback.gentle` (teal) rings, a soft bounce, and Kudi's encouraging pose.
-   Hibiscus and terracotta are celebration and market accents. **Never use them to mean
-   "wrong".**
-4. **Indigo means "grown-up space".** The parent gate, parent area and reviewer menu use
-   `color.parent.*`, so children learn that indigo screens aren't for them.
-5. **Every text and icon pairing is declared and checked.** The `pairs` list in `tokens.json` is
-   checked against WCAG AA by `check-contrast.mjs`: 4.5:1 for text, 3:1 for large text and icons.
-   If you add a new pairing, declare it there.
-6. **Use the 4-point spacing scale.** Use `space.*` for every padding, margin and gap. The
-   default screen padding is `space.4` (16), and the gap above the main action is `space.8`.
-7. **Touch sizes.** Every control is at least `size.touch.min` (48). Main actions for 4–6 are at
-   least `size.touch.primary_4_6` (64), and main buttons are `size.button.height_4_6` (76) high.
-8. **Rounded and friendly.** Use `radius.lg` (24) for buttons, `radius.md` (16) for cards, and
-   `radius.pill` for pills and icon buttons.
-
-## When to use each colour family
-
-| Family | Use for | Don't use for |
-|---|---|---|
-| `sand` | Backgrounds (50), cards and trays (100), the desk around the phone frame and dividers (200) | Text |
-| `gold` | Main buttons, Kudi's mane, coins, the current level node | A background behind white text |
-| `cocoa` | All text on light surfaces; locked labels (500, large text only) | Large decorative fills |
-| `terracotta` | Market awnings, the level badge, accent chips | Signalling mistakes |
-| `indigo` | Parent gate, parent area, reviewer menu, reviewer notes | Child screens |
-| `green` | Savings, positive outcomes, completed levels, the XP fill | "Correct" ticks that imply "wrong" exists |
-| `teal` | The narration speaker cue, hint rings, jar outlines | Large backgrounds |
-| `hibiscus` | Celebration, Level Up banner, badges | Errors, ever |
-
-## Typography
-
-- **Baloo 2** (display: titles, numbers, buttons) and **Nunito** (body). Both are SIL Open Font
-  License 1.1 fonts, bundled in `prototype/assets/fonts/` as subset WOFF2 with the ₵, ₦ and £
-  glyphs.
-- Child body text uses `typography.body_child` (20, bold), and is never below 18.
-- Main button labels for 4–6 use `typography.button_4_6` (24, the spec minimum is 22).
-- `typography.caption` (14) is **only** for parent and reviewer screens.
+1. **Brand colours are exact and never changed.** `color.brand.*` holds the guide's nine colours.
+   `check-brand.mjs` compares each one with the guide and fails on any difference.
+2. **Derived colours are recorded, never invented.** `color.derived.*` (pressed states,
+   secondary text, locked text, tray shade) each record the brand colour they come from, the mix
+   rule, and `needsApproval`.
+3. **The success green is separate and pending.** `color.success.green` is not in the palette
+   (the guide asks for "a separate accessible green") and waits for client approval.
+4. **Mane Brown text on every bright surface.** Yellow, orange and Golden Orange always carry
+   Mane Brown text and a 2 px Mane Brown outline (`size.border.brand`). Never white.
+5. **Every pairing is declared and checked.** `pairs` (used, must pass WCAG AA) and
+   `rejectedPairs` (failing, with how they're avoided) together make up
+   [contrast-report.md](./contrast-report.md).
+6. **Components use semantic aliases.** For example `color.action.primary.bg`,
+   `color.text.primary`, `color.reward.coin`, `color.parent.bg`. They never use raw brand tokens
+   where an alias exists, so a future brand change is one edit.
+7. **The illustration palette is for placeholder art only.** It covers coin metals, flag accents
+   and nature greens, and is checked in the SVGs by `check-brand.mjs --art`. It is never used in
+   UI CSS.
+8. **Space, type, radius, size and motion are unchanged from 002.** Baloo 2 + Nunito (OFL); a
+   4-point space scale; 48 px minimum touch size, 64 and 76 px for 4–6 main actions.
 
 ## Mapping to the app (spec 001)
 
-These tokens will generate the Flutter theme:
-
 | Token group | Flutter |
 |---|---|
-| `color.*` | `ColorScheme` and a `ThemeExtension<KudiColors>` |
+| `color.*` | `ColorScheme` + `ThemeExtension<KudiColors>`. Brand and derived tokens become constants; aliases become theme roles. |
 | `typography.*` | `TextTheme` |
-| `space`, `radius`, `size` | A `ThemeExtension<KudiSpacing>` |
+| `space`, `radius`, `size` | `ThemeExtension<KudiSpacing>` |
 
-The token *names* are the contract. Values can change without touching widget code.
+The token *names* are the contract.
 
 <!-- tokens:start -->
 <!-- GENERATED by tools/design/build-tokens.mjs — edit docs/design/tokens.json, not this block. -->
 
-**Token version**: `0.1.0`
+**Token version**: `0.2.0`
 
 ### Colour
 
-| Token | Value | When to use |
-|---|---|---|
-| `color.sand.50` | `#FFF6E8` | App background: sun-washed sand. Default page colour for every child screen. |
-| `color.sand.100` | `#FCE9CC` | Cards, panels and tray backgrounds on top of sand.50. |
-| `color.sand.200` | `#F3D9B1` | Desk colour around the phone frame on large screens; dividers on cards. Not for text backgrounds. |
-| `color.gold.500` | `#F0A830` | PRIMARY. Kudi's mane, main buttons, coins. Always pair with cocoa.900 text, never white. |
-| `color.gold.600` | `#D98A12` | Primary pressed state, button bottom edge, coin rims. Never as a text background with white. |
-| `color.cocoa.500` | `#8A6A52` | Locked and 'coming soon' icons and large labels. Large text or icons only. |
-| `color.cocoa.700` | `#6B4A33` | Secondary text, captions on sand. |
-| `color.cocoa.900` | `#3A2315` | Main text and text on gold surfaces. |
-| `color.terracotta.600` | `#B04A26` | Market accent: awnings, highlights, accent chips. Never an error colour. |
-| `color.indigo.100` | `#DDE2F7` | Secondary text and outlines on indigo.700 surfaces. |
-| `color.indigo.700` | `#2B3A75` | Adire indigo: the parent area, the parent gate and the reviewer menu. Signals 'grown-up space'. |
-| `color.green.700` | `#1F6B45` | Positive outcomes and savings (deep leaf green; deliberately not a bright lime). |
-| `color.teal.700` | `#0F6670` | Narration speaker cue and information accents. |
-| `color.hibiscus.600` | `#C23B5A` | Celebration accent and badges. NEVER used to signal a mistake. |
-| `color.white` | `#FFFFFF` | Text on dark accent surfaces; card surfaces inside the parent area. |
-| `color.bg.app` | `#FFF6E8` (= `{color.sand.50}`) | Semantic: page background for child screens. |
-| `color.bg.card` | `#FCE9CC` (= `{color.sand.100}`) | Semantic: card and tray background. |
-| `color.bg.desk` | `#F3D9B1` (= `{color.sand.200}`) | Semantic: area around the phone frame on large screens. |
-| `color.text.primary` | `#3A2315` (= `{color.cocoa.900}`) | Semantic: main text. |
-| `color.text.secondary` | `#6B4A33` (= `{color.cocoa.700}`) | Semantic: secondary text. |
-| `color.text.locked` | `#8A6A52` (= `{color.cocoa.500}`) | Semantic: locked/coming-soon labels (large text only). |
-| `color.text.on_dark` | `#FFFFFF` (= `{color.white}`) | Semantic: text on indigo, green, terracotta, teal or hibiscus. |
-| `color.action.primary.bg` | `#F0A830` (= `{color.gold.500}`) | Semantic: main button fill. |
-| `color.action.primary.edge` | `#D98A12` (= `{color.gold.600}`) | Semantic: main button bottom edge and pressed fill. |
-| `color.action.primary.fg` | `#3A2315` (= `{color.cocoa.900}`) | Semantic: main button label. |
-| `color.feedback.positive` | `#1F6B45` (= `{color.green.700}`) | Semantic: good outcome, savings growing. |
-| `color.feedback.gentle` | `#0F6670` (= `{color.teal.700}`) | Semantic: gentle redirect and hint ring. There is NO error colour on child screens. |
-| `color.parent.bg` | `#2B3A75` (= `{color.indigo.700}`) | Semantic: parent gate and reviewer menu background. |
-| `color.parent.fg` | `#FFFFFF` (= `{color.white}`) | Semantic: text on the parent background. |
-| `color.parent.muted` | `#DDE2F7` (= `{color.indigo.100}`) | Semantic: secondary text on the parent background. |
-| `color.celebrate` | `#C23B5A` (= `{color.hibiscus.600}`) | Semantic: celebration accent. |
+| Token | Value | Source | When to use |
+|---|---|---|---|
+| `color.brand.sunshine_yellow` | `#FBCE16` | Brand guide (primary) | Main buttons (brand guide). Text on it is always Mane Brown. |
+| `color.brand.mane_brown` | `#3E2312` | Brand guide (primary) | Headings, borders and outlines (brand guide). |
+| `color.brand.adventure_orange` | `#F68C1F` | Brand guide (primary) | Secondary buttons (brand guide). Text on it is always Mane Brown. |
+| `color.brand.golden_orange` | `#FBAA19` | Brand guide (primary) | Coins and reward icons (brand guide). Always with a Mane Brown rim on light backgrounds. |
+| `color.brand.soft_gold` | `#FBE57E` | Brand guide (supporting) | Character highlights (brand guide): Kudi bubble and selected-card fills. |
+| `color.brand.peach_cream` | `#FCE6C6` | Brand guide (supporting) | Supporting colour (brand guide): panels and trays. |
+| `color.brand.warm_cream` | `#FEF5E0` | Brand guide (supporting, **provisional**) | Main backgrounds (brand guide swatch). Guide prints #F68C1F in error — provisional, pending client confirmation. |
+| `color.brand.white` | `#FFFFFF` | Brand guide (supporting) | Main backgrounds and cards (brand guide 'White Cloud Puff'). |
+| `color.brand.charcoal` | `#231F20` | Brand guide (supporting, **assumed**) | Supporting colour (guide prints #000000; swatch renders #231F20). Reserved — not used for UI text. |
+| `color.derived.yellow_pressed` | `#E4B916` | Derived from `color.brand.sunshine_yellow`: mix 12% color.brand.mane_brown ⚠ needs client approval | main button pressed |
+| `color.derived.orange_pressed` | `#DA7C1D` | Derived from `color.brand.adventure_orange`: mix 15% color.brand.mane_brown ⚠ needs client approval | secondary button pressed |
+| `color.derived.golden_pressed` | `#E49A18` | Derived from `color.brand.golden_orange`: mix 12% color.brand.mane_brown ⚠ needs client approval | coin pressed / picked |
+| `color.derived.brown_80` | `#644D3B` | Derived from `color.brand.mane_brown`: mix 20% color.brand.warm_cream ⚠ needs client approval | secondary text |
+| `color.derived.brown_60` | `#8B7764` | Derived from `color.brand.mane_brown`: mix 40% color.brand.warm_cream ⚠ needs client approval | locked / disabled labels and icons (large text only) |
+| `color.derived.cream_shade` | `#F2E8D4` | Derived from `color.brand.warm_cream`: mix 6% color.brand.mane_brown ⚠ needs client approval | tray and desk background |
+| `color.derived.peach_shade` | `#EDD6B8` | Derived from `color.brand.peach_cream`: mix 8% color.brand.mane_brown ⚠ needs client approval | pressed card |
+| `color.success.green` | `#16793A` | **Not in brand palette** ⚠ needs client approval | Success messages only. NOT part of the brand palette (guide: 'a separate accessible green'). Use on Warm Cream or White only. |
+| `color.illustration.silver` | `#D8D2C8` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): coin metal: silver face |
+| `color.illustration.silver_rim` | `#A79E90` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): coin metal: silver inner ring |
+| `color.illustration.bronze` | `#D79A5E` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): coin metal: bronze face |
+| `color.illustration.bronze_rim` | `#A86B34` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): coin metal: bronze inner ring |
+| `color.illustration.gh_red` | `#C8102E` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): GH / UK coin accent: red |
+| `color.illustration.gh_green` | `#006B3F` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): GH coin accent: green |
+| `color.illustration.ng_green` | `#008751` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): NG coin and note accent: green |
+| `color.illustration.uk_navy` | `#012169` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): UK coin and note accent: navy |
+| `color.illustration.leaf` | `#3E8E41` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): scenes and avatars: leaf green |
+| `color.illustration.leaf_light` | `#BFE0C8` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): scenes, avatars and banknotes: light leaf |
+| `color.illustration.leaf_dark` | `#2C6B2F` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): scenes: tree shade |
+| `color.illustration.stone` | `#6B7280` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): avatars: guinea-fowl grey |
+| `color.illustration.stone_light` | `#B9BED6` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): avatars: elephant grey |
+| `color.illustration.blush` | `#F2A58A` | Illustration palette ⚠ needs client approval | Placeholder illustrations only (FR-047): avatars: cheek blush |
+| `color.bg.app` | `#FEF5E0` (= `{color.brand.warm_cream}`) | Alias | Semantic: page background. |
+| `color.bg.card` | `#FFFFFF` (= `{color.brand.white}`) | Alias | Semantic: card background. |
+| `color.bg.tray` | `#F2E8D4` (= `{color.derived.cream_shade}`) | Alias | Semantic: tray background. |
+| `color.bg.panel` | `#FCE6C6` (= `{color.brand.peach_cream}`) | Alias | Semantic: panel background. |
+| `color.bg.desk` | `#F2E8D4` (= `{color.derived.cream_shade}`) | Alias | Semantic: area around the phone frame. |
+| `color.text.primary` | `#3E2312` (= `{color.brand.mane_brown}`) | Alias | Semantic: main text and headings. |
+| `color.text.secondary` | `#644D3B` (= `{color.derived.brown_80}`) | Alias | Semantic: secondary text. |
+| `color.text.locked` | `#8B7764` (= `{color.derived.brown_60}`) | Alias | Semantic: locked labels (large only). |
+| `color.text.on_dark` | `#FEF5E0` (= `{color.brand.warm_cream}`) | Alias | Semantic: text on Mane Brown. |
+| `color.action.primary.bg` | `#FBCE16` (= `{color.brand.sunshine_yellow}`) | Alias | Semantic: main button fill. |
+| `color.action.primary.pressed` | `#E4B916` (= `{color.derived.yellow_pressed}`) | Alias | Semantic: main button pressed. |
+| `color.action.primary.fg` | `#3E2312` (= `{color.brand.mane_brown}`) | Alias | Semantic: main button label. |
+| `color.action.primary.outline` | `#3E2312` (= `{color.brand.mane_brown}`) | Alias | Semantic: main button outline (FR-006). |
+| `color.action.secondary.bg` | `#F68C1F` (= `{color.brand.adventure_orange}`) | Alias | Semantic: secondary button fill. |
+| `color.action.secondary.pressed` | `#DA7C1D` (= `{color.derived.orange_pressed}`) | Alias | Semantic: secondary pressed. |
+| `color.action.secondary.fg` | `#3E2312` (= `{color.brand.mane_brown}`) | Alias | Semantic: secondary label. |
+| `color.action.secondary.outline` | `#3E2312` (= `{color.brand.mane_brown}`) | Alias | Semantic: secondary outline. |
+| `color.reward.coin` | `#FBAA19` (= `{color.brand.golden_orange}`) | Alias | Semantic: coins and reward icons. |
+| `color.reward.rim` | `#3E2312` (= `{color.brand.mane_brown}`) | Alias | Semantic: coin and reward rim (FR-006). |
+| `color.character.highlight` | `#FBE57E` (= `{color.brand.soft_gold}`) | Alias | Semantic: character highlights (Kudi bubble, selected card). |
+| `color.parent.bg` | `#3E2312` (= `{color.brand.mane_brown}`) | Alias | Semantic: parent gate and reviewer menu background. |
+| `color.parent.fg` | `#FEF5E0` (= `{color.brand.warm_cream}`) | Alias | Semantic: text on the parent background. |
+| `color.parent.accent` | `#FBCE16` (= `{color.brand.sunshine_yellow}`) | Alias | Semantic: accents on the parent background. |
+| `color.parent.muted` | `#FBE57E` (= `{color.brand.soft_gold}`) | Alias | Semantic: secondary text on the parent background. |
+| `color.feedback.success` | `#16793A` (= `{color.success.green}`) | Alias | Semantic: success messages (pending approval). |
+| `color.feedback.hint_ring` | `#3E2312` (= `{color.brand.mane_brown}`) | Alias | Semantic: idle-hint ring. |
+| `color.feedback.hint_glow` | `#FBCE16` (= `{color.brand.sunshine_yellow}`) | Alias | Semantic: idle-hint glow. |
+| `tint.hint_pulse` | `{color.feedback.hint_ring}` at 25% | Tint of a recorded colour | Fading idle-hint pulse. |
+| `tint.parent_field` | `{color.brand.white}` at 10% | Tint of a recorded colour | Region and option buttons on the Mane Brown parent background. |
+| `tint.parent_key` | `{color.brand.white}` at 14% | Tint of a recorded colour | Number keys on the parent gate and PIN pad. |
+| `tint.parent_key_pressed` | `{color.brand.white}` at 30% | Tint of a recorded colour | Number keys while pressed; parent-gate step markers. |
+| `tint.parent_segment` | `{color.brand.white}` at 12% | Tint of a recorded colour | Reviewer menu segment buttons. |
+| `tint.parent_segment_on` | `{color.brand.sunshine_yellow}` at 25% | Tint of a recorded colour | Selected reviewer segment button. |
+| `tint.scrim` | `{color.brand.mane_brown}` at 45% | Tint of a recorded colour | Scrim behind the reviewer sheet. |
 
 ### Typography
 
@@ -147,9 +157,11 @@ The token *names* are the contract. Values can change without touching widget co
 | `radius.lg` | `24px` | Main buttons, panels. |
 | `radius.xl` | `32px` | Phone frame, sheets. |
 | `radius.pill` | `999px` | Pills, round icon buttons, progress bars. |
-| `elevation.1` | `0 2px 6px rgba(58, 35, 21, 0.12)` | Cards resting on sand. |
-| `elevation.2` | `0 6px 16px rgba(58, 35, 21, 0.16)` | Raised choice cards, selected state. |
-| `elevation.3` | `0 18px 48px rgba(58, 35, 21, 0.28)` | Phone frame on large screens, reviewer sheet. |
+| `elevation.1` | `0 2px 6px rgba(62, 35, 18, 0.12)` | Cards resting on sand (Mane Brown shadow). |
+| `elevation.2` | `0 6px 16px rgba(62, 35, 18, 0.16)` | Raised choice cards, selected state (Mane Brown shadow). |
+| `elevation.3` | `0 18px 48px rgba(62, 35, 18, 0.28)` | Phone frame on large screens, reviewer sheet (Mane Brown shadow). |
+| `elevation.nav` | `0 -2px 12px rgba(62, 35, 18, 0.10)` | Bottom navigation lifting off the screen. |
+| `elevation.coin` | `0 3px 2px rgba(62, 35, 18, 0.30)` | Drop shadow under coin pictures (used in a CSS filter). |
 | `size.touch.min` | `48px` | Minimum touch target for any interactive element (SC-004). |
 | `size.touch.primary_4_6` | `64px` | Minimum size of a main action for ages 4–6. |
 | `size.button.height` | `64px` | Main button height (7–12). |
@@ -159,31 +171,62 @@ The token *names* are the contract. Values can change without touching widget co
 | `size.coin` | `56px` | Coin token in activities (also its touch size). |
 | `size.frame.width` | `390px` | Phone frame width on large screens. |
 | `size.frame.height` | `844px` | Phone frame height on large screens. |
+| `size.border.brand` | `2px` | Mane Brown outline on yellow and orange controls, coins and reward icons (FR-006). |
+| `size.border.card` | `3px` | Card and jar outline (thicker so cards read as tappable). |
+| `size.border.thin` | `2px` | Thin non-brand outline: parent inputs, region and segment buttons, jar glass. |
+| `size.border.frame` | `10px` | Phone frame bezel on large screens. |
+| `size.ring.width` | `4px` | Idle-hint ring and logo long-press ring. |
+| `size.ring.glow` | `8px` | Idle-hint glow (resting). |
+| `size.ring.glow_max` | `14px` | Idle-hint glow at the top of its pulse. |
+| `size.focus.width` | `3px` | Keyboard focus outline width. |
+| `size.focus.offset` | `3px` | Keyboard focus outline offset. |
+| `size.focus.offset_tight` | `2px` | Focus offset on child actions placed close together. |
+| `size.focus.halo` | `6px` | Sunshine Yellow halo outside the focus outline. |
+| `size.depth.button` | `5px` | Solid Mane Brown "lip" under main buttons and level nodes. |
+| `size.depth.press` | `4px` | How far a main button moves down when pressed. |
+| `size.hit_slop` | `8px` | Extra invisible touch area around coins hidden in a scene. |
+| `size.path.stripe` | `18px` | Level path: length of one cream stripe. |
+| `size.path.period` | `30px` | Level path: stripe plus gap. |
 | `motion.fast` | `120ms` | Tap feedback. |
 | `motion.base` | `240ms` | Screen and state transitions. |
 | `motion.celebrate` | `1200ms` | Celebration bursts. |
+| `opacity.disabled` | `0.5` | Disabled main button (never shown on child screens). |
+| `opacity.locked_badge` | `0.35` | Locked badge picture (also greyscale). |
+| `opacity.locked_card` | `0.6` | Picture on a locked "Coming soon" card. |
+| `opacity.dot_off` | `0.25` | Progress dot not reached yet (also greyscale). |
+| `opacity.counted` | `0.55` | A coin that has been counted. |
 
 ### Checked contrast pairs
 
 | Foreground | Background | Used for | Minimum |
 |---|---|---|---|
-| `{color.cocoa.900}` | `{color.sand.50}` | Body text on the app background | 4.5:1 |
-| `{color.cocoa.700}` | `{color.sand.50}` | Secondary text on the app background | 4.5:1 |
-| `{color.cocoa.900}` | `{color.sand.100}` | Text on cards | 4.5:1 |
-| `{color.cocoa.700}` | `{color.sand.100}` | Secondary text on cards | 4.5:1 |
-| `{color.cocoa.500}` | `{color.sand.100}` | Locked / coming soon labels and icons (large only) | 3:1 |
-| `{color.cocoa.900}` | `{color.gold.500}` | Main button label | 4.5:1 |
-| `{color.cocoa.900}` | `{color.gold.600}` | Main button label, pressed | 4.5:1 |
-| `{color.white}` | `{color.indigo.700}` | Parent gate and reviewer menu text | 4.5:1 |
-| `{color.indigo.100}` | `{color.indigo.700}` | Secondary text on parent surfaces | 4.5:1 |
-| `{color.white}` | `{color.terracotta.600}` | Accent chips | 4.5:1 |
-| `{color.white}` | `{color.green.700}` | Savings and positive badges | 4.5:1 |
-| `{color.white}` | `{color.teal.700}` | Speaker cue icon and hint labels | 4.5:1 |
-| `{color.white}` | `{color.hibiscus.600}` | Celebration labels | 4.5:1 |
-| `{color.terracotta.600}` | `{color.sand.50}` | Accent text on the app background | 4.5:1 |
-| `{color.green.700}` | `{color.sand.50}` | Positive text (+coins, saved) | 4.5:1 |
-| `{color.teal.700}` | `{color.sand.50}` | Speaker cue outline and hint ring | 3:1 |
-| `{color.indigo.700}` | `{color.sand.50}` | Reviewer notes and links | 4.5:1 |
-| `{color.cocoa.900}` | `{color.white}` | Text on white parent-area cards and inputs | 4.5:1 |
-| `{color.cocoa.900}` | `{color.sand.200}` | Text on the desk area around the frame | 4.5:1 |
+| `{color.brand.mane_brown}` | `{color.brand.sunshine_yellow}` | Main button label | 4.5:1 |
+| `{color.brand.mane_brown}` | `{color.derived.yellow_pressed}` | Main button label, pressed | 4.5:1 |
+| `{color.brand.mane_brown}` | `{color.brand.adventure_orange}` | Secondary button label, replay icon | 4.5:1 |
+| `{color.brand.mane_brown}` | `{color.derived.orange_pressed}` | Secondary button label, pressed | 4.5:1 |
+| `{color.brand.mane_brown}` | `{color.brand.golden_orange}` | Coin numerals | 4.5:1 |
+| `{color.brand.mane_brown}` | `{color.brand.warm_cream}` | Headings and body text on the app background | 4.5:1 |
+| `{color.brand.mane_brown}` | `{color.brand.white}` | Text on cards | 4.5:1 |
+| `{color.brand.mane_brown}` | `{color.brand.peach_cream}` | Text on panels | 4.5:1 |
+| `{color.brand.mane_brown}` | `{color.brand.soft_gold}` | Text in Kudi bubbles and selected cards; 'Recording pending' badge | 4.5:1 |
+| `{color.brand.mane_brown}` | `{color.derived.cream_shade}` | Text on trays and the desk | 4.5:1 |
+| `{color.derived.brown_80}` | `{color.brand.warm_cream}` | Secondary text | 4.5:1 |
+| `{color.derived.brown_80}` | `{color.brand.white}` | Secondary text on cards | 4.5:1 |
+| `{color.derived.brown_80}` | `{color.brand.peach_cream}` | Secondary text on panels | 4.5:1 |
+| `{color.derived.brown_60}` | `{color.brand.peach_cream}` | Locked 'Coming soon' (large text and icons) | 3:1 |
+| `{color.derived.brown_60}` | `{color.brand.white}` | Locked labels on cards (large text and icons) | 3:1 |
+| `{color.brand.warm_cream}` | `{color.brand.mane_brown}` | Parent area and reviewer text; count badge numeral | 4.5:1 |
+| `{color.brand.soft_gold}` | `{color.brand.mane_brown}` | Secondary text on the parent background | 4.5:1 |
+| `{color.brand.sunshine_yellow}` | `{color.brand.mane_brown}` | Accents on the parent background | 4.5:1 |
+| `{color.success.green}` | `{color.brand.warm_cream}` | Success text on the app background | 4.5:1 |
+| `{color.success.green}` | `{color.brand.white}` | Success text on cards | 4.5:1 |
+| `{color.brand.white}` | `{color.success.green}` | Text on a success badge | 4.5:1 |
+| `{color.brand.mane_brown}` | `{color.brand.warm_cream}` | Non-text: Mane Brown outline and coin rim on Warm Cream | 3:1 |
+| `{color.brand.mane_brown}` | `{color.brand.white}` | Non-text: Mane Brown outline and coin rim on White | 3:1 |
+| `{color.brand.mane_brown}` | `{color.brand.warm_cream}` | Non-text: hint ring and focus ring | 3:1 |
+| `{color.brand.mane_brown}` | `{color.brand.peach_cream}` | Non-text: Mane Brown edge of wallet bar fills and track on Peach Cream | 3:1 |
+| `{color.brand.mane_brown}` | `{color.brand.sunshine_yellow}` | Non-text: Mane Brown edge around yellow fills and the lit streak dot | 3:1 |
+| `{color.brand.mane_brown}` | `{color.brand.golden_orange}` | Non-text: Mane Brown edge around the XP fill | 3:1 |
+| `{color.brand.mane_brown}` | `{color.brand.adventure_orange}` | Non-text: Mane Brown edge around the spent wallet bar | 3:1 |
+| `{color.derived.brown_60}` | `{color.brand.white}` | Non-text: outline of a streak dot not reached yet | 3:1 |
 <!-- tokens:end -->

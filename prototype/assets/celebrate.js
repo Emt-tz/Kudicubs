@@ -2,7 +2,8 @@
 (function () {
   'use strict';
   var KC = window.KC;
-  var COLORS = ['gold-500', 'terracotta-600', 'hibiscus-600', 'green-700', 'teal-700'];
+  var COLORS = ['var(--kc-color-brand-sunshine-yellow)', 'var(--kc-color-brand-adventure-orange)', 'var(--kc-color-brand-golden-orange)',
+                'var(--kc-color-brand-soft-gold)', 'var(--kc-color-brand-mane-brown)'];
 
   KC.celebrate = function (message) {
     var overlay = document.getElementById('kc-overlay');
@@ -15,9 +16,9 @@
         var coin = i % 6 === 0;
         var style = 'left:' + Math.round(Math.random() * 96) + '%;animation-delay:' + Math.round(Math.random() * 500) + 'ms;';
         if (coin) {
-          layer.appendChild(KC.h('img', { class: 'kc-confetti kc-confetti--coin', style: style, alt: '', src: 'assets/art/' + KC.coinSrc(KC.region().coinIcon), 'data-region': KC.state.region }));
+          layer.appendChild(KC.coinImg(KC.region().coinIcon, { class: 'kc-confetti kc-confetti--coin', style: style }));
         } else {
-          layer.appendChild(KC.h('span', { class: 'kc-confetti', style: style + 'background:var(--kc-color-' + COLORS[i % COLORS.length] + ')' }));
+          layer.appendChild(KC.h('span', { class: 'kc-confetti', style: style + 'background:' + COLORS[i % COLORS.length] }));
         }
       }
     }

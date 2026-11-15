@@ -1,15 +1,21 @@
 // Shared helpers for the KudiCubs design tools (spec 002, research D3/D12).
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const TOKENS_JSON = path.join(ROOT, 'docs/design/tokens.json');
-export const TOKENS_SCHEMA = path.join(ROOT, 'specs/002-ux-prototype/contracts/tokens.schema.json');
+export const TOKENS_SCHEMA = path.join(ROOT, 'specs/003-brand-voice-interactive/contracts/tokens.schema.json');
 export const TOKENS_CSS = path.join(ROOT, 'prototype/assets/tokens.css');
 export const TOKENS_MD = path.join(ROOT, 'docs/design/tokens.md');
 
 export const readJson = (p) => JSON.parse(readFileSync(p, 'utf8'));
+
+/** Every file under a directory, recursively. */
+export const walk = (dir) => readdirSync(dir).flatMap((f) => {
+  const p = path.join(dir, f);
+  return statSync(p).isDirectory() ? walk(p) : [p];
+});
 
 /** Walk token leaves (objects with $value) and yield [dotPath, token]. */
 export function* leaves(node, prefix = []) {
@@ -20,7 +26,7 @@ export function* leaves(node, prefix = []) {
   }
 }
 
-const GROUPS = ['color', 'font', 'typography', 'space', 'radius', 'elevation', 'size', 'motion'];
+const GROUPS = ['color', 'font', 'typography', 'space', 'radius', 'elevation', 'size', 'motion', 'tint', 'opacity'];
 
 /** Map of dotPath -> token for every token group. */
 export function tokenMap(tokens) {

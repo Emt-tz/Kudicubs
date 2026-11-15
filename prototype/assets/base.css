@@ -17,7 +17,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-:focus-visible { outline: 3px solid var(--kc-color-teal-700); outline-offset: 3px; }
+:focus-visible { outline: var(--kc-size-focus-width) solid var(--kc-color-brand-mane-brown); outline-offset: var(--kc-size-focus-offset); box-shadow: 0 0 0 var(--kc-size-focus-halo) var(--kc-color-brand-sunshine-yellow); }
 
 .kc-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -40,7 +40,7 @@ body {
     height: min(var(--kc-size-frame-height), calc(100vh - var(--kc-space-12)));
     border-radius: var(--kc-radius-xl);
     box-shadow: var(--kc-elevation-3);
-    border: 10px solid var(--kc-color-cocoa-900);
+    border: var(--kc-size-border-frame) solid var(--kc-color-brand-mane-brown);
   }
 }
 

@@ -1,0 +1,1348 @@
+{
+ "$schema": "../../../specs/003-brand-voice-interactive/contracts/narration-lines.schema.json",
+ "version": "1.0.0",
+ "languages": [
+  "en-GH",
+  "en-NG",
+  "en-GB"
+ ],
+ "defaultLanguage": "en-GH",
+ "regionLanguage": {
+  "gh": "en-GH",
+  "ng": "en-NG",
+  "uk": "en-GB"
+ },
+ "wordsPerMinute": 130,
+ "lines": [
+  {
+   "id": "welcome.say",
+   "screen": "welcome",
+   "kind": "prompt",
+   "text": "Hi! I'm Kudi the Cub. Come and join the Pride!",
+   "delivery": "excited",
+   "idea": "greeting and invitation",
+   "maxSeconds": 5.8
+  },
+  {
+   "id": "welcome.hello",
+   "screen": "welcome",
+   "kind": "reaction",
+   "text": "Hello, friend!",
+   "delivery": "warm",
+   "idea": "hello back",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "welcome.tagline",
+   "screen": "welcome",
+   "kind": "name",
+   "text": "Play. Earn. Roar!",
+   "delivery": "playful",
+   "idea": "the tagline",
+   "maxSeconds": 2.6,
+   "notes": "Little playful roar on 'Roar!'"
+  },
+  {
+   "id": "joined.say",
+   "screen": "parent-gate",
+   "kind": "reaction",
+   "text": "Hooray! You joined the Pride!",
+   "delivery": "celebrating",
+   "idea": "welcome to the Pride",
+   "maxSeconds": 3.5
+  },
+  {
+   "id": "age.say",
+   "screen": "age-select",
+   "kind": "question",
+   "text": "How old are you? Tap your age.",
+   "delivery": "curious question",
+   "idea": "ask the age",
+   "maxSeconds": 4.4
+  },
+  {
+   "id": "age.b4_6",
+   "screen": "age-select",
+   "kind": "name",
+   "text": "Four to six!",
+   "delivery": "excited",
+   "idea": "the age band",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "age.soon",
+   "screen": "age-select",
+   "kind": "reaction",
+   "text": "That one is coming soon!",
+   "delivery": "warm",
+   "idea": "not yet available",
+   "maxSeconds": 3.5
+  },
+  {
+   "id": "avatar.say",
+   "screen": "avatar",
+   "kind": "prompt",
+   "text": "Pick a friend, then pick a name.",
+   "delivery": "warm",
+   "idea": "choose a friend and name",
+   "maxSeconds": 4.4
+  },
+  {
+   "id": "avatar.friend_1",
+   "screen": "avatar",
+   "kind": "name",
+   "text": "Hi! I'm Hopper the hare!",
+   "delivery": "playful",
+   "idea": "friend 1 says hello",
+   "maxSeconds": 3.5
+  },
+  {
+   "id": "avatar.friend_2",
+   "screen": "avatar",
+   "kind": "name",
+   "text": "Hi! I'm Tilly the tortoise!",
+   "delivery": "playful",
+   "idea": "friend 2 says hello",
+   "maxSeconds": 3.5
+  },
+  {
+   "id": "avatar.friend_3",
+   "screen": "avatar",
+   "kind": "name",
+   "text": "Hi! I'm Gigi the guinea fowl!",
+   "delivery": "playful",
+   "idea": "friend 3 says hello",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "avatar.friend_4",
+   "screen": "avatar",
+   "kind": "name",
+   "text": "Hi! I'm Ellie the elephant!",
+   "delivery": "playful",
+   "idea": "friend 4 says hello",
+   "maxSeconds": 3.5
+  },
+  {
+   "id": "name.ama",
+   "screen": "avatar",
+   "kind": "name",
+   "text": "Ama!",
+   "delivery": "warm",
+   "idea": "the name",
+   "maxSeconds": 2,
+   "pronunciation": "AH-mah"
+  },
+  {
+   "id": "name.kofi",
+   "screen": "avatar",
+   "kind": "name",
+   "text": "Kofi!",
+   "delivery": "warm",
+   "idea": "the name",
+   "maxSeconds": 2,
+   "pronunciation": "KOH-fee"
+  },
+  {
+   "id": "name.zara",
+   "screen": "avatar",
+   "kind": "name",
+   "text": "Zara!",
+   "delivery": "warm",
+   "idea": "the name",
+   "maxSeconds": 2
+  },
+  {
+   "id": "name.tobi",
+   "screen": "avatar",
+   "kind": "name",
+   "text": "Tobi!",
+   "delivery": "warm",
+   "idea": "the name",
+   "maxSeconds": 2
+  },
+  {
+   "id": "home.say",
+   "screen": "home",
+   "kind": "prompt",
+   "text": "Tap Continue to find the lost coins!",
+   "delivery": "excited",
+   "idea": "go to the mission",
+   "maxSeconds": 4.4
+  },
+  {
+   "id": "home.coins",
+   "screen": "home",
+   "kind": "name",
+   "text": "These are your coins!",
+   "delivery": "proud",
+   "idea": "your coins",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "daily.say",
+   "screen": "home",
+   "kind": "prompt",
+   "text": "It's market day! Play once more for a bonus.",
+   "delivery": "warm",
+   "idea": "daily bonus",
+   "maxSeconds": 5.4
+  },
+  {
+   "id": "level.market_visitor",
+   "screen": "any",
+   "kind": "name",
+   "text": "Market Visitor!",
+   "delivery": "proud",
+   "idea": "level name",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "level.market_helper",
+   "screen": "any",
+   "kind": "name",
+   "text": "Market Helper!",
+   "delivery": "proud",
+   "idea": "level name",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "level.stall_keeper",
+   "screen": "any",
+   "kind": "name",
+   "text": "Stall Keeper!",
+   "delivery": "proud",
+   "idea": "level name",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "level.market_star",
+   "screen": "any",
+   "kind": "name",
+   "text": "Market Star!",
+   "delivery": "proud",
+   "idea": "level name",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "level.pride_trader",
+   "screen": "any",
+   "kind": "name",
+   "text": "Pride Trader!",
+   "delivery": "proud",
+   "idea": "level name",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "badge.first_coins",
+   "screen": "any",
+   "kind": "name",
+   "text": "First Coins badge!",
+   "delivery": "proud",
+   "idea": "badge name",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "badge.kind_friend",
+   "screen": "any",
+   "kind": "name",
+   "text": "Kind Friend badge!",
+   "delivery": "proud",
+   "idea": "badge name",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "badge.early_bird",
+   "screen": "any",
+   "kind": "name",
+   "text": "Early Bird badge!",
+   "delivery": "proud",
+   "idea": "badge name",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "badge.hard_worker",
+   "screen": "any",
+   "kind": "name",
+   "text": "Hard Worker badge!",
+   "delivery": "proud",
+   "idea": "badge name",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "badge.smart_sorter",
+   "screen": "any",
+   "kind": "name",
+   "text": "Smart Sorter badge!",
+   "delivery": "proud",
+   "idea": "badge name",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "badge.smart_saver",
+   "screen": "any",
+   "kind": "name",
+   "text": "Smart Saver badge!",
+   "delivery": "proud",
+   "idea": "badge name",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "badge.market_explorer",
+   "screen": "any",
+   "kind": "name",
+   "text": "Market Explorer badge!",
+   "delivery": "proud",
+   "idea": "badge name",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "badge.pride_star",
+   "screen": "any",
+   "kind": "name",
+   "text": "Pride Star badge!",
+   "delivery": "proud",
+   "idea": "badge name",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "pillar.know",
+   "screen": "progress",
+   "kind": "name",
+   "text": "Know!",
+   "delivery": "calm",
+   "idea": "learning pillar",
+   "maxSeconds": 2
+  },
+  {
+   "id": "pillar.understand",
+   "screen": "progress",
+   "kind": "name",
+   "text": "Understand!",
+   "delivery": "calm",
+   "idea": "learning pillar",
+   "maxSeconds": 2
+  },
+  {
+   "id": "pillar.decide",
+   "screen": "progress",
+   "kind": "name",
+   "text": "Decide!",
+   "delivery": "calm",
+   "idea": "learning pillar",
+   "maxSeconds": 2
+  },
+  {
+   "id": "pillar.invest",
+   "screen": "progress",
+   "kind": "name",
+   "text": "Invest!",
+   "delivery": "calm",
+   "idea": "learning pillar",
+   "maxSeconds": 2
+  },
+  {
+   "id": "pillar.share",
+   "screen": "progress",
+   "kind": "name",
+   "text": "Share!",
+   "delivery": "calm",
+   "idea": "learning pillar",
+   "maxSeconds": 2
+  },
+  {
+   "id": "nav.home",
+   "screen": "any",
+   "kind": "label",
+   "text": "Home",
+   "delivery": "calm",
+   "idea": "tab name",
+   "maxSeconds": 2
+  },
+  {
+   "id": "nav.wallet",
+   "screen": "any",
+   "kind": "label",
+   "text": "Wallet",
+   "delivery": "calm",
+   "idea": "tab name",
+   "maxSeconds": 2
+  },
+  {
+   "id": "nav.progress",
+   "screen": "any",
+   "kind": "label",
+   "text": "Progress",
+   "delivery": "calm",
+   "idea": "tab name",
+   "maxSeconds": 2
+  },
+  {
+   "id": "intro.say",
+   "screen": "mission-intro",
+   "kind": "prompt",
+   "text": "Oh no! Coins are lost in the market.",
+   "delivery": "excited",
+   "idea": "the problem",
+   "maxSeconds": 4.9
+  },
+  {
+   "id": "intro.help",
+   "screen": "mission-intro",
+   "kind": "question",
+   "text": "Can you help me find them?",
+   "delivery": "curious question",
+   "idea": "ask for help",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "intro.yes",
+   "screen": "mission-intro",
+   "kind": "reaction",
+   "text": "Yay! Let's go!",
+   "delivery": "celebrating",
+   "idea": "thank you, start",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "intro.stall",
+   "screen": "mission-intro",
+   "kind": "name",
+   "text": "The market!",
+   "delivery": "warm",
+   "idea": "the market stall",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "coin.gh.p10",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Ten pesewas!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "gh",
+   "pronunciation": "peh-SEH-wahs"
+  },
+  {
+   "id": "coin.gh.p20",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Twenty pesewas!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "gh",
+   "pronunciation": "peh-SEH-wahs"
+  },
+  {
+   "id": "coin.gh.p50",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Fifty pesewas!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "gh",
+   "pronunciation": "peh-SEH-wahs"
+  },
+  {
+   "id": "coin.gh.ghs1",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "One cedi!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "gh",
+   "pronunciation": "SEE-dee"
+  },
+  {
+   "id": "coin.gh.ghs2",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Two cedis!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "gh",
+   "pronunciation": "SEE-deez"
+  },
+  {
+   "id": "coin.gh.ghs5_note",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Five cedis!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "gh",
+   "pronunciation": "SEE-deez"
+  },
+  {
+   "id": "coin.ng.k50",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Fifty kobo!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "ng",
+   "pronunciation": "KOH-boh"
+  },
+  {
+   "id": "coin.ng.ngn1",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "One naira!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "ng",
+   "pronunciation": "NIGH-rah"
+  },
+  {
+   "id": "coin.ng.ngn2",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Two naira!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "ng",
+   "pronunciation": "NIGH-rah"
+  },
+  {
+   "id": "coin.ng.ngn5_note",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Five naira!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "ng",
+   "pronunciation": "NIGH-rah"
+  },
+  {
+   "id": "coin.ng.ngn10_note",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Ten naira!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "ng",
+   "pronunciation": "NIGH-rah"
+  },
+  {
+   "id": "coin.uk.p10",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Ten pence!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "uk"
+  },
+  {
+   "id": "coin.uk.p20",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Twenty pence!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "uk"
+  },
+  {
+   "id": "coin.uk.p50",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Fifty pence!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "uk"
+  },
+  {
+   "id": "coin.uk.gbp1",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "One pound!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "uk"
+  },
+  {
+   "id": "coin.uk.gbp2",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Two pounds!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "uk"
+  },
+  {
+   "id": "coin.uk.gbp5_note",
+   "screen": "activity-find",
+   "kind": "name",
+   "text": "Five pounds!",
+   "delivery": "excited",
+   "idea": "coin name",
+   "maxSeconds": 2.1,
+   "region": "uk"
+  },
+  {
+   "id": "find.say",
+   "screen": "activity-find",
+   "kind": "prompt",
+   "text": "Tap the shiny coins hiding in the market!",
+   "delivery": "excited",
+   "idea": "find the coins",
+   "maxSeconds": 4.9
+  },
+  {
+   "id": "find.all",
+   "screen": "activity-find",
+   "kind": "reaction",
+   "text": "You found all the coins!",
+   "delivery": "celebrating",
+   "idea": "all found",
+   "maxSeconds": 3.5
+  },
+  {
+   "id": "sort.say",
+   "screen": "activity-sort",
+   "kind": "prompt",
+   "text": "Put each coin in the jar with the same coin.",
+   "delivery": "warm",
+   "idea": "sort by coin",
+   "maxSeconds": 5.8
+  },
+  {
+   "id": "sort.good",
+   "screen": "activity-sort",
+   "kind": "reaction",
+   "text": "Yes! In it goes!",
+   "delivery": "celebrating",
+   "idea": "correct jar",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "sort.try_again",
+   "screen": "activity-sort",
+   "kind": "hint",
+   "text": "Hmm, let's try a different jar!",
+   "delivery": "encouraging",
+   "idea": "try another jar",
+   "maxSeconds": 4.0,
+   "notes": "Never disappointed. Smiling, curious."
+  },
+  {
+   "id": "sort.all",
+   "screen": "activity-sort",
+   "kind": "reaction",
+   "text": "All sorted! Well done!",
+   "delivery": "celebrating",
+   "idea": "sorting complete",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "count.say",
+   "screen": "activity-count",
+   "kind": "prompt",
+   "text": "Tap each coin to count it.",
+   "delivery": "warm",
+   "idea": "count the coins",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "num.1",
+   "screen": "any",
+   "kind": "name",
+   "text": "One!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.2",
+   "screen": "any",
+   "kind": "name",
+   "text": "Two!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.3",
+   "screen": "any",
+   "kind": "name",
+   "text": "Three!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.4",
+   "screen": "any",
+   "kind": "name",
+   "text": "Four!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.5",
+   "screen": "any",
+   "kind": "name",
+   "text": "Five!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.6",
+   "screen": "any",
+   "kind": "name",
+   "text": "Six!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.7",
+   "screen": "any",
+   "kind": "name",
+   "text": "Seven!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.8",
+   "screen": "any",
+   "kind": "name",
+   "text": "Eight!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.9",
+   "screen": "any",
+   "kind": "name",
+   "text": "Nine!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.10",
+   "screen": "any",
+   "kind": "name",
+   "text": "Ten!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.11",
+   "screen": "any",
+   "kind": "name",
+   "text": "Eleven!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.12",
+   "screen": "any",
+   "kind": "name",
+   "text": "Twelve!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.13",
+   "screen": "any",
+   "kind": "name",
+   "text": "Thirteen!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.14",
+   "screen": "any",
+   "kind": "name",
+   "text": "Fourteen!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.15",
+   "screen": "any",
+   "kind": "name",
+   "text": "Fifteen!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.16",
+   "screen": "any",
+   "kind": "name",
+   "text": "Sixteen!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.17",
+   "screen": "any",
+   "kind": "name",
+   "text": "Seventeen!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.18",
+   "screen": "any",
+   "kind": "name",
+   "text": "Eighteen!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.19",
+   "screen": "any",
+   "kind": "name",
+   "text": "Nineteen!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "num.20",
+   "screen": "any",
+   "kind": "name",
+   "text": "Twenty!",
+   "delivery": "playful",
+   "idea": "a number",
+   "maxSeconds": 2
+  },
+  {
+   "id": "count.which_most",
+   "screen": "activity-count",
+   "kind": "question",
+   "text": "Which jar has the most coins?",
+   "delivery": "curious question",
+   "idea": "compare jars",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "count.most_yes",
+   "screen": "activity-count",
+   "kind": "reaction",
+   "text": "Yes! That jar has the most!",
+   "delivery": "celebrating",
+   "idea": "right answer",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "count.most_try",
+   "screen": "activity-count",
+   "kind": "hint",
+   "text": "Let's look again. Which jar has more?",
+   "delivery": "encouraging",
+   "idea": "look again",
+   "maxSeconds": 4.4
+  },
+  {
+   "id": "count.all",
+   "screen": "activity-count",
+   "kind": "reaction",
+   "text": "You counted every coin!",
+   "delivery": "proud",
+   "idea": "counting complete",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "decide.say",
+   "screen": "decision",
+   "kind": "question",
+   "text": "What will you do with your coins?",
+   "delivery": "curious question",
+   "idea": "save or spend",
+   "maxSeconds": 4.4
+  },
+  {
+   "id": "decide.explain",
+   "screen": "decision",
+   "kind": "prompt",
+   "text": "Saving keeps coins for later. Spending gets something now.",
+   "delivery": "gentle, slow",
+   "idea": "what save and spend mean",
+   "maxSeconds": 5.4
+  },
+  {
+   "id": "decide.save",
+   "screen": "decision",
+   "kind": "name",
+   "text": "Save them for later!",
+   "delivery": "warm",
+   "idea": "the save choice",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "decide.spend.gh",
+   "screen": "decision",
+   "kind": "name",
+   "text": "Spend them on a kelewele sticker!",
+   "delivery": "playful",
+   "idea": "the spend choice",
+   "maxSeconds": 4.0,
+   "region": "gh",
+   "pronunciation": "keh-leh-WEH-leh"
+  },
+  {
+   "id": "decide.spend.ng",
+   "screen": "decision",
+   "kind": "name",
+   "text": "Spend them on a puff-puff sticker!",
+   "delivery": "playful",
+   "idea": "the spend choice",
+   "maxSeconds": 4.0,
+   "region": "ng",
+   "pronunciation": "PUFF-puff"
+  },
+  {
+   "id": "decide.spend.uk",
+   "screen": "decision",
+   "kind": "name",
+   "text": "Spend them on a biscuit sticker!",
+   "delivery": "playful",
+   "idea": "the spend choice",
+   "maxSeconds": 4.0,
+   "region": "uk"
+  },
+  {
+   "id": "result.save.say",
+   "screen": "result-save",
+   "kind": "reaction",
+   "text": "Great saving! Your coins are safe for later.",
+   "delivery": "proud",
+   "idea": "saving outcome",
+   "maxSeconds": 4.9
+  },
+  {
+   "id": "result.spend.say.gh",
+   "screen": "result-spend",
+   "kind": "reaction",
+   "text": "Yum! A kelewele sticker for you!",
+   "delivery": "celebrating",
+   "idea": "spending outcome",
+   "maxSeconds": 4.0,
+   "region": "gh",
+   "pronunciation": "keh-leh-WEH-leh"
+  },
+  {
+   "id": "result.spend.say.ng",
+   "screen": "result-spend",
+   "kind": "reaction",
+   "text": "Yum! A puff-puff sticker for you!",
+   "delivery": "celebrating",
+   "idea": "spending outcome",
+   "maxSeconds": 4.0,
+   "region": "ng",
+   "pronunciation": "PUFF-puff"
+  },
+  {
+   "id": "result.spend.say.uk",
+   "screen": "result-spend",
+   "kind": "reaction",
+   "text": "Yum! A biscuit sticker for you!",
+   "delivery": "celebrating",
+   "idea": "spending outcome",
+   "maxSeconds": 4.0,
+   "region": "uk"
+  },
+  {
+   "id": "result.tap_jar",
+   "screen": "result-save",
+   "kind": "prompt",
+   "text": "Tap the jar to drop in the last coin!",
+   "delivery": "excited",
+   "idea": "finish saving",
+   "maxSeconds": 5.4
+  },
+  {
+   "id": "result.tap_sticker",
+   "screen": "result-spend",
+   "kind": "prompt",
+   "text": "Tap the sticker to stick it on!",
+   "delivery": "excited",
+   "idea": "finish the treat",
+   "maxSeconds": 4.4
+  },
+  {
+   "id": "result.amount",
+   "screen": "result-save",
+   "kind": "name",
+   "text": "Look at your coins!",
+   "delivery": "proud",
+   "idea": "the amount",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "summary.say",
+   "screen": "summary",
+   "kind": "prompt",
+   "text": "Look what you did!",
+   "delivery": "proud",
+   "idea": "recap",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "summary.what",
+   "screen": "summary",
+   "kind": "question",
+   "text": "What did you do with your coins?",
+   "delivery": "curious question",
+   "idea": "remember the choice",
+   "maxSeconds": 4.4
+  },
+  {
+   "id": "summary.right",
+   "screen": "summary",
+   "kind": "reaction",
+   "text": "Yes! That's what you did!",
+   "delivery": "celebrating",
+   "idea": "right answer",
+   "maxSeconds": 3.5
+  },
+  {
+   "id": "summary.hint",
+   "screen": "summary",
+   "kind": "hint",
+   "text": "Hmm, think back. What did you choose?",
+   "delivery": "encouraging",
+   "idea": "think again",
+   "maxSeconds": 4.4
+  },
+  {
+   "id": "summary.found",
+   "screen": "summary",
+   "kind": "name",
+   "text": "You found the coins!",
+   "delivery": "proud",
+   "idea": "recap item",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "summary.sorted",
+   "screen": "summary",
+   "kind": "name",
+   "text": "You sorted them into jars!",
+   "delivery": "proud",
+   "idea": "recap item",
+   "maxSeconds": 3.5
+  },
+  {
+   "id": "summary.counted",
+   "screen": "summary",
+   "kind": "name",
+   "text": "You counted them all!",
+   "delivery": "proud",
+   "idea": "recap item",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "summary.saved",
+   "screen": "summary",
+   "kind": "name",
+   "text": "You saved your coins!",
+   "delivery": "proud",
+   "idea": "recap item",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "summary.spent",
+   "screen": "summary",
+   "kind": "name",
+   "text": "You chose a treat!",
+   "delivery": "proud",
+   "idea": "recap item",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "reward.say",
+   "screen": "reward",
+   "kind": "reaction",
+   "text": "Amazing work! Here are your rewards!",
+   "delivery": "celebrating",
+   "idea": "rewards",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "reward.replay",
+   "screen": "reward",
+   "kind": "reaction",
+   "text": "Great practice!",
+   "delivery": "proud",
+   "idea": "replay reward",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "reward.pop",
+   "screen": "reward",
+   "kind": "reaction",
+   "text": "Woo-hoo!",
+   "delivery": "celebrating",
+   "idea": "pop the burst",
+   "maxSeconds": 2
+  },
+  {
+   "id": "reward.levelup.market_helper",
+   "screen": "reward",
+   "kind": "reaction",
+   "text": "Level up! You're a Market Helper!",
+   "delivery": "celebrating",
+   "idea": "new level",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "reward.levelup.stall_keeper",
+   "screen": "reward",
+   "kind": "reaction",
+   "text": "Level up! You're a Stall Keeper!",
+   "delivery": "celebrating",
+   "idea": "new level",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "reward.levelup.market_star",
+   "screen": "reward",
+   "kind": "reaction",
+   "text": "Level up! You're a Market Star!",
+   "delivery": "celebrating",
+   "idea": "new level",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "reward.levelup.pride_trader",
+   "screen": "reward",
+   "kind": "reaction",
+   "text": "Level up! You're a Pride Trader!",
+   "delivery": "celebrating",
+   "idea": "new level",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "wallet.say",
+   "screen": "wallet",
+   "kind": "prompt",
+   "text": "This is your wallet. Here are your coins and savings.",
+   "delivery": "warm",
+   "idea": "wallet overview",
+   "maxSeconds": 5.8
+  },
+  {
+   "id": "wallet.currency.gh",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "These are Ghana cedis and pesewas.",
+   "delivery": "warm",
+   "idea": "the currency",
+   "maxSeconds": 4.0,
+   "region": "gh",
+   "pronunciation": "SEE-deez, peh-SEH-wahs"
+  },
+  {
+   "id": "wallet.currency.ng",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "These are Nigerian naira and kobo.",
+   "delivery": "warm",
+   "idea": "the currency",
+   "maxSeconds": 4.0,
+   "region": "ng",
+   "pronunciation": "NIGH-rah, KOH-boh"
+  },
+  {
+   "id": "wallet.currency.uk",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "These are pounds and pence.",
+   "delivery": "warm",
+   "idea": "the currency",
+   "maxSeconds": 3.5,
+   "region": "uk"
+  },
+  {
+   "id": "cat.missions",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "Coins from games.",
+   "delivery": "calm",
+   "idea": "wallet category",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "cat.daily",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "Market day coins.",
+   "delivery": "calm",
+   "idea": "wallet category",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "cat.bonus",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "Bonus coins.",
+   "delivery": "calm",
+   "idea": "wallet category",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "cat.treats",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "Coins for treats.",
+   "delivery": "calm",
+   "idea": "wallet category",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "cat.savings",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "Coins in your savings jar.",
+   "delivery": "calm",
+   "idea": "wallet category",
+   "maxSeconds": 3.5
+  },
+  {
+   "id": "history.market_walk",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "Market walk.",
+   "delivery": "calm",
+   "idea": "history line",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "history.tidy_bonus",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "Tidy bonus.",
+   "delivery": "calm",
+   "idea": "history line",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "history.saved",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "Saved in my jar.",
+   "delivery": "calm",
+   "idea": "history line",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "history.daily",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "Market day.",
+   "delivery": "calm",
+   "idea": "history line",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "history.helping",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "Helping at the stall.",
+   "delivery": "calm",
+   "idea": "history line",
+   "maxSeconds": 3.0
+  },
+  {
+   "id": "history.lost_coins",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "The Lost Coins.",
+   "delivery": "calm",
+   "idea": "history line",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "history.lost_coins_bonus",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "Perfect sorting.",
+   "delivery": "calm",
+   "idea": "history line",
+   "maxSeconds": 2.1
+  },
+  {
+   "id": "history.sticker.gh",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "A kelewele sticker.",
+   "delivery": "calm",
+   "idea": "history line",
+   "maxSeconds": 2.6,
+   "region": "gh",
+   "pronunciation": "keh-leh-WEH-leh"
+  },
+  {
+   "id": "history.sticker.ng",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "A puff-puff sticker.",
+   "delivery": "calm",
+   "idea": "history line",
+   "maxSeconds": 2.6,
+   "region": "ng",
+   "pronunciation": "PUFF-puff"
+  },
+  {
+   "id": "history.sticker.uk",
+   "screen": "wallet",
+   "kind": "name",
+   "text": "A biscuit sticker.",
+   "delivery": "calm",
+   "idea": "history line",
+   "maxSeconds": 2.6,
+   "region": "uk"
+  },
+  {
+   "id": "progress.say",
+   "screen": "progress",
+   "kind": "prompt",
+   "text": "Look how far you've come on the market road!",
+   "delivery": "proud",
+   "idea": "progress overview",
+   "maxSeconds": 5.4
+  },
+  {
+   "id": "hint.welcome_back",
+   "screen": "any",
+   "kind": "hint",
+   "text": "Welcome back! Let's play!",
+   "delivery": "warm",
+   "idea": "greet after a long idle",
+   "maxSeconds": 3.0
+  }
+ ]
+}
