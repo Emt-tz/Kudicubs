@@ -258,8 +258,11 @@ Items marked **⚠ Flag** need attention or a confirmation.
 
 - **Decision**:
   - In-memory state (region, coins, XP, choices, earned badges) lives in `window.KC.state`.
-  - Only **prototype preferences** (region, sound, current screen) go into `sessionStorage`, so a
-    page refresh doesn't restart the demo.
+  - Only **prototype preferences** go into `sessionStorage`, so a page refresh doesn't restart the
+    demo: `region`, `sound`, and `notes`. `notes` is the reviewer's "Show screen notes" toggle; it's
+    kept so a reviewer walking through with notes on doesn't lose them on refresh. It holds no
+    personal data. The current screen is kept in the URL hash (`#/screen-id`), not in
+    `sessionStorage`. *(Corrected after the 002 code review.)*
   - The parent-gate email and PIN are **never stored or sent**. The fields are validated on the
     page and then discarded (FR-012).
   - There are no network requests at all, apart from fetching the prototype's own files.

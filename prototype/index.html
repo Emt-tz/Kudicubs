@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F0A830">
+  <meta name="robots" content="noindex, nofollow">
+  <title>KudiCubs prototype</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/art/kudi/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/art/kudi/icon-192.png">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/components.css">
+</head>
+<body>
+  <div class="kc-desk">
+    <div class="kc-phone" id="kc-phone">
+      <header class="kc-header">
+        <button id="kc-back" class="kc-back" data-component="icon-button" aria-label="Back" hidden>
+          <img src="assets/art/icons/back.svg" alt="" aria-hidden="true">
+        </button>
+        <span class="kc-spacer" id="kc-back-spacer" aria-hidden="true"></span>
+        <button id="kc-logo" class="kc-logo" data-component="icon-button" aria-label="KudiCubs">
+          <span class="kc-wordmark">Kudi<span>Cubs</span></span>
+        </button>
+        <span class="kc-spacer" aria-hidden="true"></span>
+      </header>
+      <main id="kc-screen" class="kc-screen" aria-live="polite"></main>
+      <nav id="kc-bottom-nav" class="kc-bottom-nav" data-component="bottom-nav" aria-label="Main" hidden>
+        <button data-route="home"><img src="assets/art/icons/home.svg" alt="" aria-hidden="true"><span class="kc-label">Home</span></button>
+        <button data-route="wallet"><img src="assets/art/icons/wallet-jar.svg" alt="" aria-hidden="true"><span class="kc-label">Wallet</span></button>
+        <button data-route="progress"><img src="assets/art/icons/path.svg" alt="" aria-hidden="true"><span class="kc-label">Progress</span></button>
+      </nav>
+      <div id="kc-overlay" class="kc-overlay" aria-hidden="true"></div>
+      <div id="kc-reviewer" class="kc-reviewer" data-component="reviewer-menu" data-reviewer role="dialog" aria-modal="true" aria-label="Reviewer menu" hidden></div>
+    </div>
+  </div>
+
+  <script src="assets/data/mock-data.js"></script>
+  <script src="assets/data/regions.js"></script>
+  <script src="assets/app.js"></script>
+  <script src="assets/activities.js"></script>
+  <script src="assets/celebrate.js"></script>
+  <script src="assets/screens.js"></script>
+</body>
+</html>

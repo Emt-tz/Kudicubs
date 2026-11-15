@@ -128,7 +128,7 @@ the 13. The two result variants together count as the one "Result" screen.
 | `child.band` | `"b4_6"` | |
 | `start.coins` | `120` | |
 | `start.savings` | `40` | |
-| `start.xp` | `260` | |
+| `start.xp` | `360` | Chosen so the first Lost Coins run crosses into level 3 and the Level Up moment can be seen |
 | `start.level` | `{ n: 2, nameKey: "level.market_helper" }` | |
 | `levels` | 5 entries `{ n, nameKey, xpFrom }` | e.g. 0, 150, 400, 700, 1100 |
 | `badges` | 8 entries `{ id, nameKey, icon, earned: bool }` | 3 earned at the start |
@@ -164,7 +164,8 @@ Ghana cedis and pesewas").
 |---|---|---|
 | `region` | session | Reviewer menu |
 | `sound` | session | Reviewer menu and profile |
-| `screen` | session | Current route |
+| `notes` | session | Reviewer "Show screen notes" toggle; kept across refresh so screen notes stay on during a review. No personal data. |
+| `screen` | URL hash | Current route (`#/screen-id`), not stored in `sessionStorage` |
 | `coins`, `savings`, `xp`, `badges` | memory | Start from `KC.data.start`; changed by the Lost Coins flow |
 | `lostCoins.found`, `.sortedCorrectFirstTry`, `.choice`, `.completedOnce` | memory | `completedOnce` switches the next run to replay rewards (spec edge case) |
 | `gate.step` | memory | Values are never kept |

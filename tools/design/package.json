@@ -1,0 +1,21 @@
+{
+  "name": "kudicubs-design-tools",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Dev-only checks for the KudiCubs design system and prototype (spec 002).",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "tokens": "node build-tokens.mjs",
+    "contrast": "node check-contrast.mjs",
+    "usage": "node check-tokens-usage.mjs",
+    "test": "playwright test",
+    "check": "node build-tokens.mjs && node check-contrast.mjs && node check-tokens-usage.mjs && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1",
+    "ajv": "8.20.0"
+  }
+}

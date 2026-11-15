@@ -25,7 +25,7 @@ opens the reviewer menu.
 | 10 | `summary` | child | "Next" | `reward` | FR-016 |
 | 11 | `reward` | child | "Back to Home" | `home` | FR-019 |
 | 12 | `wallet` | child | (bottom navigation) — main action: "Back to Home" | `home` | FR-020 |
-| 13 | `progress` | child | (bottom navigation) — main action: "Continue" (goes to the next mission card) | `home` | FR-020 |
+| 13 | `progress` | child | (bottom navigation) — main action: "Continue" (goes to the next mission) | `mission-intro` | FR-020 |
 
 **Bottom navigation**: shown on `home`, `wallet` and `progress` only. It has three icon tabs:
 **Home**, **Wallet** (jar icon) and **Progress** (path icon). Each tab has a narrated label.
