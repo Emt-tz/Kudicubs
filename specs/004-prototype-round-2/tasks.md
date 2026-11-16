@@ -577,4 +577,10 @@ then T022 → T023 → T024 (manifest → playback → reviewer counts)
   cancelled downloads during deliberate reloads. All three were fixed in the tests: the idle-hint
   pose can be `fist` or `headphones` (pose order), the "pending" case is set up in the page, and
   `guard(page, { reloads: true })` is used for reloads. 77/77 pass.
+- **T049 deploy**:
+  - Pages was enabled with source "GitHub Actions" (the plan allows it), at
+    `https://emt-tz.github.io/Kudicubs/`. The site is public by URL and noindex.
+  - Manual dispatch needs the workflow on `main`, which doesn't have #1–#3 yet. So
+    `prototype-pages.yml` temporarily also triggers on pushes to `004-prototype-round-2`, and
+    the `github-pages` environment allows that branch. **Remove both once 004 is merged.**
 

@@ -5,7 +5,9 @@
 name: prototype-pages
 on:
   push:
-    branches: [main]
+    # TEMPORARY: 004-prototype-round-2 is listed only so the first deploy can run before PRs #1-#3 reach main
+    # (manual dispatch needs this file on the default branch). Remove it once 004 is merged.
+    branches: [main, 004-prototype-round-2]
   workflow_dispatch:
 permissions:
   contents: read
