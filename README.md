@@ -9,8 +9,10 @@ yet.** The Flutter app is specified in `specs/001-kudicubs-mvp/`.
 
 ## Live demo
 
-**Prototype (v0.3.0)**: *(the stable link is added here after the first GitHub Pages deploy;
-see `specs/004-prototype-round-2/contracts/ci-and-deploy.md`)*
+**Prototype (v0.3.0)**: **https://emt-tz.github.io/Kudicubs/**
+
+It is published automatically by `prototype-pages` on every merge to `main`. The reviewer menu
+shows the version, build date and commit.
 
 - Use it on a phone in portrait, with the sound on.
 - Hold the KudiCubs logo for 2 seconds to open the reviewer menu (country, voice, jump to a

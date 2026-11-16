@@ -2,8 +2,8 @@
 
 **Spec**: [spec.md](./spec.md) · **Plan**: [plan.md](./plan.md) · **Contracts**: [contracts/](./contracts/)
 
-**Live demo link**: *(added after the first deploy; expected `https://emt-tz.github.io/Kudicubs/`,
-see [ci-and-deploy.md §4](./contracts/ci-and-deploy.md))*
+**Live demo link**: **https://emt-tz.github.io/Kudicubs/** (first deployed 2026-11-16, v0.3.0 · commit `28e5a24`; see
+[ci-and-deploy.md §4](./contracts/ci-and-deploy.md))
 
 ## Prerequisites
 

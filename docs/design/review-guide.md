@@ -39,7 +39,7 @@ It takes about **5–7 minutes**. To see exactly what changed on each screen, op
 
 - **On your phone (best)**: open the link, in portrait, with the **sound on**.
 
-  **Link**: *(added here once published)*
+  **Link**: **https://emt-tz.github.io/Kudicubs/** (the same link every time; it updates by itself)
 
 - To keep it like an app, tap **Share → Add to Home Screen** on iPhone, or **⋮ → Add to Home
   screen** on Android. After the first visit it works without internet.

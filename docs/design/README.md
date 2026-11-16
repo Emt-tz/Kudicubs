@@ -11,7 +11,7 @@ what lasts.**
   - [004](../../specs/004-prototype-round-2/spec.md): prototype round 2. **Testing fixes, a
     temporary scratch voice, real play data, a stable demo link and automated validation**:
     prototype v0.3.0.
-- **Live demo**: *(the stable GitHub Pages link is added here after the first deploy)*
+- **Live demo**: **https://emt-tz.github.io/Kudicubs/** (GitHub Pages; updated automatically on every merge to `main`)
 - **Tokens version**: `0.3.0`, which becomes `1.0.0` when the client signs off.
 - **Prototype version**: `0.3.0`. Earlier states: `prototype-v0.1.0`, and v0.2.0 at commit `594bd8c`.
 
