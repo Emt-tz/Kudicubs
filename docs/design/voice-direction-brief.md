@@ -125,3 +125,25 @@ Before recording, the actor and the client sign a usage agreement:
 - [ ] The pronunciations are agreed (§5).
 - [ ] The usage agreement is signed (§8).
 - [ ] Files are named exactly by line ID (§7).
+
+## 10. The scratch track (temporary, not a casting decision)
+
+Until the human recordings exist, the prototype can play a **scratch track** so the client and
+reviewers can hear the flow (spec 004, FR-012–FR-022):
+
+- **What it is**: pre-generated audio from the stock neural voice `en-NG-EzinneNeural`, about
+  10% slower for ages 4–6. It's made by `scripts/generate-scratch-voice`, one MP3 per line ID,
+  in `prototype/assets/audio-scratch/<lang>/`. That folder is kept apart from the human
+  recordings.
+- **What it isn't**: a casting decision, a clone of anyone, or a copy of the tone reference.
+  The casting brief above, a warm Ghanaian female storyteller, is unchanged. The scratch voice
+  is Nigerian English for every region, including Ghana.
+- **Playback**: a human recording always wins. Scratch audio plays only where no recording
+  exists yet. Nothing is ever synthesised in the browser.
+- **Labelled**: with reviewer notes on, each line shows "Scratch voice" or "Recording pending",
+  and the reviewer menu counts recorded, scratch and pending lines per language.
+
+> **⚠ Release blocker RB-1: scratch audio MUST be replaced by human recordings before any
+> public release.** `node tools/design/check-no-tts.mjs --release` fails while any scratch file
+> or scratch status exists. To remove the scratch track, delete
+> `prototype/assets/audio-scratch/` and run `node tools/design/build-narration.mjs`.

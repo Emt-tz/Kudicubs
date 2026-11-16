@@ -2,6 +2,7 @@
 (function () {
   'use strict';
   var KC = window.KC;
+  if (!KC || !KC.h) return;                 // a file before this one failed to load (004 FR-051)
   var COLORS = ['var(--kc-color-brand-sunshine-yellow)', 'var(--kc-color-brand-adventure-orange)', 'var(--kc-color-brand-golden-orange)',
                 'var(--kc-color-brand-soft-gold)', 'var(--kc-color-brand-mane-brown)'];
 

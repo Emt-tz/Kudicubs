@@ -1,0 +1,76 @@
+# 004 FR-034, FR-038 (contracts/ci-and-deploy.md §2): publish prototype/ to GitHub Pages on every merge to main,
+# then smoke-check the live link. Static files only: no app build, no store upload (research R16).
+# This is a DEMO deploy. It contains the temporary scratch voice, so it is not a public release:
+# any release pipeline MUST run `node tools/design/check-no-tts.mjs --release` (RB-1), which fails while scratch audio exists.
+name: prototype-pages
+on:
+  push:
+    # TEMPORARY: 004-prototype-round-2 is listed only so the first deploy can run before PRs #1-#3 reach main
+    # (manual dispatch needs this file on the default branch). Remove it once 004 is merged.
+    branches: [main, 004-prototype-round-2]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false            # never cancel a Pages deploy halfway (GitHub's recommendation)
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/design
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tools/design/package-lock.json
+      - run: npm ci
+      - name: Static checks before publishing (the full suite already ran on the PR)
+        run: |
+          node check-no-tts.mjs
+          node check-tokens-usage.mjs
+          node build-narration.mjs --check
+          node build-sw.mjs --check
+      - name: Stamp the build (version, date, commit) for the reviewer menu and the offline cache name
+        run: |
+          node build-info.mjs --date "$(date -u +%F)" --commit "${GITHUB_SHA::7}"
+          node build-sw.mjs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: prototype
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+  smoke:
+    needs: deploy
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/design
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tools/design/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Smoke-check the live link
+        run: npx playwright test --project=smoke
+        env:
+          SMOKE_URL: ${{ needs.deploy.outputs.page_url }}
+          CI: 'true'

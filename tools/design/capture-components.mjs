@@ -28,17 +28,22 @@ async function grabAll() {
   for (const id of ids) await grab(`#kc-phone [data-component="${id}"]:visible`, id);
 }
 async function go(screen, prep) {
-  await page.evaluate(({ screen, prep }) => { if (prep) (new Function(prep))(); KC.go(screen); }, { screen, prep });
+  await page.evaluate(({ screen, prep }) => { if (prep) (new Function(prep))(); KC.go(screen, { force: true }); }, { screen, prep });
   await page.waitForTimeout(250);
 }
 
 await page.goto(URL + '#/welcome');
 await page.waitForTimeout(300);
 await grabAll();
-for (const s of ['age-select', 'avatar', 'home', 'mission-intro', 'activity-find', 'activity-sort', 'activity-count', 'decision']) { await go(s); await grabAll(); }
-await go('result-save', 'KC.state.lostCoins.found = 8;'); await grabAll();
-await go('summary'); await grabAll();
-await go('reward'); await page.waitForTimeout(200); await grabAll();
+for (const s of ['age-select', 'avatar']) { await go(s); await grabAll(); }
+// 004: full screens come from the reviewer's sample data, and mission screens need a run (the route guard)
+await page.evaluate(() => KC.loadSample());
+const RUN = 'KC.resetRun(); KC.run.reached = KC.MISSION.indexOf("summary"); KC.state.lostCoins.found = 8; KC.state.lostCoins.choice = "save";';
+await go('home'); await grabAll();
+for (const s of ['mission-intro', 'activity-find', 'activity-sort', 'activity-count', 'decision']) { await go(s, RUN); await grabAll(); }
+await go('result-save', RUN); await grabAll();
+await go('summary', RUN); await grabAll();
+await go('reward', RUN + ' KC.run.pendingReward = true;'); await page.waitForTimeout(200); await grabAll();
 await go('wallet'); await grabAll();
 await go('progress'); await grabAll();
 

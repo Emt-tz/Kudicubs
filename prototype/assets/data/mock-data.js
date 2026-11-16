@@ -1,15 +1,14 @@
-/* KudiCubs prototype — example data only (spec 002 FR-012, data-model §6).
-   Nothing here is a real person. The parent-gate email and PIN are never added to this object. */
+/* KudiCubs prototype — configuration and example data only (spec 002 FR-012; 004 data-model §5).
+   A new player starts from zero (004 FR-023): there is no preset balance, history or badge here any more.
+   KC.sample is used only by the reviewer's "Load sample data". Nothing here is a real person.
+   The parent-gate email and PIN are never added to this object. */
 window.KC = window.KC || {};
 
-KC.version = { prototype: '0.2.0', tokens: '0.2.0' };
+KC.version = { prototype: '0.3.0', tokens: '0.3.0' };
 
 KC.data = {
-  child: { nickname: 'Ama', avatarId: 'cub-friend-2', band: 'b4_6' },
   nicknames: ['Ama', 'Kofi', 'Zara', 'Tobi'],
   avatars: ['cub-friend-1', 'cub-friend-2', 'cub-friend-3', 'cub-friend-4'],
-
-  start: { coins: 120, savings: 40, xp: 360, badges: ['badge.first_coins', 'badge.kind_friend', 'badge.early_bird'] },
 
   levels: [
     { n: 1, nameKey: 'level.market_visitor', xpFrom: 0 },
@@ -30,19 +29,9 @@ KC.data = {
     { id: 'badge.pride_star', nameKey: 'badge.pride_star', icon: 'badge-pride-star' }
   ],
 
-  walletHistory: [
-    { kind: 'earn', amount: 30, category: 'missions', labelKey: 'history.market_walk', icon: 'goal-coins', daysAgo: 1 },
-    { kind: 'bonus', amount: 5, category: 'bonus', labelKey: 'history.tidy_bonus', icon: 'badge-first-coins', daysAgo: 1 },
-    { kind: 'save', amount: 25, category: 'savings', labelKey: 'history.saved', icon: 'save', daysAgo: 2 },
-    { kind: 'spend', amount: 15, category: 'treats', labelKey: 'history.sticker', icon: 'treat-sticker', daysAgo: 2 },
-    { kind: 'earn', amount: 10, category: 'daily', labelKey: 'history.daily', icon: 'sun-daily', daysAgo: 3 },
-    { kind: 'earn', amount: 20, category: 'missions', labelKey: 'history.helping', icon: 'goal-coins', daysAgo: 4 }
-  ],
+  pillarGain: { know: 20, understand: 15 },          /* percent points per first completion */
 
-  pillars: { know: 0.3, understand: 0.2, decide: 0.1, invest: 0, share: 0.1 },
-  pillarGain: { know: 0.2, understand: 0.15 },
-
-  daily: { titleKey: 'daily.title', progress: 1, goal: 3, rewardCoins: 10 },
+  daily: { titleKey: 'daily.title', goal: 3, rewardCoins: 10 },
 
   lostCoins: {
     hidden: 8,
@@ -66,7 +55,7 @@ KC.data = {
     'gate.email_bad': 'Please check the email address', 'gate.join': 'Join the Pride',
     'gate.note': 'Prototype only — nothing you type here is saved or sent.',
     'joined.title': 'You joined the Pride!',
-    'home.hi': 'Hi, {name}!', 'home.continue': 'Continue', 'home.mission': 'The Lost Coins', 'home.next': 'Next: {level}',
+    'home.hi': 'Hi, {name}!', 'home.hi_friend': 'Hi there!', 'home.continue': 'Continue', 'home.mission': 'The Lost Coins', 'home.next': 'Next: {level}',
     'daily.title': 'Market day',
     'nav.home_label': 'Home', 'nav.wallet_label': 'Wallet', 'nav.progress_label': 'Progress', 'nav.back_home': 'Back to Home',
     'intro.title': 'The Lost Coins', 'intro.start': 'Start', 'intro.yes_label': 'Yes!',
@@ -89,15 +78,21 @@ KC.data = {
     'badge.market_explorer': 'Market Explorer', 'badge.pride_star': 'Pride Star',
     'history.market_walk': 'Market walk', 'history.tidy_bonus': 'Tidy bonus', 'history.saved': 'Saved in my jar',
     'history.sticker': 'Sun sticker', 'history.daily': 'Market day', 'history.helping': 'Helping at the stall',
-    'history.lost_coins': 'The Lost Coins', 'history.lost_coins_bonus': 'Perfect sorting',
+    'history.lost_coins': 'The Lost Coins', 'history.lost_coins_bonus': 'Perfect sorting', 'history.found': 'Coins I found', 'history.earlier': 'Earlier',
     'cat.missions': 'Games', 'cat.bonus': 'Bonus', 'cat.daily': 'Market day', 'cat.treats': 'Treats', 'cat.savings': 'Saved',
     'pillar.know': 'Know', 'pillar.understand': 'Understand', 'pillar.decide': 'Decide', 'pillar.invest': 'Invest', 'pillar.share': 'Share',
-    'voice.pending': 'Recording pending', 'voice.tap_replay': 'Tap ↻ to listen',
+    'voice.pending': 'Recording pending', 'voice.scratch': 'Scratch voice', 'voice.tap_replay': 'Tap ↻ to listen',
+    'empty.home': "Let's find some coins!", 'empty.wallet': 'Play The Lost Coins to fill your jar!', 'empty.play': 'Play',
+    'empty.progress': 'Play to earn your first badge!', 'empty.daily': 'Play a game to light the first sun!',
+    'empty.pillars': 'Play to start learning!',
+    'gate.pin_confirm': 'Enter the PIN again', 'gate.pin_mismatch': "Those PINs don't match. Let's try again.",
     'review.title': 'Reviewer menu', 'review.intro': 'For the client and design team. Children never see this menu.',
     'review.region': 'Region', 'review.voice': 'Voice language', 'review.voice_auto': 'Auto', 'review.recorded': 'Recordings',
     'review.jump': 'Jump to screen', 'review.sound': 'Sound', 'review.notes': 'Show screen notes', 'review.notes_label': 'Screen notes:',
-    'review.restart': 'Restart prototype', 'review.close': 'Close', 'review.not_wired': 'Not in this prototype',
-    'review.version': 'Prototype {p} · tokens {t} · official brand · voice recordings pending',
+    'review.restart': 'Restart prototype', 'review.sample': 'Load sample data',
+    'review.memory_only': 'This browser is not keeping progress (private mode or storage blocked). It lasts until the tab closes.',
+    'review.voice_counts': '{lang}: recorded {r} · scratch {s} · pending {p}',
+    'review.build': 'Prototype v{v} · built {d}{c} · tokens {t}', 'review.close': 'Close', 'review.not_wired': 'Not in this prototype',
     'a11y.main_nav': 'Main navigation', 'a11y.kudi': 'Kudi the Cub', 'a11y.listen': 'Listen again', 'a11y.replay': 'Replay what Kudi said', 'a11y.back': 'Back',
     'a11y.delete': 'Delete', 'a11y.clear': 'Clear', 'a11y.minus': 'minus', 'a11y.name': 'Name',
     'a11y.age': 'Age {age}', 'a11y.age_soon': 'Age {age}, coming soon', 'a11y.friend': 'Friend {n}', 'a11y.your_friend': 'Your friend',
@@ -113,4 +108,26 @@ KC.data = {
   strings_gh: { 'history.sticker': 'Kelewele sticker' },
   strings_ng: { 'history.sticker': 'Puff-puff sticker' },
   strings_uk: { 'history.sticker': 'Biscuit sticker' }
+};
+
+/* Reviewer "Load sample data" (004 FR-029, data-model §5): a fixed fictional log; `ago` = days before today.
+   It derives to coins 120, savings 40, XP 360 (level 2), 3 badges, 6 history rows and some pillar progress. */
+KC.sample = {
+  profile: { nickname: 'Ama', avatarId: 'cub-friend-2' },
+  events: [
+    { t: 'earn', n: 100, ago: 3, label: 'history.market_walk' },
+    { t: 'daily', n: 10, ago: 3, label: 'history.daily' },
+    { t: 'xp', n: 360, ago: 3, label: 'xp' },
+    { t: 'badge', n: 0, ago: 3, label: 'badge', badge: 'badge.first_coins' },
+    { t: 'earn', n: 50, ago: 2, label: 'history.helping' },
+    { t: 'badge', n: 0, ago: 2, label: 'badge', badge: 'badge.kind_friend' },
+    { t: 'bonus', n: 15, ago: 1, label: 'history.tidy_bonus' },
+    { t: 'save', n: 40, ago: 1, label: 'history.saved' },
+    { t: 'badge', n: 0, ago: 1, label: 'badge', badge: 'badge.early_bird' },
+    { t: 'spend', n: 15, ago: 0, label: 'history.sticker' },
+    { t: 'pillar', n: 30, ago: 1, label: 'pillar', pillar: 'know' },
+    { t: 'pillar', n: 20, ago: 1, label: 'pillar', pillar: 'understand' },
+    { t: 'pillar', n: 10, ago: 1, label: 'pillar', pillar: 'decide' },
+    { t: 'pillar', n: 10, ago: 1, label: 'pillar', pillar: 'share' }
+  ]
 };

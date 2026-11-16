@@ -1,6 +1,25 @@
-# KudiCubs Prototype: Review Guide (Round 1)
+# KudiCubs Prototype: Review Guide (Rounds 1 and 2)
 
 Hello Jefferson 👋
+
+## New in round 2 (v0.3.0)
+
+- **One link that stays the same**: it updates by itself whenever we publish a change. The
+  reviewer menu shows which version and date you're looking at.
+- **You can hear Kudi now**: The Lost Coins plays in a **temporary practice voice** (a
+  computer-made "scratch" voice), so you and children can try the game with sound. It is **only
+  for testing** and will be replaced by the real recorded voice before anything is released.
+- **Your own progress**: a new player starts with **0 coins**. Everything on Home, Wallet and
+  Progress now comes from what the child actually did, and it is still there when you come back
+  to the link.
+- **Fits small phones**: the next button is always on screen, even on small phones.
+- **Grown-up menu** (hold the logo for 2 seconds): **Load sample data** fills every screen so you
+  can see them full; **Restart prototype** starts again from zero.
+- If something fails to load, Kudi shows **"Tap to try again"** instead of a broken page.
+
+---
+
+*Round 1 guide (still accurate):*
 
 Thank you for your feedback on the first preview. This **round-1 prototype (v0.2.0)** does the
 three things you asked for:
@@ -8,8 +27,8 @@ three things you asked for:
 1. **Your official brand**: the KudiCubs logo, Kudi the Cub's five official poses, and the Sunshine
    Yellow, Mane Brown and orange colours.
 2. **No more robot voice**: Kudi will speak with a **real, recorded human voice**. The recordings
-   haven't been made yet. Until they are, each line shows its words with a **"Recording pending"**
-   badge.
+   haven't been made yet. Until they are, The Lost Coins uses the temporary practice voice
+   described above.
 3. **Much more to do**: children now drag, tap and answer on every screen, and Kudi reacts every
    time.
 
@@ -20,11 +39,11 @@ It takes about **5–7 minutes**. To see exactly what changed on each screen, op
 
 - **On your phone (best)**: open the link, in portrait, with the **sound on**.
 
-  **Link**: *(added here once published)*
+  **Link**: **https://emt-tz.github.io/Kudicubs/** (the same link every time; it updates by itself)
 
 - To keep it like an app, tap **Share → Add to Home Screen** on iPhone, or **⋮ → Add to Home
   screen** on Android. After the first visit it works without internet.
-- **On a laptop**: unzip `prototype-v0.2.0.zip` and double-click `index.html`.
+- **On a laptop**: unzip `prototype-v0.3.0.zip` and double-click `index.html`.
 
 ## 2. Try these new things
 

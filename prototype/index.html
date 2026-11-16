@@ -14,7 +14,32 @@
   <link rel="stylesheet" href="assets/components.css">
 </head>
 <body>
+  <!-- Load-failure guard (004 FR-051, research R17): the only inline script. If any script or data file fails to load,
+       or the app fails while starting, the friendly panel below replaces the app. It needs nothing from the other files,
+       so its few words are built in here (the one exception to strings-from-the-strings-file, Constitution VI).
+       It reloads only when tapped, never by itself. -->
+  <script>
+    window.kcBootFail = function () {
+      var p = document.getElementById('kc-boot-fail'), ph = document.getElementById('kc-phone');
+      if (!p) { document.addEventListener('DOMContentLoaded', window.kcBootFail); return; }
+      if (ph) ph.hidden = true;
+      p.hidden = false;
+    };
+    document.addEventListener('DOMContentLoaded', function () {
+      var KC = window.KC;
+      // every file must have loaded: data, build info, voice manifest, core, activities, celebration and screens
+      if (!KC || !KC.data || !KC.build || !KC.regions || !KC.audioManifest || !KC.start || !KC.activitySort || !KC.celebrate || !KC.screens) { window.kcBootFail(); return; }
+      try { KC.start(); } catch (e) { window.kcBootFail(); }
+    });
+  </script>
   <div class="kc-desk">
+    <div id="kc-boot-fail" class="kc-boot-fail" role="alert" hidden>
+      <img src="assets/brand/kudi-wave.webp" alt="Kudi the Cub" onerror="this.onerror=null;this.src='assets/brand/kudi-wave.png'">
+      <p class="kc-boot-fail-text">Oops! Kudi dropped something.</p>
+      <button type="button" class="kc-btn kc-btn--primary kc-boot-fail-btn" data-component="primary-button" onclick="location.reload()">
+        <img src="assets/art/icons/replay.svg" alt="" aria-hidden="true"><span>Tap to try again</span>
+      </button>
+    </div>
     <div class="kc-phone" id="kc-phone">
       <header class="kc-header">
         <button id="kc-back" class="kc-back" data-component="icon-button" hidden>
@@ -40,12 +65,13 @@
     </div>
   </div>
 
-  <script src="assets/data/mock-data.js"></script>
-  <script src="assets/data/regions.js"></script>
-  <script src="assets/data/audio-manifest.js"></script>
-  <script src="assets/app.js"></script>
-  <script src="assets/activities.js"></script>
-  <script src="assets/celebrate.js"></script>
-  <script src="assets/screens.js"></script>
+  <script src="assets/data/mock-data.js" onerror="kcBootFail()"></script>
+  <script src="assets/data/build-info.js" onerror="kcBootFail()"></script>
+  <script src="assets/data/regions.js" onerror="kcBootFail()"></script>
+  <script src="assets/data/audio-manifest.js" onerror="kcBootFail()"></script>
+  <script src="assets/app.js" onerror="kcBootFail()"></script>
+  <script src="assets/activities.js" onerror="kcBootFail()"></script>
+  <script src="assets/celebrate.js" onerror="kcBootFail()"></script>
+  <script src="assets/screens.js" onerror="kcBootFail()"></script>
 </body>
 </html>

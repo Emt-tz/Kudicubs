@@ -1,0 +1,120 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["edge-tts==7.3.1"]
+# ///
+"""KudiCubs scratch voice (spec 004 FR-016–FR-018, contracts/scratch-voice-cli.md).
+
+A TEMPORARY, pre-generated AI scratch track for demos only. RELEASE BLOCKER RB-1: every scratch file must be
+replaced by a human recording before any public release. Nothing is synthesised at runtime, ever.
+
+Reads docs/design/narration/lines.json and writes one MP3 per line ID to
+prototype/assets/audio-scratch/<lang>/<id>.mp3 with the stock voice en-NG-EzinneNeural at about -10% rate
+(ages 4-6). No account and no API key; only the scripted line text is sent to the voice service.
+
+    scripts/generate-scratch-voice                    # the Lost Coins batch for en-GH (Ghana, the default region)
+    scripts/generate-scratch-voice --dry-run          # list what would be generated or skipped; send nothing
+    scripts/generate-scratch-voice --batch all        # every line (only after the voice is approved by ear)
+    scripts/generate-scratch-voice --only intro.say,find.say
+"""
+import argparse
+import asyncio
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+LINES = ROOT / "docs/design/narration/lines.json"
+SCRATCH = ROOT / "prototype/assets/audio-scratch"
+HUMAN = ROOT / "prototype/assets/audio"
+
+
+def batch_ids(name: str, region: str) -> list[str]:
+    # The batch rule lives in one place (tools/design/lib/batches.mjs) so this script and check-audio agree.
+    out = subprocess.run(["node", str(ROOT / "tools/design/lib/batches.mjs"), "--print", name, "--region", region],
+                         check=True, capture_output=True, text=True)
+    return json.loads(out.stdout)
+
+
+async def synth(text: str, voice: str, rate: str, dest: Path) -> None:
+    import edge_tts  # imported here so --dry-run and --help work offline
+    part = dest.with_name(dest.name + ".part")
+    try:
+        await edge_tts.Communicate(text, voice, rate=rate).save(str(part))
+        if not part.exists() or part.stat().st_size == 0:
+            raise RuntimeError("empty audio")
+        os.replace(part, dest)  # only a complete, non-empty file ever gets the final name
+    finally:
+        if part.exists():
+            part.unlink()
+
+
+async def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--batch", default="lost-coins", choices=["lost-coins", "all"])
+    ap.add_argument("--lang", default="en-GH")
+    ap.add_argument("--only", default="", help="comma-separated line IDs (overrides --batch)")
+    ap.add_argument("--voice", default="en-NG-EzinneNeural")
+    ap.add_argument("--rate", default="-10%")
+    ap.add_argument("--retries", type=int, default=3)
+    ap.add_argument("--dry-run", action="store_true")
+    a = ap.parse_args()
+
+    doc = json.loads(LINES.read_text(encoding="utf-8"))
+    if a.lang not in doc["languages"]:
+        print(f"unknown language {a.lang}; choose one of {', '.join(doc['languages'])}", file=sys.stderr)
+        return 2
+    text = {l["id"]: l["text"] for l in doc["lines"]}
+    # The batch follows the language's region (en-NG → Nigeria's coins and treats); default Ghana.
+    region = next((r for r, l in doc["regionLanguage"].items() if l == a.lang), "gh")
+    ids = [i.strip() for i in a.only.split(",") if i.strip()] if a.only else batch_ids(a.batch, region)
+    unknown = [i for i in ids if i not in text]
+    if unknown:
+        print(f"not in lines.json: {', '.join(unknown)}", file=sys.stderr)
+        return 2
+
+    out_dir = (SCRATCH / a.lang).resolve()
+    if SCRATCH.resolve() not in out_dir.parents or HUMAN.resolve() in (out_dir, *out_dir.parents):
+        print(f"refusing to write outside {SCRATCH}", file=sys.stderr)  # never into the human recordings folder
+        return 2
+    out_dir.mkdir(parents=True, exist_ok=True)
+    print(f"scratch voice {a.voice} ({a.rate}) → {a.lang} (region {region}), batch {'only' if a.only else a.batch}: {len(ids)} lines")
+
+    generated, skipped, failed = 0, 0, []
+    for lid in ids:
+        dest = out_dir / f"{lid}.mp3"
+        if dest.exists() and dest.stat().st_size > 0:
+            skipped += 1
+            continue
+        if a.dry_run:
+            print(f"  would generate {lid}: {text[lid]}")
+            continue
+        error = None
+        for attempt in range(a.retries):
+            try:
+                await synth(text[lid], a.voice, a.rate, dest)
+                error = None
+                break
+            except Exception as e:  # network or service error: back off and retry
+                error = e
+                await asyncio.sleep(2 ** attempt)
+        if error is None:
+            generated += 1
+            print(f"  ✓ {lid}")
+        else:
+            failed.append((lid, f"{type(error).__name__}: {error}"))
+            print(f"  ✗ {lid}: {error}")
+
+    if not a.dry_run:
+        subprocess.run(["node", str(ROOT / "tools/design/build-narration.mjs")], check=False)
+    print(f"generated {generated} · skipped {skipped} · failed {len(failed)}" + (" (dry run)" if a.dry_run else ""))
+    if failed:
+        print("failed: " + ", ".join(f"{i} ({why})" for i, why in failed))
+    print("RB-1: scratch audio is temporary and must be replaced by human recordings before any public release.")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.exit(asyncio.run(main()))

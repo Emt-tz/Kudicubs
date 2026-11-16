@@ -64,7 +64,7 @@
 [data-component="badge-tile"] { display: flex; flex-direction: column; align-items: center; gap: var(--kc-space-1); text-align: center; min-width: var(--kc-size-touch-min); }
 [data-component="badge-tile"] img { width: var(--kc-space-16); height: var(--kc-space-16); }
 [data-component="badge-tile"].is-locked img { filter: grayscale(1); opacity: var(--kc-opacity-locked-badge); }
-[data-component="badge-tile"].is-locked .kc-caption { color: var(--kc-color-text-locked); }
+[data-component="badge-tile"].is-locked .kc-caption { color: var(--kc-color-text-secondary); }   /* Brown 60 is 3.93:1 on Warm Cream: too low for small text (004 E8) */
 [data-component="badge-tile"].is-new img { animation: kc-pop var(--kc-motion-celebrate) ease-out; }
 @keyframes kc-pop { 0% { transform: scale(0.3) rotate(-20deg); } 60% { transform: scale(1.2); } 100% { transform: none; } }
 .kc-badge-row { display: flex; justify-content: center; gap: var(--kc-space-4); flex-wrap: wrap; }
@@ -192,7 +192,7 @@
 .kc-node { flex: none; display: flex; align-items: center; justify-content: center; width: var(--kc-size-touch-primary-4-6); height: var(--kc-size-touch-primary-4-6); border-radius: var(--kc-radius-pill); background: var(--kc-color-derived-cream-shade); font-family: var(--kc-font-display); font-weight: 800; font-size: var(--kc-typography-title-size); box-shadow: 0 var(--kc-size-depth-button) 0 var(--kc-color-derived-cream-shade), var(--kc-elevation-1); }
 [data-component="level-path-node"].is-done .kc-node { background: var(--kc-color-feedback-success); color: var(--kc-color-brand-white); box-shadow: 0 var(--kc-size-depth-button) 0 var(--kc-color-brand-mane-brown); }
 [data-component="level-path-node"].is-current .kc-node { background: var(--kc-color-action-primary-bg); border: var(--kc-size-border-brand) solid var(--kc-color-brand-mane-brown); box-shadow: 0 var(--kc-size-depth-button) 0 var(--kc-color-brand-mane-brown); }
-[data-component="level-path-node"].is-locked { color: var(--kc-color-text-locked); }
+[data-component="level-path-node"].is-locked { color: var(--kc-color-text-secondary); }   /* the lock icon marks it; Brown 80 keeps AA (004 E8) */
 .kc-path .kc-label { position: relative; padding: var(--kc-space-1) var(--kc-space-2); border-radius: var(--kc-radius-sm); background: var(--kc-color-bg-app); }
 .kc-node img { width: var(--kc-space-6); height: var(--kc-space-6); }
 .kc-pillar { display: grid; grid-template-columns: calc(var(--kc-space-16) * 1.6) 1fr; align-items: center; gap: var(--kc-space-2); }
@@ -283,7 +283,56 @@ p[data-component="region-coin-set"] { display: flex; }
 /* a tapped word with no recording: its caption flashes Soft Gold, nothing is spoken (spec 003 edge cases) */
 [data-component="narration-caption"].is-highlight { animation: kc-caption-flash 0.9s ease-out; }
 @keyframes kc-caption-flash { 0%, 40% { background: var(--kc-color-character-highlight); } }
-/* words on child screens can be tapped to hear them (FR-026) */
-.kc-title[data-child-action], .kc-child-text[data-child-action] { min-height: 0; min-width: 0; display: block; }
-.kc-row > .kc-title[data-child-action], .kc-row > .kc-child-text[data-child-action] { display: block; }
+/* words on child screens can be tapped to hear them (003 FR-026): the row is the 48 px unit (004 FR-009, R12) */
+.kc-tap-row[data-child-action] { min-height: var(--kc-size-touch-min); }
+.kc-tap-word[data-child-action] { min-height: var(--kc-size-touch-min); min-width: 0; display: flex; align-items: center; }
+.kc-center.kc-tap-word[data-child-action] { justify-content: center; }
 .kc-center { text-align: center; }
+
+/* ======================================================================
+   Round 2 (spec 004): the main action is always in view (FR-001), by layout only — text sizes and
+   48 px targets never shrink (FR-002). Short screens step Kudi and the pictures down, not the words.
+   ====================================================================== */
+/* the action area is pinned to the bottom of the scrolling screen (research R10) */
+.kc-screen > .kc-actions {
+  position: sticky; bottom: calc(var(--kc-space-4) * -1); z-index: 2;
+  margin: auto calc(var(--kc-space-4) * -1) calc(var(--kc-space-4) * -1);
+  padding: var(--kc-space-4) var(--kc-space-4) var(--kc-space-4);
+  background: linear-gradient(to bottom, transparent, var(--kc-color-bg-app) var(--kc-space-4));
+}
+.kc-screen[data-audience="parent"] > .kc-actions { background: linear-gradient(to bottom, transparent, var(--kc-color-parent-bg) var(--kc-space-4)); }
+.kc-screen > .kc-actions:empty { display: none; }
+/* layout helpers that replace inline styles */
+.kc-avatar-sm { flex: none; width: var(--kc-space-16); }
+.kc-tight { gap: var(--kc-space-1); }
+.kc-gap-2 { gap: var(--kc-space-2); }
+.kc-justify-center { justify-content: center; }
+.kc-reward-burst { justify-content: center; gap: var(--kc-space-6); }
+/* Count: one row per jar, coins side by side as 48 × 48 targets (FR-009, research R12) */
+[data-screen="activity-count"] .kc-jar-row { grid-template-columns: 1fr; gap: var(--kc-space-2); }
+[data-screen="activity-count"] [data-component="jar"] { flex-direction: row; align-items: center; justify-content: flex-start; min-height: 0; gap: var(--kc-space-2); padding: var(--kc-space-1) var(--kc-space-2); }
+[data-screen="activity-count"] [data-component="jar"] .kc-jar-label { flex: none; width: var(--kc-space-10); height: var(--kc-space-10); }
+[data-screen="activity-count"] [data-component="jar"] .kc-jar-glass { flex: 1 1 auto; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; min-height: var(--kc-size-touch-min); }
+[data-screen="activity-count"] .kc-jar-count { order: 3; flex: none; min-width: var(--kc-space-8); text-align: center; }
+[data-component="coin-token"].kc-coin--jar { width: var(--kc-size-touch-min); height: var(--kc-size-touch-min); }
+[data-component="jar"] .kc-jar-glass .kc-coin--jar img { width: 100%; height: 100%; }
+/* Summary: the three recap pictures sit in one compact row */
+.kc-recap { grid-template-columns: repeat(3, 1fr); gap: var(--kc-space-2); }
+.kc-recap-tile { padding: var(--kc-space-2); gap: var(--kc-space-1); }
+.kc-recap-tile img { width: var(--kc-space-10); height: var(--kc-space-10); }
+/* short screens (360 × 640 and similar): smaller Kudi and pictures, tighter gaps — never smaller text */
+@media (max-height: 700px) {
+  .kc-screen { gap: var(--kc-space-3); }
+  .kc-stack { gap: var(--kc-space-3); }
+  .kc-kudi--md .kc-kudi-img, .kc-kudi--lg .kc-kudi-img { width: var(--kc-size-kudi-min); }
+  .kc-hero { width: 48%; }
+  [data-screen="mission-intro"] .kc-scene img { aspect-ratio: 2 / 1; object-fit: cover; }
+  [data-screen="activity-find"] .kc-scene { aspect-ratio: 3 / 4; }
+  .kc-result-stage { min-height: calc(var(--kc-space-16) * 1.4); }
+  .kc-result-stage .kc-result-icon { width: calc(var(--kc-space-16) * 1.2); height: calc(var(--kc-space-16) * 1.2); }
+  [data-component="action-result"] { padding: var(--kc-space-3); gap: var(--kc-space-2); }
+  [data-component="choice-card"] img { width: var(--kc-space-12); height: var(--kc-space-12); }
+  [data-component="badge-tile"] img { width: var(--kc-space-12); height: var(--kc-space-12); }
+}
+/* success green is only used on cream or white (B3): on a Peach Cream panel the label is Mane Brown (004 E8) */
+.kc-panel .kc-positive { color: var(--kc-color-text-primary); }
