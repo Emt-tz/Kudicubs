@@ -375,7 +375,7 @@ the story they prove, and each new rule's test is **proven to fail** when the ru
   - `docs/design/review-guide.md`: replace the tunnel link with the live URL; explain the scratch voice and the Restart and Load sample data buttons;
   - `specs/004-prototype-round-2/quickstart.md`: the live URL;
   - `docs/design/components.md`: the sticky actions, the empty states and the load-failure panel.
-- [ ] T049 [US4] **Confirm-first: enable Pages and deploy (H3 sequence).** After T050 and the developer's approval of the diff and tests:
+- [X] T049 [US4] **Confirm-first: enable Pages and deploy (H3 sequence).** After T050 and the developer's approval of the diff and tests:
   1. commit as the developer (no AI co-author line) and push `004-prototype-round-2`;
   2. **ask first**, then enable Pages with source "GitHub Actions" (`gh api -X POST repos/Emt-tz/Kudicubs/pages -f build_type=workflow`), stopping with research R1's options if refused;
   3. allow the `github-pages` environment to deploy from `004-prototype-round-2`, run `prototype-pages.yml` by `workflow_dispatch` on that branch, and wait for build, deploy and smoke;
@@ -467,8 +467,7 @@ then T022 → T023 → T024 (manifest → playback → reviewer counts)
 
 ## Implementation notes (2026-11-15, `/speckit-implement`)
 
-- **Done**: T001–T048 and T050–T053. **Open**:
-  - T049, which is confirm-first: commit, push, enable Pages, deploy from the branch, show the
+- **Done**: T001–T053. **Waiting for the merge**: closing PR #4. T049 itself was confirm-first: commit, push, enable Pages, deploy from the branch, show the
     live link and version, then open the PR.
 - **T017**: the counter stays hidden after the answer. The spec allows it to return ("may
   return"), and showing it would push Next and Kudi's question off a 360×640 screen.
@@ -583,4 +582,12 @@ then T022 → T023 → T024 (manifest → playback → reviewer counts)
   - Manual dispatch needs the workflow on `main`, which doesn't have #1–#3 yet. So
     `prototype-pages.yml` temporarily also triggers on pushes to `004-prototype-round-2`, and
     the `github-pages` environment allows that branch. **Remove both once 004 is merged.**
+- **T049 done (2026-11-16)**, with the developer's approval:
+  - **Commits** (as Emmanuel Mtera, no AI co-author line): `95ec3c6` (round 2), `28e5a24`
+    (temporary deploy trigger), `0fcb53c` (live link in the docs).
+  - **Pushed**: `004-prototype-round-2`.
+  - **First deploy**: build, deploy and smoke all passed, with 228 files reachable.
+  - **Live**: https://emt-tz.github.io/Kudicubs/ reports `v0.3.0 · built 2026-11-16 · 28e5a24`
+    (later deploys stamp their own commit).
+  - **PR**: #4, stacked on #3; `prototype-ci` passes on it.
 
