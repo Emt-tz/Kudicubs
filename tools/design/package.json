@@ -1,9 +1,9 @@
 {
   "name": "kudicubs-design-tools",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
-  "description": "Dev-only checks for the KudiCubs design system and prototype (spec 002).",
+  "description": "Dev-only checks for the KudiCubs design system and prototype (specs 002\u2013004).",
   "engines": {
     "node": ">=20"
   },
@@ -12,11 +12,15 @@
     "contrast": "node check-contrast.mjs",
     "usage": "node check-tokens-usage.mjs",
     "test": "playwright test",
-    "check": "node build-tokens.mjs && node check-contrast.mjs && node check-brand.mjs --art && node check-no-tts.mjs && node check-tokens-usage.mjs && node build-narration.mjs --check && node build-sw.mjs && playwright test",
+    "check": "node build-tokens.mjs && node check-contrast.mjs && node check-brand.mjs --art && node check-no-tts.mjs && node check-tokens-usage.mjs && node build-narration.mjs --check && node check-audio.mjs && node build-info.mjs && node build-sw.mjs --check && playwright test",
     "brand": "node check-brand.mjs --art",
     "notts": "node check-no-tts.mjs",
     "narration": "node build-narration.mjs",
-    "sw": "node build-sw.mjs"
+    "sw": "node build-sw.mjs",
+    "audio": "node check-audio.mjs",
+    "release-gate": "node check-no-tts.mjs --release",
+    "serve": "node serve.mjs",
+    "smoke": "playwright test --project=smoke"
   },
   "devDependencies": {
     "@playwright/test": "1.65.1",

@@ -1,6 +1,6 @@
 {
  "$schema": "../../../specs/003-brand-voice-interactive/contracts/narration-lines.schema.json",
- "version": "1.0.0",
+ "version": "1.1.0",
  "languages": [
   "en-GH",
   "en-NG",
@@ -1343,6 +1343,42 @@
    "delivery": "warm",
    "idea": "greet after a long idle",
    "maxSeconds": 3.0
+  },
+  {
+   "id": "empty.home",
+   "screen": "home",
+   "kind": "prompt",
+   "text": "Let's find some coins! Tap Continue to play.",
+   "delivery": "excited",
+   "idea": "first visit: invite to play",
+   "maxSeconds": 4.4
+  },
+  {
+   "id": "empty.wallet",
+   "screen": "wallet",
+   "kind": "prompt",
+   "text": "Your jar is empty. Play The Lost Coins to fill it!",
+   "delivery": "warm",
+   "idea": "first visit: empty jar",
+   "maxSeconds": 5.6
+  },
+  {
+   "id": "empty.progress",
+   "screen": "progress",
+   "kind": "prompt",
+   "text": "Play to earn your first badge!",
+   "delivery": "excited",
+   "idea": "first visit: no badges yet",
+   "maxSeconds": 3.4
+  },
+  {
+   "id": "empty.daily",
+   "screen": "home",
+   "kind": "hint",
+   "text": "Play a game to light the first sun!",
+   "delivery": "playful",
+   "idea": "daily challenge not started",
+   "maxSeconds": 4
   }
  ]
 }

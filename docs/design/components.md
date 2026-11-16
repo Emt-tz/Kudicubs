@@ -374,3 +374,23 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
 - **Tokens**: a Mane Brown pill with a Warm Cream numeral (13.31:1).
 - **Screens**: `activity-sort`.
 - **Bands**: 4–6 counts coins. Older bands may show values.
+
+## Round 2 (spec 004): layout states, not new components
+
+- **Pinned action area** (`.kc-actions` inside `#kc-screen`): the main button sits in a sticky
+  footer with a Warm Cream fade, so it is always fully in view at 360×640 and 390×844
+  (FR-001). Short screens (`max-height: 700px`) use a smaller Kudi and smaller pictures, never
+  smaller text or targets (FR-002).
+- **Empty states** (FR-030): on a first visit Home, Wallet and Progress show a `kudi-bubble`
+  invitation ("Let's find some coins!", "Play The Lost Coins to fill your jar!", "Play to earn
+  your first badge!"). There are no blank charts or lists; badges stay as locked silhouettes.
+- **Count jars**: on the Count screen the three `jar`s are rows, and their coins are 48×48
+  `coin-token`s (FR-009).
+- **Tap-to-hear words**: the row holding the words and their `speaker-cue` is the 48 px target
+  (`.kc-tap-row`). A word on its own gets a 48 px box (`.kc-tap-word`).
+- **Load-failure panel** (`#kc-boot-fail`, FR-051): Kudi, one line and a "Tap to try again"
+  `primary-button`, written in plain HTML in `index.html` so it works when other files don't.
+- **`narration-caption`**: hidden when its text is already on screen in Kudi's words (FR-008).
+  The voice badge ("Scratch voice" / "Recording pending") shows only with reviewer notes on
+  (FR-019).
+

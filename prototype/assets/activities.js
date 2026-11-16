@@ -4,6 +4,7 @@
 (function () {
   'use strict';
   var KC = window.KC;
+  if (!KC || !KC.h) return;                 // a file before this one failed to load: the boot guard shows the panel (004 FR-051)
   var h = KC.h;
 
   /* How many coins go in each of the 3 jars, from the configured total (003 FR-043). The middle jar always has
@@ -165,14 +166,14 @@
     var counts = KC.jarCounts();
     var most = counts.indexOf(Math.max.apply(null, counts));
     var jarIndex = 0, n = 0;
-    var counter = h('div', { class: 'kc-counter', role: 'status', 'aria-live': 'polite' }, '0');
+    var counter = h('div', { class: 'kc-counter', role: 'status', 'aria-live': 'polite', 'data-count-total': true }, '0');
     var ask = h('div', { class: 'kc-ask', hidden: true },
       h('p', { class: 'kc-child-text' }, KC.lineText('count.which_most')), KC.speakerCue('count.which_most'));
     var jarRow = h('div', { class: 'kc-jar-row' });
     var jars = ids.map(function (id, i) {
       var d = KC.denom(id);
       var glass = h('div', { class: 'kc-jar-glass' });
-      for (var k = 0; k < counts[i]; k++) glass.appendChild(coinToken({ uid: id + k, denom: id }));
+      for (var k = 0; k < counts[i]; k++) glass.appendChild(coinToken({ uid: id + k, denom: id }, { class: 'kc-coin kc-coin--jar' }));   // 48×48 targets (FR-009)
       var jar = h('div', { 'data-component': 'jar', 'data-jar': id, 'aria-label': KC.t('a11y.jar_for', { coin: d.label }) },
         KC.coinImg(id, { class: 'kc-jar-label' }), h('span', { class: 'kc-jar-count', 'data-jar-count': true }, ''), glass);
       jarRow.appendChild(jar);
@@ -186,6 +187,7 @@
     }
     function startQuestion() {                                   // call and response (FR-027)
       ask.hidden = false;
+      counter.hidden = true;                                     // the running total would give the answer away; it also frees room (004 FR-007)
       jarRow.setAttribute('data-primary-group', '');
       jarRow.classList.add('is-asking');            // the jars (not the counted coins) are the answers now
       jars.forEach(function (j, i) {
@@ -195,12 +197,6 @@
           if (i === most) {
             j.classList.add('is-answered', 'is-target');
             KC.sfx('sparkle'); KC.kudiReact('correct'); KC.voice.play('count.most_yes', { reaction: true });
-            var found = KC.state.lostCoins.found || KC.hidden();
-            if (!KC.state.lostCoins.earned && !KC.state.lostCoins.completedOnce) {
-              KC.state.coins += found;
-              KC.addEvent('earn', found, 'missions', 'history.lost_coins', 'goal-coins');
-              KC.state.lostCoins.earned = true;
-            }
             KC.promote(jarRow, KC.primary(KC.t('next'), function () { KC.go('decision'); }), root.querySelector('.kc-actions'));
           } else {
             KC.sfx('boop'); KC.kudiReact('encourage'); KC.voice.play('count.most_try', { reaction: true });
@@ -224,7 +220,10 @@
             j.querySelector('.kc-jar-glass').removeAttribute('data-primary-group');
             KC.kudiReact('correct');
             jarIndex += 1; n = 0;
-            if (jarIndex < jars.length) setTimeout(function () { counter.textContent = '0'; activate(); KC.resetIdle(); }, 500);
+            if (jarIndex < jars.length) {                         // the next jar is ready at once (always one main action)
+              activate(); KC.resetIdle();
+              setTimeout(function () { if (n === 0) counter.textContent = '0'; }, 500);
+            }
             else { KC.kudiReact('celebrate'); startQuestion(); }
           }
         }, { sfx: 'tick' });
@@ -232,7 +231,7 @@
     });
     activate();
     root.appendChild(counter);
+    root.appendChild(ask);                                       // the question sits above the jars, so the pinned Next never covers it (FR-002)
     root.appendChild(jarRow);
-    root.appendChild(ask);
   };
 })();

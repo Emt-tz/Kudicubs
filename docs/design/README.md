@@ -8,8 +8,12 @@ what lasts.**
   - [002](../../specs/002-ux-prototype/spec.md): UX design system and prototype v0.1.0.
   - [003](../../specs/003-brand-voice-interactive/spec.md): client feedback round 1. **Official
     brand, human voice, more interaction**: prototype v0.2.0.
-- **Tokens version**: `0.2.0`, which becomes `1.0.0` when the client signs off.
-- **Prototype version**: `0.2.0`. The "before" state is tagged `prototype-v0.1.0`.
+  - [004](../../specs/004-prototype-round-2/spec.md): prototype round 2. **Testing fixes, a
+    temporary scratch voice, real play data, a stable demo link and automated validation**:
+    prototype v0.3.0.
+- **Live demo**: *(the stable GitHub Pages link is added here after the first deploy)*
+- **Tokens version**: `0.3.0`, which becomes `1.0.0` when the client signs off.
+- **Prototype version**: `0.3.0`. Earlier states: `prototype-v0.1.0`, and v0.2.0 at commit `594bd8c`.
 
 ## Files
 
@@ -22,7 +26,7 @@ what lasts.**
 | [components.md](./components.md) | **28 components**, the one-main-action rule and child actions |
 | [kudi-the-cub.md](./kudi-the-cub.md) | Kudi's character, the five poses and their states, pose order, size, voice, never-do list, idle behaviour |
 | [age-band-rules.md](./age-band-rules.md) | 4–6 / 7–9 / 10–12 / 13–15 UI rules |
-| [narration/lines.json](./narration/lines.json) | **Source of truth for every spoken line**: 142 lines × 3 language slots |
+| [narration/lines.json](./narration/lines.json) | **Source of truth for every spoken line**: 146 lines × 3 language slots |
 | [narration-script.md](./narration-script.md) | Generated: the voice actor's script, with the file-naming table |
 | [voice-direction-brief.md](./voice-direction-brief.md) | Casting and recording brief: a warm, friendly female storyteller with a natural Ghanaian accent; consent; tone reference only, never copied |
 | [round1-before-after.md](./round1-before-after.md) | **The client summary**: every screen before and after, the changes, and the open decisions |
@@ -37,9 +41,12 @@ what lasts.**
 ```bash
 cd tools/design
 npm ci && npx playwright install chromium webkit   # first time
-npm run check                 # tokens → contrast → brand (+art) → no-TTS → token usage → narration --check → sw.js → flow tests
+npm run check                 # tokens → contrast → brand (+art) → no-TTS → token usage → narration --check → audio → build info → sw.js --check → all Playwright tests
+npm run serve                 # local preview on http://127.0.0.1:4173/ (the tests use the same server)
+../../scripts/generate-scratch-voice   # the temporary scratch voice (Lost Coins batch; --batch all after approval)
 node extract-brand-assets.mjs # re-extract the logo and poses from docs/source/KudiCubs Brand.pdf (or the client's master files)
-node build-narration.mjs      # after editing lines.json or adding recordings
+node build-narration.mjs      # after editing lines.json, adding recordings or scratch audio
+node build-sw.mjs             # after adding or removing any prototype file
 node encode-audio.mjs         # optional: studio .wav → .m4a (needs ffmpeg)
 node capture-components.mjs   # refresh component thumbnails
 node capture-before-after.mjs # refresh the before/after summary
@@ -48,13 +55,25 @@ node capture-before-after.mjs # refresh the before/after summary
 **Rules:**
 
 - **Brand colours are never changed.** `check-brand.mjs` compares them with the guide.
-- **No synthetic voice, ever.** `check-no-tts.mjs` scans for it, and a test stub fails on any use.
+- **No live or browser speech synthesis, ever.** `check-no-tts.mjs` scans for it, and a test stub
+  fails on any use. Pre-generated **scratch** audio (`assets/audio-scratch/`) is allowed only as a
+  marked, temporary demo track (004 amendment).
+- **⚠ RB-1: scratch audio must be replaced by human recordings before any public release.**
+  `node check-no-tts.mjs --release` is the gate (it fails while any scratch file exists).
 - Never edit generated files: `tokens.css`, the token tables, `contrast-report.md`,
-  `narration-script.md`, `audio-manifest.js`, `sw.js`, and the screenshots.
+  `narration-script.md`, `audio-manifest.js`, `build-info.js`, `sw.js`, and the screenshots.
 - **Adding a recording:** put `prototype/assets/audio/<lang>/<lineId>.m4a` in place and run
   `node build-narration.mjs`. No code change is needed.
-- **Stored preferences** (sessionStorage only): `region`, `sound`, `notes` and `voiceLang`. No
-  personal data. This supersedes 002 research D11's list.
+- **Stored on the device** (amended in 004, FR-027):
+  - **Preferences** (sessionStorage): `region`, `sound`, `notes` and `voiceLang`.
+  - **Progress** (localStorage `kudicubs.proto.progress`, schema 1): the preset nickname, avatar,
+    age band, region, whether onboarding is done, and the event log of what the child did.
+  - **Why**: real play data is meaningless if a refresh erases it, and reviewers come back to the
+    link over days. Everything stored is fictional game data the constitution already permits.
+    This supersedes 002 research D11 and 003 data-model §9.
+  - **Never stored or sent**: the parent email, the PIN, maths answers, real names, or anything
+    typed in the parent gate (FR-028; a data test scans all storage).
+  - **Restart** in the reviewer menu erases all of it.
 
 ## Validation record: round 1 (2026-11-15)
 
@@ -117,3 +136,32 @@ node capture-before-after.mjs # refresh the before/after summary
 | First-time walkthrough in under 5–7 minutes | ☐ |
 | Originality countersignature ([design-references.md](./design-references.md)) | ☐ The developer signs |
 | Child session (optional) | ☐ **Only after the recordings exist** |
+
+## Validation record: round 2 (spec 004, 2026-11-15)
+
+### Automated (`npm run check`, also on every pull request in `prototype-ci`)
+
+| Area | Check | Result |
+|---|---|---|
+| E1 Full journey | `flow.spec.mjs` › full journey: Welcome → onboarding → gate (with confirm PIN) → Home → The Lost Coins → Reward → Home | ✅ 0 console errors, 0 failed requests, 0 HTTP errors |
+| E2 Fold | `fold.spec.mjs` at **360×640 and 390×844**, after render and after every interaction, including the 7 measured cases | ✅ main action 0 px out of view, no scrolling, no smaller text |
+| E3 Navigation | `navigation.spec.mjs` | ✅ no Back on the hub screens; Back never lands on Reward, Result or the gate; Reward and Result opened directly or refreshed → Home, nothing granted |
+| A9 Load failure | `navigation.spec.mjs` › load failure (screens.js, mock-data.js, regions.js blocked; an error while starting) | ✅ Kudi "Tap to try again"; never reloads by itself; one tap with the file back starts the app |
+| E4 Replay | `flow.spec.mjs` | ✅ no coin or history change, +5 XP only, "Great practice!" + `reward.replay` |
+| E5 Voice | `check-audio.mjs` + `voice.spec.mjs` | ✅ all 146 en-GH lines have scratch audio (temporary, RB-1); every Lost Coins line has audio, ≤ 8 s, > 1 KB, nothing missing or unlisted; recorded beats scratch beats caption; badge only with notes on |
+| E6 Data | `data.spec.mjs` | ✅ fresh start is all zeros; one run = coins 40, savings 8, XP 50, 3 badges, 4 history rows; kept after refresh; Restart clears; nothing from the gate in storage; damaged data starts fresh |
+| E7 Tap targets | `audit()` in every spec, both sizes | ✅ nothing interactive on a child screen under 48×48 |
+| E8 Contrast | `check-contrast.mjs` + `contrast.spec.mjs` (every visible text node) | ✅ all AA, and every pair in use is recorded |
+| E9 Regions | `flow.spec.mjs` › regions | ✅ coin art and treat names follow the region on every money screen |
+
+### Bugs found and fixed while validating round 2
+
+- **Stale audio results** overwrote the caption of the line that replaced them (the earlier
+  line's `play()` rejected late).
+- **The screen prompt** played over a line the child had tapped in the first 350 ms.
+- **Locked level and badge names** were Brown 60 on Warm Cream (3.93:1, below AA for small text).
+  They now use Brown 80.
+- **The "Savings" label** on the wallet panel was success green on Peach Cream, a pairing the
+  tokens reject. It's Mane Brown there now.
+- **Count**: there was a 500 ms gap between jars with no main action.
+

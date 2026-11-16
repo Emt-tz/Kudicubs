@@ -32,3 +32,7 @@ prototype-*.zip
 # Round 1 (003)
 tools/design/.tmp/
 prototype/assets/audio/**/*.wav
+
+# Round 2 (004)
+__pycache__/
+prototype/assets/audio-scratch/**/*.part
