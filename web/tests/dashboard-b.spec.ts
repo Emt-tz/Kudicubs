@@ -22,17 +22,32 @@ async function newFamily(page: Page): Promise<{ email: string; supabase: Client;
       setAll: (list) => list.forEach(({ name, value }) => jar.set(name, { name, value })),
     },
   });
-  const since = Date.now() - 1000;
-  const sent = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: true } });
-  if (sent.error) throw new Error(`could not create ${email}: ${sent.error.message}`);
-  const token = await getMailCode(email, { since });
-  const verified = await supabase.auth.verifyOtp({ email, token, type: "email" });
-  if (verified.error || !verified.data.user) throw new Error(`could not verify ${email}: ${verified.error?.message}`);
+  // Other specs and agents share Mailpit and the local auth service, so send + read + verify is retried.
+  let userId = "";
+  let lastError = "";
+  for (let attempt = 0; attempt < 5 && !userId; attempt++) {
+    const since = Date.now() - 1000;
+    const sent = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: true } });
+    if (sent.error) {
+      lastError = `send: ${sent.error.message}`;
+      await new Promise((r) => setTimeout(r, 1500));
+      continue;
+    }
+    const token = await getMailCode(email, { since });
+    const verified = await supabase.auth.verifyOtp({ email, token, type: "email" });
+    if (verified.error || !verified.data.user) {
+      lastError = `verify: ${verified.error?.message}`;
+      await new Promise((r) => setTimeout(r, 1200));
+      continue;
+    }
+    userId = verified.data.user.id;
+  }
+  if (!userId) throw new Error(`could not create ${email}: ${lastError}`);
   for (let i = 0; i < 20 && jar.size === 0; i++) await new Promise((r) => setTimeout(r, 100));
   await page.context().addCookies([...jar.values()].map((c) => ({ name: c.name, value: c.value, url: BASE_URL })));
   const pin = await supabase.rpc("set_pin", { pin: PIN });
   expect(pin.error).toBeNull();
-  return { email, supabase, userId: verified.data.user.id };
+  return { email, supabase, userId };
 }
 
 async function addChild(supabase: Client, userId: string, nickname = "Ama", age_band = "b4_6") {
@@ -139,11 +154,14 @@ test.describe("family settings and PIN", () => {
     await newFamily(page);
     await page.goto("/dashboard/settings?change=pin");
     for (let i = 0; i < 5; i++) {
+      await expect(page.getByLabel("Current PIN")).toHaveValue(""); // React clears the form after each submit
       await page.getByLabel("Current PIN").fill("4096");
       await page.getByLabel("New PIN", { exact: true }).fill("7391");
       await page.getByLabel("Confirm new PIN").fill("7391");
       await page.getByRole("button", { name: "Change PIN" }).click();
-      await expect(page.getByText(/does not match your current PIN|Too many wrong tries/)).toBeVisible();
+      await expect(page.getByText(i < 4 ? "does not match your current PIN" : "Too many wrong tries").first()).toBeVisible();
+      await expect(page.getByRole("button", { name: /Change PIN|Changing/ })).toBeEnabled();
+      await page.waitForTimeout(300);
     }
     await expect(page.getByText("Too many wrong tries")).toBeVisible();
   });
@@ -163,7 +181,7 @@ test.describe("devices and data", () => {
   test("signing a device out asks first, then removes it", async ({ page }) => {
     const { supabase, userId } = await newFamily(page);
     const ins = await supabase.from("devices").insert([
-      { parent_id: userId, label: "Parent phone", mode: "my-phone" },
+      { parent_id: userId, label: "Parent phone", mode: "my-phone", last_seen: new Date().toISOString() },
       { parent_id: userId, label: "Family tablet", mode: "family", last_seen: new Date(Date.now() - 2 * 86_400_000).toISOString() },
     ]);
     expect(ins.error).toBeNull();
@@ -298,7 +316,7 @@ test.describe("summary and notifications", () => {
       await expect(page.getByRole("heading", { level: 1, name: heading })).toBeVisible();
     }
     await page.goto("/dashboard/settings");
-    await expect(page.getByText("parent2@example.com")).toBeVisible();
+    await expect(page.locator("main").getByText("parent2@example.com")).toBeVisible();
   });
 });
 
