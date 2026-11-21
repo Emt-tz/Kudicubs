@@ -2,14 +2,11 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'clothing_flow.dart';
 
-/// Canvas `ms-15-10-12-intro`: 10–12 intro. Section: App 11. Ages 10–12: Clothing Brand.
-/// Replace the body with the real screen; keep the signature and the key.
+/// Canvas `ms-15-10-12-intro`: 10–12 intro. Entry point (route /mission/10-12).
+/// The screen lives in the mission's state machine (clothing_flow.dart); opened
+/// directly (gallery, `?state=`) it starts at this stage with a sample play.
 Widget build_ms_15_10_12_intro(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-ms-15-10-12-intro'),
-    title: '10–12 intro',
-    child: Center(child: Text('TODO ms-15-10-12-intro')),
-  );
+  return ClothingBrandFlow(key: const ValueKey('flow-ms-15-10-12-intro'), start: ClothingStage.intro, state: state);
 }

@@ -2,14 +2,11 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'hustle_flow.dart';
 
-/// Canvas `ms-23-13-15-intro`: 13–15 intro. Section: App 12. Ages 13–15: Side Hustle.
-/// Replace the body with the real screen; keep the signature and the key.
+/// Canvas `ms-23-13-15-intro`: 13–15 intro. Entry point (route /mission/13-15).
+/// The screen lives in the mission's state machine (hustle_flow.dart); opened
+/// directly (gallery, `?state=`) it starts at this stage with a sample play.
 Widget build_ms_23_13_15_intro(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-ms-23-13-15-intro'),
-    title: '13–15 intro',
-    child: Center(child: Text('TODO ms-23-13-15-intro')),
-  );
+  return SideHustleFlow(key: const ValueKey('flow-ms-23-13-15-intro'), start: HustleStage.intro, state: state);
 }

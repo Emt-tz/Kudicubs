@@ -2,14 +2,11 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'clothing_flow.dart';
 
-/// Canvas `ms-18-10-12-result-retry`: 10–12 result: try again. Section: App 11. Ages 10–12: Clothing Brand.
-/// Replace the body with the real screen; keep the signature and the key.
+/// Canvas `ms-18-10-12-result-retry`: 10–12 try-again result. A stage of the same mission.
+/// The screen lives in the mission's state machine (clothing_flow.dart); opened
+/// directly (gallery, `?state=`) it starts at this stage with a sample play.
 Widget build_ms_18_10_12_result_retry(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-ms-18-10-12-result-retry'),
-    title: '10–12 result: try again',
-    child: Center(child: Text('TODO ms-18-10-12-result-retry')),
-  );
+  return ClothingBrandFlow(key: const ValueKey('flow-ms-18-10-12-result-retry'), start: ClothingStage.result, state: state, poor: true);
 }
