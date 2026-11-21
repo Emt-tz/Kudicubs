@@ -112,8 +112,22 @@ test.describe("Parent Dashboard part A", () => {
       await page.getByRole("button", { name: "Send me a code" }).click();
       await expect(page).toHaveURL(/\/dashboard\/code$/);
       await expect(page.getByText(email)).toBeVisible();
-      await page.getByLabel("6-digit code").fill(await getMailCode(email, { since }));
-      await page.getByRole("button", { name: "Sign in" }).click();
+      // Only the newest code per address is valid: wait for the message that arrived after the send, and
+      // if the first try is rejected, ask for a fresh code and retry once.
+      let sentAt = since;
+      for (let attempt = 0; attempt < 2; attempt++) {
+        await page.getByLabel("6-digit code").fill(await getMailCode(email, { since: sentAt, timeoutMs: 20_000 }));
+        await page.getByRole("button", { name: /^(Sign in|Try again)$/ }).click();
+        const landed = await page
+          .waitForURL(/\/dashboard$/, { timeout: 8_000 })
+          .then(() => true)
+          .catch(() => false);
+        if (landed) break;
+        if (attempt === 1) break;
+        sentAt = Date.now() - 1000;
+        await page.getByRole("button", { name: "Send a new code" }).click();
+        await expect(page.getByText(`We sent a new code to`)).toBeVisible();
+      }
       await expect(page).toHaveURL(/\/dashboard$/);
       await expect(page.getByRole("heading", { name: "No children yet" })).toBeVisible();
     } finally {

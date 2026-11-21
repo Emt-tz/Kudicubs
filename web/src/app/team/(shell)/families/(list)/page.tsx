@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getStaff } from "@/lib/auth/session";
 import { getDemoState } from "@/lib/demo-state";
-import { listFamilies } from "../../_lib/data";
-import { BAND_VALUES, REGION_VALUES, first, safeSearch, type SP } from "../../_lib/format";
-import { Notice, StatusCard } from "../../_lib/ui";
+import { listFamilies } from "../../../_lib/data";
+import { BAND_VALUES, REGION_VALUES, first, safeSearch, type SP } from "../../../_lib/format";
+import { Notice, StatusCard } from "../../../_lib/ui";
 import { FamiliesFilters, FamiliesHeader, FamiliesSkeleton, FamiliesTable, Pagination } from "./FamiliesView";
 
 export const metadata: Metadata = { title: "Families" };

@@ -29,10 +29,16 @@ final parentRepositoryProvider = Provider((ref) => ParentRepository(ref.watch(su
 // ---- Session & connectivity ----------------------------------------------
 
 /// Current Supabase session (null = signed out). Emits immediately, then on every auth change.
-final sessionProvider = StreamProvider<sb.Session?>((ref) async* {
+final sessionProvider = StreamProvider<sb.Session?>((ref) {
   final auth = ref.watch(authRepositoryProvider);
-  yield auth.currentSession;
-  yield* auth.sessionChanges;
+  final controller = StreamController<sb.Session?>();
+  controller.add(auth.currentSession);
+  final sub = auth.sessionChanges.listen(controller.add, onError: controller.addError);
+  ref.onDispose(() {
+    sub.cancel();
+    controller.close();
+  });
+  return controller.stream;
 });
 
 /// True while the API answers. Re-checked every 10 s; replays the outboxes on reconnect.

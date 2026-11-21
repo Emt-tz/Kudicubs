@@ -169,13 +169,15 @@ class _SplashViewState extends ConsumerState<SplashView> {
 
   /// Signed-in or already onboarded -> /home, otherwise -> /welcome.
   Future<void> _route() async {
+    debugPrint('SPLASH route start path=${currentPath(context)} mounted=$mounted');
     if (!mounted || currentPath(context) != '/splash') return;
     var signedIn = false;
     try {
-      signedIn = (await ref.read(sessionProvider.future)) != null;
+      signedIn = (await ref.read(sessionProvider.future).timeout(const Duration(seconds: 3))) != null;
     } catch (_) {
       // Offline / storage trouble: fall back to the saved onboarding flag.
     }
+    debugPrint('SPLASH signedIn=$signedIn');
     if (!mounted) return;
     final onboarded = ref.read(onboardedProvider);
     if (signedIn && !onboarded) {

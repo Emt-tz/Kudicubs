@@ -9,8 +9,11 @@ test.describe("Team Console as staff (admin)", () => {
     await signInAs(page, STAFF_EMAIL, "team");
     await page.goto("/team/families");
     await expect(page.getByRole("heading", { name: "Families", level: 1 })).toBeVisible();
-    for (const nickname of ["Ama", "Kofi", "Zara", "Tobi"]) {
-      await expect(page.getByRole("cell", { name: nickname, exact: true })).toBeVisible();
+    // The list is paged (10 per page, by nickname) and several families share a nickname, so look each one up.
+    await expect(page.getByRole("cell", { name: "Ama", exact: true }).first()).toBeVisible();
+    for (const nickname of ["Kofi", "Zara", "Tobi"]) {
+      await page.goto(`/team/families?q=${nickname}`);
+      await expect(page.getByRole("cell", { name: nickname, exact: true }).first()).toBeVisible();
     }
   });
 
@@ -20,7 +23,7 @@ test.describe("Team Console as staff (admin)", () => {
     await expect(page.getByRole("heading", { name: /No families match/ })).toBeVisible();
     await expect(page.getByRole("table")).toHaveCount(0);
     await page.getByRole("link", { name: "Clear search" }).click();
-    await expect(page.getByRole("cell", { name: "Ama", exact: true })).toBeVisible();
+    await expect(page.getByRole("cell", { name: "Ama", exact: true }).first()).toBeVisible();
   });
 
   test("a family opens with children, balances and no pin hash", async ({ page }) => {
@@ -47,8 +50,10 @@ test.describe("Team Console as staff (admin)", () => {
       await page.goto(`/team/content/${id}`);
       await page.getByRole("button", { name: toggle }).click();
       await expect(page.getByRole("button", { name: restore })).toBeVisible();
-      const { data: after } = await supabase.from("missions").select("published").eq("id", id).single();
-      expect(after!.published).toBe(!original);
+      // The button can flip a moment before the write is visible to a second client, so poll the row.
+      await expect
+        .poll(async () => (await supabase.from("missions").select("published").eq("id", id).single()).data?.published)
+        .toBe(!original);
       await page.reload();
       await expect(page.getByRole("button", { name: restore })).toBeVisible();
     } finally {
@@ -57,8 +62,9 @@ test.describe("Team Console as staff (admin)", () => {
         await page.goto(`/team/content/${id}`);
         await page.getByRole("button", { name: restore }).click();
       }
-      const { data: end } = await supabase.from("missions").select("published").eq("id", id).single();
-      expect(end!.published).toBe(original);
+      await expect
+        .poll(async () => (await supabase.from("missions").select("published").eq("id", id).single()).data?.published)
+        .toBe(original);
     }
   });
 

@@ -151,7 +151,7 @@ test.describe("family settings and PIN", () => {
   });
 
   test("five wrong tries lock the PIN", async ({ page }) => {
-    await newFamily(page);
+    const { supabase } = await newFamily(page);
     await page.goto("/dashboard/settings?change=pin");
     for (let i = 0; i < 5; i++) {
       await expect(page.getByLabel("Current PIN")).toHaveValue(""); // React clears the form after each submit
@@ -159,11 +159,13 @@ test.describe("family settings and PIN", () => {
       await page.getByLabel("New PIN", { exact: true }).fill("7391");
       await page.getByLabel("Confirm new PIN").fill("7391");
       await page.getByRole("button", { name: "Change PIN" }).click();
-      await expect(page.getByText(i < 4 ? "does not match your current PIN" : "Too many wrong tries").first()).toBeVisible();
+      // verify_pin answers 'wrong' for tries 1-4 and 'locked' on the 5th (the action maps those to the two messages).
+      await expect(page.getByText(i < 4 ? /does not match your current PIN/ : /Too many wrong tries/).first()).toBeVisible();
       await expect(page.getByRole("button", { name: /Change PIN|Changing/ })).toBeEnabled();
       await page.waitForTimeout(300);
     }
-    await expect(page.getByText("Too many wrong tries")).toBeVisible();
+    await expect(page.getByText(/Too many wrong tries/).first()).toBeVisible();
+    expect((await supabase.rpc("verify_pin", { pin: PIN })).data).toBe("locked");
   });
 
   test("the family region is saved", async ({ page }) => {

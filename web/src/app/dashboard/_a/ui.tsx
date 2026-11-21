@@ -166,7 +166,7 @@ export function EmptyPanel({ image, alt, title, body, children }: { image: strin
 export function OverviewSkeleton() {
   return (
     <div className="da" role="status" aria-busy="true" aria-live="polite">
-      <span className="sr-only">Loading your family...</span>
+      <h1 className="sr-only">Overview</h1>
       <div className="da-head">
         <div className="da-head-text">
           <Skeleton width={220} height={32} />
@@ -207,7 +207,7 @@ export function OverviewSkeleton() {
 export function ChildSkeleton() {
   return (
     <div className="da" role="status" aria-busy="true" aria-live="polite">
-      <span className="sr-only">Loading</span>
+      <h1 className="sr-only">Child profile</h1>
       <div className="da-head">
         <div className="da-child-id">
           <Skeleton width={56} height={56} style={{ borderRadius: 999 }} />

@@ -52,7 +52,10 @@ export async function getMailCode(email: string, opts: { since?: number; timeout
       );
       if (hit) {
         const msg = (await (await fetch(`${MAILPIT_URL}/api/v1/message/${hit.ID}`)).json()) as { Text?: string; HTML?: string };
-        const m = /(?<!\d)(\d{6})(?!\d)/.exec(msg.Text ?? "") ?? /(?<!\d)(\d{6})(?!\d)/.exec((msg.HTML ?? "").replace(/<[^>]+>/g, " "));
+        // The magic-link URL comes first and its hex token can hold a run of six digits, so read the code
+        // after "enter the code" (fallback: a standalone 6-digit number not touching letters or hex).
+        const text = msg.Text ?? (msg.HTML ?? "").replace(/<[^>]+>/g, " ");
+        const m = /enter the code:?\s*(\d{6})(?!\d)/i.exec(text) ?? /(?<![\w=])(\d{6})(?![\w])/.exec(text);
         if (m) return m[1];
       }
     }
@@ -73,22 +76,36 @@ export async function apiSignIn(email: string) {
   // Another test or person may request a code for the same address at the same time (only the newest
   // code is valid), so the whole send + read + verify step is retried.
   let lastError = "";
-  for (let attempt = 0; attempt < 4; attempt++) {
-    const since = Date.now() - 1000;
+  const used = new Set<string>();
+  for (let attempt = 0; attempt < 3; attempt++) {
+    // Mailpit stamps messages on the same host; a small margin keeps clock rounding from hiding the new one.
+    const since = Date.now() - 500;
     const sent = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: false } });
     if (sent.error) {
       lastError = `signInWithOtp: ${sent.error.message}`;
+      await sleep(2000);
+      continue;
+    }
+    let token = "";
+    try {
+      token = await getMailCode(email, { since, timeoutMs: 20_000 });
+    } catch (e) {
+      lastError = (e as Error).message;
+      continue;
+    }
+    if (used.has(token)) {
+      lastError = "verifyOtp: same code as the previous attempt";
       await sleep(1500);
       continue;
     }
-    const token = await getMailCode(email, { since });
+    used.add(token);
     const { error } = await supabase.auth.verifyOtp({ email, token, type: "email" });
     if (!error) {
       lastError = "";
       break;
     }
     lastError = `verifyOtp: ${error.message}`;
-    await sleep(1200);
+    await sleep(1500);
   }
   if (lastError) throw new Error(`Sign-in as ${email} failed: ${lastError}`);
   for (let i = 0; i < 20 && jar.size === 0; i++) await sleep(100); // @supabase/ssr writes cookies on the auth event

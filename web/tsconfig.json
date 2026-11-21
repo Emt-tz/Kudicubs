@@ -42,7 +42,9 @@
     ".next-dashB/types/**/*.ts",
     ".next-dashB/dev/types/**/*.ts",
     ".next-dashA/types/**/*.ts",
-    ".next-dashA/dev/types/**/*.ts"
+    ".next-dashA/dev/types/**/*.ts",
+    ".next-online/types/**/*.ts",
+    ".next-online/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

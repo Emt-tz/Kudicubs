@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Skeleton } from "@/components/Skeleton";
-import { BAND_LABEL, BAND_VALUES, REGION_LABEL, REGION_VALUES, relativeDay } from "../../_lib/format";
-import { PAGE_SIZE, isActive, type FamilyRow } from "../../_lib/data";
-import { StatusChip } from "../../_lib/ui";
+import { BAND_LABEL, BAND_VALUES, REGION_LABEL, REGION_VALUES, relativeDay } from "../../../_lib/format";
+import { PAGE_SIZE, isActive, type FamilyRow } from "../../../_lib/data";
+import { StatusChip } from "../../../_lib/ui";
 
 export function FamiliesHeader({ intro }: { intro: string }) {
   return (
