@@ -1,9 +1,27 @@
+import Link from "next/link";
 import type { Metadata } from "next";
-import { ScreenStub } from "@/components/ScreenStub";
+import { StatusCard } from "../../_lib/ui";
 
 export const metadata: Metadata = { title: "Server error" };
 
-// Canvas: tc-10-error. Replace the body of this page; the route is this file's location.
+// tc-10-error: something failed on our side. Nothing was changed.
 export default function Page() {
-  return <ScreenStub ids={["tc-10-error"]} />;
+  return (
+    <StatusCard
+      screen="tc-10-error"
+      title="We could not load this"
+      body="Something went wrong on our side. Nothing has been changed. Try again in a moment. If it keeps happening, contact support."
+      reference="503 Service unavailable"
+      actions={
+        <>
+          <Link className="btn btn-primary" href="/team/families">
+            Try again
+          </Link>
+          <Link className="btn" href="/contact">
+            Contact support
+          </Link>
+        </>
+      }
+    />
+  );
 }

@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { ScreenStub } from "@/components/ScreenStub";
+import { SignInForm } from "./SignInForm";
 
 export const metadata: Metadata = { title: "Staff sign-in" };
 
-// Canvas: tc-01-signin. Replace the body of this page; the route is this file's location.
+// tc-01-signin: email one-time code. Never reveals whether an address belongs to staff.
 export default function Page() {
-  return <ScreenStub ids={["tc-01-signin"]} />;
+  return (
+    <div data-screen="tc-01-signin">
+      <SignInForm />
+    </div>
+  );
 }

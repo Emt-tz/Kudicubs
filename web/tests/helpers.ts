@@ -70,16 +70,27 @@ export async function apiSignIn(email: string) {
       setAll: (list) => list.forEach(({ name, value }) => jar.set(name, { name, value })),
     },
   });
-  const since = Date.now() - 1000;
-  for (let attempt = 0; ; attempt++) {
-    const { error } = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: false } });
-    if (!error) break;
-    if (attempt >= 4) throw new Error(`signInWithOtp(${email}) failed: ${error.message}`);
-    await sleep(1500);
+  // Another test or person may request a code for the same address at the same time (only the newest
+  // code is valid), so the whole send + read + verify step is retried.
+  let lastError = "";
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const since = Date.now() - 1000;
+    const sent = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: false } });
+    if (sent.error) {
+      lastError = `signInWithOtp: ${sent.error.message}`;
+      await sleep(1500);
+      continue;
+    }
+    const token = await getMailCode(email, { since });
+    const { error } = await supabase.auth.verifyOtp({ email, token, type: "email" });
+    if (!error) {
+      lastError = "";
+      break;
+    }
+    lastError = `verifyOtp: ${error.message}`;
+    await sleep(1200);
   }
-  const token = await getMailCode(email, { since });
-  const { error } = await supabase.auth.verifyOtp({ email, token, type: "email" });
-  if (error) throw new Error(`verifyOtp(${email}) failed: ${error.message}`);
+  if (lastError) throw new Error(`Sign-in as ${email} failed: ${lastError}`);
   for (let i = 0; i < 20 && jar.size === 0; i++) await sleep(100); // @supabase/ssr writes cookies on the auth event
   if (jar.size === 0) throw new Error("No session cookies were produced");
   return { supabase, cookies: [...jar.values()] };
