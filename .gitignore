@@ -25,6 +25,7 @@ env/*.json
 
 # Design tools (002)
 tools/design/node_modules/
+scripts/node_modules/
 tools/design/test-results/
 tools/design/playwright-report/
 prototype-*.zip
