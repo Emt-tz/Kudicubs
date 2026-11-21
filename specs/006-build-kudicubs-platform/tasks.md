@@ -24,7 +24,7 @@ Parallel workstreams; each owns separate folders so merges are trivial. [P] = ca
 
 ## Phase 3 — Verification
 - [x] T030 Web: Playwright coverage (60/60), journeys, access checks, `npm audit` clean
-- [ ] T031 App: `flutter analyze`, widget tests, band rules; integration test on the booted iOS simulator; screenshots of all 108 screens
+- [X] T031 App: `flutter analyze`, widget tests, band rules; integration test on the booted iOS simulator (app/integration_test/simulator_test.dart: real email-code sign-in, children from backend, all 108 screens in 2 states, no exceptions; found and fixed an au-12 overflow). Not done: per-screen screenshots of all 108.
 - [x] T032 Backend access tests (cross-family isolation, staff role, wallet append-only)
 - [ ] T033 Cross-surface check: earn coins on the app → visible in web dashboard
 

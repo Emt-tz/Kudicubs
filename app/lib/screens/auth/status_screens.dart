@@ -111,7 +111,7 @@ class JoinedScreen extends ConsumerWidget {
         const SizedBox(height: 14),
         Semantics(header: true, child: Text('You joined the Pride!', style: KcText.displayXl, textAlign: TextAlign.center)),
         Expanded(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          child: Center(child: SingleChildScrollView(child: Column(mainAxisSize: MainAxisSize.min, children: [
             const KudiImage(KudiPose.celebrate, width: 240),
             const SizedBox(height: 14),
             if (name.isNotEmpty)
@@ -134,7 +134,7 @@ class JoinedScreen extends ConsumerWidget {
               ),
             const SizedBox(height: 14),
             Text('Kudi is waiting with your first mission.', style: KcText.bodyChild, textAlign: TextAlign.center),
-          ]),
+          ]))),
         ),
       ]),
     );
