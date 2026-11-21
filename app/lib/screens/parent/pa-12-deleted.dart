@@ -9,6 +9,7 @@ import '../../core/theme/theme.dart';
 import '../../core/widgets/widgets.dart';
 import 'parent_data.dart';
 import 'parent_widgets.dart';
+import 'package:flutter/services.dart';
 
 /// Canvas `pa-12-deleted`: the family data is gone. "Back to start" clears this phone and opens the welcome screen.
 Widget build_pa_12_deleted(BuildContext context, ScreenState state) =>
@@ -35,6 +36,7 @@ class DeletedView extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: Kc.brown,
+    appBar: AppBar(toolbarHeight: 0, primary: false, elevation: 0, scrolledUnderElevation: 0, backgroundColor: Kc.brown, systemOverlayStyle: SystemUiOverlayStyle.light),
     body: SafeArea(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(24, 16, 24, 28),

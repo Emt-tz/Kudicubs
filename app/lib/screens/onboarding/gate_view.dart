@@ -116,6 +116,7 @@ class _GateViewState extends ConsumerState<GateView> {
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: Kc.brown,
+    appBar: AppBar(toolbarHeight: 0, primary: false, elevation: 0, scrolledUnderElevation: 0, backgroundColor: Kc.brown, systemOverlayStyle: SystemUiOverlayStyle.light),
     body: SafeArea(
       child: AnimatedBuilder(
         animation: _machine,

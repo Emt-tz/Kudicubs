@@ -1,3 +1,4 @@
+import '../../core/widgets/friend_art.dart';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -172,7 +173,11 @@ class _SplashViewState extends ConsumerState<SplashView> {
     if (!mounted || currentPath(context) != '/splash') return;
     var signedIn = false;
     try {
-      signedIn = (await ref.read(sessionProvider.future).timeout(const Duration(seconds: 3))) != null;
+      signedIn =
+          (await ref
+              .read(sessionProvider.future)
+              .timeout(const Duration(seconds: 3))) !=
+          null;
     } catch (_) {
       // Offline / storage trouble: fall back to the saved onboarding flag.
     }
@@ -726,14 +731,10 @@ class _AvatarCard extends StatelessWidget {
               : null,
         ),
         alignment: Alignment.center,
-        child: Container(
-          width: 84,
-          height: 84,
-          decoration: BoxDecoration(
-            color: _avatarColors[index],
-            shape: BoxShape.circle,
-            border: Border.all(color: Kc.brown, width: 3),
-          ),
+        child: FriendArt(
+          'cub-friend-${index + 1}',
+          size: 96,
+          fallback: _avatarColors[index],
         ),
       ),
     ),

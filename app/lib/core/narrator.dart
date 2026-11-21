@@ -31,9 +31,14 @@ class Narrator {
   Future<void> say(String lineId) async {
     try {
       _player ??= AudioPlayer();
-      await _player!.setAudioContext(AudioContextConfig(route: AudioContextConfigRoute.system, focus: AudioContextConfigFocus.gain).build());
+      await _player!.setAudioContext(
+        AudioContextConfig(
+          route: AudioContextConfigRoute.system,
+          focus: AudioContextConfigFocus.gain,
+        ).build(),
+      );
       await _player!.stop();
-      await _player!.play(AssetSource('audio/en-GH/$lineId.mp3'));
+      await _player!.play(AssetSource('audio/en-GH/$lineId.m4a'));
     } catch (_) {
       // No audio engine (tests, unsupported device): stay silent.
     }

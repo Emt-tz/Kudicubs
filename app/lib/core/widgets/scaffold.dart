@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
 import '../theme/theme.dart';
@@ -33,7 +34,9 @@ class ScreenScaffold extends StatelessWidget {
     final fg = dark ? Kc.cream : Kc.brown;
     Widget body = Padding(padding: padding, child: child);
     if (scrollable) body = SingleChildScrollView(child: body);
-    return Scaffold(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: dark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
+      child: Scaffold(
       backgroundColor: background,
       body: SafeArea(
         child: Column(
@@ -68,6 +71,7 @@ class ScreenScaffold extends StatelessWidget {
               ),
           ],
         ),
+      ),
       ),
     );
   }

@@ -144,7 +144,7 @@ class HomeScreen extends ConsumerWidget {
                     _DailyCard(done: done, onTap: () => context.push('/daily')),
                     const SizedBox(height: Kc.s4),
                     Row(children: [
-                      Expanded(child: Text('$badgeCount badges', style: KcText.label)),
+                      Expanded(child: Text(badgeCount == 1 ? '1 badge' : '$badgeCount badges', style: KcText.label)),
                       Text('$symbol coins', style: KcText.label),
                     ]),
                   ]),
@@ -185,7 +185,7 @@ class _MissionCard extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Text(first ? 'Start your first mission' : 'Next mission', style: KcText.label),
         const SizedBox(height: Kc.s1),
-        Text(first ? '$title is waiting for you!' : title, style: KcText.title),
+        Text(first ? '$title ${title.endsWith('s') ? 'are' : 'is'} waiting for you!' : title, style: KcText.title),
         if (hint) ...[
           const SizedBox(height: Kc.s2),
           Semantics(

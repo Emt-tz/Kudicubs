@@ -12,6 +12,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/theme/theme.dart';
 import '../../core/widgets/widgets.dart';
 import 'parent_logic.dart';
+import '../../core/widgets/friend_art.dart';
 
 // ---- Text styles (cream on brown) --------------------------------------------------
 
@@ -52,6 +53,7 @@ class ParentPage extends StatelessWidget {
     final body = scroll ? SingleChildScrollView(child: child) : child;
     return Scaffold(
       backgroundColor: Kc.brown,
+      appBar: AppBar(toolbarHeight: 0, primary: false, elevation: 0, scrolledUnderElevation: 0, backgroundColor: Kc.brown, systemOverlayStyle: SystemUiOverlayStyle.light),
       body: SafeArea(
         child: Stack(
           children: [
@@ -507,15 +509,8 @@ class ChildAvatar extends StatelessWidget {
   final double size;
 
   @override
-  Widget build(BuildContext context) => Container(
-    width: size,
-    height: size,
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      color: avatarColor(avatar),
-      border: Border.all(color: Kc.softGold, width: 3),
-    ),
-  );
+  Widget build(BuildContext context) =>
+      FriendArt(avatar, size: size, fallback: avatarColor(avatar), borderColor: Kc.softGold);
 }
 
 /// Grey-ish placeholder tile for loading (`pa-02`).

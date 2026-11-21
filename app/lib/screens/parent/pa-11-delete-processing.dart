@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../core/screen_state.dart';
 import '../../core/theme/theme.dart';
 import 'parent_widgets.dart';
+import 'package:flutter/services.dart';
 
 /// Canvas `pa-11-delete-processing`: shown while `delete_my_family` runs. Keep this screen open.
 Widget build_pa_11_delete_processing(BuildContext context, ScreenState state) =>
@@ -29,6 +30,7 @@ class DeleteProcessingView extends StatelessWidget {
     );
     return Scaffold(
       backgroundColor: Kc.brown,
+      appBar: AppBar(toolbarHeight: 0, primary: false, elevation: 0, scrolledUnderElevation: 0, backgroundColor: Kc.brown, systemOverlayStyle: SystemUiOverlayStyle.light),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

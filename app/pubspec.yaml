@@ -65,6 +65,7 @@ flutter:
   assets:
     - assets/brand/
     - assets/audio/en-GH/
+    - assets/art/avatars/
   fonts:
     - family: Baloo2
       fonts:

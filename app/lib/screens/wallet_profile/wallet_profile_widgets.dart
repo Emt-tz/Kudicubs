@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/theme/theme.dart';
 import 'wallet_profile_logic.dart';
+import '../../core/widgets/friend_art.dart';
 
 TextStyle baloo(double size, {int weight = 800, Color color = Kc.brown, double height = 1.1}) => TextStyle(
       fontFamily: 'Baloo2',
@@ -244,15 +245,7 @@ class AvatarCircle extends StatelessWidget {
   final double border;
 
   @override
-  Widget build(BuildContext context) => Container(
-        width: size,
-        height: size,
-        decoration: BoxDecoration(
-          color: avatarColor(avatar),
-          shape: BoxShape.circle,
-          border: Border.all(color: Kc.brown, width: border),
-        ),
-      );
+  Widget build(BuildContext context) => FriendArt(avatar, size: size, border: border, fallback: avatarColor(avatar));
 }
 
 /// Horizontal bar; [fraction] is 0..1.
