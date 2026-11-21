@@ -44,12 +44,17 @@ class StateGate extends StatelessWidget {
   final VoidCallback? onRetry;
 
   @override
-  Widget build(BuildContext context) => ScreenStateView(
-        state: state,
-        normal: normal,
-        onRetry: onRetry,
-        empty: const EmptyView(title: 'Add a child first', message: 'Missions need a child profile to play.'),
-      );
+  Widget build(BuildContext context) {
+    final view = ScreenStateView(
+      state: state,
+      normal: normal,
+      onRetry: onRetry,
+      empty: const EmptyView(title: 'Add a child first', message: 'Missions need a child profile to play.'),
+    );
+    if (state == ScreenState.normal) return view;
+    // The state views have no page of their own; give them one (cream, safe area).
+    return Material(color: Kc.cream, child: SafeArea(child: view));
+  }
 }
 
 /// Round white "<" button with the eyebrow and title from the canvas header.

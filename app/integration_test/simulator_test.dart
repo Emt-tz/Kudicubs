@@ -61,7 +61,6 @@ void main() {
     final router = container.read(routerProvider);
 
     await binding.convertFlutterSurfaceToImage();
-    var shots = 0;
     for (final id in registry.keys) {
       for (final st in [ScreenState.normal, ScreenState.error]) {
         router.go('/screen/$id?state=${st.name}');
@@ -69,8 +68,10 @@ void main() {
         await tester.pump(const Duration(milliseconds: 500));
         expect(find.byKey(Key('screen-$id')), findsAtLeastNWidgets(1), reason: '$id/${st.name}');
         expect(tester.takeException(), isNull, reason: '$id/${st.name}');
+        final bytes = await binding.takeScreenshot('screen-$id-${st.name}');
+        final dir = Directory('/Users/apple/Documents/GitHub/Kudicubs/export/shots')..createSync(recursive: true);
+        File('${dir.path}/$id.${st.name}.png').writeAsBytesSync(bytes);
       }
-      if (shots++ % 12 == 0) await binding.takeScreenshot('screen-$id');
     }
     expect(registry.length, 108);
   });
