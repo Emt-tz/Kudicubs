@@ -2,14 +2,13 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'onboarding_views.dart';
 
-/// Canvas `ob-05-avatar-empty`: Avatar: nothing chosen. Section: App 2. Child setup and the grown-up gate.
-/// Replace the body with the real screen; keep the signature and the key.
+/// Canvas `ob-05-avatar-empty`: Avatar: nothing chosen (validation state).
 Widget build_ob_05_avatar_empty(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-ob-05-avatar-empty'),
-    title: 'Avatar: nothing chosen',
-    child: Center(child: Text('TODO ob-05-avatar-empty')),
+  return onboardingFrame(
+    id: 'ob-05-avatar-empty',
+    state: state,
+    normal: const AvatarView(startEmpty: true),
   );
 }

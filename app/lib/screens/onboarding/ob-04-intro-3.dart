@@ -2,14 +2,13 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'onboarding_views.dart';
 
-/// Canvas `ob-04-intro-3`: Intro 3: Roar. Section: App 1. Launch and welcome.
-/// Replace the body with the real screen; keep the signature and the key.
+/// Canvas `ob-04-intro-3`: Intro 3: Roar.
 Widget build_ob_04_intro_3(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-ob-04-intro-3'),
-    title: 'Intro 3: Roar',
-    child: Center(child: Text('TODO ob-04-intro-3')),
+  return onboardingFrame(
+    id: 'ob-04-intro-3',
+    state: state,
+    normal: const IntroView(startPage: 2),
   );
 }

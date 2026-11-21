@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'gate_view.dart';
+import 'onboarding_views.dart';
 
-/// Canvas `ob-07-gate-wrong`: Gate: wrong answer. Section: App 2. Child setup and the grown-up gate.
-/// Replace the body with the real screen; keep the signature and the key.
+/// Canvas `ob-07-gate-wrong`: Gate: wrong answer.
 Widget build_ob_07_gate_wrong(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-ob-07-gate-wrong'),
-    title: 'Gate: wrong answer',
-    child: Center(child: Text('TODO ob-07-gate-wrong')),
+  return onboardingFrame(
+    id: 'ob-07-gate-wrong',
+    state: state,
+    normal: const GateView(variant: GateVariant.wrong),
   );
 }

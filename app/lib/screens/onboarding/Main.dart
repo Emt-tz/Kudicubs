@@ -2,14 +2,9 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'onboarding_views.dart';
 
-/// Canvas `Main`: Welcome. Section: App 1. Launch and welcome.
-/// Replace the body with the real screen; keep the signature and the key.
+/// Canvas `Main`: Welcome.
 Widget build_Main(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-Main'),
-    title: 'Welcome',
-    child: Center(child: Text('TODO Main')),
-  );
+  return onboardingFrame(id: 'Main', state: state, normal: const WelcomeView());
 }

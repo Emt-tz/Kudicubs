@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'onboarding_views.dart';
 
-/// Canvas `ob-01-splash`: Splash and loading. Section: App 1. Launch and welcome.
-/// Replace the body with the real screen; keep the signature and the key.
+/// Canvas `ob-01-splash`: Splash: checks the session and onboarding flag, then routes to /welcome or /home.
 Widget build_ob_01_splash(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-ob-01-splash'),
-    title: 'Splash and loading',
-    child: Center(child: Text('TODO ob-01-splash')),
+  return onboardingFrame(
+    id: 'ob-01-splash',
+    state: state,
+    loadingIsNormal: true,
+    normal: const SplashView(),
   );
 }
