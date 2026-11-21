@@ -2,14 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'status_screens.dart';
 
-/// Canvas `au-12-joined`: You joined the Pride. Section: App 4. Verify and join the Pride.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_au_12_joined(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-au-12-joined'),
-    title: 'You joined the Pride',
-    child: Center(child: Text('TODO au-12-joined')),
-  );
-}
+/// Canvas `au-12-joined`. Real behaviour lives in status_screens.dart; the gallery `state` shows the designed variant.
+Widget build_au_12_joined(BuildContext context, ScreenState state) => JoinedScreen(demo: state);

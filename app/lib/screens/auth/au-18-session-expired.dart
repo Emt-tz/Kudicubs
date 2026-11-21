@@ -2,14 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'status_screens.dart';
 
-/// Canvas `au-18-session-expired`: Session expired. Section: App 5. Returning parent sign-in.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_au_18_session_expired(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-au-18-session-expired'),
-    title: 'Session expired',
-    child: Center(child: Text('TODO au-18-session-expired')),
-  );
-}
+/// Canvas `au-18-session-expired`. Real behaviour lives in status_screens.dart; the gallery `state` shows the designed variant.
+Widget build_au_18_session_expired(BuildContext context, ScreenState state) => SessionExpiredScreen(demo: state);

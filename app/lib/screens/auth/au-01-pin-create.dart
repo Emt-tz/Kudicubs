@@ -2,14 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'pin_screen.dart';
 
-/// Canvas `au-01-pin-create`: Create PIN. Section: App 3. Parent setup: PIN, country, email.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_au_01_pin_create(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-au-01-pin-create'),
-    title: 'Create PIN',
-    child: Center(child: Text('TODO au-01-pin-create')),
-  );
-}
+/// Canvas `au-01-pin-create`. Real behaviour lives in pin_screen.dart; the gallery `state` shows the designed variant.
+Widget build_au_01_pin_create(BuildContext context, ScreenState state) => PinScreen(demo: state);

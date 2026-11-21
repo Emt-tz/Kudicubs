@@ -2,14 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'status_screens.dart';
 
-/// Canvas `au-17-recovery-sent`: Recovery code sent. Section: App 5. Returning parent sign-in.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_au_17_recovery_sent(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-au-17-recovery-sent'),
-    title: 'Recovery code sent',
-    child: Center(child: Text('TODO au-17-recovery-sent')),
-  );
-}
+/// Canvas `au-17-recovery-sent`. Real behaviour lives in status_screens.dart; the gallery `state` shows the designed variant.
+Widget build_au_17_recovery_sent(BuildContext context, ScreenState state) => RecoverySentScreen(demo: state);

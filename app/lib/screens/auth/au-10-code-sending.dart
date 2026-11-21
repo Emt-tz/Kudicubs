@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'auth_state.dart';
+import 'code_screen.dart';
 
-/// Canvas `au-10-code-sending`: Verifying (loading). Section: App 4. Verify and join the Pride.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_au_10_code_sending(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-au-10-code-sending'),
-    title: 'Verifying (loading)',
-    child: Center(child: Text('TODO au-10-code-sending')),
-  );
-}
+/// Canvas `au-10-code-sending`. Real behaviour lives in code_screen.dart; the gallery `state` shows the designed variant.
+Widget build_au_10_code_sending(BuildContext context, ScreenState state) => CodeScreen(forced: CodePhase.verifying, demo: state);

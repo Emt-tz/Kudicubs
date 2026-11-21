@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'auth_state.dart';
+import 'code_screen.dart';
 
-/// Canvas `au-07-code`: Enter emailed code. Section: App 4. Verify and join the Pride.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_au_07_code(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-au-07-code'),
-    title: 'Enter emailed code',
-    child: Center(child: Text('TODO au-07-code')),
-  );
-}
+/// Canvas `au-07-code`. Real behaviour lives in code_screen.dart; the gallery `state` shows the designed variant.
+Widget build_au_07_code(BuildContext context, ScreenState state) => CodeScreen(forced: CodePhase.idle, demo: state);

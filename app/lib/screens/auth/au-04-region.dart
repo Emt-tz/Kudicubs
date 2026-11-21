@@ -2,14 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'region_screen.dart';
 
-/// Canvas `au-04-region`: Choose country. Section: App 3. Parent setup: PIN, country, email.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_au_04_region(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-au-04-region'),
-    title: 'Choose country',
-    child: Center(child: Text('TODO au-04-region')),
-  );
-}
+/// Canvas `au-04-region`. Real behaviour lives in region_screen.dart; the gallery `state` shows the designed variant.
+Widget build_au_04_region(BuildContext context, ScreenState state) => RegionScreen(demo: state);

@@ -2,14 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'email_screen.dart';
 
-/// Canvas `au-15-signin-error`: Sign-in error. Section: App 5. Returning parent sign-in.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_au_15_signin_error(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-au-15-signin-error'),
-    title: 'Sign-in error',
-    child: Center(child: Text('TODO au-15-signin-error')),
-  );
-}
+/// Canvas `au-15-signin-error`. Real behaviour lives in email_screen.dart; the gallery `state` shows the designed variant.
+Widget build_au_15_signin_error(BuildContext context, ScreenState state) => EmailScreen(mode: EmailMode.signin, forced: EmailView.notFound, demo: state);

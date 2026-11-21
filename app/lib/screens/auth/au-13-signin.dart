@@ -2,14 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'email_screen.dart';
 
-/// Canvas `au-13-signin`: Parent sign-in. Section: App 5. Returning parent sign-in.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_au_13_signin(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-au-13-signin'),
-    title: 'Parent sign-in',
-    child: Center(child: Text('TODO au-13-signin')),
-  );
-}
+/// Canvas `au-13-signin`. Real behaviour lives in email_screen.dart; the gallery `state` shows the designed variant.
+Widget build_au_13_signin(BuildContext context, ScreenState state) => EmailScreen(mode: EmailMode.signin, demo: state);
