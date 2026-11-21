@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'system_view.dart';
 
-/// Canvas `sy-05-loading-generic`: Loading. Section: App 18. System states.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_sy_05_loading_generic(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-sy-05-loading-generic'),
-    title: 'Loading',
-    child: Center(child: Text('TODO sy-05-loading-generic')),
-  );
-}
+/// Canvas `sy-05-loading-generic`. System screen, wired to the router's systemStatusProvider with retry.
+Widget build_sy_05_loading_generic(BuildContext context, ScreenState state) =>
+    SystemView(screenKey: const Key('screen-sy-05-loading-generic'), kind: SystemKind.loading, state: state);

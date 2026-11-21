@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'daily_screen.dart';
 
-/// Canvas `hm-07-daily-complete`: Daily complete. Section: App 7. Daily challenge and rewards.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_hm_07_daily_complete(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-hm-07-daily-complete'),
-    title: 'Daily complete',
-    child: Center(child: Text('TODO hm-07-daily-complete')),
-  );
-}
+/// Canvas `hm-07-daily-complete`: Daily challenge, complete. Writes the +10 `daily` event once per day.
+Widget build_hm_07_daily_complete(BuildContext context, ScreenState state) =>
+    DailyScreen(screenKey: const Key('screen-hm-07-daily-complete'), forced: state, forceComplete: true);

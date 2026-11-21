@@ -2,14 +2,11 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'home_screen.dart';
 
-/// Canvas `app-05-home`: Home. Section: App 6. Home and its states.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_app_05_home(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-app-05-home'),
-    title: 'Home',
-    child: Center(child: Text('TODO app-05-home')),
-  );
-}
+/// Canvas `app-05-home`: Home. Real Home; the gallery opens this variant, real data otherwise.
+Widget build_app_05_home(BuildContext context, ScreenState state) => HomeScreen(
+      screenKey: const Key('screen-app-05-home'),
+      forced: state == ScreenState.normal ? ScreenState.normal : state,
+      forceHint: false,
+    );

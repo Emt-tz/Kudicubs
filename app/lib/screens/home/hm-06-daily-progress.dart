@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'daily_screen.dart';
 
-/// Canvas `hm-06-daily-progress`: Daily challenge. Section: App 7. Daily challenge and rewards.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_hm_06_daily_progress(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-hm-06-daily-progress'),
-    title: 'Daily challenge',
-    child: Center(child: Text('TODO hm-06-daily-progress')),
-  );
-}
+/// Canvas `hm-06-daily-progress`: Daily challenge, in progress (switches to the complete design at 3/3).
+Widget build_hm_06_daily_progress(BuildContext context, ScreenState state) =>
+    DailyScreen(screenKey: const Key('screen-hm-06-daily-progress'), forced: state);

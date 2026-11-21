@@ -2,14 +2,11 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'home_screen.dart';
 
-/// Canvas `hm-04-offline`: Home: offline. Section: App 6. Home and its states.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_hm_04_offline(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-hm-04-offline'),
-    title: 'Home: offline',
-    child: Center(child: Text('TODO hm-04-offline')),
-  );
-}
+/// Canvas `hm-04-offline`: Home, offline. Real Home; the gallery opens this variant, real data otherwise.
+Widget build_hm_04_offline(BuildContext context, ScreenState state) => HomeScreen(
+      screenKey: const Key('screen-hm-04-offline'),
+      forced: state == ScreenState.normal ? ScreenState.offline : state,
+      forceHint: false,
+    );
