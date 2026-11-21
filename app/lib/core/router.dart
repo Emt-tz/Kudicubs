@@ -96,6 +96,21 @@ Widget _screen(String id, ScreenState state, BuildContext context) {
   return NarrateOnShow(screenId: id, child: builder(context, state));
 }
 
+/// Screens slide up a little and fade in, so moving on feels like a step forward.
+Page<void> _page(GoRouterState state, Widget child) => CustomTransitionPage<void>(
+      key: state.pageKey,
+      child: child,
+      transitionDuration: const Duration(milliseconds: 320),
+      reverseTransitionDuration: const Duration(milliseconds: 220),
+      transitionsBuilder: (context, animation, secondary, child) {
+        final curved = CurvedAnimation(parent: animation, curve: Curves.easeOutCubic);
+        return FadeTransition(
+          opacity: curved,
+          child: SlideTransition(position: Tween(begin: const Offset(0, .04), end: Offset.zero).animate(curved), child: child),
+        );
+      },
+    );
+
 ScreenState _stateParam(String? s) =>
     ScreenState.values.firstWhere((v) => v.name == s, orElse: () => ScreenState.normal);
 
@@ -136,12 +151,12 @@ final routerProvider = Provider<GoRouter>((ref) {
     ),
     routes: [
       for (final e in flowScreens.entries)
-        GoRoute(path: e.key, builder: (context, state) => _screen(e.value, ScreenState.normal, context)),
+        GoRoute(path: e.key, pageBuilder: (context, state) => _page(state, _screen(e.value, ScreenState.normal, context))),
       GoRoute(
         path: '/mission/:band',
-        builder: (context, state) {
+        pageBuilder: (context, state) {
           final id = missionIntros[state.pathParameters['band']] ?? missionIntros['4-6']!;
-          return _screen(id, ScreenState.normal, context);
+          return _page(state, _screen(id, ScreenState.normal, context));
         },
       ),
       GoRoute(

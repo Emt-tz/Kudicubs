@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
 import '../theme/theme.dart';
+import 'motion.dart';
 
 /// Cream page with safe area, optional back button and optional title.
 /// [child] fills the remaining space; [bottom] is pinned under it (main action).
@@ -17,6 +18,7 @@ class ScreenScaffold extends StatelessWidget {
     this.background = Kc.cream,
     this.padding = const EdgeInsets.symmetric(horizontal: Kc.s5),
     this.scrollable = false,
+    this.celebrate = false,
   });
 
   final String? title;
@@ -28,6 +30,9 @@ class ScreenScaffold extends StatelessWidget {
   final EdgeInsets padding;
   final bool scrollable;
 
+  /// Win screens: a one-time burst of confetti and coins.
+  final bool celebrate;
+
   @override
   Widget build(BuildContext context) {
     final dark = background == Kc.brown;
@@ -38,7 +43,9 @@ class ScreenScaffold extends StatelessWidget {
       value: dark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
       child: Scaffold(
       backgroundColor: background,
-      body: SafeArea(
+      body: Stack(children: [
+      if (celebrate) const Positioned.fill(child: Confetti()),
+      SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -72,6 +79,7 @@ class ScreenScaffold extends StatelessWidget {
           ],
         ),
       ),
+      ]),
       ),
     );
   }

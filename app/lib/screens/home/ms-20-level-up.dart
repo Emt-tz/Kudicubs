@@ -5,6 +5,7 @@ import '../../core/screen_state.dart';
 import '../../core/theme/theme.dart';
 import '../../core/widgets/widgets.dart';
 import 'reward_coordinator.dart';
+import '../../core/widgets/motion.dart';
 
 /// Level-up celebration. Level formula: `levelForXp(xp) = 1 + xp ~/ 300` (reward_coordinator.dart).
 class LevelUpView extends StatelessWidget {
@@ -19,6 +20,7 @@ class LevelUpView extends StatelessWidget {
     return ScreenScaffold(
       key: const Key('screen-ms-20-level-up'),
       background: Kc.yellow,
+      celebrate: true,
       bottom: Padding(
         padding: const EdgeInsets.only(bottom: Kc.s5),
         child: PrimaryButton(label: 'Continue', onPressed: onContinue ?? () => Navigator.of(context).pop()),
@@ -28,9 +30,9 @@ class LevelUpView extends StatelessWidget {
         children: [
           Text('Level up!', style: KcText.displayL),
           const SizedBox(height: Kc.s3),
-          const KudiImage(KudiPose.fist, width: 200),
+          const PopIn(child: KudiImage(KudiPose.fist, width: 200)),
           const SizedBox(height: Kc.s3),
-          Semantics(
+          PopIn(delay: const Duration(milliseconds: 500), child: Semantics(
             label: 'Level $level',
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: Kc.s6, vertical: Kc.s2),
@@ -41,7 +43,7 @@ class LevelUpView extends StatelessWidget {
               ),
               child: Text('Level $level', style: KcText.displayXl),
             ),
-          ),
+          )),
           const SizedBox(height: Kc.s4),
           Text('You are a ${levelTitle(level)}!', style: KcText.title, textAlign: TextAlign.center),
           const SizedBox(height: Kc.s2),

@@ -1,3 +1,4 @@
+import '../../core/widgets/motion.dart';
 import '../../core/widgets/friend_art.dart';
 import 'dart:async';
 
@@ -101,7 +102,7 @@ class WelcomeView extends StatelessWidget {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Center(child: KudiLogo(width: 210)),
+        const Center(child: KudiWordmark(size: 44)),
         Expanded(
           child: _Middle(
             children: [
@@ -124,15 +125,11 @@ class WelcomeView extends StatelessWidget {
             ],
           ),
         ),
-        PrimaryButton(
-          label: "Let's Go",
-          onPressed: () => context.go('/intro/1'),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          'Play. Earn. Roar!',
-          style: KcText.caption.copyWith(fontSize: 14),
-          textAlign: TextAlign.center,
+        Pulse(
+          child: PrimaryButton(
+            label: "Let's Go",
+            onPressed: () => context.go('/intro/1'),
+          ),
         ),
       ],
     ),
@@ -198,7 +195,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const KudiLogo(width: 240, on: LogoOn.yellow),
+          const KudiWordmark(size: 48),
           const SizedBox(height: 28),
           const KudiImage(KudiPose.wave, width: 220),
           const SizedBox(height: 28),

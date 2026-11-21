@@ -8,6 +8,7 @@ import '../../core/screen_state.dart';
 import '../../core/theme/theme.dart';
 import '../../core/widgets/widgets.dart';
 import 'home_logic.dart';
+import '../../core/widgets/motion.dart';
 
 /// Writes the +10 daily bonus (`wallet_events` kind 'daily') at most once per day.
 /// Reads the log first; in-flight calls for the same child are collapsed.
@@ -141,6 +142,7 @@ class _CompleteState extends ConsumerState<_Complete> {
   Widget build(BuildContext context) => ScreenScaffold(
         key: widget.screenKey,
         background: Kc.yellow,
+        celebrate: true,
         bottom: Padding(
           padding: const EdgeInsets.only(bottom: Kc.s5),
           child: PrimaryButton(label: 'Continue', onPressed: () => context.go('/home')),
@@ -152,7 +154,7 @@ class _CompleteState extends ConsumerState<_Complete> {
           const SizedBox(height: Kc.s1),
           Text('$dailyGoal of $dailyGoal done. Roar!', style: KcText.title, textAlign: TextAlign.center),
           const SizedBox(height: Kc.s4),
-          Text('+$dailyBonusCoins coins', style: KcText.displayXl),
+          PopIn(delay: const Duration(milliseconds: 500), child: Text('+$dailyBonusCoins coins', style: KcText.displayXl)),
           const SizedBox(height: Kc.s2),
           Text('A new Market day starts tomorrow.', style: KcText.bodyChild, textAlign: TextAlign.center),
         ]),

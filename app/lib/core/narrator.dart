@@ -28,19 +28,30 @@ class Narrator {
   static final instance = Narrator._();
   AudioPlayer? _player;
 
+  static bool _ctxSet = false;
+
   Future<void> say(String lineId) async {
     try {
-      _player ??= AudioPlayer();
-      await _player!.setAudioContext(
-        AudioContextConfig(
-          route: AudioContextConfigRoute.system,
-          focus: AudioContextConfigFocus.gain,
-        ).build(),
-      );
-      await _player!.stop();
-      await _player!.play(AssetSource('audio/en-GH/$lineId.m4a'));
-    } catch (_) {
-      // No audio engine (tests, unsupported device): stay silent.
+      if (!_ctxSet) {
+        await AudioPlayer.global.setAudioContext(
+          AudioContext(
+            iOS: AudioContextIOS(category: AVAudioSessionCategory.playback),
+            android: AudioContextAndroid(
+              contentType: AndroidContentType.speech,
+              usageType: AndroidUsageType.media,
+              audioFocus: AndroidAudioFocus.gainTransientMayDuck,
+            ),
+          ),
+        );
+        _ctxSet = true;
+      }
+      final player = _player ??= AudioPlayer();
+      await player.stop();
+      await player.play(AssetSource('audio/en-GH/$lineId.m4a'), volume: 1.0);
+    } catch (e) {
+      // No audio engine (tests, unsupported device): stay silent, but leave a trace.
+      // ignore: avoid_print
+      print('narrator: could not play $lineId: $e');
     }
   }
 

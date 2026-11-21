@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme/theme.dart';
+import 'motion.dart';
 
 /// Row of progress dots (steps, onboarding). [index] is zero-based.
 class ProgressDots extends StatelessWidget {
@@ -62,7 +63,7 @@ class CoinChip extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Text('${prefix ?? ''}$amount', style: KcText.buttonSmall),
+            CountUp(value: amount, builder: (_, v) => Text('${prefix ?? ''}$v', style: KcText.buttonSmall)),
           ]),
         ),
       );

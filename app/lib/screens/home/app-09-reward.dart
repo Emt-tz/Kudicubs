@@ -6,6 +6,7 @@ import '../../core/data/providers.dart';
 import '../../core/screen_state.dart';
 import '../../core/theme/theme.dart';
 import '../../core/widgets/widgets.dart';
+import '../../core/widgets/motion.dart';
 
 /// Reward screen: shows what was just earned. The wallet events are written by
 /// `showRewards` (reward_coordinator.dart); this view only displays and continues.
@@ -22,6 +23,7 @@ class RewardView extends ConsumerWidget {
     return ScreenScaffold(
       key: const Key('screen-app-09-reward'),
       background: Kc.yellow,
+      celebrate: true,
       bottom: Padding(
         padding: const EdgeInsets.only(bottom: Kc.s5),
         child: PrimaryButton(label: 'Continue', onPressed: onContinue ?? () => Navigator.of(context).pop()),
@@ -29,16 +31,16 @@ class RewardView extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const KudiImage(KudiPose.celebrate, width: 220),
+          const PopIn(child: KudiImage(KudiPose.celebrate, width: 220)),
           const SizedBox(height: Kc.s3),
           Text(name == null ? 'Well done!' : 'Well done, $name!', style: KcText.displayL, textAlign: TextAlign.center),
           const SizedBox(height: Kc.s5),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _Stat(value: '+$coins', label: 'coins'),
+              PopIn(delay: const Duration(milliseconds: 450), child: _Stat(value: '+$coins', label: 'coins')),
               const SizedBox(width: Kc.s4),
-              _Stat(value: '+$xp', label: 'XP'),
+              PopIn(delay: const Duration(milliseconds: 750), child: _Stat(value: '+$xp', label: 'XP')),
             ],
           ),
         ],
