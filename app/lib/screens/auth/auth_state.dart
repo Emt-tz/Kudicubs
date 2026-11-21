@@ -133,6 +133,19 @@ class AuthFlow extends Notifier<AuthFlowState> {
     }
   }
 
+  /// Skip the email: start a guest account on the backend, then finish setup as usual.
+  Future<AuthStep> continueAsGuest() async {
+    try {
+      final client = ref.read(supabaseClientProvider);
+      if (client.auth.currentSession == null) await client.auth.signInAnonymously();
+    } catch (e) {
+      lastFailure = mapAuthError(e);
+      state = state.copyWith(setupPending: true);
+      return AuthStep.finishLater;
+    }
+    return finishSignup();
+  }
+
   /// After a verified first sign-up: PIN, region, child, consent. Every step can be repeated
   /// safely, so a failed attempt (offline) is retried by calling this again.
   Future<AuthStep> finishSignup() async {

@@ -196,8 +196,9 @@ class _EmailScreenState extends ConsumerState<EmailScreen> {
               child: TextButton(
                 key: const Key('skip-email'),
                 onPressed: () async {
-                  await ref.read(onboardedProvider.notifier).set(true);
-                  if (context.mounted) context.go('/home');
+                  final step = await ref.read(authFlowProvider.notifier).continueAsGuest();
+                  if (!context.mounted) return;
+                  context.go(step == AuthStep.joined ? '/joined' : '/screen/au-11-offline');
                 },
                 child: Text('Skip for now', style: KcText.label.copyWith(color: Kc.softGold, fontWeight: FontWeight.w800)),
               ),
