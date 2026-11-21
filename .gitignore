@@ -36,3 +36,13 @@ prototype/assets/audio/**/*.wav
 # Round 2 (004)
 __pycache__/
 prototype/assets/audio-scratch/**/*.part
+
+# 005 build output (assembled by tools/design/build-site.mjs)
+dist/
+dist-*/
+tools/design/playwright-report/
+tools/design/test-results/
+
+# Exports
+export/
+kudicubs-design-set-*.zip

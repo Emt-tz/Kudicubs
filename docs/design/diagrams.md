@@ -16,6 +16,7 @@ point back to the sources.
 3. [Child user flow: launch / sign-in → Reward](#3-child-user-flow-launch--sign-in--reward)
 4. [Parent flow](#4-parent-flow)
 5. [Mission engine: screen-type state machine](#5-mission-engine-screen-type-state-machine)
+6. [Parent area on the phone (spec 005)](#6-parent-area-on-the-phone-spec-005-fr-010-prototype-routes)
 
 ---
 
@@ -381,4 +382,40 @@ stateDiagram-v2
     child_badges, and Level Up if an
     XP threshold is crossed
   end note
+```
+
+---
+
+## 6. Parent area on the phone (spec 005 FR-010, prototype routes)
+
+Every `parent-*` route sits behind the gate. The prototype's guard (G8 in
+[navigation.md](../../specs/004-prototype-round-2/contracts/navigation.md)) sends any child route, hash or Back to Home. Leaving the area
+locks it again. The demo PIN is 2580 and the demo code is 123456. Nothing typed is stored (004 FR-028).
+
+```mermaid
+flowchart TD
+  P["profile (child)"] -->|"For grown-ups"| G["parent-gate: hold 3 s, maths, PIN"]
+  G -->|right PIN| H["parent-home: children list"]
+  G -->|wrong PIN, 2 tries left| G
+  G -->|3 wrong| L["parent-lockout: calm pause, child can go back to play"]
+  L -->|Reset my PIN| R["parent-pin-recover: code, new PIN twice"]
+  G -->|I forgot my PIN| R
+  R --> H
+  L -->|Back to play| C["home (child)"]
+  G -->|New device? Sign in| S["parent-signin: one-time code"]
+  S -->|wrong, expired, resend| S
+  S -->|right code| D["parent-device-mode: This is my phone / Family device"]
+  D --> H
+  H --> K["parent-child: one child's progress"]
+  H --> A["parent-add-child"]
+  H --> T["parent-settings: age band, sound, narration"]
+  T --> RG["parent-region: coins and market examples"]
+  H --> RG
+  H --> D
+  H -->|Sign out| O["parent-signed-out"]
+  O -->|Sign in again| S
+  H --> X["parent-delete: names what is erased, 12-month rule"]
+  X -->|"Erase everything: PIN again"| E["erased: back to Welcome"]
+  X -->|Keep my family| H
+  H -->|Back to play: area locks| C
 ```

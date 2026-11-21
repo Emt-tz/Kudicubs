@@ -1,4 +1,50 @@
-# KudiCubs Prototype: Review Guide (Rounds 1 and 2)
+# KudiCubs Review Guide (Rounds 1, 2 and 3)
+
+Hello Jefferson 👋
+
+## New in round 3 (v0.4.0): the whole set in one link
+
+Open the link and you land on a **hub** with three platforms. Pick who you are (a child, a
+parent, a visitor, staff or a reviewer) and the hub lists the journeys to try, straight from
+our journey and story map.
+
+| Platform | What it is | How to open it |
+|---|---|---|
+| **Mobile app** | The child's game in all four age bands (4–6, 7–9, 10–12, 13–15) and the parent area behind the grown-up gate | **Open the app** on the hub. Use a phone in portrait with the sound on |
+| **Website** | The public site for parents: what KudiCubs is, safety, how to get the app, FAQ, contact, sign-in | **Open the website** |
+| **Dashboards** | The Parent Dashboard (follow the family) and a small Team Console for staff | **Open the dashboards**. Demo email `parent@example.com`, demo code `123456` |
+
+**Good journeys to try**
+
+- *Child*: choose an age band, play one mission to the reward, then open Wallet, Progress and
+  Profile. Hold the logo for 2 seconds to open the grown-up menu and change the country.
+- *Parent*: from the child's Profile, pass the grown-up gate, look at the children, change a
+  setting, try a wrong PIN, and look at the delete-account warning.
+- *Visitor*: on the website find out what KudiCubs is, which ages it is for and how to get it,
+  then read the safety page.
+- *Parent on the web*: sign in on the Parent Dashboard, find a child's recent play and their
+  strongest skill, and look at the devices and data pages.
+- *Staff*: open the Team Console as Support (nicknames only) and as a Content editor.
+
+**Things to know**
+
+- One **fictional family** appears everywhere, so the numbers match between the app and the
+  dashboards. Nothing is saved or sent.
+- The grown-up menu and the reviewer buttons on the dashboards let you force states that are hard
+  to reach (wrong code, expired code, a brand-new family, an error).
+- The Kudi voice is still the **temporary practice voice**. Real recordings are needed before any
+  public release.
+- The legal pages hold placeholder text until your legal adviser has reviewed them.
+- The hub shows how many journeys are designed, and what is still open, so nothing is missing
+  silently. If you think a journey is missing, tell us and we will add it to the map.
+- Where ideas came from public design galleries, they are recorded in
+  `docs/design/design-references.md` with how KudiCubs differs. Nothing was copied.
+
+**How to send feedback**: use the "Send feedback" button on the hub.
+
+---
+
+*Earlier rounds (still accurate):*
 
 Hello Jefferson 👋
 

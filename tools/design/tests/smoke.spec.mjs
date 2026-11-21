@@ -8,8 +8,21 @@ import { guard } from './helpers.mjs';
 const BASE = process.env.SMOKE_URL;
 test.skip(!BASE, 'set SMOKE_URL to the live link to run the smoke check');
 
-test('live link: the app starts and every listed asset and audio file is reachable', async ({ page, request }) => {
+test('live link: the hub, website and dashboards answer, and the retired root worker is in place (005)', async ({ page, request }) => {
   const base = BASE.endsWith('/') ? BASE : BASE + '/';
+  for (const f of ['', 'website/index.html', 'dashboard/index.html', 'dashboard/parent/index.html', 'dashboard/team/index.html', 'release.json', 'robots.txt']) {
+    expect((await request.get(base + f)).status(), base + f).toBe(200);
+  }
+  await page.goto(base);
+  await expect(page.locator('meta[name=robots]')).toHaveAttribute('content', 'noindex, nofollow');
+  await expect(page.locator('h1')).toContainText('KudiCubs design set');
+  /* an old link with a hash still reaches the app */
+  await page.goto(base + '#/welcome');
+  await page.waitForURL(/\/app\/#\/welcome$/);
+});
+
+test('live link: the app starts and every listed asset and audio file is reachable', async ({ page, request }) => {
+  const base = (BASE.endsWith('/') ? BASE : BASE + '/') + 'app/';
   const g = guard(page);
   await page.goto(base + '#/welcome');
   await page.waitForFunction(() => document.getElementById('kc-screen')?.getAttribute('data-screen') === 'welcome', null, { timeout: 15000 });

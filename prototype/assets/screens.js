@@ -18,6 +18,7 @@
     var el = h('div', { class: 'kc-badge' + (earned ? '' : ' is-locked') + (opts.isNew ? ' is-new' : ''), 'data-component': 'badge-tile',
                         'aria-label': t(b.nameKey) + (earned ? '' : ' ' + t('a11y.not_earned')) },
       KC.img('icons/' + b.icon + '.svg'), h('span', { class: 'kc-caption' }, t(b.nameKey)));
+    el.addEventListener('click', function () { KC.state.viewBadge = b.id; });
     return KC.hear(el, b.id, 'correct');
   }
 
@@ -63,13 +64,13 @@
   /* 2 ---------------------------------------------------------------- Age selection */
   var BANDS = [
     { label: '4–6', band: 'b4_6', enabled: true },
-    { label: '7–9', band: 'b7_9', enabled: false },
-    { label: '10–12', band: 'b10_12', enabled: false },
-    { label: '13–15', band: 'b13_15', enabled: false }
+    { label: '7–9', band: 'b7_9', enabled: true },
+    { label: '10–12', band: 'b10_12', enabled: true },
+    { label: '13–15', band: 'b13_15', enabled: true }
   ];
   screen({
     id: 'age-select', title: 'Age selection', audience: 'child', band: 'b4_6', pose: 'wave', next: 'avatar',
-    narration: ['age.say'], notes: 'Ages 7–9, 10–12 and 13–15 are "Coming soon" (spec 001 FR-015b).',
+    narration: ['age.say'], notes: 'All four age bands are playable in 005 (one mission each). The band decides the home mission and the screen rules.',
     render: function (root) {
       var a = actions();
       root.appendChild(KC.kudi('wave', { say: 'age.say', size: 'sm' }));
@@ -78,16 +79,16 @@
       BANDS.forEach(function (b) {
         var card = h('button', { class: b.enabled ? '' : 'is-locked', 'data-component': 'choice-card', role: 'radio', 'aria-checked': 'false',
                                  'aria-label': b.enabled ? t('a11y.age', { age: b.label }) : t('a11y.age_soon', { age: b.label }) },
-          b.enabled ? KC.img('avatars/cub-friend-1.svg') : KC.img('icons/lock.svg'),
+          b.enabled ? KC.img('avatars/cub-friend-' + (BANDS.indexOf(b) + 1) + '.svg') : KC.img('icons/lock.svg'),
           h('span', { class: 'kc-age-n' }, b.label),
           b.enabled ? null : h('span', { class: 'kc-choice-sub' }, t('age.soon')));
         KC.childAction(card, 'answer', function () {
           if (!b.enabled) { card.classList.remove('is-wiggle'); void card.offsetWidth; card.classList.add('is-wiggle'); KC.kudiReact('encourage'); KC.voice.play('age.soon', { reaction: true }); return; }
           KC.markSelected(cards, card);
           KC.state.band = b.band; KC.store.save();
-          KC.kudiReact('correct'); KC.voice.play('age.b4_6', { reaction: true });
+          KC.kudiReact('correct'); KC.voice.play('age.' + b.band, { reaction: true });
           KC.promoteOnce(grid, t('next'), function () { KC.go('avatar'); }, a);
-        }, { say: b.enabled ? 'age.b4_6' : 'age.soon' });
+        }, { say: b.enabled ? 'age.' + b.band : 'age.soon' });
         cards.push(card);
         grid.appendChild(card);
       });
@@ -141,17 +142,20 @@
     render: function (root) {
       /* Everything typed here lives only in these local variables and is dropped when the gate closes (FR-011, FR-028). */
       var pin = '', firstPin = '';
-      var steps = h('div', { class: 'kc-steps', 'aria-hidden': 'true' }, [0, 1, 2, 3, 4, 5].map(function () { return h('span'); }));
+      /* 005: once a family has joined, the same gate is the way back into the parent area: hold, maths, then the PIN
+         (checked against the fixed demo PIN; the PIN typed is dropped at once and never stored or sent). */
+      var entry = !!(KC.state.onboarded && KC.parent.intent);
+      var steps = h('div', { class: 'kc-steps', 'aria-hidden': 'true' }, (entry ? [0, 1, 2] : [0, 1, 2, 3, 4, 5]).map(function () { return h('span'); }));
       var body = h('div', { class: 'kc-stack kc-grow' });
       root.appendChild(h('div', { class: 'kc-illustration', 'data-component': 'illustration' }, h('img', { class: 'kc-gate-logo', src: 'assets/brand/logo-on-brown.svg', alt: t('app.name') })));
       root.appendChild(h('h1', { class: 'kc-title kc-center' }, t('gate.title')));
       root.appendChild(steps);
       root.appendChild(body);
-      root.appendChild(h('p', { class: 'kc-caption kc-muted kc-center' }, t('gate.note')));
+      root.appendChild(h('p', { class: 'kc-caption kc-muted kc-center' }, t(entry ? 'gate.note_entry' : 'gate.note')));
       function show(n) {
         body.innerHTML = '';
         steps.querySelectorAll('span').forEach(function (s, i) { s.classList.toggle('is-on', i <= n); });
-        [hold, maths, pinStep, pinConfirm, region, email][n]();
+        (entry ? [hold, maths, pinEnter] : [hold, maths, pinStep, pinConfirm, region, email])[n]();
       }
       function msg() { return h('p', { class: 'kc-parent-msg', role: 'status' }); }
       function hold() {
@@ -173,7 +177,7 @@
         var display = h('div', { class: 'kc-answer', 'aria-live': 'polite', 'data-answer': true }, '?');
         var check = h('button', { class: 'kc-btn kc-btn--primary', 'data-component': 'primary-button', 'data-primary': true }, t('gate.check'));
         check.addEventListener('click', function () {
-          if (Number(answer) === x * y) show(2);
+          if (Number(answer) === x * y) { if (entry) KC.parent.gated = true; show(2); }
           else { answer = ''; display.textContent = '?'; m.textContent = t('gate.retry'); setTimeout(function () { show(1); }, 900); }
         });
         var pad = KC.keypad('parent-gate-pad', function (k) {
@@ -203,6 +207,22 @@
           if (/^(\d)\1{3}$/.test(pin) || pin === '1234' || pin === '4321') { m.textContent = t('gate.pin_weak'); pin = ''; paint(); return; }
           firstPin = pin; pin = ''; show(3);
         }, note);
+      }
+      function pinEnter() {
+        pinPad('gate.pin_enter', function (m, paint) {
+          var ok = pin === KC.data.demo.pin;
+          pin = '';                                                    // dropped at once, right or wrong
+          if (ok) {
+            KC.parent.wrong = 0; KC.parent.unlocked = true; KC.parent.intent = false;
+            KC.go('parent-home', { replace: true });                   // Back never returns to the gate (FR-004)
+            return;
+          }
+          KC.parent.wrong += 1; paint();
+          if (KC.parent.wrong >= KC.data.demo.maxTries) { KC.parent.locked = true; KC.go('parent-lockout', { replace: true }); return; }
+          m.textContent = t('gate.pin_wrong', { left: KC.data.demo.maxTries - KC.parent.wrong });
+        });
+        body.appendChild(KC.secondary(t('gate.forgot'), function () { KC.go('parent-pin-recover'); }));
+        body.appendChild(KC.secondary(t('gate.new_device'), function () { KC.go('parent-signin'); }));
       }
       function pinConfirm() {                                        // FR-010: the grown-up enters the PIN twice
         pinPad('gate.pin_confirm', function () {
@@ -246,17 +266,24 @@
     }
   });
 
+  /* The home prompt: 4–6 keeps its Lost Coins words; the other bands point at their own mission (005). */
+  function homeLine() {
+    var first = KC.view().empty;
+    return KC.bandMission() === 'lost-coins' ? (first ? 'empty.home' : 'home.say') : (first ? 'empty.home.band' : 'home.go');
+  }
+  function emptyWallet() { return KC.bandMission() === 'lost-coins' ? 'empty.wallet' : 'empty.wallet.band'; }
   /* 5 ---------------------------------------------------------------- Home */
   screen({
-    id: 'home', title: 'Home', audience: 'child', band: 'b4_6', pose: 'wave', next: 'mission-intro',
-    narration: function () { return [KC.view().empty ? 'empty.home' : 'home.say']; },
+    id: 'home', title: 'Home', audience: 'child', band: 'auto', pose: 'wave', next: 'mission-intro',
+    narration: function () { return [homeLine()]; },
     notes: 'Every number comes from the child\'s own play (004 FR-025). First visit: Kudi invites the child to play. Tap the coins, badges or the daily sun to hear them.',
     render: function (root) {
       var s = KC.state, v = KC.view(), lv = v.level, nx = KC.nextLevel(v.xp);
       var pct = nx ? Math.round(100 * (v.xp - lv.xpFrom) / (nx.xpFrom - lv.xpFrom)) : 100;
       var pill = KC.hear(h('span', { class: 'kc-stat-pill', 'data-component': 'coin-counter', 'data-stat': 'coins' }, KC.money(v.coins, { size: 'md' })), 'home.coins', 'correct');
       root.appendChild(h('div', { class: 'kc-row' },
-        h('div', { class: 'kc-illustration kc-avatar-sm', 'data-component': 'illustration' }, KC.img('avatars/' + s.avatarId + '.svg', t('a11y.your_friend'))),
+        h('button', { class: 'kc-avatar-sm', 'data-component': 'icon-button', 'data-profile-entry': true, 'aria-label': t('a11y.profile'), onclick: function () { KC.go('profile'); } },
+          KC.img('avatars/' + s.avatarId + '.svg')),
         h('div', { class: 'kc-stack kc-grow kc-tight' },
           h('p', { class: 'kc-title', 'data-nickname': true }, s.nickname ? t('home.hi', { name: s.nickname }) : t('home.hi_friend')),
           KC.hear(h('span', { 'data-component': 'level-badge', 'data-stat': 'level' }, h('span', { class: 'kc-level-n' }, String(lv.n)), t(lv.nameKey)), 'level.' + lv.nameKey.split('.')[1])),
@@ -264,8 +291,8 @@
       root.appendChild(h('div', { 'data-component': 'xp-bar', 'data-stat': 'xp', 'data-value': v.xp, 'aria-label': t('a11y.xp', { xp: v.xp }) },
         h('div', { class: 'kc-row' }, h('span', { class: 'kc-label kc-grow' }, v.xp + ' XP'), nx ? h('span', { class: 'kc-label kc-muted' }, t('home.next', { level: t(nx.nameKey) })) : null),
         h('div', { class: 'kc-xp-track' }, h('div', { class: 'kc-xp-fill', style: 'width:' + pct + '%' }))));
-      root.appendChild(KC.kudi('wave', { say: v.empty ? 'empty.home' : 'home.say', size: 'sm' }));     // first visit: an invitation (FR-030)
-      root.appendChild(KC.primary(t('home.continue') + ' · ' + t('home.mission'), function () { KC.go('mission-intro'); }));
+      root.appendChild(KC.kudi('wave', { say: homeLine(), size: 'sm' }));     // first visit: an invitation (FR-030)
+      root.appendChild(KC.primary(t('home.continue') + ' · ' + t(KC.missionTitleKey()), function () { KC.go(KC.introRoute()); }));
       var d = v.daily;
       root.appendChild(KC.hear(h('div', { 'data-component': 'streak-daily', 'data-daily': d.progress, 'aria-label': t('a11y.daily', { n: d.progress, goal: d.goal }) },
         KC.img('icons/sun-daily.svg'),
@@ -273,6 +300,7 @@
           h('div', { class: 'kc-dots' }, [0, 1, 2].map(function (i) { return h('span', { class: 'kc-dot' + (i < d.progress ? ' is-on' : '') }); })),
           d.progress ? null : h('span', { class: 'kc-caption kc-muted', 'data-empty': 'daily' }, t('empty.daily'))),
         KC.money(d.rewardCoins, { sign: true })), d.progress ? 'daily.say' : 'empty.daily'));
+      root.appendChild(KC.secondary(t('dailych.open'), function () { KC.go('daily-challenge'); }));
       var earned = KC.data.badges.filter(function (b) { return v.badges.indexOf(b.id) !== -1; }).slice(-3);
       if (earned.length) root.appendChild(h('div', { class: 'kc-badge-row' }, earned.map(function (b) { return badgeTile(b, { owned: v.badges }); })));
     }
@@ -445,20 +473,23 @@
   /* Replay or first completion is decided before anything renders, so the title, the spoken line and the caption
      always agree (004 FR-006; the 003 bug read last run's value). */
   function rewardIsReplay() {
-    return KC.run.pendingReward ? KC.completedOnce() : !!(KC.state.lastReward && KC.state.lastReward.replay);
+    return KC.run.pendingReward ? KC.completedOnce(KC.run.mission || 'lost-coins') : !!(KC.state.lastReward && KC.state.lastReward.replay);
   }
   screen({
-    id: 'reward', title: 'Reward', audience: 'child', band: 'b4_6', pose: 'celebrate', next: 'home',
+    id: 'reward', title: 'Reward', audience: 'child', band: 'auto', pose: 'celebrate', next: 'home',
     narration: function () { return [rewardIsReplay() ? 'reward.replay' : 'reward.say']; },
     notes: 'Only reachable by finishing a run (004 FR-005). First run: 30 coins + 40 XP + Hard Worker (+10 coins, 10 XP and Smart Sorter for a perfect sort). Replay: 5 XP only. Tap the burst to pop it again.',
     render: function (root) {
       var s = KC.state, lc = s.lostCoins, cfg = KC.data.lostCoins;
       if (KC.run.pendingReward) {
-        var replay = KC.completedOnce();
+        var mid = KC.run.mission || 'lost-coins';
+        var replay = KC.completedOnce(mid);
         var before = KC.view();
         var r = { coins: 0, xp: 0, badges: [], replay: replay };
         var list = [];
-        if (!replay) {
+        if (mid !== 'lost-coins') {                                  // 005: a band mission (rules in screens-bands.js)
+          var br = KC.bandReward(mid); r = br.reward; list = br.list;
+        } else if (!replay) {
           r.coins += cfg.firstReward.coins; r.xp += cfg.firstReward.xp; r.badges.push(cfg.firstReward.badge);
           list.push({ t: 'earn', n: cfg.firstReward.coins, label: 'history.lost_coins' }, { t: 'xp', n: cfg.firstReward.xp, label: 'xp' },
                     { t: 'badge', label: 'badge', badge: cfg.firstReward.badge });
@@ -494,6 +525,7 @@
         rw.badges.length ? h('div', { class: 'kc-badge-row' }, rw.badges.map(function (id) { return badgeTile(badgeById(id), { isNew: true }); })) : null,
         rw.levelUp ? KC.hear(h('div', { class: 'kc-levelup', 'data-component': 'action-result', role: 'status' }, t('reward.levelup', { level: t(rw.levelUp.nameKey) })), 'reward.levelup.' + rw.levelUp.nameKey.split('.')[1], 'celebrate') : null));
       a.appendChild(KC.primary(t('nav.back_home'), function () { KC.go('home', { replace: true }); }));   // Back never returns to Reward
+      if (rw.levelUp) a.appendChild(KC.secondary(t('levelup.open'), function () { KC.go('level-up', { replace: true }); }));
       root.appendChild(a);
     }
   });
@@ -508,19 +540,19 @@
   ];
   function historyLine(labelKey) { return labelKey === 'history.sticker' ? KC.rline('history.sticker') : labelKey; }
   screen({
-    id: 'wallet', title: 'Wallet', audience: 'child', band: 'b4_6', pose: 'wave', next: 'home',
-    narration: function () { return [KC.view().history.length ? 'wallet.say' : 'empty.wallet', KC.rline('wallet.currency')]; },
+    id: 'wallet', title: 'Wallet', audience: 'child', band: 'auto', pose: 'wave', next: 'home',
+    narration: function () { return [KC.view().history.length ? 'wallet.say' : emptyWallet(), KC.rline('wallet.currency')]; },
     notes: 'Built only from what the child did (004 FR-025). Coins shown as the region\'s coin picture + a number (never a price). Empty: Kudi invites the child to play — no blank chart or list.',
     render: function (root) {
       var v = KC.view();
-      root.appendChild(titleRow('wallet.title', v.history.length ? 'wallet.say' : 'empty.wallet'));
-      if (!v.history.length) root.appendChild(KC.kudi('wave', { say: 'empty.wallet', size: 'sm' }));   // first visit: an invitation, up top (FR-030)
+      root.appendChild(titleRow('wallet.title', v.history.length ? 'wallet.say' : emptyWallet()));
+      if (!v.history.length) root.appendChild(KC.kudi('wave', { say: emptyWallet(), size: 'sm' }));   // first visit: an invitation, up top (FR-030)
       root.appendChild(KC.hear(h('p', { class: 'kc-caption kc-muted', 'data-component': 'region-coin-set', 'data-currency-label': true }, KC.currencyLabel()), KC.rline('wallet.currency')));
       root.appendChild(h('div', { class: 'kc-panel' },
         KC.hear(h('div', { class: 'kc-panel-item', 'data-component': 'illustration', 'data-stat': 'coins' }, KC.img('icons/wallet-jar.svg'), h('span', { class: 'kc-label' }, t('wallet.coins')), KC.money(v.coins, { size: 'md' })), 'home.coins'),
         KC.hear(h('div', { class: 'kc-panel-item', 'data-component': 'illustration', 'data-stat': 'savings' }, KC.img('icons/save.svg'), h('span', { class: 'kc-label kc-positive' }, t('wallet.savings')), KC.money(v.savings, { size: 'md' })), 'cat.savings')));
       if (!v.history.length) {                                      // first time: no empty chart or list (FR-030)
-        var e = actions(); e.appendChild(KC.primary(t('empty.play'), function () { KC.go('mission-intro'); })); root.appendChild(e);
+        var e = actions(); e.appendChild(KC.primary(t('empty.play'), function () { KC.go(KC.introRoute()); })); root.appendChild(e);
         return;
       }
       var max = Math.max.apply(null, CATS.map(function (c) { return v.chart[c.category]; }).concat([1]));
@@ -544,7 +576,7 @@
 
   /* 13 --------------------------------------------------------------- Progress */
   screen({
-    id: 'progress', title: 'Progress', audience: 'child', band: 'b4_6', pose: 'wave', next: 'mission-intro',
+    id: 'progress', title: 'Progress', audience: 'child', band: 'auto', pose: 'wave', next: 'mission-intro',
     narration: function () { return [KC.view().badges.length ? 'progress.say' : 'empty.progress']; },
     notes: 'Level, badges and pillars come only from the child\'s play (004 FR-025). Tap a level, badge or pillar to hear it.',
     render: function (root) {
@@ -568,7 +600,8 @@
           h('span', { class: 'kc-label' }, t('pillar.' + p)),
           h('div', { class: 'kc-xp-track' }, h('div', { class: 'kc-xp-fill', style: 'width:' + n + '%' }))), 'pillar.' + p);
       })));
-      var a = actions(); a.appendChild(KC.primary(t('home.continue'), function () { KC.go('mission-intro'); })); root.appendChild(a);
+      root.appendChild(KC.secondary(t('badgedet.open'), function () { KC.go('badge-detail'); }));
+      var a = actions(); a.appendChild(KC.primary(t('home.continue'), function () { KC.go(KC.introRoute()); })); root.appendChild(a);
     }
   });
 

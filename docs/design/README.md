@@ -11,9 +11,11 @@ what lasts.**
   - [004](../../specs/004-prototype-round-2/spec.md): prototype round 2. **Testing fixes, a
     temporary scratch voice, real play data, a stable demo link and automated validation**:
     prototype v0.3.0.
+  - [005](../../specs/005-platform-ux-prototypes/spec.md): complete UI/UX and prototypes for the
+    **mobile app, website and dashboards**, with a journey and story coverage map: prototype v0.4.0.
 - **Live demo**: **https://emt-tz.github.io/Kudicubs/** (GitHub Pages; updated automatically on every merge to `main`)
-- **Tokens version**: `0.3.0`, which becomes `1.0.0` when the client signs off.
-- **Prototype version**: `0.3.0`. Earlier states: `prototype-v0.1.0`, and v0.2.0 at commit `594bd8c`.
+- **Tokens version**: `0.4.0`, which becomes `1.0.0` when the client signs off.
+- **Prototype version**: `0.4.0`. Earlier states: `prototype-v0.1.0`, and v0.2.0 at commit `594bd8c`.
 
 ## Files
 
@@ -33,7 +35,11 @@ what lasts.**
 | [design-references.md](./design-references.md) | Patterns learned from the references, how KudiCubs differs, and the originality record |
 | [review-guide.md](./review-guide.md) | A plain-language guide for Jefferson (round 1) |
 | [child-session-protocol.md](./child-session-protocol.md) and [child-session-results.md](./child-session-results.md) | Optional child test. **Waits for the recordings.** |
-| [diagrams.md](./diagrams.md) | Architecture and flow diagrams (spec 001) |
+| [diagrams.md](./diagrams.md) | Architecture and flow diagrams (spec 001), plus the parent-area flow (spec 005) |
+| [journey-map.json](./journey-map.json) and [journey-map.md](./journey-map.md) | **Coverage map**: every actor, journey and user story with its platform, status and screens (checked by `tools/design/check-coverage.mjs`) |
+| [references.json](./references.json) | Gallery references and the originality review (checked by `check-references.mjs`) |
+| [release-notes.json](./release-notes.json) | The change list shown on the hub |
+| [app-gap-audit.md](./app-gap-audit.md) and `mission-extracts/` | What the app lacked, and the first mission of each world taken from the content deck |
 | `img/components/`, `round1/` | Generated screenshots |
 
 ## How to change something

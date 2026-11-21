@@ -118,3 +118,65 @@ test('fold: no text is smaller on the small phone', async ({ browser }) => {
   // and against round 1 (003): the Count counter keeps its 1.6 × display-xl size at both sizes (it went 64 → 40 px once)
   for (const v of [big, small]) expect(v.counter).toBeCloseTo(v.displayXl * 1.6, 0);
 });
+
+/* 005 (FR-005, FR-008): every new child screen keeps its main action in view at 360×640 and 390×844, after render and after
+   every choice, and passes the shared audit (one main action, targets ≥ 48×48). */
+const BAND_RUNS = [
+  { band: 'b7_9', m: 'm7', steps: [['m7-decision', 'smart', 'fancy']], label: 'The Birthday Party' },
+  { band: 'b10_12', m: 'm10', steps: [['m10-resource', 'savings', 'loan'], ['m10-market', '5', '8']], label: 'The Clothing Brand' },
+  { band: 'b13_15', m: 'm13', steps: [['m13-budget', '20', '25'], ['m13-market', '9', '12']], label: 'Side Hustle' },
+];
+for (const def of BAND_RUNS) {
+  test(`fold: the ${def.band} mission, from Home to Reward, with a poor result and a retry`, async ({ page }) => {
+    const g = guard(page);
+    await page.goto('./#/welcome');
+    await page.evaluate((b) => { KC.loadSample(); KC.state.band = b; KC.go('home'); }, def.band);
+    await fold(page, `${def.band} home`);
+    await page.click('[data-primary]'); await screenIs(page, `${def.m}-intro`); await fold(page, `${def.m} intro`);
+    await page.click('[data-primary]');
+    for (let round = 0; round < 2; round++) {                                       // round 0 is poor (retry), round 1 is good
+      for (const [id, good, poor] of def.steps) {
+        await screenIs(page, id); await fold(page, `${id} before choosing`);
+        await page.click(`[data-choice="${round === 0 ? poor : good}"]`); await fold(page, `${id} after choosing`);
+        await page.click('[data-primary]');
+      }
+      await screenIs(page, `${def.m}-result`); await fold(page, `${def.m} result (${round === 0 ? 'poor: Try again' : 'good: Next'})`);
+      if (round === 0) await page.click('#kc-screen .kc-actions [data-primary]');
+    }
+    await page.click('#kc-screen .kc-actions [data-primary]'); await screenIs(page, `${def.m}-summary`); await fold(page, `${def.m} summary`);
+    await page.click('[data-primary]'); await screenIs(page, 'reward'); await fold(page, `${def.band} reward`);
+    await page.click('[data-primary]'); await screenIs(page, 'home');
+    await page.click('[data-route=wallet]'); await fold(page, `${def.band} wallet`);
+    await page.click('[data-route=progress]'); await fold(page, `${def.band} progress`);
+    g.expectClean();
+  });
+}
+
+test('fold: age select with all four bands, profile, daily challenge, level-up and badge detail', async ({ page }) => {
+  await page.goto('./#/welcome');
+  await page.evaluate(() => KC.go('age-select'));
+  await fold(page, 'age select');
+  for (let i = 1; i < 4; i++) { await page.locator('.kc-choice-grid [data-component=choice-card]').nth(i).click(); await fold(page, `age select after card ${i + 1}`); }
+  for (const b of ['b4_6', 'b7_9', 'b10_12', 'b13_15']) {
+    await page.evaluate((x) => { KC.loadSample(); KC.state.band = x; }, b);
+    for (const id of ['profile', 'daily-challenge', 'level-up', 'badge-detail', 'home', 'wallet', 'progress']) {
+      await page.evaluate((i) => KC.jumpTo(i), id); await fold(page, `${b} ${id}`);
+    }
+    await page.evaluate(() => KC.jumpTo('badge-detail'));
+    await page.click('[data-badge="badge.hard_worker"]'); await fold(page, `${b} badge detail (locked)`);
+  }
+  await page.evaluate(() => { KC.state.events = []; KC.state.sample = false; KC.go('daily-challenge'); }); await fold(page, 'daily challenge (empty)');
+  await page.evaluate(() => KC.go('badge-detail')); await fold(page, 'badge detail (empty)');
+});
+
+test('fold: the band decision screens fit in all three regions (longer example names)', async ({ page }) => {
+  await page.goto('./#/welcome');
+  await page.evaluate(() => { KC.loadSample(); });
+  for (const r of ['gh', 'ng', 'uk']) {
+    for (const [band, id] of [['b7_9', 'm7-decision'], ['b10_12', 'm10-resource'], ['b10_12', 'm10-market'], ['b13_15', 'm13-budget'], ['b13_15', 'm13-market']]) {
+      await page.evaluate(([b, region, screenId]) => { KC.state.band = b; KC.setRegion(region); KC.jumpTo(screenId); }, [band, r, id]);
+      await fold(page, `${r} ${id}`);
+      await page.locator('#kc-screen [data-choice]').first().click(); await fold(page, `${r} ${id} after choosing`);
+    }
+  }
+});

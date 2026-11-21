@@ -1,6 +1,6 @@
 {
  "$schema": "../../../specs/003-brand-voice-interactive/contracts/narration-lines.schema.json",
- "version": "1.1.0",
+ "version": "1.2.0",
  "languages": [
   "en-GH",
   "en-NG",
@@ -1379,6 +1379,348 @@
    "delivery": "playful",
    "idea": "daily challenge not started",
    "maxSeconds": 4
+  },
+  {
+   "id": "age.b7_9",
+   "screen": "age-select",
+   "kind": "name",
+   "text": "Seven to nine!",
+   "delivery": "excited",
+   "idea": "the age band",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "age.b10_12",
+   "screen": "age-select",
+   "kind": "name",
+   "text": "Ten to twelve!",
+   "delivery": "excited",
+   "idea": "the age band",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "age.b13_15",
+   "screen": "age-select",
+   "kind": "name",
+   "text": "Thirteen to fifteen!",
+   "delivery": "excited",
+   "idea": "the age band",
+   "maxSeconds": 2.6
+  },
+  {
+   "id": "home.go",
+   "screen": "home",
+   "kind": "prompt",
+   "text": "Tap Continue for today's mission!",
+   "delivery": "excited",
+   "idea": "start the next mission",
+   "maxSeconds": 3.6
+  },
+  {
+   "id": "empty.home.band",
+   "screen": "home",
+   "kind": "prompt",
+   "text": "Ready for your first mission? Tap Continue!",
+   "delivery": "excited",
+   "idea": "invite to the first mission",
+   "maxSeconds": 4.5
+  },
+  {
+   "id": "empty.wallet.band",
+   "screen": "wallet",
+   "kind": "prompt",
+   "text": "Your wallet is empty. Play a mission to fill it!",
+   "delivery": "warm",
+   "idea": "invite to play",
+   "maxSeconds": 5.9
+  },
+  {
+   "id": "profile.say",
+   "screen": "profile",
+   "kind": "prompt",
+   "text": "This is you! You can change sound and voice here.",
+   "delivery": "warm",
+   "idea": "your page and switches",
+   "maxSeconds": 5.9
+  },
+  {
+   "id": "dailych.say",
+   "screen": "daily-challenge",
+   "kind": "prompt",
+   "text": "Today's challenge! Play a mission to light the suns.",
+   "delivery": "excited",
+   "idea": "the daily challenge",
+   "maxSeconds": 5.4
+  },
+  {
+   "id": "dailych.done",
+   "screen": "daily-challenge",
+   "kind": "reaction",
+   "text": "All the suns are lit today. Great work!",
+   "delivery": "celebrating",
+   "idea": "daily challenge complete",
+   "maxSeconds": 4.9
+  },
+  {
+   "id": "levelup.say",
+   "screen": "level-up",
+   "kind": "reaction",
+   "text": "Level up! You're growing in the Pride!",
+   "delivery": "celebrating",
+   "idea": "you reached a new level",
+   "maxSeconds": 4.5
+  },
+  {
+   "id": "badgedet.say",
+   "screen": "badge-detail",
+   "kind": "prompt",
+   "text": "Tap a badge to see how to earn it.",
+   "delivery": "warm",
+   "idea": "look at a badge",
+   "maxSeconds": 5.4
+  },
+  {
+   "id": "badgedet.earned",
+   "screen": "badge-detail",
+   "kind": "reaction",
+   "text": "You earned this badge!",
+   "delivery": "proud",
+   "idea": "badge is earned",
+   "maxSeconds": 3.1
+  },
+  {
+   "id": "badgedet.locked",
+   "screen": "badge-detail",
+   "kind": "reaction",
+   "text": "Keep playing to earn this one!",
+   "delivery": "encouraging",
+   "idea": "badge is not earned yet",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "m7.intro.say",
+   "screen": "m7-intro",
+   "kind": "prompt",
+   "text": "Let's plan a birthday party! Can you stay under budget?",
+   "delivery": "warm",
+   "idea": "plan a party on a budget",
+   "maxSeconds": 5.9
+  },
+  {
+   "id": "m7.decide.say",
+   "screen": "m7-decision",
+   "kind": "question",
+   "text": "Which party plan fits the budget?",
+   "delivery": "curious question",
+   "idea": "choose a plan",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "m7.decide.hint",
+   "screen": "m7-decision",
+   "kind": "hint",
+   "text": "Compare each plan with your budget.",
+   "delivery": "encouraging",
+   "idea": "compare cost and budget",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "m7.result.great",
+   "screen": "m7-result",
+   "kind": "reaction",
+   "text": "Right on budget. Smart planning!",
+   "delivery": "proud",
+   "idea": "plan fits the budget",
+   "maxSeconds": 3.6
+  },
+  {
+   "id": "m7.result.ok",
+   "screen": "m7-result",
+   "kind": "reaction",
+   "text": "You stayed under budget, with coins to spare.",
+   "delivery": "warm",
+   "idea": "plan is cheaper than the budget",
+   "maxSeconds": 4.9
+  },
+  {
+   "id": "m7.result.over",
+   "screen": "m7-result",
+   "kind": "reaction",
+   "text": "That plan costs more than the budget. Want to try another?",
+   "delivery": "gentle, slow",
+   "idea": "explain and offer a retry",
+   "maxSeconds": 6.3
+  },
+  {
+   "id": "m7.summary.say",
+   "screen": "m7-summary",
+   "kind": "prompt",
+   "text": "A budget helps you decide before you spend.",
+   "delivery": "warm",
+   "idea": "what a budget is",
+   "maxSeconds": 4.9
+  },
+  {
+   "id": "m10.intro.say",
+   "screen": "m10-intro",
+   "kind": "prompt",
+   "text": "Let's start a clothing brand! First we need money to begin.",
+   "delivery": "warm",
+   "idea": "start a brand",
+   "maxSeconds": 6.3
+  },
+  {
+   "id": "m10.resource.say",
+   "screen": "m10-resource",
+   "kind": "question",
+   "text": "How will you raise the money?",
+   "delivery": "curious question",
+   "idea": "choose how to fund it",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "m10.resource.hint",
+   "screen": "m10-resource",
+   "kind": "hint",
+   "text": "Each choice has good points and risks.",
+   "delivery": "encouraging",
+   "idea": "weigh the options",
+   "maxSeconds": 4.5
+  },
+  {
+   "id": "m10.market.say",
+   "screen": "m10-market",
+   "kind": "question",
+   "text": "What price will you set this month?",
+   "delivery": "curious question",
+   "idea": "choose a price",
+   "maxSeconds": 4.5
+  },
+  {
+   "id": "m10.market.hint",
+   "screen": "m10-market",
+   "kind": "hint",
+   "text": "A higher price means fewer buyers.",
+   "delivery": "encouraging",
+   "idea": "price and buyers",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "m10.result.great",
+   "screen": "m10-result",
+   "kind": "reaction",
+   "text": "A strong month! Your plan worked.",
+   "delivery": "proud",
+   "idea": "a good month",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "m10.result.ok",
+   "screen": "m10-result",
+   "kind": "reaction",
+   "text": "A fair month. There is room to grow.",
+   "delivery": "warm",
+   "idea": "an okay month",
+   "maxSeconds": 4.9
+  },
+  {
+   "id": "m10.result.slow",
+   "screen": "m10-result",
+   "kind": "reaction",
+   "text": "A slow month. Want to try another plan?",
+   "delivery": "gentle, slow",
+   "idea": "explain and offer a retry",
+   "maxSeconds": 4.9
+  },
+  {
+   "id": "m10.summary.say",
+   "screen": "m10-summary",
+   "kind": "prompt",
+   "text": "A loan is repaid with extra. An investor shares your profit.",
+   "delivery": "calm",
+   "idea": "loan against investor",
+   "maxSeconds": 6.3
+  },
+  {
+   "id": "m13.intro.say",
+   "screen": "m13-intro",
+   "kind": "prompt",
+   "text": "Time for your first side hustle. Watch your costs.",
+   "delivery": "calm",
+   "idea": "start a side hustle",
+   "maxSeconds": 5.4
+  },
+  {
+   "id": "m13.budget.say",
+   "screen": "m13-budget",
+   "kind": "question",
+   "text": "How many will you make?",
+   "delivery": "curious question",
+   "idea": "choose a batch",
+   "maxSeconds": 3.6
+  },
+  {
+   "id": "m13.budget.hint",
+   "screen": "m13-budget",
+   "kind": "hint",
+   "text": "Stay within your budget.",
+   "delivery": "encouraging",
+   "idea": "budget limit",
+   "maxSeconds": 3.1
+  },
+  {
+   "id": "m13.market.say",
+   "screen": "m13-market",
+   "kind": "question",
+   "text": "What price will you set?",
+   "delivery": "curious question",
+   "idea": "choose a price",
+   "maxSeconds": 3.6
+  },
+  {
+   "id": "m13.market.hint",
+   "screen": "m13-market",
+   "kind": "hint",
+   "text": "Price, cost and demand all matter.",
+   "delivery": "encouraging",
+   "idea": "three things to weigh",
+   "maxSeconds": 4.0
+  },
+  {
+   "id": "m13.result.great",
+   "screen": "m13-result",
+   "kind": "reaction",
+   "text": "Good profit. Your numbers worked.",
+   "delivery": "proud",
+   "idea": "a good profit",
+   "maxSeconds": 3.6
+  },
+  {
+   "id": "m13.result.ok",
+   "screen": "m13-result",
+   "kind": "reaction",
+   "text": "A small profit. Think about price and cost.",
+   "delivery": "warm",
+   "idea": "a small profit",
+   "maxSeconds": 4.9
+  },
+  {
+   "id": "m13.result.loss",
+   "screen": "m13-result",
+   "kind": "reaction",
+   "text": "A loss this time. Costs beat sales. Try again?",
+   "delivery": "gentle, slow",
+   "idea": "explain and offer a retry",
+   "maxSeconds": 5.4
+  },
+  {
+   "id": "m13.summary.say",
+   "screen": "m13-summary",
+   "kind": "prompt",
+   "text": "Profit is sales minus costs. Watch your margin.",
+   "delivery": "calm",
+   "idea": "profit and margin",
+   "maxSeconds": 4.9
   }
  ]
 }

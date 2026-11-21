@@ -44,3 +44,38 @@ These come from the client's brand guide (round 1, [brand.md](./brand.md)):
 
 > **Former name note**: the source documents call the product "BizKids" or "BizKidz"; the
 > product name is now **KudiCubs** everywhere (spec 001 FR-001).
+
+
+---
+
+## Round 3 (spec 005): gallery references for the website, dashboards and parent area
+
+The machine-checked source is [references.json](./references.json) (`node tools/design/check-references.mjs`).
+Screens cite their references in their manifest `refs`. Public Dribbble listings were found by search and
+read as titles, tags and descriptions only. **No shot was downloaded and no image is stored in this repository.**
+
+| Ref | Source | Pattern learned | Used for | How KudiCubs differs | Verdict |
+|---|---|---|---|---|---|
+| REF-01 | [Youth Finance, kids' banking dashboard](https://dribbble.com/shots/24144047-Youth-Finance-Personalized-Dashboard-for-a-Kids-Banking-App) | A personal money card with the child's goals | nothing | Real banking; KudiCubs has no real money (Constitution V) | **Rejected** |
+| REF-02 | [Kids Education Report Card Dashboard](https://dribbble.com/shots/6981829-Kids-Education-Report-Card-Dashboard) | A single report-card style view of one child for a parent | Parent Dashboard: child, skills | Skills grow; no grades or ranking; own brand | Adapted |
+| REF-03 | [MindHero learning app](https://dribbble.com/shots/21426214-MindHero-The-Learning-App-for-Kids-with-Learning-Difficulties) | A clear switch from the learner's view to a parent view | App: profile, parent area | A gate and PIN sit between the views | Adapted |
+| REF-04 | [Parents Dashboard iOS App](https://dribbble.com/shots/3918005-Parents-Dashboard-iOS-App) | Children listed first, then one child's progress | App: parent child view | Original layout and icons; region coins per child | Adapted |
+| REF-05 | [Kids learning website landing page](https://dribbble.com/shots/21029859-Kids-learning-website-landing-page) | A bright, scannable page that speaks to parents | Website home | Client logo and Kudi, one action, no timers | Adapted |
+| REF-06 | [Landing Page for Parents on Brainly](https://dribbble.com/shots/14608306-Landing-Page-for-Parents-on-Brainly) | A page that explains how the product helps parents | Website how-it-works, safety | Plain-words missions and a dedicated safety page | Adapted |
+| REF-07 | [Kids app landing page](https://dribbble.com/shots/2636208-Kids-app-Landing-page) | A single flow that ends with the download route | Website get-the-app | A page of its own with Android, iOS and a desktop "send the link" action | Adapted |
+
+**Rejected on principle** (no specific shot needed): streak-shaming, countdown timers and urgency prompts,
+loot-box style rewards, real-money or card imagery, and anything that asks a child for personal details.
+
+### Originality review record, round 3 (SC-006)
+
+| Field | Entry |
+|---|---|
+| Date | 2026-11-20 |
+| Reviewer | Claude Code design pass. **The developer should open each linked shot once and countersign before the client review.** |
+| Method | The listings above were found by search and read as text. Screens were designed from the pattern in words, then compared with the listing text for mascot, palette and layout. |
+| Mascot | ✅ Only the client's Kudi, in the supplied poses |
+| Palette | ✅ Only the brand and derived tokens (`check-tokens-usage`, `check-contrast`) |
+| Layouts | ✅ Original; shared ideas (a children list, a report-style view, a download page) are generic patterns |
+| Limit | The shots' images were not viewed by the tooling used here, so a visual side-by-side is still the developer's step |
+| Countersigned | ☐ pending |

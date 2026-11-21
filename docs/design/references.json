@@ -1,0 +1,77 @@
+{
+  "version": "1.0.0",
+  "references": [
+    {
+      "id": "REF-01",
+      "url": "https://dribbble.com/shots/24144047-Youth-Finance-Personalized-Dashboard-for-a-Kids-Banking-App",
+      "platform": "parent-dashboard",
+      "pattern": "A kids' money dashboard that opens on one personal card with the child's name and goals",
+      "differs": "Not used: it frames real banking for a young person. KudiCubs has no real money (Constitution V), so no balance, card or bank imagery is taken.",
+      "verdict": "rejected",
+      "rejectReason": "Real-money banking concept; conflicts with Constitution V (no real money)."
+    },
+    {
+      "id": "REF-02",
+      "url": "https://dribbble.com/shots/6981829-Kids-Education-Report-Card-Dashboard",
+      "platform": "parent-dashboard",
+      "pattern": "A parent portal that summarises one child's performance on a single report-card style view",
+      "influences": [{ "platform": "parent-dashboard", "screen": "child" }, { "platform": "parent-dashboard", "screen": "skills" }],
+      "differs": "KudiCubs shows skills growing (Know, Understand, Decide, Invest, Share) with hand-built bars, never grades, ranks or pass/fail. Colours, type, Kudi and icons are the client's brand."
+      ,
+      "verdict": "adapted"
+    },
+    {
+      "id": "REF-03",
+      "url": "https://dribbble.com/shots/21426214-MindHero-The-Learning-App-for-Kids-with-Learning-Difficulties",
+      "platform": "app",
+      "pattern": "A clear switch from the learner's view to a separate parent view that summarises the day and week",
+      "influences": [{ "platform": "app", "screen": "profile" }, { "platform": "app", "screen": "parent-home" }],
+      "differs": "KudiCubs puts a parent gate and PIN between the two views, so a young child cannot pass by chance. The parent view lists every child and uses no characters or palette from the source.",
+      "verdict": "adapted"
+    },
+    {
+      "id": "REF-04",
+      "url": "https://dribbble.com/shots/3918005-Parents-Dashboard-iOS-App",
+      "platform": "app",
+      "pattern": "A mobile parent dashboard that lists the children first and opens one child's progress",
+      "influences": [{ "platform": "app", "screen": "parent-child" }],
+      "differs": "Layout, icons and colours are original. Each child is shown with their own region's coins and band, and no child can open this view without the gate.",
+      "verdict": "adapted"
+    },
+    {
+      "id": "REF-05",
+      "url": "https://dribbble.com/shots/21029859-Kids-learning-website-landing-page",
+      "platform": "website",
+      "pattern": "A bright, easy-to-scan landing page that speaks to parents and shows the product within the first screen",
+      "influences": [{ "platform": "website", "screen": "index" }],
+      "differs": "The page leads with the client's logo, Kudi and the line 'Play. Earn. Roar!', one primary 'Get the app' action and the four age bands. It has no child-directed play or timers.",
+      "verdict": "adapted"
+    },
+    {
+      "id": "REF-06",
+      "url": "https://dribbble.com/shots/14608306-Landing-Page-for-Parents-on-Brainly",
+      "platform": "website",
+      "pattern": "A page written for parents that explains how the product helps them support their child's learning",
+      "influences": [{ "platform": "website", "screen": "how-it-works" }, { "platform": "website", "screen": "safety" }],
+      "differs": "KudiCubs explains missions, rewards and parent controls in plain words with its own illustrations, and adds a dedicated safety and privacy page that the source does not show.",
+      "verdict": "adapted"
+    },
+    {
+      "id": "REF-07",
+      "url": "https://dribbble.com/shots/2636208-Kids-app-Landing-page",
+      "platform": "website",
+      "pattern": "A single-flow app landing page that ends with the download route",
+      "influences": [{ "platform": "website", "screen": "get-the-app" }],
+      "differs": "KudiCubs separates the download step on its own page with Android and iOS routes and a desktop 'send me the link' action. The curvy playful style, colours and artwork are not used.",
+      "verdict": "adapted"
+    }
+  ],
+  "reviews": [
+    {
+      "date": "2026-11-20",
+      "reviewer": "Claude Code design pass (developer to countersign)",
+      "method": "Public Dribbble listings were found by search and read as titles, tags and descriptions only. No shot was downloaded and no image is stored in the repository. Each screen was designed from the pattern in words and compared with the listing text for mascots, palette and layout. The developer should open each linked shot once and countersign before the client review.",
+      "result": "pass"
+    }
+  ]
+}

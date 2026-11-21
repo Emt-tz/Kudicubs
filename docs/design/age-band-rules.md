@@ -62,3 +62,12 @@ Each is worked from these rules and [kudi-the-cub.md](./kudi-the-cub.md) alone.
 | 3 | **A 7–9 round ends at a loss** (lemonade priced too high) | `gentle` then `explain`: "Fewer people bought at 20 coins. Want to try a lower price?" | The Round Summary shows revenue, costs and a small loss in plain numbers with a calm look (no red). **Try Again** and **Next** appear, with Try Again first. Rewards already earned are kept. |
 | 4 | **A 10–12 child chooses between equity and debt** | `think`, then a one-line hint after 10 s idle | Two or three cards with simplified real terms and a "what this means" line each; numbers to percentages. Either choice continues, and the result shows the trade-off. |
 | 5 | **A 13–15 "Temptation Alert" appears** | Not on the alert itself (intros only); a short mentor line on the result | A pop-up card with the item, its price and the savings goal, with three equal choices. The result shows the effect on the goal timeline, with a light touch of humour. No pressure wording ("Hurry!"). |
+
+
+## Adult surfaces (spec 005)
+
+The website, Parent Dashboard, Team Console and hub are for adults and have no age-band behaviour of their
+own. They show each child at the child's own band and region. They are **calmer and denser** than the child
+screens: body text is 0.9× the child scale (`--kc-adult-type-scale`), targets are at least 44 px, and text may
+be longer. They still use only the brand tokens, never show a failure or a score to a child, and are never
+linked from a child screen without the parent gate.

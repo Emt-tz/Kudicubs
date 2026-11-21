@@ -22,7 +22,9 @@ KC.regions = {
     marketExamples: {
       treat: { label: 'kelewele', art: 'treat-sticker' },
       drink: { label: 'sobolo', art: 'goal-coins' },
-      snack: { label: 'groundnuts', art: 'goal-coins' }
+      snack: { label: 'groundnuts', art: 'goal-coins' },
+      cake: { label: 'pineapple cake', art: 'goal-coins' },
+      clothes: { label: 'kente-print shirts', art: 'goal-coins' }
     }
   },
   ng: {
@@ -41,7 +43,9 @@ KC.regions = {
     marketExamples: {
       treat: { label: 'puff-puff', art: 'treat-sticker' },
       drink: { label: 'zobo', art: 'goal-coins' },
-      snack: { label: 'chin-chin', art: 'goal-coins' }
+      snack: { label: 'chin-chin', art: 'goal-coins' },
+      cake: { label: 'coconut cake', art: 'goal-coins' },
+      clothes: { label: 'ankara shirts', art: 'goal-coins' }
     }
   },
   uk: {
@@ -61,7 +65,9 @@ KC.regions = {
     marketExamples: {
       treat: { label: 'biscuit', art: 'treat-sticker' },
       drink: { label: 'lemonade', art: 'goal-coins' },
-      snack: { label: 'crisps', art: 'goal-coins' }
+      snack: { label: 'crisps', art: 'goal-coins' },
+      cake: { label: 'sponge cake', art: 'goal-coins' },
+      clothes: { label: 'tie-dye tees', art: 'goal-coins' }
     }
   }
 };

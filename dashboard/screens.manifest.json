@@ -1,0 +1,193 @@
+{
+  "version": "1.0.0",
+  "parent": {
+    "screens": [
+      {
+        "id": "sign-in",
+        "title": "Sign in",
+        "states": [
+          "default",
+          "error",
+          "expired",
+          "loading"
+        ],
+        "refs": []
+      },
+      {
+        "id": "code",
+        "title": "Enter code",
+        "states": [
+          "default",
+          "error",
+          "resent"
+        ],
+        "refs": []
+      },
+      {
+        "id": "overview",
+        "title": "Overview",
+        "states": [
+          "default",
+          "empty",
+          "loading",
+          "error"
+        ],
+        "refs": []
+      },
+      {
+        "id": "child",
+        "title": "Child",
+        "states": [
+          "default",
+          "no-play-yet"
+        ],
+        "refs": [
+          "REF-02"
+        ]
+      },
+      {
+        "id": "skills",
+        "title": "Skills",
+        "states": [
+          "default",
+          "empty"
+        ],
+        "refs": [
+          "REF-02"
+        ]
+      },
+      {
+        "id": "badges",
+        "title": "Badges",
+        "states": [
+          "default",
+          "empty"
+        ],
+        "refs": []
+      },
+      {
+        "id": "activity",
+        "title": "Activity",
+        "states": [
+          "default",
+          "empty"
+        ],
+        "refs": []
+      },
+      {
+        "id": "settings-child",
+        "title": "Child settings",
+        "states": [
+          "default",
+          "saved",
+          "confirm-band",
+          "error"
+        ],
+        "refs": []
+      },
+      {
+        "id": "settings-family",
+        "title": "Family settings",
+        "states": [
+          "default",
+          "saved",
+          "error"
+        ],
+        "refs": []
+      },
+      {
+        "id": "devices",
+        "title": "Devices",
+        "states": [
+          "default",
+          "confirm-signout",
+          "empty"
+        ],
+        "refs": []
+      },
+      {
+        "id": "data",
+        "title": "Your data",
+        "states": [
+          "default",
+          "export-ready",
+          "delete-confirm",
+          "deleted"
+        ],
+        "refs": []
+      },
+      {
+        "id": "monthly-summary",
+        "title": "Monthly summary",
+        "states": [
+          "default",
+          "empty"
+        ],
+        "refs": []
+      },
+      {
+        "id": "signed-out",
+        "title": "Signed out",
+        "states": [
+          "default"
+        ],
+        "refs": []
+      }
+    ]
+  },
+  "team": {
+    "screens": [
+      {
+        "id": "sign-in",
+        "title": "Role sign-in",
+        "states": [
+          "default"
+        ],
+        "refs": []
+      },
+      {
+        "id": "families",
+        "title": "Families",
+        "states": [
+          "default",
+          "empty-search",
+          "loading"
+        ],
+        "refs": []
+      },
+      {
+        "id": "family",
+        "title": "Family",
+        "states": [
+          "default"
+        ],
+        "refs": []
+      },
+      {
+        "id": "content",
+        "title": "Content",
+        "states": [
+          "default",
+          "filtered-empty"
+        ],
+        "refs": []
+      },
+      {
+        "id": "mission",
+        "title": "Mission",
+        "states": [
+          "default"
+        ],
+        "refs": []
+      },
+      {
+        "id": "no-access",
+        "title": "No access",
+        "states": [
+          "default"
+        ],
+        "refs": []
+      }
+    ]
+  }
+}

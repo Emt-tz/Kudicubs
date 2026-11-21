@@ -1,12 +1,13 @@
 // 004 T003: a static server for prototype/ using Node built-ins only. Used by the tests (Playwright webServer)
 // and for local preview. Never a directory listing; 404 for anything missing.
-//   node serve.mjs [--base /Kudicubs/]   (PORT env, default 4173; bound to 127.0.0.1)
+//   node serve.mjs [--base /Kudicubs/] [--root dist]   (PORT env, default 4173; bound to 127.0.0.1)
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { ROOT } from './lib.mjs';
 
-const PROTO = path.join(ROOT, 'prototype');
+const rootArg = process.argv.indexOf('--root');
+const PROTO = path.join(ROOT, rootArg > -1 ? (process.env.KC_DIST || process.argv[rootArg + 1]) : 'prototype');   // 005: --root dist serves the whole set
 const PORT = Number(process.env.PORT || 4173);
 const baseArg = process.argv.indexOf('--base');
 const baseVal = baseArg > -1 ? process.argv[baseArg + 1] : null;

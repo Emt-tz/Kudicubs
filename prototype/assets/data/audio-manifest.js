@@ -5,7 +5,7 @@
 window.KC = window.KC || {};
 KC.audioManifest = {
  "version": "2.0.0",
- "linesVersion": "1.1.0",
+ "linesVersion": "1.2.0",
  "defaultLanguage": "en-GH",
  "regionLanguage": {
   "gh": "en-GH",
@@ -21,17 +21,17 @@ KC.audioManifest = {
   "en-GH": {
    "recorded": 0,
    "scratch": 146,
-   "pending": 0
+   "pending": 38
   },
   "en-NG": {
    "recorded": 0,
    "scratch": 0,
-   "pending": 146
+   "pending": 184
   },
   "en-GB": {
    "recorded": 0,
    "scratch": 0,
-   "pending": 146
+   "pending": 184
   }
  },
  "text": {
@@ -180,7 +180,45 @@ KC.audioManifest = {
   "empty.home": "Let's find some coins! Tap Continue to play.",
   "empty.wallet": "Your jar is empty. Play The Lost Coins to fill it!",
   "empty.progress": "Play to earn your first badge!",
-  "empty.daily": "Play a game to light the first sun!"
+  "empty.daily": "Play a game to light the first sun!",
+  "age.b7_9": "Seven to nine!",
+  "age.b10_12": "Ten to twelve!",
+  "age.b13_15": "Thirteen to fifteen!",
+  "home.go": "Tap Continue for today's mission!",
+  "empty.home.band": "Ready for your first mission? Tap Continue!",
+  "empty.wallet.band": "Your wallet is empty. Play a mission to fill it!",
+  "profile.say": "This is you! You can change sound and voice here.",
+  "dailych.say": "Today's challenge! Play a mission to light the suns.",
+  "dailych.done": "All the suns are lit today. Great work!",
+  "levelup.say": "Level up! You're growing in the Pride!",
+  "badgedet.say": "Tap a badge to see how to earn it.",
+  "badgedet.earned": "You earned this badge!",
+  "badgedet.locked": "Keep playing to earn this one!",
+  "m7.intro.say": "Let's plan a birthday party! Can you stay under budget?",
+  "m7.decide.say": "Which party plan fits the budget?",
+  "m7.decide.hint": "Compare each plan with your budget.",
+  "m7.result.great": "Right on budget. Smart planning!",
+  "m7.result.ok": "You stayed under budget, with coins to spare.",
+  "m7.result.over": "That plan costs more than the budget. Want to try another?",
+  "m7.summary.say": "A budget helps you decide before you spend.",
+  "m10.intro.say": "Let's start a clothing brand! First we need money to begin.",
+  "m10.resource.say": "How will you raise the money?",
+  "m10.resource.hint": "Each choice has good points and risks.",
+  "m10.market.say": "What price will you set this month?",
+  "m10.market.hint": "A higher price means fewer buyers.",
+  "m10.result.great": "A strong month! Your plan worked.",
+  "m10.result.ok": "A fair month. There is room to grow.",
+  "m10.result.slow": "A slow month. Want to try another plan?",
+  "m10.summary.say": "A loan is repaid with extra. An investor shares your profit.",
+  "m13.intro.say": "Time for your first side hustle. Watch your costs.",
+  "m13.budget.say": "How many will you make?",
+  "m13.budget.hint": "Stay within your budget.",
+  "m13.market.say": "What price will you set?",
+  "m13.market.hint": "Price, cost and demand all matter.",
+  "m13.result.great": "Good profit. Your numbers worked.",
+  "m13.result.ok": "A small profit. Think about price and cost.",
+  "m13.result.loss": "A loss this time. Costs beat sales. Try again?",
+  "m13.summary.say": "Profit is sales minus costs. Watch your margin."
  },
  "lines": {
   "en-GH": {
@@ -1059,6 +1097,234 @@ KC.audioManifest = {
     "file": "assets/audio-scratch/en-GH/empty.daily.mp3",
     "scratchFile": "assets/audio-scratch/en-GH/empty.daily.mp3",
     "maxSeconds": 4
+   },
+   "age.b7_9": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 2.6
+   },
+   "age.b10_12": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 2.6
+   },
+   "age.b13_15": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 2.6
+   },
+   "home.go": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "empty.home.band": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "empty.wallet.band": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.9
+   },
+   "profile.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.9
+   },
+   "dailych.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "dailych.done": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "levelup.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "badgedet.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "badgedet.earned": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.1
+   },
+   "badgedet.locked": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m7.intro.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.9
+   },
+   "m7.decide.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m7.decide.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m7.result.great": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m7.result.ok": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m7.result.over": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 6.3
+   },
+   "m7.summary.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m10.intro.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 6.3
+   },
+   "m10.resource.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m10.resource.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "m10.market.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "m10.market.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m10.result.great": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m10.result.ok": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m10.result.slow": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m10.summary.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 6.3
+   },
+   "m13.intro.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "m13.budget.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m13.budget.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.1
+   },
+   "m13.market.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m13.market.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m13.result.great": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m13.result.ok": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m13.result.loss": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "m13.summary.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
    }
   },
   "en-NG": {
@@ -1937,6 +2203,234 @@ KC.audioManifest = {
     "file": null,
     "scratchFile": null,
     "maxSeconds": 4
+   },
+   "age.b7_9": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 2.6
+   },
+   "age.b10_12": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 2.6
+   },
+   "age.b13_15": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 2.6
+   },
+   "home.go": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "empty.home.band": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "empty.wallet.band": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.9
+   },
+   "profile.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.9
+   },
+   "dailych.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "dailych.done": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "levelup.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "badgedet.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "badgedet.earned": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.1
+   },
+   "badgedet.locked": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m7.intro.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.9
+   },
+   "m7.decide.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m7.decide.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m7.result.great": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m7.result.ok": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m7.result.over": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 6.3
+   },
+   "m7.summary.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m10.intro.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 6.3
+   },
+   "m10.resource.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m10.resource.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "m10.market.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "m10.market.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m10.result.great": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m10.result.ok": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m10.result.slow": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m10.summary.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 6.3
+   },
+   "m13.intro.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "m13.budget.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m13.budget.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.1
+   },
+   "m13.market.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m13.market.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m13.result.great": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m13.result.ok": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m13.result.loss": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "m13.summary.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
    }
   },
   "en-GB": {
@@ -2815,6 +3309,234 @@ KC.audioManifest = {
     "file": null,
     "scratchFile": null,
     "maxSeconds": 4
+   },
+   "age.b7_9": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 2.6
+   },
+   "age.b10_12": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 2.6
+   },
+   "age.b13_15": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 2.6
+   },
+   "home.go": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "empty.home.band": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "empty.wallet.band": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.9
+   },
+   "profile.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.9
+   },
+   "dailych.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "dailych.done": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "levelup.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "badgedet.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "badgedet.earned": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.1
+   },
+   "badgedet.locked": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m7.intro.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.9
+   },
+   "m7.decide.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m7.decide.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m7.result.great": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m7.result.ok": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m7.result.over": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 6.3
+   },
+   "m7.summary.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m10.intro.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 6.3
+   },
+   "m10.resource.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m10.resource.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "m10.market.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.5
+   },
+   "m10.market.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m10.result.great": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m10.result.ok": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m10.result.slow": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m10.summary.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 6.3
+   },
+   "m13.intro.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "m13.budget.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m13.budget.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.1
+   },
+   "m13.market.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m13.market.hint": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4
+   },
+   "m13.result.great": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 3.6
+   },
+   "m13.result.ok": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
+   },
+   "m13.result.loss": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 5.4
+   },
+   "m13.summary.say": {
+    "status": "pending",
+    "file": null,
+    "scratchFile": null,
+    "maxSeconds": 4.9
    }
   }
  }

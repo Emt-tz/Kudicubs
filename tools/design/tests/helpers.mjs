@@ -114,7 +114,7 @@ export async function step(page, seen) {
 }
 
 export const screenIs = (page, id, timeout = 5000) =>
-  page.waitForFunction((s) => document.getElementById('kc-screen').getAttribute('data-screen') === s, id, { timeout });
+  page.waitForFunction((s) => document.getElementById('kc-screen')?.getAttribute('data-screen') === s, id, { timeout });
 
 /** 003 §6.1–6.2: a child action is enabled at render, and tapping one reacts without navigating. */
 export async function checkChildActions(page) {

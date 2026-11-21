@@ -2,7 +2,8 @@
 // and the token tables inside docs/design/tokens.md. Deterministic output.
 import { writeFileSync, readFileSync, existsSync } from 'node:fs';
 import Ajv2020 from 'ajv/dist/2020.js';
-import { TOKENS_JSON, TOKENS_SCHEMA, TOKENS_CSS, TOKENS_MD, readJson, tokenMap, resolve, cssName } from './lib.mjs';
+import path from 'node:path';
+import { ROOT, TOKENS_JSON, TOKENS_SCHEMA, TOKENS_CSS, TOKENS_MD, readJson, tokenMap, resolve, cssName } from './lib.mjs';
 
 const tokens = readJson(TOKENS_JSON);
 const schema = readJson(TOKENS_SCHEMA);
@@ -69,6 +70,17 @@ ${lines.join('\n')}
 }
 `;
 writeFileSync(TOKENS_CSS, css);
+/* 005 T006: the same tokens for the website, dashboards and hub, plus the adult-surface density (research R7). */
+const adult = `
+/* Adult surfaces (website, dashboards, hub): same tokens, calmer and denser. */
+[data-surface="adult"] {
+  --kc-adult-type-scale: 0.9;
+  --kc-adult-space-unit: var(--kc-space-3);
+  --kc-adult-radius: var(--kc-radius-md);
+  --kc-adult-target-min: 44px;
+}
+`;
+writeFileSync(path.join(ROOT, 'shared/tokens.css'), css + adult);
 
 const table = (head, r) => `| Token | Value | When to use |\n|---|---|---|\n${r.join('\n')}`;
 const generated = `<!-- tokens:start -->
@@ -101,4 +113,4 @@ let md = existsSync(TOKENS_MD) ? readFileSync(TOKENS_MD, 'utf8') : '# KudiCubs D
 md = md.replace(/<!-- tokens:start -->[\s\S]*<!-- tokens:end -->/, generated);
 writeFileSync(TOKENS_MD, md);
 
-console.log(`tokens v${tokens.version}: ${map.size} tokens → prototype/assets/tokens.css, docs/design/tokens.md`);
+console.log(`tokens v${tokens.version}: ${map.size} tokens → prototype/assets/tokens.css, shared/tokens.css, docs/design/tokens.md`);

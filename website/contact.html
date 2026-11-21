@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Contact us - KudiCubs</title>
+<link rel="icon" href="../shared/brand/app-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="../shared/adult-components.css">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js"></script>
+</head>
+<body data-surface="adult">
+<a class="kc-skip" href="#main">Skip to main content</a>
+<header class="kc-top-nav site-header">
+  <div class="kc-wrap">
+    <a class="kc-brand" href="index.html"><img src="../shared/brand/logo-on-white.svg" alt="KudiCubs, home"></a>
+    <button type="button" class="kc-btn kc-quiet site-menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+          <a href="how-it-works.html">How it works</a>
+          <a href="age-bands.html">Age bands</a>
+          <a href="safety.html">Safety</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+          <a href="sign-in.html">Sign in</a>
+          <a href="get-the-app.html">Get the app</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="site-main" tabindex="-1">
+
+<section class="site-pagehead"><div class="kc-wrap"><h1>Contact us</h1><p class="site-lead">Questions, ideas or something not working? Tell us. This is a prototype: nothing is sent.</p></div></section>
+<section class="kc-section"><div class="kc-wrap">
+  <form class="site-form" data-form="contact" novalidate>
+    <div class="kc-field"><label for="c-name">Your name</label>
+      <input id="c-name" name="name" type="text" autocomplete="name" aria-describedby="c-name-err">
+      <p class="kc-error" id="c-name-err" aria-live="polite"></p></div>
+    <div class="kc-field"><label for="c-email">Your email</label>
+      <input id="c-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="c-email-err">
+      <p class="kc-error" id="c-email-err" aria-live="polite"></p></div>
+    <div class="kc-field"><label for="c-topic">What is it about?</label>
+      <select id="c-topic" name="topic"><option>A question about the app</option><option>Safety and privacy</option><option>Working together</option><option>Something else</option></select></div>
+    <div class="kc-field"><label for="c-message">Your message</label>
+      <textarea id="c-message" name="message" aria-describedby="c-message-hint c-message-err"></textarea>
+      <p class="kc-hint" id="c-message-hint">Please do not include your child's name or details.</p>
+      <p class="kc-error" id="c-message-err" aria-live="polite"></p></div>
+    <p class="site-status" role="status" aria-live="polite"></p>
+    <button type="submit" class="kc-btn" data-loading="Sending...">Send</button>
+  </form>
+  <div class="site-success" id="contact-sent" role="status" tabindex="-1" hidden>
+    <h2>Message sent (demo)</h2>
+    <p>Thank you. In the real site we would reply by email. Nothing was sent and nothing was stored.</p>
+    <button type="button" class="kc-btn kc-quiet" data-again>Write another message</button>
+  </div>
+</div></section>
+</main>
+<footer class="site-footer">
+  <div class="kc-wrap">
+    <p class="site-tagline">Play. Earn. Roar!</p>
+    <nav aria-label="Legal">
+      <ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="children-privacy.html">Children's privacy</a></li>
+      </ul>
+    </nav>
+    <p>KudiCubs website prototype. Pretend coins only. This page collects nothing and uses no cookies.</p>
+  </div>
+</footer>
+</body>
+</html>

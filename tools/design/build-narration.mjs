@@ -77,7 +77,9 @@ KC.audioManifest = ${JSON.stringify(manifest, null, 1)};
 const byScreen = {};
 for (const l of doc.lines) (byScreen[l.screen] = byScreen[l.screen] || []).push(l);
 const order = ['welcome', 'age-select', 'avatar', 'parent-gate', 'home', 'mission-intro', 'activity-find', 'activity-sort', 'activity-count',
-  'decision', 'result-save', 'result-spend', 'summary', 'reward', 'wallet', 'progress', 'any'];
+  'decision', 'result-save', 'result-spend', 'summary', 'reward', 'wallet', 'progress', 'daily-challenge', 'level-up', 'badge-detail', 'profile',
+  'm7-intro', 'm7-decision', 'm7-result', 'm7-summary', 'm10-intro', 'm10-resource', 'm10-market', 'm10-result', 'm10-summary',
+  'm13-intro', 'm13-budget', 'm13-market', 'm13-result', 'm13-summary', 'any'];
 const screens = Object.keys(byScreen).sort((a, b) => (order.indexOf(a) + 99 * (order.indexOf(a) < 0)) - (order.indexOf(b) + 99 * (order.indexOf(b) < 0)));
 const esc = (s) => String(s || '').replace(/\|/g, '\\|');
 let md = `# KudiCubs Narration Script
@@ -107,7 +109,7 @@ for (const [file, body] of outputs) {
 
 if (check) {
   // Every key the prototype speaks must exist.
-  const src = ['app.js', 'screens.js', 'activities.js'].map((f) => readFileSync(path.join(ROOT, 'prototype/assets', f), 'utf8')).join('\n');
+  const src = ['app.js', 'screens.js', 'activities.js', 'screens-bands.js', 'screens-parent.js', 'missions/band-7-9.js', 'missions/band-10-12.js', 'missions/band-13-15.js'].map((f) => readFileSync(path.join(ROOT, 'prototype/assets', f), 'utf8')).join('\n');
   const used = new Set();
   for (const m of src.matchAll(/KC\.voice\.play\('([a-z0-9_.]+)'/g)) used.add(m[1]);
   for (const m of src.matchAll(/(?:say|line|narration|hear):\s*'([a-z][a-z0-9_]*\.[a-z0-9_.]+)'/g)) used.add(m[1]);

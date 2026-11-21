@@ -1,0 +1,958 @@
+{
+  "version": "1.0.0",
+  "stories": [
+    "001-US1",
+    "001-US2",
+    "001-US3",
+    "001-US4",
+    "001-US5",
+    "001-US6",
+    "005-US1",
+    "005-US2",
+    "005-US3",
+    "005-US4",
+    "005-US5",
+    "005-US6",
+    "005-US7",
+    "005-US8",
+    "005-US9"
+  ],
+  "rows": [
+    {
+      "id": "J-APP-01",
+      "source": "001-US1",
+      "platform": "app",
+      "actor": "parent",
+      "title": "Child joins the Pride: welcome, age band, avatar and nickname",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "welcome"
+        },
+        {
+          "platform": "app",
+          "screen": "age-select"
+        },
+        {
+          "platform": "app",
+          "screen": "avatar"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-02",
+      "source": "001-US1",
+      "platform": "app",
+      "actor": "parent",
+      "title": "Parent gate, PIN, region and email at sign-up",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "parent-gate"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-03",
+      "source": "001-US2",
+      "platform": "app",
+      "actor": "child-4-6",
+      "title": "Play The Lost Coins: intro, find, sort, count",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "mission-intro"
+        },
+        {
+          "platform": "app",
+          "screen": "activity-find"
+        },
+        {
+          "platform": "app",
+          "screen": "activity-sort"
+        },
+        {
+          "platform": "app",
+          "screen": "activity-count"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-04",
+      "source": "001-US2",
+      "platform": "app",
+      "actor": "child-4-6",
+      "title": "Choose save or spend, see the result, summary and reward",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "decision"
+        },
+        {
+          "platform": "app",
+          "screen": "result-save"
+        },
+        {
+          "platform": "app",
+          "screen": "result-spend"
+        },
+        {
+          "platform": "app",
+          "screen": "summary"
+        },
+        {
+          "platform": "app",
+          "screen": "reward"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-05",
+      "source": "001-US3",
+      "platform": "app",
+      "actor": "child-4-6",
+      "title": "Home with Continue, XP, level, coins and idle hint",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "home"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-06",
+      "source": "001-US3",
+      "platform": "app",
+      "actor": "child-4-6",
+      "title": "Daily challenge",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "daily-challenge"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-07",
+      "source": "001-US3",
+      "platform": "app",
+      "actor": "child-4-6",
+      "title": "Level-up moment",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "level-up"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-08",
+      "source": "001-US4",
+      "platform": "app",
+      "actor": "child-4-6",
+      "title": "Wallet: coins, savings and history",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "wallet"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-09",
+      "source": "001-US4",
+      "platform": "app",
+      "actor": "child-4-6",
+      "title": "Progress: pillars and badges",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "progress"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-10",
+      "source": "001-US4",
+      "platform": "app",
+      "actor": "child-4-6",
+      "title": "Badge detail",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "badge-detail"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-11",
+      "source": "001-US5",
+      "platform": "app",
+      "actor": "child-7-9",
+      "title": "Play the 7-9 mission: intro, decision, result with retry, summary",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "m7-intro"
+        },
+        {
+          "platform": "app",
+          "screen": "m7-decision"
+        },
+        {
+          "platform": "app",
+          "screen": "m7-result"
+        },
+        {
+          "platform": "app",
+          "screen": "m7-summary"
+        },
+        {
+          "platform": "app",
+          "screen": "reward"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-12",
+      "source": "001-US5",
+      "platform": "app",
+      "actor": "child-10-12",
+      "title": "Play the 10-12 mission: resources, market, result with retry, summary",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "m10-intro"
+        },
+        {
+          "platform": "app",
+          "screen": "m10-resource"
+        },
+        {
+          "platform": "app",
+          "screen": "m10-market"
+        },
+        {
+          "platform": "app",
+          "screen": "m10-result"
+        },
+        {
+          "platform": "app",
+          "screen": "m10-summary"
+        },
+        {
+          "platform": "app",
+          "screen": "reward"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-13",
+      "source": "001-US5",
+      "platform": "app",
+      "actor": "child-13-15",
+      "title": "Play the 13-15 Side Hustle mission: budget, market, result with retry, summary",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "m13-intro"
+        },
+        {
+          "platform": "app",
+          "screen": "m13-budget"
+        },
+        {
+          "platform": "app",
+          "screen": "m13-market"
+        },
+        {
+          "platform": "app",
+          "screen": "m13-result"
+        },
+        {
+          "platform": "app",
+          "screen": "m13-summary"
+        },
+        {
+          "platform": "app",
+          "screen": "reward"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-14",
+      "source": "001-US5",
+      "platform": "app",
+      "actor": "child-7-9",
+      "title": "Choose region and see local coins and examples on every money screen",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "parent-region"
+        },
+        {
+          "platform": "app",
+          "screen": "wallet"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-15",
+      "source": "001-US6",
+      "platform": "app",
+      "actor": "child-4-6",
+      "title": "Profile: avatar, nickname, level, sound and narration",
+      "priority": "P3",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "profile"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-16",
+      "source": "001-US6",
+      "platform": "app",
+      "actor": "parent",
+      "title": "Enter the parent area through the gate and PIN",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "parent-gate"
+        },
+        {
+          "platform": "app",
+          "screen": "parent-home"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-17",
+      "source": "001-US6",
+      "platform": "app",
+      "actor": "parent",
+      "title": "See all children and one child's progress",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "parent-home"
+        },
+        {
+          "platform": "app",
+          "screen": "parent-child"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-18",
+      "source": "001-US6",
+      "platform": "app",
+      "actor": "parent",
+      "title": "Add a child; change age band, region, sound and narration",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "parent-add-child"
+        },
+        {
+          "platform": "app",
+          "screen": "parent-settings"
+        },
+        {
+          "platform": "app",
+          "screen": "parent-region"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-19",
+      "source": "001-US6",
+      "platform": "app",
+      "actor": "parent",
+      "title": "Wrong PIN, lock-out and PIN recovery",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "parent-lockout"
+        },
+        {
+          "platform": "app",
+          "screen": "parent-pin-recover"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-20",
+      "source": "001-US6",
+      "platform": "app",
+      "actor": "parent",
+      "title": "Sign in on a new device with an emailed code; choose my phone or family device",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "parent-signin"
+        },
+        {
+          "platform": "app",
+          "screen": "parent-device-mode"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-21",
+      "source": "001-US6",
+      "platform": "app",
+      "actor": "parent",
+      "title": "Sign out and delete the family account",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "parent-delete"
+        },
+        {
+          "platform": "app",
+          "screen": "parent-signed-out"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-22",
+      "source": "001-US2",
+      "platform": "app",
+      "actor": "child-4-6",
+      "title": "Idle hint guides the child to the next step on every child screen",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "home"
+        },
+        {
+          "platform": "app",
+          "screen": "mission-intro"
+        },
+        {
+          "platform": "app",
+          "screen": "decision"
+        }
+      ]
+    },
+    {
+      "id": "J-WEB-01",
+      "source": "005-US4",
+      "platform": "website",
+      "actor": "visitor",
+      "title": "Understand what KudiCubs is and the promise",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "website",
+          "screen": "index"
+        }
+      ]
+    },
+    {
+      "id": "J-WEB-02",
+      "source": "005-US4",
+      "platform": "website",
+      "actor": "visitor",
+      "title": "See how it works and what each age band does",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "website",
+          "screen": "how-it-works"
+        },
+        {
+          "platform": "website",
+          "screen": "age-bands"
+        }
+      ]
+    },
+    {
+      "id": "J-WEB-03",
+      "source": "005-US4",
+      "platform": "website",
+      "actor": "visitor",
+      "title": "Learn how safety, the PIN and data are handled",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "website",
+          "screen": "safety"
+        }
+      ]
+    },
+    {
+      "id": "J-WEB-04",
+      "source": "005-US4",
+      "platform": "website",
+      "actor": "visitor",
+      "title": "Get the app on Android or iOS, or send the link to a phone",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "website",
+          "screen": "get-the-app"
+        }
+      ]
+    },
+    {
+      "id": "J-WEB-05",
+      "source": "005-US4",
+      "platform": "website",
+      "actor": "visitor",
+      "title": "Find an answer in the FAQ or send a message",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "website",
+          "screen": "faq"
+        },
+        {
+          "platform": "website",
+          "screen": "contact"
+        }
+      ]
+    },
+    {
+      "id": "J-WEB-06",
+      "source": "005-US4",
+      "platform": "website",
+      "actor": "parent",
+      "title": "Sign in from the website and reach the Parent Dashboard",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "website",
+          "screen": "sign-in"
+        }
+      ]
+    },
+    {
+      "id": "J-WEB-07",
+      "source": "005-US4",
+      "platform": "website",
+      "actor": "visitor",
+      "title": "Read the privacy, terms and children's privacy pages",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "website",
+          "screen": "privacy"
+        },
+        {
+          "platform": "website",
+          "screen": "terms"
+        },
+        {
+          "platform": "website",
+          "screen": "children-privacy"
+        }
+      ]
+    },
+    {
+      "id": "J-PD-01",
+      "source": "005-US5",
+      "platform": "parent-dashboard",
+      "actor": "parent",
+      "title": "Sign in with a one-time code (wrong, expired, resend)",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "parent-dashboard",
+          "screen": "sign-in"
+        },
+        {
+          "platform": "parent-dashboard",
+          "screen": "code"
+        }
+      ]
+    },
+    {
+      "id": "J-PD-02",
+      "source": "005-US5",
+      "platform": "parent-dashboard",
+      "actor": "parent",
+      "title": "See every child at a glance, including the new-family empty state",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "parent-dashboard",
+          "screen": "overview"
+        }
+      ]
+    },
+    {
+      "id": "J-PD-03",
+      "source": "005-US5",
+      "platform": "parent-dashboard",
+      "actor": "parent",
+      "title": "Open a child: level, recent play, strongest skill",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "parent-dashboard",
+          "screen": "child"
+        },
+        {
+          "platform": "parent-dashboard",
+          "screen": "skills"
+        },
+        {
+          "platform": "parent-dashboard",
+          "screen": "activity"
+        }
+      ]
+    },
+    {
+      "id": "J-PD-04",
+      "source": "005-US5",
+      "platform": "parent-dashboard",
+      "actor": "parent",
+      "title": "See badges earned",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "parent-dashboard",
+          "screen": "badges"
+        }
+      ]
+    },
+    {
+      "id": "J-PD-05",
+      "source": "005-US5",
+      "platform": "parent-dashboard",
+      "actor": "parent",
+      "title": "Change a child's age band or region; manage PIN and email",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "parent-dashboard",
+          "screen": "settings-child"
+        },
+        {
+          "platform": "parent-dashboard",
+          "screen": "settings-family"
+        }
+      ]
+    },
+    {
+      "id": "J-PD-06",
+      "source": "005-US5",
+      "platform": "parent-dashboard",
+      "actor": "parent",
+      "title": "See signed-in devices and sign one out",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "parent-dashboard",
+          "screen": "devices"
+        }
+      ]
+    },
+    {
+      "id": "J-PD-07",
+      "source": "005-US5",
+      "platform": "parent-dashboard",
+      "actor": "parent",
+      "title": "Export or delete family data",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "parent-dashboard",
+          "screen": "data"
+        }
+      ]
+    },
+    {
+      "id": "J-PD-08",
+      "source": "005-US5",
+      "platform": "parent-dashboard",
+      "actor": "parent",
+      "title": "Read the monthly summary and sign out",
+      "priority": "P3",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "parent-dashboard",
+          "screen": "monthly-summary"
+        },
+        {
+          "platform": "parent-dashboard",
+          "screen": "signed-out"
+        }
+      ]
+    },
+    {
+      "id": "J-TC-01",
+      "source": "005-US9",
+      "platform": "team-console",
+      "actor": "support",
+      "title": "Sign in with a role",
+      "priority": "P3",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "team-console",
+          "screen": "sign-in"
+        }
+      ]
+    },
+    {
+      "id": "J-TC-02",
+      "source": "005-US9",
+      "platform": "team-console",
+      "actor": "support",
+      "title": "Look up a family and see nicknames only",
+      "priority": "P3",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "team-console",
+          "screen": "families"
+        },
+        {
+          "platform": "team-console",
+          "screen": "family"
+        }
+      ]
+    },
+    {
+      "id": "J-TC-03",
+      "source": "005-US9",
+      "platform": "team-console",
+      "actor": "content-editor",
+      "title": "See missions, age bands, regions and voice-recording status",
+      "priority": "P3",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "team-console",
+          "screen": "content"
+        },
+        {
+          "platform": "team-console",
+          "screen": "mission"
+        }
+      ]
+    },
+    {
+      "id": "J-TC-04",
+      "source": "005-US9",
+      "platform": "team-console",
+      "actor": "support",
+      "title": "See the no-access state for a restricted page",
+      "priority": "P3",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "team-console",
+          "screen": "no-access"
+        }
+      ]
+    },
+    {
+      "id": "J-HUB-01",
+      "source": "005-US1",
+      "platform": "hub",
+      "actor": "reviewer",
+      "title": "Open the share link and see the three platforms, version and coverage",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "hub",
+          "screen": "index"
+        }
+      ]
+    },
+    {
+      "id": "J-HUB-02",
+      "source": "005-US8",
+      "platform": "hub",
+      "actor": "reviewer",
+      "title": "Pick a role and see the journeys to try",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "hub",
+          "screen": "index"
+        }
+      ]
+    },
+    {
+      "id": "J-HUB-03",
+      "source": "005-US8",
+      "platform": "hub",
+      "actor": "reviewer",
+      "title": "Find the review guide and send feedback",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "hub",
+          "screen": "index"
+        }
+      ]
+    },
+    {
+      "id": "J-HUB-04",
+      "source": "005-US6",
+      "platform": "hub",
+      "actor": "reviewer",
+      "title": "Check the shared components and brand across platforms",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "hub",
+          "screen": "index"
+        }
+      ]
+    },
+    {
+      "id": "J-HUB-05",
+      "source": "005-US7",
+      "platform": "hub",
+      "actor": "reviewer",
+      "title": "Read the design references and the originality review",
+      "priority": "P2",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "hub",
+          "screen": "index"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-23",
+      "source": "005-US2",
+      "platform": "app",
+      "actor": "child-7-9",
+      "title": "Every child journey reachable in each band and region",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "home"
+        },
+        {
+          "platform": "app",
+          "screen": "wallet"
+        },
+        {
+          "platform": "app",
+          "screen": "progress"
+        },
+        {
+          "platform": "app",
+          "screen": "profile"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-24",
+      "source": "005-US3",
+      "platform": "app",
+      "actor": "parent",
+      "title": "Every parent-area action reachable on the phone",
+      "priority": "P1",
+      "status": "designed",
+      "screens": [
+        {
+          "platform": "app",
+          "screen": "parent-home"
+        },
+        {
+          "platform": "app",
+          "screen": "parent-settings"
+        },
+        {
+          "platform": "app",
+          "screen": "parent-delete"
+        }
+      ]
+    },
+    {
+      "id": "J-APP-25",
+      "source": "001-US5",
+      "platform": "app",
+      "actor": "child-7-9",
+      "title": "The remaining missions of each world beyond one per band",
+      "priority": "P3",
+      "status": "out-of-scope",
+      "reason": "Full mission list stays in the 001 MVP scope; this round designs one complete mission per band"
+    },
+    {
+      "id": "J-TC-05",
+      "source": "005-US9",
+      "platform": "team-console",
+      "actor": "support",
+      "title": "Teacher and school dashboards",
+      "priority": "P3",
+      "status": "out-of-scope",
+      "reason": "Out of scope in 001; not part of this round"
+    }
+  ]
+}

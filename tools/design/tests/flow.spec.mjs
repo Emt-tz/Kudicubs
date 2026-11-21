@@ -158,7 +158,7 @@ test('reviewer menu: version and build date, recorded/scratch/pending counts per
   await page.goto('./?review=1#/welcome');
   await expect(page.locator('meta[name=robots]')).toHaveAttribute('content', 'noindex, nofollow');
   const build = page.locator('[data-build]');
-  await expect(build).toContainText('Prototype v0.3.0 · built ');
+  await expect(build).toContainText(/Prototype v\d+\.\d+\.\d+ · built /);
   for (const l of ['en-GH', 'en-NG', 'en-GB']) await expect(page.locator(`[data-voice-count="${l}"]`)).toContainText(/recorded \d+ · scratch \d+ · pending \d+/);
 });
 

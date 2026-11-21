@@ -394,3 +394,32 @@ idle hint (`gentle-hint`) always pulses whichever of the two is current.
   The voice badge ("Scratch voice" / "Recording pending") shows only with reviewer notes on
   (FR-019).
 
+
+
+## Round 3 (spec 005): adult-surface components
+
+Used by the website, the Parent Dashboard, the Team Console and the hub. Source:
+[shared/adult-components.css](../../shared/adult-components.css), generated tokens in
+[shared/tokens.css](../../shared/tokens.css). Adult pages set `<body data-surface="adult">`, which applies the
+density tokens (`--kc-adult-type-scale` 0.9, `--kc-adult-space-unit`, `--kc-adult-radius`,
+`--kc-adult-target-min` 44px). Add `.kc-comfortable` on a container for the roomier size. Child screens keep
+the large, playful 48 px and 64 px sizes.
+
+| Component | Class | Surface | States | Sizes | Used by |
+|---|---|---|---|---|---|
+| Button | `.kc-btn`, `.kc-quiet` | adult | default, hover/press, focus, disabled, loading (`.is-loading`) | compact, comfortable | all adult surfaces |
+| Card | `.kc-card` | adult | default | compact, comfortable | hub, website, dashboards |
+| Stat tile | `.kc-stat` | adult | default | compact | dashboards |
+| Chart shell | `.kc-chart`, `.kc-bar` | adult | default, empty (use Empty state) | compact | dashboards |
+| Form field | `.kc-field` | adult | default, focus, error (`.is-error`), disabled | compact, comfortable | website, dashboards |
+| Top navigation | `.kc-top-nav` | adult | default, current page (`aria-current`) | compact | website, hub, dashboards |
+| Side navigation | `.kc-side-nav` | adult | default, current page | compact | Parent Dashboard, Team Console |
+| Tabs | `.kc-tabs` | adult | default, selected, focus | compact | hub, dashboards |
+| Table | `.kc-table` | adult | default, empty (use Empty state) | compact, comfortable | Team Console, dashboards |
+| Empty state | `.kc-empty` | adult | default | n/a | website, dashboards |
+| Toast | `.kc-toast` | adult | shown | n/a | forms, settings |
+| Modal | `.kc-modal` | adult | open, confirm | n/a | delete confirmations |
+| Badge pill | `.kc-badge-pill` | adult | default | n/a | hub, dashboards |
+
+Rules: adult interactive targets are at least 44×44 px; text meets the same contrast pairs as the child
+screens; there are no timers, streak-shaming or urgency prompts on any adult surface.

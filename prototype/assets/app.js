@@ -59,7 +59,7 @@
   }
   KC.savePrefs = function () {
     try {
-      sessionStorage.setItem(PREF_KEY, JSON.stringify({ region: KC.state.region, sound: KC.state.sound, notes: KC.state.notes, voiceLang: KC.state.voiceLang }));
+      sessionStorage.setItem(PREF_KEY, JSON.stringify({ region: KC.state.region, sound: KC.state.sound, narration: KC.state.narration, notes: KC.state.notes, voiceLang: KC.state.voiceLang, deviceMode: KC.state.deviceMode }));
     } catch (e) { /* private mode */ }
     if (KC.state.onboarded) KC.store.save();                       // the region is part of the saved profile
   };
@@ -84,10 +84,12 @@
     if (e.pillar) ev.pillar = e.pillar;
     return ev;
   }
+  var MISSION_IDS = ['lost-coins', 'sample', 'm7', 'm10', 'm13'];            // 005: one mission per band
+  KC.BANDS = ['b4_6', 'b7_9', 'b10_12', 'b13_15'];
   var PILLARS = ['know', 'understand', 'decide', 'invest', 'share'];
   function validEvent(e) {
     return e && typeof e === 'object' && KINDS.hasOwnProperty(e.t) && typeof e.n === 'number' && e.n >= 0 && e.n === Math.floor(e.n) &&
-      /^\d{4}-\d{2}-\d{2}$/.test(e.date) && typeof e.run === 'number' && (e.mission === 'lost-coins' || e.mission === 'sample') &&
+      /^\d{4}-\d{2}-\d{2}$/.test(e.date) && typeof e.run === 'number' && (MISSION_IDS.indexOf(e.mission) !== -1) &&
       /^[a-z_]+(\.[a-z0-9_]+)*$/.test(e.label) && (e.badge === undefined || /^badge\.[a-z_]+$/.test(e.badge)) &&
       (e.pillar === undefined || PILLARS.indexOf(e.pillar) !== -1);
   }
@@ -95,7 +97,7 @@
     if (!d || d.schema !== 1 || !d.profile || !Array.isArray(d.events) || typeof d.sample !== 'boolean') return false;
     var p = d.profile;
     if ((p.nickname !== null && KC.data.nicknames.indexOf(p.nickname) === -1) || KC.data.avatars.indexOf(p.avatarId) === -1) return false;
-    if (p.band !== 'b4_6' || !KC.regions[p.region] || typeof p.onboarded !== 'boolean') return false;
+    if (KC.BANDS.indexOf(p.band) === -1 || !KC.regions[p.region] || typeof p.onboarded !== 'boolean') return false;
     return d.events.length <= MAX_EVENTS && d.events.every(validEvent);
   }
   /* Over the cap, the oldest events are folded into a few summary events with the same totals, so coins, savings,
@@ -129,7 +131,7 @@
     save: function () {
       var s = KC.state;
       if (s.events.length > MAX_EVENTS) s.events = compact(s.events);
-      var d = { schema: 1, profile: { nickname: s.nickname, avatarId: s.avatarId, band: 'b4_6', region: s.region, onboarded: !!s.onboarded },
+      var d = { schema: 1, profile: { nickname: s.nickname, avatarId: s.avatarId, band: KC.BANDS.indexOf(s.band) !== -1 ? s.band : 'b4_6', region: s.region, onboarded: !!s.onboarded },
                 events: s.events, sample: !!s.sample };
       try { localStorage.setItem(STORE_KEY, JSON.stringify(d)); KC.storeMemoryOnly = false; } catch (e) { KC.storeMemoryOnly = true; }
     },
@@ -146,6 +148,8 @@
     KC.state = {
       region: p.region || (prof && prof.region) || KC.defaultRegion,
       sound: p.sound !== undefined ? p.sound : true,
+      narration: p.narration !== undefined ? p.narration : true,       // 005: the child's (or parent's) narration switch; captions always stay
+      deviceMode: p.deviceMode || 'my-phone',
       notes: !!p.notes,
       voiceLang: p.voiceLang || null,
       nickname: prof ? prof.nickname : null,                       // only ever a name the child picked (FR-024)
@@ -158,13 +162,17 @@
       lostCoins: { found: 0, sortedCorrectFirstTry: true, choice: null },
       lastReward: null
     };
-    KC.run = { active: false, reached: -1, pendingReward: false, atReward: false };
+    KC.run = { active: false, reached: -1, pendingReward: false, atReward: false, mission: 'lost-coins', sel: {} };
+    /* Parent area (005 FR-010): visit state only. Nothing typed at the gate is kept; the demo PIN is fixed (2580). */
+    KC.parent = { unlocked: false, gated: false, locked: false, wrong: 0, intent: false, childIdx: 0, added: [], signedIn: true, otp: null };
   };
   /* A new mission run (visit state only; never saved, so a refresh never resumes an unfinished run). */
-  KC.resetRun = function () {
+  KC.resetRun = function (mission) {
+    mission = mission || 'lost-coins';
     KC.state.runId = KC.state.events.reduce(function (m, e) { return Math.max(m, e.run); }, KC.state.runId) + 1;
     KC.state.lostCoins = { found: 0, sortedCorrectFirstTry: true, choice: null };
-    KC.run = { active: true, reached: KC.MISSION.indexOf('mission-intro'), pendingReward: false, atReward: false };
+    KC.run = { active: true, reached: KC.missionRoutes(mission).indexOf(mission === 'lost-coins' ? 'mission-intro' : mission + '-intro'), pendingReward: false, atReward: false,
+               mission: mission, sel: {}, score: null };
   };
   KC.hidden = function () { return KC.data.lostCoins.hidden; };
   KC.completedOnce = function (mission) {
@@ -292,6 +300,9 @@
       k.setAttribute('data-kudi-pose', pose);
     }
   }
+  /* Age-band rule: 4–6 and 7–9 prompts play by themselves; 10–12 and 13–15 play when tapped (age-band-rules.md). */
+  KC.bandOf = function (def) { def = def || KC.current; return def && def.band === 'auto' ? (KC.state.band || 'b4_6') : (def && def.band) || 'b4_6'; };
+  KC.autoNarrates = function (def) { var b = KC.bandOf(def); return b === 'b4_6' || b === 'b7_9'; };
   KC.basePose = function () { return (KC.current && KC.current.pose) || 'wave'; };
   /* Pose order (interaction-moments §2): reaction ≈0.6 s → headphones while a line plays → base pose. */
   KC.kudiReact = function (state, opts) {
@@ -362,7 +373,7 @@
       KC.voice.status = pick ? pick.status : 'pending';
       document.body.setAttribute('data-last-line', id);
       document.body.setAttribute('data-last-voice', KC.voice.status);
-      if (!pick || !KC.state.sound) {
+      if (!pick || !KC.state.sound || KC.state.narration === false) {
         caption(pick ? 'muted' : 'pending', id, KC.voice.status);   // sound off or no audio: caption only; never synthesised
         if (!pick && opts.highlight && captionEl) {   // a tapped word with no audio: highlight its caption, say nothing
           captionEl.classList.remove('is-highlight'); void captionEl.offsetWidth; captionEl.classList.add('is-highlight');
@@ -533,7 +544,21 @@
   var skipHash = null;
   /* The Lost Coins screens in order (the guard and the run's "reached" mark use it). */
   KC.MISSION = ['mission-intro', 'activity-find', 'activity-sort', 'activity-count', 'decision', 'result-save', 'result-spend', 'summary', 'reward'];
+  /* 005: every mission's route list. The guard, the run's "reached" mark and the reviewer jump all read this. */
+  KC.MISSIONS = { 'lost-coins': KC.MISSION, m7: ['m7-intro', 'm7-decision', 'm7-result', 'm7-summary', 'reward'],
+    m10: ['m10-intro', 'm10-resource', 'm10-market', 'm10-result', 'm10-summary', 'reward'],
+    m13: ['m13-intro', 'm13-budget', 'm13-market', 'm13-result', 'm13-summary', 'reward'] };
+  KC.missionRoutes = function (m) { return KC.MISSIONS[m] || KC.MISSION; };
+  /* The mission a route belongs to (null for Reward and every non-mission screen). */
+  KC.missionOf = function (id) {
+    var m = /^(m7|m10|m13)-/.exec(id);
+    if (m) return m[1];
+    return KC.MISSION.indexOf(id) !== -1 && id !== 'reward' ? 'lost-coins' : null;
+  };
+  KC.bandMission = function () { return { b7_9: 'm7', b10_12: 'm10', b13_15: 'm13' }[KC.state.band] || 'lost-coins'; };
+  KC.introRoute = function () { var m = KC.bandMission(); return m === 'lost-coins' ? 'mission-intro' : m + '-intro'; };
   var ONBOARDING = ['age-select', 'avatar', 'parent-gate'];
+  var PARENT_FREE = ['parent-signin', 'parent-pin-recover', 'parent-lockout', 'parent-signed-out'];   // reachable with the maths gate passed or a lock-out
   var HUBS = ['home', 'wallet', 'progress'];                       // bottom-nav screens: no Back button (FR-003)
   /* Route guard (004 T008, contracts/navigation.md §2): runs on every navigation, including Back, refresh and
      deep links. Returns the screen to show instead, or null. Nothing is granted by a redirect. */
@@ -542,10 +567,26 @@
     var r = KC.run || {}, onboarded = KC.state.onboarded;
     if (!KC.screens[id]) return onboarded ? 'home' : 'welcome';                                   // G6
     if (id === 'reward' && !r.pendingReward && !(r.atReward && KC.current && KC.current.id === 'reward')) return 'home';   // G1
-    if (/^result-/.test(id) && !(r.active && r.reached >= KC.MISSION.indexOf('decision'))) return 'home';          // G2
+    if (/^result-/.test(id) && !(r.active && r.mission === 'lost-coins' && r.reached >= KC.MISSION.indexOf('decision'))) return 'home';          // G2
     var m = KC.MISSION.indexOf(id);
-    if (m > 0 && id !== 'reward' && !/^result-/.test(id) && !r.active) return 'mission-intro';                    // G3
-    if (!opts.force && onboarded && ONBOARDING.indexOf(id) !== -1) return 'home';                                 // G4 (G5 follows from it)
+    if (m > 0 && id !== 'reward' && !/^result-/.test(id) && !(r.active && r.mission === 'lost-coins')) return 'mission-intro';                    // G3
+    /* 005 G7: band missions. Screens after the intro need this mission's run; Result also needs a decision made. */
+    var bm = /^(m7|m10|m13)-/.exec(id);
+    if (bm && !opts.force) {
+      var list = KC.missionRoutes(bm[1]), at = list.indexOf(id);
+      if (at > 0 && !(r.active && r.mission === bm[1])) return bm[1] + '-intro';
+      if (/-result$/.test(id) && !(r.score && r.reached >= at - 1)) return 'home';
+    }
+    /* 005 G8: parent area. The gate alone leads in; a child screen can never reach a parent screen by id. */
+    if (!opts.force && id === 'parent-gate' && onboarded) {
+      if (!KC.parent.intent) return 'home';                                                                       // G4/G5: reached by Back or by hand
+      if (KC.parent.locked) return 'parent-lockout';
+    }
+    if (!opts.force && /^parent-/.test(id) && id !== 'parent-gate') {
+      var P = KC.parent;
+      if (PARENT_FREE.indexOf(id) !== -1 ? !(P.unlocked || P.gated || P.locked) : !P.unlocked) return onboarded ? 'home' : 'welcome';
+    }
+    if (!opts.force && onboarded && ONBOARDING.indexOf(id) !== -1 && !(id === 'parent-gate' && KC.parent.intent)) return 'home';   // G4 (G5 follows from it)
     return null;
   };
   /* opts.say: a line spoken in place of the screen's own prompt (bottom-nav tab labels, 003 FR-036).
@@ -564,9 +605,11 @@
     if (to) { id = to; try { history.replaceState(null, '', '#/' + id); } catch (e) { /* file:// in some browsers */ } }
     var def = KC.screens[id];
     if (!def) { id = 'welcome'; def = KC.screens.welcome; }
-    var m = KC.MISSION.indexOf(id);
+    var mOf = KC.missionOf(id), m = mOf && KC.run.mission === mOf ? KC.missionRoutes(mOf).indexOf(id) : -1;
+    if (id === 'reward') m = KC.run.active ? KC.missionRoutes(KC.run.mission).indexOf('reward') : -1;
     if (KC.run.active && m > KC.run.reached) KC.run.reached = m;
     if (id !== 'reward') KC.run.atReward = false;
+    if (!/^parent-/.test(id)) { KC.parent.unlocked = false; KC.parent.gated = false; KC.parent.intent = false; }   // leaving the area locks it
     KC.voice.stop();
     KC.voice.last = null;
     clearIdle();
@@ -576,7 +619,7 @@
     screenEl.innerHTML = '';
     screenEl.setAttribute('data-screen', def.id);
     screenEl.setAttribute('data-audience', def.audience);
-    if (def.audience === 'child') screenEl.setAttribute('data-band', def.band || 'b4_6'); else screenEl.removeAttribute('data-band');
+    if (def.audience === 'child') screenEl.setAttribute('data-band', def.band === 'auto' ? (KC.state.band || 'b4_6') : (def.band || 'b4_6')); else screenEl.removeAttribute('data-band');
     screenEl.removeAttribute('data-hint-active');
     phone.setAttribute('data-audience', def.audience);
     var logoImg = document.querySelector('#kc-logo img');            // logo version matches its background (brand-assets)
@@ -595,7 +638,7 @@
     if (def.audience === 'child') {
       startIdle();
       if (opts.say) KC.voice.play(opts.say);                        // the tab label plays to the end; no prompt over it
-      else if (def._narr.length) {
+      else if (def._narr.length && KC.autoNarrates(def)) {
         setTimeout(function () {                                    // the screen's prompt, unless the child already made Kudi speak
           if (KC.current === def && !KC.voice.playing && !KC.voice.last) KC.voice.play(def._narr[0]);
         }, 350);
@@ -606,7 +649,8 @@
 
   /* ------------------------------------------------------------ idle hints (002 FR-013; 003 FR-035: spoken from the first hint) */
   var idleTimers = [];
-  var HINTS = [6000, 12000, 20000];                               // the 20 s hint is the long-idle state (FR-038)
+  var HINT_FIRST = { b4_6: 6000, b7_9: 8000, b10_12: 10000, b13_15: 12000 };   // age-band-rules.md: first idle hint per band
+  function hints() { var f = HINT_FIRST[KC.bandOf()] || 6000; return [f, f + 6000, f + 14000]; }   // the last one is the long-idle state (FR-038)
   function clearIdle() {
     idleTimers.forEach(clearTimeout); idleTimers = [];
     if (screenEl) {
@@ -622,6 +666,7 @@
     return n && n.length ? n[n.length > 1 ? 1 : 0] : null;
   }
   function startIdle() {
+    var HINTS = hints();
     HINTS.forEach(function (ms, level) {
       idleTimers.push(setTimeout(function () {
         var t = target();
@@ -672,13 +717,7 @@
     });
     var b = KC.build || { version: KC.version.prototype, builtAt: 'local', commit: null };
     var jump = h('select', { class: 'kc-select', 'aria-label': KC.t('review.jump'), onchange: function (e) {
-        var id = e.target.value, m = KC.MISSION.indexOf(id);
-        if (m > 0 && id !== 'reward') {                               // jumping into the mission starts a demo run there
-          if (!KC.run.active) KC.resetRun();
-          KC.run.reached = Math.max(KC.run.reached, m);
-          if (/^result-/.test(id)) KC.state.lostCoins.choice = id.slice(7);
-        }
-        KC.closeReviewer(); KC.go(id, { force: true });
+        if (e.target.value) KC.jumpTo(e.target.value);
       } },
       h('option', { value: '' }, '— ' + KC.t('review.jump') + ' —'),
       KC.order.map(function (id) { return h('option', { value: id }, KC.screens[id].title + ' (' + id + ')'); }));
@@ -706,6 +745,19 @@
         KC.t('review.build', { v: b.version, d: b.builtAt, c: b.commit ? ' · ' + b.commit : '', t: KC.version.tokens }))));
     reviewer.hidden = false;
     clearIdle();
+  };
+  /* Reviewer jump to any screen (every id in KC.order). Jumping into a mission starts a demo run there; jumping into the
+     parent area opens it (reviewer only: a child never has this menu). Nothing is granted by a jump. */
+  KC.jumpTo = function (id) {
+    var mo = KC.missionOf(id), at = mo ? KC.missionRoutes(mo).indexOf(id) : -1;
+    if (mo && at > 0) {
+      if (!KC.run.active || KC.run.mission !== mo) KC.resetRun(mo);
+      KC.run.reached = Math.max(KC.run.reached, at);
+      if (mo === 'lost-coins') { if (/^result-/.test(id)) KC.state.lostCoins.choice = id.slice(7); }
+      else if (KC.seedRun) KC.seedRun(mo, id);
+    }
+    if (/^parent-/.test(id) && id !== 'parent-gate') { KC.parent.unlocked = true; KC.parent.gated = true; }
+    KC.closeReviewer(); KC.go(id, { force: true });
   };
   KC.closeReviewer = function () { reviewer.hidden = true; KC.resetIdle(); };
   KC.setRegion = function (code) {

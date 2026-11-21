@@ -72,7 +72,8 @@ test('Reward and Result opened directly, or Reward refreshed, grant nothing and 
 });
 
 for (const file of ['assets/data/mock-data.js', 'assets/data/build-info.js', 'assets/data/regions.js', 'assets/data/audio-manifest.js',
-  'assets/app.js', 'assets/activities.js', 'assets/celebrate.js', 'assets/screens.js']) {
+  'assets/app.js', 'assets/activities.js', 'assets/celebrate.js', 'assets/screens.js',
+  'assets/missions/band-7-9.js', 'assets/missions/band-10-12.js', 'assets/missions/band-13-15.js', 'assets/screens-bands.js', 'assets/screens-parent.js']) {
   test(`load failure: ${file} blocked → Kudi "Tap to try again"; tapping with the file back starts the app (FR-051)`, async ({ page }) => {
     const pattern = '**/' + file;
     await page.route(pattern, (r) => r.abort());

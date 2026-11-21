@@ -1,0 +1,108 @@
+{
+  "version": "1.0.0",
+  "screens": [
+    {
+      "id": "index",
+      "title": "Play. Earn. Roar!",
+      "states": [
+        "default"
+      ],
+      "refs": [
+        "REF-05"
+      ]
+    },
+    {
+      "id": "how-it-works",
+      "title": "How it works",
+      "states": [
+        "default"
+      ],
+      "refs": [
+        "REF-06"
+      ]
+    },
+    {
+      "id": "age-bands",
+      "title": "Age bands",
+      "states": [
+        "default"
+      ],
+      "refs": []
+    },
+    {
+      "id": "safety",
+      "title": "Safety",
+      "states": [
+        "default"
+      ],
+      "refs": [
+        "REF-06"
+      ]
+    },
+    {
+      "id": "get-the-app",
+      "title": "Get the app",
+      "states": [
+        "default",
+        "success"
+      ],
+      "refs": [
+        "REF-07"
+      ]
+    },
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "states": [
+        "default",
+        "empty"
+      ],
+      "refs": []
+    },
+    {
+      "id": "contact",
+      "title": "Contact us",
+      "states": [
+        "default",
+        "error",
+        "loading",
+        "success"
+      ],
+      "refs": []
+    },
+    {
+      "id": "sign-in",
+      "title": "Sign in",
+      "states": [
+        "default",
+        "error",
+        "loading"
+      ],
+      "refs": []
+    },
+    {
+      "id": "privacy",
+      "title": "Privacy",
+      "states": [
+        "default"
+      ],
+      "refs": []
+    },
+    {
+      "id": "terms",
+      "title": "Terms",
+      "states": [
+        "default"
+      ],
+      "refs": []
+    },
+    {
+      "id": "children-privacy",
+      "title": "Children's privacy",
+      "states": [
+        "default"
+      ],
+      "refs": []
+    }
+  ]
+}
