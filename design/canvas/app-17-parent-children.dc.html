@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Children</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:48px 20px 28px;gap:16px">
+  <div style="color:#FBE57E;font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase">Parent area</div>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">Your children</h1>
+  <p style="margin:0;font-size:16px;line-height:1.4">Tap a child to see how they are growing.</p>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <a style="display:flex;align-items:center;gap:14px;min-height:88px;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.1);color:#FEF5E0;text-decoration:none">
+      <div style="width:56px;height:56px;border-radius:999px;background:#F68C1F;border:3px solid #FBE57E;flex:none"></div>
+      <div style="flex:1"><div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:24px;line-height:1.1">Ama</div><div style="font-size:15px;color:#FBE57E;font-weight:700">Age 4–6 · Ghana (GH₵) · Level 2</div></div>
+      <span aria-hidden="true" style="font-size:26px;color:#FBE57E">›</span>
+    </a>
+    <a style="display:flex;align-items:center;gap:14px;min-height:88px;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.1);color:#FEF5E0;text-decoration:none">
+      <div style="width:56px;height:56px;border-radius:999px;background:#FBCE16;border:3px solid #FBE57E;flex:none"></div>
+      <div style="flex:1"><div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:24px;line-height:1.1">Kofi</div><div style="font-size:15px;color:#FBE57E;font-weight:700">Age 7–9 · Nigeria (₦) · Level 3</div></div>
+      <span aria-hidden="true" style="font-size:26px;color:#FBE57E">›</span>
+    </a>
+    <a style="display:flex;align-items:center;gap:14px;min-height:88px;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.1);color:#FEF5E0;text-decoration:none">
+      <div style="width:56px;height:56px;border-radius:999px;background:#FCE6C6;border:3px solid #FBE57E;flex:none"></div>
+      <div style="flex:1"><div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:24px;line-height:1.1">Zara</div><div style="font-size:15px;color:#FBE57E;font-weight:700">Age 10–12 · United Kingdom (£) · Level 4</div></div>
+      <span aria-hidden="true" style="font-size:26px;color:#FBE57E">›</span>
+    </a>
+  </div>
+  <button style="min-height:56px;border-radius:999px;border:2px dashed #FBE57E;background:transparent;color:#FBE57E;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px">Add a child</button>
+  <div style="flex:1"></div>
+  <div style="display:flex;gap:10px">
+    <button style="flex:1;min-height:52px;border-radius:999px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-weight:800;font-size:16px;font-family:'Nunito',sans-serif">Settings</button>
+    <button style="flex:1;min-height:52px;border-radius:999px;border:0;background:#FBCE16;color:#3E2312;font-weight:800;font-size:16px;font-family:'Baloo 2',sans-serif">Back to the game</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

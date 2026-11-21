@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Profile: change friend</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#FEF5E0;font-family:'Nunito',sans-serif;color:#3E2312;display:flex;flex-direction:column;padding:48px 20px 28px;gap:16px">
+  <div style="display:flex;align-items:center;gap:10px">
+    <a aria-label="Back" style="width:48px;height:48px;border-radius:999px;border:2px solid #3E2312;background:#fff;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:24px">&lt;</a>
+    <h1 style="margin:0;flex:1;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:28px;line-height:1.1">Pick a new friend</h1>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <img src="/_blob/48e3ae69e739b1993bd3c631e26d7f36" alt="Kudi" style="width:96px;height:auto">
+    <div style="background:#fff;border:2px solid #3E2312;border-radius:18px;padding:12px 14px;font-weight:800;font-size:18px;line-height:1.3;flex:1">Tap a friend to see them here.</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px">
+    <button aria-label="Friend 1" style="height:136px;border-radius:24px;border:3px solid #3E2312;background:#fff;display:flex;align-items:center;justify-content:center"><div style="width:88px;height:88px;border-radius:999px;background:#FBCE16;border:3px solid #3E2312"></div></button>
+    <button aria-label="Friend 2, current" style="height:136px;border-radius:24px;border:4px solid #3E2312;background:#FBE57E;box-shadow:0 5px 0 #3E2312;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-weight:800;font-size:14px;color:#3E2312"><div style="width:80px;height:80px;border-radius:999px;background:#F68C1F;border:3px solid #3E2312"></div>Current</button>
+    <button aria-label="Friend 3" style="height:136px;border-radius:24px;border:3px solid #3E2312;background:#fff;display:flex;align-items:center;justify-content:center"><div style="width:88px;height:88px;border-radius:999px;background:#FCE6C6;border:3px solid #3E2312"></div></button>
+    <button aria-label="Friend 4" style="height:136px;border-radius:24px;border:3px solid #3E2312;background:#fff;display:flex;align-items:center;justify-content:center"><div style="width:88px;height:88px;border-radius:999px;background:#644D3B;border:3px solid #3E2312"></div></button>
+  </div>
+  <div style="font-weight:700;font-size:15px;color:#644D3B;text-align:center">Your name, coins and badges stay the same.</div>
+  <div style="flex:1"></div>
+  <button style="width:100%;height:68px;border-radius:999px;border:2px solid #3E2312;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:24px;box-shadow:0 5px 0 #3E2312">That's me!</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

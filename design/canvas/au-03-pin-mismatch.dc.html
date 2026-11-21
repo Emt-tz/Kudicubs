@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PIN does not match</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:48px 24px 28px;gap:14px">
+  <div style="color:#FBE57E;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase">Parent setup · Step 3 of 6</div>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">Type your PIN once more</h1>
+  <div style="display:flex;justify-content:center;gap:18px;padding:12px 0" role="img" aria-label="4 of 4 digits entered, does not match">
+    <span style="width:22px;height:22px;border-radius:999px;background:#FBE57E;display:block"></span>
+    <span style="width:22px;height:22px;border-radius:999px;background:#FBE57E;display:block"></span>
+    <span style="width:22px;height:22px;border-radius:999px;background:#FBE57E;display:block"></span>
+    <span style="width:22px;height:22px;border-radius:999px;background:#FBE57E;display:block"></span>
+  </div>
+  <div style="display:flex;align-items:flex-start;gap:12px;background:#FCE6C6;color:#3E2312;border-radius:16px;padding:14px 16px;border:2px solid #FBE57E" role="alert">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3E2312" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg>
+    <div><strong style="display:block;font-size:17px">The two PINs do not match</strong><span style="font-size:15px">No problem. Try the second PIN again, or go back and pick a new one.</span></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">1</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">2</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">3</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">4</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">5</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">6</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">7</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">8</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">9</button>
+    <span></span>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">0</button>
+    <button aria-label="Delete" style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.07);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:18px">Delete</button>
+  </div>
+  <div style="flex:1"></div>
+  <button style="width:100%;height:60px;border-radius:999px;border:0;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px">Try again</button>
+  <a style="color:#FBE57E;text-align:center;font-weight:700;font-size:16px;min-height:48px;display:flex;align-items:center;justify-content:center;text-decoration:underline">Start over with a new PIN</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

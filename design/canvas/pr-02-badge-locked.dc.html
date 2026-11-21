@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Badge: locked</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#FEF5E0;font-family:'Nunito',sans-serif;color:#3E2312;position:relative;overflow:hidden">
+  <div style="padding:44px 20px 0;display:flex;flex-direction:column;gap:14px;opacity:.5">
+    <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:32px;line-height:1.1">My badges</h1>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div style="height:110px;background:#fff;border:2px solid #3E2312;border-radius:18px"></div><div style="height:110px;background:#fff;border:2px solid #3E2312;border-radius:18px"></div><div style="height:110px;background:#fff;border:2px solid #3E2312;border-radius:18px"></div>
+      <div style="height:110px;background:#fff;border:2px solid #3E2312;border-radius:18px"></div><div style="height:110px;background:#fff;border:2px solid #3E2312;border-radius:18px"></div><div style="height:110px;background:#fff;border:2px solid #3E2312;border-radius:18px"></div>
+    </div>
+  </div>
+  <div style="position:absolute;inset:0;background:rgba(62,35,18,.55)"></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:28px 28px 0 0;border-top:3px solid #3E2312;padding:20px 20px 28px;display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center">
+    <div style="width:44px;height:6px;border-radius:999px;background:#F2E8D4"></div>
+    <div style="width:120px;height:120px;border-radius:999px;background:#F2E8D4;border:3px solid #644D3B;display:flex;align-items:center;justify-content:center">
+      <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#644D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+    </div>
+    <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:28px;line-height:1.1">Smart Saver</h1>
+    <div style="background:#FCE6C6;border:2px solid #3E2312;border-radius:14px;padding:4px 14px;font-weight:800;font-size:15px">Not earned yet</div>
+    <p style="margin:0;font-weight:700;font-size:18px;line-height:1.4;max-width:300px">Put 40 coins into the jar and keep them there. Saving a little each time adds up.</p>
+    <div style="width:100%;text-align:left">
+      <div style="display:flex;justify-content:space-between;font-weight:800;font-size:15px"><span>Your jar</span><span>0 of 40 coins</span></div>
+      <div style="height:14px;border-radius:999px;background:#F2E8D4;margin-top:6px"></div>
+    </div>
+    <button style="width:100%;height:64px;border-radius:999px;border:2px solid #3E2312;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;box-shadow:0 5px 0 #3E2312">Go and earn it</button>
+    <a style="min-height:48px;display:flex;align-items:center;font-weight:800;font-size:17px;text-decoration:underline">Close</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

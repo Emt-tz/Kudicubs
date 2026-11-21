@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Team Console signed out</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="min-height:900px;background:#F7F1E4;font-family:'Nunito',sans-serif;font-size:15px;color:#3E2312;display:flex;align-items:center;justify-content:center;padding:40px 20px;box-sizing:border-box">
+  <div style="width:100%;max-width:480px;display:flex;flex-direction:column;gap:20px;align-items:center">
+    <img src="/_blob/052d859f6cfb6ba016f71e72ddd4b5b5" alt="KudiCubs" style="height:56px;width:auto">
+    <section style="width:100%;box-sizing:border-box;background:#fff;border:1px solid #EDD6B8;border-radius:14px;box-shadow:0 1px 2px rgba(62,35,18,.06);padding:32px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px">
+      <img src="/_blob/3945593096f79c0f3e00e5f36a410711" alt="Kudi giving a thumbs up" style="width:110px;height:auto">
+      <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:28px;line-height:1.15">You have signed out</h1>
+      <p style="margin:0;color:#644D3B">Your session in the Team Console has ended on this device. Nothing was changed.</p>
+      <div style="display:flex;align-items:center;gap:10px;background:#E3F3E8;border:1px solid rgba(62,35,18,.3);border-radius:12px;padding:10px 14px;text-align:left"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16793A" stroke-width="2.5" aria-hidden="true" style="flex:none"><path d="M5 12l5 5 9-10"/></svg><span><strong>Signed out.</strong> Sign in again with your work email to continue.</span></div>
+      <button style="width:100%;height:48px;border-radius:10px;border:2px solid #3E2312;background:#FBCE16;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:19px;color:#3E2312;margin-top:6px">Sign in again</button>
+    </section>
+    <p style="margin:0;text-align:center;color:#644D3B;font-size:13px">Prototype with fictional data.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

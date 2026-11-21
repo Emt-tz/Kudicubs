@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Contact form errors</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3E2312}
+</style>
+</helmet>
+<div style="min-height:1000px;background:#FEF5E0;font-family:'Nunito',sans-serif;color:#3E2312;font-size:17px;line-height:1.5">
+  <header style="background:#fff;border-bottom:2px solid #FCE6C6">
+    <div style="max-width:1120px;margin:0 auto;padding:6px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <img src="/_blob/052d859f6cfb6ba016f71e72ddd4b5b5" alt="KudiCubs" style="height:48px;width:auto">
+      <nav style="margin-left:auto;display:flex;gap:4px;flex-wrap:wrap;font-weight:800">
+        <a style="min-height:44px;display:inline-flex;align-items:center;padding:0 12px;text-decoration:none">How it works</a>
+        <a style="min-height:44px;display:inline-flex;align-items:center;padding:0 12px;text-decoration:none">Age bands</a>
+        <a style="min-height:44px;display:inline-flex;align-items:center;padding:0 12px;text-decoration:none">Safety</a>
+        <a style="min-height:44px;display:inline-flex;align-items:center;padding:0 12px;text-decoration:none">FAQ</a>
+        <a style="min-height:44px;display:inline-flex;align-items:center;padding:0 16px;text-decoration:none;background:#FBCE16;border:2px solid #3E2312;border-radius:999px">Get the app</a>
+      </nav>
+    </div>
+  </header>
+  <main style="max-width:1120px;margin:0 auto;padding:48px 20px 64px;display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start">
+    <div style="flex:1 1 320px">
+      <h1 style="margin:0 0 10px;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:44px;line-height:1.1">Contact us</h1>
+      <p style="margin:0 0 16px;color:#644D3B;max-width:44ch">Questions about KudiCubs, safety or your family's data? We read every message.</p>
+    </div>
+    <form style="flex:1 1 440px;background:#fff;border:2px solid #3E2312;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px" onsubmit="return false">
+      <div role="alert" style="display:flex;gap:12px;align-items:flex-start;background:#FCE6C6;border:1px solid #3E2312;border-radius:12px;padding:14px 16px">
+        <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3E2312" stroke-width="2" style="flex:none"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg>
+        <div><strong style="display:block">Please fix 3 things before sending</strong><a style="font-weight:700">Your name is missing</a> · <a style="font-weight:700">Check the email address</a> · <a style="font-weight:700">Write a short message</a></div>
+      </div>
+      <div>
+        <label for="n" style="display:block;font-weight:800;margin-bottom:4px">Your name</label>
+        <input id="n" aria-invalid="true" style="width:100%;box-sizing:border-box;min-height:48px;border:3px solid #3E2312;border-radius:10px;padding:8px 14px;font:inherit;background:#FFF8F0;color:#3E2312">
+        <div style="display:flex;gap:6px;align-items:center;margin-top:6px;font-weight:800;font-size:15px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3E2312" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg>Your name is missing</div>
+      </div>
+      <div>
+        <label for="e" style="display:block;font-weight:800;margin-bottom:4px">Email address</label>
+        <input id="e" aria-invalid="true" value="parent@example" style="width:100%;box-sizing:border-box;min-height:48px;border:3px solid #3E2312;border-radius:10px;padding:8px 14px;font:inherit;background:#FFF8F0;color:#3E2312">
+        <div style="display:flex;gap:6px;align-items:center;margin-top:6px;font-weight:800;font-size:15px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3E2312" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg>Check the email address, it looks incomplete</div>
+      </div>
+      <div>
+        <label for="t" style="display:block;font-weight:800;margin-bottom:4px">Topic</label>
+        <select id="t" style="width:100%;box-sizing:border-box;min-height:48px;border:2px solid #3E2312;border-radius:10px;padding:8px 14px;font:inherit;background:#fff;color:#3E2312"><option>Safety and privacy</option></select>
+      </div>
+      <div>
+        <label for="m" style="display:block;font-weight:800;margin-bottom:4px">Message</label>
+        <textarea id="m" aria-invalid="true" style="width:100%;box-sizing:border-box;min-height:120px;border:3px solid #3E2312;border-radius:10px;padding:10px 14px;font:inherit;background:#FFF8F0;color:#3E2312"></textarea>
+        <div style="display:flex;gap:6px;align-items:center;margin-top:6px;font-weight:800;font-size:15px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3E2312" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg>Write a short message so we can help</div>
+      </div>
+      <button style="min-height:52px;padding:0 28px;border-radius:999px;border:2px solid #3E2312;background:#FBCE16;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;color:#3E2312;align-self:flex-start">Send message</button>
+    </form>
+  </main>
+  <footer style="background:#3E2312;color:#FEF5E0">
+    <div style="max-width:1120px;margin:0 auto;padding:24px 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+      <span style="font-weight:800">KudiCubs</span>
+      <a style="color:#FBE57E;min-height:44px;display:inline-flex;align-items:center">Privacy</a><a style="color:#FBE57E;min-height:44px;display:inline-flex;align-items:center">Terms</a><a style="color:#FBE57E;min-height:44px;display:inline-flex;align-items:center">Children's privacy</a><a style="color:#FBE57E;min-height:44px;display:inline-flex;align-items:center">Contact</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

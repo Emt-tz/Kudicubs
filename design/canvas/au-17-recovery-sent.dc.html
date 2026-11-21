@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Recovery code sent</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:48px 24px 28px;gap:16px">
+  <div style="color:#FBE57E;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase">PIN recovery</div>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">Check your email</h1>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
+    <div style="width:120px;height:120px;border-radius:999px;background:rgba(251,206,22,.16);display:flex;align-items:center;justify-content:center">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#FBCE16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Email sent"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:12px;background:#E3F3E8;color:#3E2312;border-radius:16px;padding:14px 16px" role="status">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#16793A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-7"/></svg>
+      <div><strong style="display:block;font-size:17px">Code sent</strong><span style="font-size:15px">We sent a 6-digit code to parent@example.com. It works for 10 minutes.</span></div>
+    </div>
+    <p style="margin:0;font-size:15px;color:#FBE57E;text-align:center;max-width:300px">Cannot see it? Check your spam folder, then ask for a new code.</p>
+  </div>
+  <button style="width:100%;height:60px;border-radius:999px;border:0;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px">Enter my code</button>
+  <a style="color:#FBE57E;text-align:center;font-weight:700;font-size:16px;min-height:48px;display:flex;align-items:center;justify-content:center;text-decoration:underline">Send it again in 0:45</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

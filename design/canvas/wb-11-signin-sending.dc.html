@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Family sign-in sending</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3E2312}
+</style>
+</helmet>
+<div style="min-height:1000px;background:#FEF5E0;font-family:'Nunito',sans-serif;color:#3E2312;font-size:17px;line-height:1.5">
+  <header style="background:#fff;border-bottom:2px solid #FCE6C6">
+    <div style="max-width:1120px;margin:0 auto;padding:6px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <img src="/_blob/052d859f6cfb6ba016f71e72ddd4b5b5" alt="KudiCubs" style="height:48px;width:auto">
+      <nav style="margin-left:auto;display:flex;gap:4px;flex-wrap:wrap;font-weight:800">
+        <a style="min-height:44px;display:inline-flex;align-items:center;padding:0 12px;text-decoration:none">How it works</a>
+        <a style="min-height:44px;display:inline-flex;align-items:center;padding:0 12px;text-decoration:none">Safety</a>
+        <a style="min-height:44px;display:inline-flex;align-items:center;padding:0 12px;text-decoration:none;background:#FBE57E;border-radius:999px">Sign in</a>
+        <a style="min-height:44px;display:inline-flex;align-items:center;padding:0 16px;text-decoration:none;background:#FBCE16;border:2px solid #3E2312;border-radius:999px">Get the app</a>
+      </nav>
+    </div>
+  </header>
+  <main style="max-width:1120px;margin:0 auto;padding:56px 20px 64px;display:flex;gap:48px;flex-wrap:wrap;align-items:center;justify-content:center">
+    <div style="flex:1 1 320px;max-width:440px">
+      <img src="/_blob/278605869ebee984d68ed953129b40ea" alt="Kudi with headphones" style="width:180px;height:auto">
+      <h1 style="margin:8px 0 10px;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:44px;line-height:1.1">Family sign-in</h1>
+      <p style="margin:0;color:#644D3B">For parents and carers. We email you a one-time code, so there is no password to remember.</p>
+    </div>
+    <form aria-busy="true" style="flex:1 1 400px;max-width:480px;background:#fff;border:2px solid #3E2312;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px" onsubmit="return false">
+      <div>
+        <div style="font-weight:800;margin-bottom:4px">Parent email address</div>
+        <div style="min-height:48px;border:2px solid #3E2312;border-radius:10px;padding:10px 14px;background:#F2E8D4;box-sizing:border-box;opacity:.7">parent@example.com</div>
+      </div>
+      <button disabled aria-disabled="true" style="min-height:52px;padding:0 28px;border-radius:999px;border:2px solid #3E2312;background:#FBCE16;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px;color:#3E2312;opacity:.75;display:inline-flex;align-items:center;justify-content:center;gap:10px">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="10" stroke="rgba(62,35,18,.25)" stroke-width="4"/><path d="M13 3a10 10 0 0 1 10 10" stroke="#3E2312" stroke-width="4" stroke-linecap="round"/></svg>Sending your code...
+      </button>
+      <p role="status" style="margin:0;font-size:15px;color:#644D3B">This usually takes a few seconds.</p>
+    </form>
+  </main>
+  <footer style="background:#3E2312;color:#FEF5E0">
+    <div style="max-width:1120px;margin:0 auto;padding:24px 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+      <span style="font-weight:800">KudiCubs</span>
+      <a style="color:#FBE57E;min-height:44px;display:inline-flex;align-items:center">Privacy</a><a style="color:#FBE57E;min-height:44px;display:inline-flex;align-items:center">Terms</a><a style="color:#FBE57E;min-height:44px;display:inline-flex;align-items:center">Children's privacy</a><a style="color:#FBE57E;min-height:44px;display:inline-flex;align-items:center">Contact</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

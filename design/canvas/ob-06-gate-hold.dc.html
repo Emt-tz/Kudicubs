@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Parent gate hold</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:48px 24px 32px;gap:18px">
+  <div style="color:#FBE57E;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase">For grown-ups · Step 1 of 3</div>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">Grown-ups, press and hold</h1>
+  <p style="margin:0;font-size:18px;line-height:1.4">Hold the button for 3 seconds to continue. This keeps the parent area for adults.</p>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+    <div style="position:relative;width:220px;height:220px">
+      <svg width="220" height="220" viewBox="0 0 220 220" role="img" aria-label="Holding: 60 percent">
+        <circle cx="110" cy="110" r="96" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="16"/>
+        <circle cx="110" cy="110" r="96" fill="none" stroke="#FBCE16" stroke-width="16" stroke-linecap="round" stroke-dasharray="362 603" transform="rotate(-90 110 110)"/>
+      </svg>
+      <button style="position:absolute;left:30px;top:30px;width:160px;height:160px;border-radius:999px;border:0;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:28px">Hold</button>
+    </div>
+    <div style="font-weight:800;font-size:20px">Keep holding... 2 seconds</div>
+  </div>
+  <a style="color:#FBE57E;text-align:center;font-weight:700;font-size:16px;min-height:48px;display:flex;align-items:center;justify-content:center;text-decoration:underline">Back to the game</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

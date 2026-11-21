@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Deleting family data</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 28px;gap:18px;text-align:center">
+  <svg role="img" aria-label="Working" width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="28" stroke="rgba(254,245,224,.25)" stroke-width="8"/><path d="M36 8a28 28 0 0 1 28 28" stroke="#FBCE16" stroke-width="8" stroke-linecap="round"/></svg>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:30px;line-height:1.15">Deleting your family data...</h1>
+  <p role="status" style="margin:0;font-size:17px;line-height:1.4;max-width:300px">This can take a moment. Please keep this screen open.</p>
+  <div style="width:100%;max-width:300px;display:flex;flex-direction:column;gap:10px;text-align:left;background:rgba(255,255,255,.08);border-radius:18px;padding:16px">
+    <div style="display:flex;align-items:center;gap:10px;font-weight:700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBE57E" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-7"/></svg>Children's profiles</div>
+    <div style="display:flex;align-items:center;gap:10px;font-weight:700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBE57E" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-7"/></svg>Play progress and badges</div>
+    <div style="display:flex;align-items:center;gap:10px;font-weight:700;color:#FBE57E"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBE57E" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-dasharray="4 3"/></svg>Parent account and email</div>
+  </div>
+  <p style="margin:0;font-size:14px;color:#FBE57E">Step 3 of 3</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

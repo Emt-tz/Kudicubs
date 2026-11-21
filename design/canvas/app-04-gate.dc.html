@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Parent gate</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:48px 24px 32px;gap:18px">
+  <div style="display:flex;align-items:center;gap:10px;color:#FBE57E;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase">For grown-ups · Step 2 of 3</div>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">Quick check, please</h1>
+  <p style="margin:0;font-size:18px;line-height:1.4;color:#FEF5E0">This keeps the parent area for grown-ups. Answer the question to continue.</p>
+  <div style="background:rgba(255,255,255,.1);border-radius:20px;padding:22px;text-align:center">
+    <p style="margin:0 0 6px;font-size:16px;color:#FBE57E">What is 7 times 6?</p>
+    <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:56px;letter-spacing:.2em;min-height:72px">4<span style="color:#FBE57E">2</span></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">1</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">2</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">3</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">4</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">5</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">6</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">7</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">8</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">9</button>
+    <button aria-label="Delete" style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.07);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:20px">Delete</button>
+    <button style="height:64px;border-radius:16px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:28px">0</button>
+    <button style="height:64px;border-radius:16px;border:0;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px">Check</button>
+  </div>
+  <div style="flex:1"></div>
+  <a style="color:#FBE57E;text-align:center;font-weight:700;font-size:16px;min-height:48px;display:flex;align-items:center;justify-content:center;text-decoration:underline">Back to the game</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

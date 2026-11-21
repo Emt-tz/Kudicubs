@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sign in sending code</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:56px 24px 28px;gap:16px">
+  <img src="/_blob/99b23ccfe9664e4aac19be05e83141b3" alt="KudiCubs" style="width:170px;height:auto">
+  <h1 style="margin:8px 0 0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">Welcome back</h1>
+  <p style="margin:0;font-size:17px;line-height:1.4">Sign in on this phone to see your children's progress. We will email you a one-time code.</p>
+  <div>
+    <label for="em" style="display:block;font-weight:800;font-size:16px;margin-bottom:6px">Parent email</label>
+    <input id="em" value="parent@example.com" disabled style="width:100%;box-sizing:border-box;height:56px;border:2px solid rgba(251,229,126,.5);border-radius:14px;padding:0 16px;font:700 18px 'Nunito',sans-serif;background:rgba(254,245,224,.7);color:#3E2312">
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+    <svg width="64" height="64" viewBox="0 0 56 56" role="img" aria-label="Loading">
+      <circle cx="28" cy="28" r="22" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="6"/>
+      <path d="M28 6 A22 22 0 0 1 50 28" fill="none" stroke="#FBCE16" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+    <div style="font-weight:800;font-size:18px;color:#FBE57E">Sending your code...</div>
+  </div>
+  <button disabled style="width:100%;height:60px;border-radius:999px;border:0;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;opacity:.5">Sending...</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

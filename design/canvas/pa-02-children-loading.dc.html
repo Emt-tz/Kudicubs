@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Children loading</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:48px 20px 28px;gap:16px">
+  <div style="color:#FBE57E;font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase">Parent area</div>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">Your children</h1>
+  <div style="display:flex;align-items:center;gap:12px">
+    <img src="/_blob/278605869ebee984d68ed953129b40ea" alt="Kudi with headphones" style="width:64px;height:auto">
+    <p role="status" style="margin:0;font-size:17px;font-weight:700">Getting things ready...</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px" aria-hidden="true">
+    <div style="display:flex;align-items:center;gap:14px;min-height:88px;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.1)">
+      <div style="width:56px;height:56px;border-radius:999px;background:rgba(242,232,212,.3);flex:none"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:8px"><div style="height:20px;width:40%;border-radius:10px;background:rgba(242,232,212,.3)"></div><div style="height:14px;width:75%;border-radius:8px;background:rgba(242,232,212,.2)"></div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;min-height:88px;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.1)">
+      <div style="width:56px;height:56px;border-radius:999px;background:rgba(242,232,212,.3);flex:none"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:8px"><div style="height:20px;width:34%;border-radius:10px;background:rgba(242,232,212,.3)"></div><div style="height:14px;width:68%;border-radius:8px;background:rgba(242,232,212,.2)"></div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;min-height:88px;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.1)">
+      <div style="width:56px;height:56px;border-radius:999px;background:rgba(242,232,212,.3);flex:none"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:8px"><div style="height:20px;width:44%;border-radius:10px;background:rgba(242,232,212,.3)"></div><div style="height:14px;width:80%;border-radius:8px;background:rgba(242,232,212,.2)"></div></div>
+    </div>
+  </div>
+  <div style="flex:1"></div>
+  <div style="height:56px;border-radius:999px;background:rgba(242,232,212,.2)" aria-hidden="true"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

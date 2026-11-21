@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Enter the sign-in code</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="min-height:900px;display:flex;flex-wrap:wrap;background:#F7F1E4;font-family:'Nunito',sans-serif;font-size:15px;color:#3E2312;line-height:1.45">
+  <section style="flex:1 1 480px;min-height:900px;background:#3E2312;color:#FEF5E0;padding:48px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between">
+    <img src="/_blob/99b23ccfe9664e4aac19be05e83141b3" alt="KudiCubs" style="width:170px;height:auto">
+    <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+      <img src="/_blob/278605869ebee984d68ed953129b40ea" alt="Kudi the Cub wearing headphones" style="width:260px;height:auto">
+      <h2 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:40px;line-height:1.1;max-width:14ch">Check your inbox</h2>
+      <p style="margin:0;max-width:44ch;color:#FBE57E;font-size:17px">The code works once and expires in 10 minutes.</p>
+    </div>
+    <div style="font-size:13px;color:#FBE57E">Play. Earn. Roar!</div>
+  </section>
+  <section style="flex:1 1 520px;display:flex;align-items:center;justify-content:center;padding:48px 24px;box-sizing:border-box">
+    <div style="width:100%;max-width:440px;background:#fff;border:1px solid #EDD6B8;border-radius:14px;box-shadow:0 1px 2px rgba(62,35,18,.06);padding:32px;display:flex;flex-direction:column;gap:18px">
+      <div>
+        <h1 style="margin:0 0 4px;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:30px;line-height:1.15">Enter your code</h1>
+        <p style="margin:0;color:#644D3B">We sent a 6-digit code to <strong style="color:#3E2312">parent@example.com</strong>.</p>
+      </div>
+      <fieldset style="border:0;padding:0;margin:0">
+        <legend style="font-weight:800;margin-bottom:8px;padding:0">6-digit code</legend>
+        <div style="display:flex;gap:10px">
+          <input aria-label="Digit 1" value="4" style="width:100%;min-width:0;height:60px;box-sizing:border-box;border:3px solid #3E2312;border-radius:10px;text-align:center;font:800 26px 'Baloo 2',sans-serif;color:#3E2312;background:#FBE57E">
+          <input aria-label="Digit 2" value="2" style="width:100%;min-width:0;height:60px;box-sizing:border-box;border:1.5px solid #3E2312;border-radius:10px;text-align:center;font:800 26px 'Baloo 2',sans-serif;color:#3E2312;background:#fff">
+          <input aria-label="Digit 3" value="" style="width:100%;min-width:0;height:60px;box-sizing:border-box;border:1.5px solid #3E2312;border-radius:10px;text-align:center;font:800 26px 'Baloo 2',sans-serif;color:#3E2312;background:#fff">
+          <input aria-label="Digit 4" value="" style="width:100%;min-width:0;height:60px;box-sizing:border-box;border:1.5px solid #3E2312;border-radius:10px;text-align:center;font:800 26px 'Baloo 2',sans-serif;color:#3E2312;background:#fff">
+          <input aria-label="Digit 5" value="" style="width:100%;min-width:0;height:60px;box-sizing:border-box;border:1.5px solid #3E2312;border-radius:10px;text-align:center;font:800 26px 'Baloo 2',sans-serif;color:#3E2312;background:#fff">
+          <input aria-label="Digit 6" value="" style="width:100%;min-width:0;height:60px;box-sizing:border-box;border:1.5px solid #3E2312;border-radius:10px;text-align:center;font:800 26px 'Baloo 2',sans-serif;color:#3E2312;background:#fff">
+        </div>
+      </fieldset>
+      <button style="height:48px;border-radius:10px;border:2px solid #3E2312;background:#FBCE16;font:800 17px 'Nunito',sans-serif;color:#3E2312">Sign in</button>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px">
+        <span style="color:#644D3B;display:inline-flex;align-items:center;gap:6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#644D3B" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Resend code in 0:42</span>
+        <a style="color:#3E2312;min-height:44px;display:inline-flex;align-items:center">Use a different email</a>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Team Console sign-in</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="min-height:900px;background:#F7F1E4;font-family:'Nunito',sans-serif;font-size:15px;color:#3E2312;display:flex;align-items:center;justify-content:center;padding:40px 20px;box-sizing:border-box">
+  <div style="width:100%;max-width:520px;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;align-items:center;gap:12px;justify-content:center">
+      <img src="/_blob/052d859f6cfb6ba016f71e72ddd4b5b5" alt="KudiCubs" style="height:56px;width:auto">
+      <span style="background:#3E2312;color:#FEF5E0;border-radius:999px;padding:4px 14px;font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase">Team Console</span>
+    </div>
+    <section style="background:#fff;border:1px solid #EDD6B8;border-radius:14px;box-shadow:0 1px 2px rgba(62,35,18,.06);padding:28px;display:flex;flex-direction:column;gap:18px">
+      <div>
+        <h1 style="margin:0 0 6px;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:30px;line-height:1.15">Sign in to the Team Console</h1>
+        <p style="margin:0;color:#644D3B">Choose your role. Each role only sees what it needs to do its job.</p>
+      </div>
+      <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+        <legend style="font-weight:800;margin-bottom:8px;padding:0">Your role</legend>
+        <label style="display:flex;gap:14px;align-items:flex-start;border:2px solid #3E2312;border-radius:12px;padding:14px 16px;background:#FBE57E;min-height:44px;cursor:pointer">
+          <input type="radio" name="role" checked style="width:22px;height:22px;margin-top:2px;accent-color:#3E2312">
+          <span><strong style="font-family:'Baloo 2',sans-serif;font-size:19px">Support</strong><br><span style="color:#3E2312">Look up families by nickname to help with a question. Emails, full names and play details stay hidden.</span></span>
+        </label>
+        <label style="display:flex;gap:14px;align-items:flex-start;border:1.5px solid #3E2312;border-radius:12px;padding:14px 16px;background:#fff;min-height:44px;cursor:pointer">
+          <input type="radio" name="role" style="width:22px;height:22px;margin-top:2px;accent-color:#3E2312">
+          <span><strong style="font-family:'Baloo 2',sans-serif;font-size:19px">Content editor</strong><br><span style="color:#644D3B">Review missions, age bands, region coverage and voice recording status. Family records are not available.</span></span>
+        </label>
+      </fieldset>
+      <div>
+        <label for="e" style="display:block;font-weight:800;margin-bottom:6px">Work email</label>
+        <input id="e" value="staff@example.com" style="width:100%;box-sizing:border-box;height:44px;border:1.5px solid #3E2312;border-radius:10px;padding:0 14px;font:inherit;background:#fff;color:#3E2312">
+        <div style="font-size:13px;color:#644D3B;margin-top:6px">We email a one-time code. There is no password.</div>
+      </div>
+      <button style="height:48px;border-radius:10px;border:2px solid #3E2312;background:#FBCE16;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:19px;color:#3E2312">Continue as Support</button>
+    </section>
+    <p style="margin:0;text-align:center;color:#644D3B;font-size:13px">Prototype with fictional data. Nothing here is a real account.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

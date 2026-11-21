@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Parent email invalid</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:48px 24px 28px;gap:16px">
+  <div style="color:#FBE57E;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase">Parent setup · Step 5 of 6</div>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">Your email address</h1>
+  <p style="margin:0;font-size:17px;line-height:1.4">We email you a one-time code to open your family account. No password to remember.</p>
+  <div>
+    <label for="em" style="display:block;font-weight:800;font-size:16px;margin-bottom:6px">Parent email</label>
+    <input id="em" value="parent@example" aria-invalid="true" aria-describedby="emerr" style="width:100%;box-sizing:border-box;height:56px;border:4px solid #FBCE16;border-radius:14px;padding:0 16px;font:700 18px 'Nunito',sans-serif;background:#FEF5E0;color:#3E2312">
+    <div id="emerr" role="alert" style="display:flex;align-items:center;gap:8px;margin-top:8px;font-weight:800;font-size:16px;color:#FBE57E">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBE57E" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg>
+      Please check the email address. It looks like part is missing after the @.
+    </div>
+  </div>
+  <div style="background:rgba(255,255,255,.1);border-radius:16px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FBE57E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+    <span style="font-size:15px;line-height:1.4">Only you see this email. We never share it or use it for ads.</span>
+  </div>
+  <div style="flex:1"></div>
+  <button style="width:100%;height:60px;border-radius:999px;border:0;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px">Send my code</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
