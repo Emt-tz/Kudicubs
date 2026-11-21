@@ -31,6 +31,7 @@ class Narrator {
   Future<void> say(String lineId) async {
     try {
       _player ??= AudioPlayer();
+      await _player!.setAudioContext(AudioContextConfig(route: AudioContextConfigRoute.system, focus: AudioContextConfigFocus.gain).build());
       await _player!.stop();
       await _player!.play(AssetSource('audio/en-GH/$lineId.mp3'));
     } catch (_) {
@@ -64,12 +65,6 @@ class _NarrateOnShowState extends ConsumerState<NarrateOnShow> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted && ref.read(soundOnProvider)) Narrator.instance.say(line);
     });
-  }
-
-  @override
-  void dispose() {
-    Narrator.instance.stop();
-    super.dispose();
   }
 
   @override
