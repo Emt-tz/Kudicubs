@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'profile_view.dart';
 
-/// Canvas `pr-04-profile-sound-off`: Profile: sound off. Section: App 14. Badges and profile.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_pr_04_profile_sound_off(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-pr-04-profile-sound-off'),
-    title: 'Profile: sound off',
-    child: Center(child: Text('TODO pr-04-profile-sound-off')),
-  );
-}
+/// Canvas `pr-04-profile-sound-off`: profile with sound off and captions.
+Widget build_pr_04_profile_sound_off(BuildContext context, ScreenState state) =>
+    ProfileScreen(key: const Key('screen-pr-04-profile-sound-off'), state: state, layout: ProfileLayout.tab, previewSound: false);

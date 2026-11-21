@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'progress_view.dart';
 
-/// Canvas `app-15-progress`: Progress. Section: App 13. Wallet and progress.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_app_15_progress(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-app-15-progress'),
-    title: 'Progress',
-    child: Center(child: Text('TODO app-15-progress')),
-  );
-}
+/// Canvas `app-15-progress`: XP, level, skills and badges from real data.
+Widget build_app_15_progress(BuildContext context, ScreenState state) =>
+    ProgressScreen(key: const Key('screen-app-15-progress'), state: state);

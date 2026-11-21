@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'progress_view.dart';
 
-/// Canvas `pr-01-progress-empty`: Progress: empty. Section: App 13. Wallet and progress.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_pr_01_progress_empty(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-pr-01-progress-empty'),
-    title: 'Progress: empty',
-    child: Center(child: Text('TODO pr-01-progress-empty')),
-  );
-}
+/// Canvas `pr-01-progress-empty`: nothing played yet.
+Widget build_pr_01_progress_empty(BuildContext context, ScreenState state) =>
+    const ProgressScreen(key: Key('screen-pr-01-progress-empty'), variant: ProgressVariant.empty);

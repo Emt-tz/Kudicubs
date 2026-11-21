@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'progress_view.dart';
 
-/// Canvas `pr-02-badge-locked`: Badge: locked. Section: App 14. Badges and profile.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_pr_02_badge_locked(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-pr-02-badge-locked'),
-    title: 'Badge: locked',
-    child: Center(child: Text('TODO pr-02-badge-locked')),
-  );
-}
+/// Canvas `pr-02-badge-locked`: detail of a badge not earned yet.
+Widget build_pr_02_badge_locked(BuildContext context, ScreenState state) =>
+    BadgeDetailScreen(key: const Key('screen-pr-02-badge-locked'), earned: false, state: state);

@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'wallet_view.dart';
 
-/// Canvas `wl-02-loading`: Wallet: loading. Section: App 13. Wallet and progress.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_wl_02_loading(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-wl-02-loading'),
-    title: 'Wallet: loading',
-    child: Center(child: Text('TODO wl-02-loading')),
-  );
-}
+/// Canvas `wl-02-loading`: Wallet skeleton while balances load.
+Widget build_wl_02_loading(BuildContext context, ScreenState state) =>
+    const WalletScreen(key: Key('screen-wl-02-loading'), variant: WalletVariant.loading);

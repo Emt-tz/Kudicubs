@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'wallet_view.dart';
 
-/// Canvas `wl-03-error`: Wallet: error. Section: App 13. Wallet and progress.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_wl_03_error(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-wl-03-error'),
-    title: 'Wallet: error',
-    child: Center(child: Text('TODO wl-03-error')),
-  );
-}
+/// Canvas `wl-03-error`: Wallet could not load; Try again replays queued writes and reloads.
+Widget build_wl_03_error(BuildContext context, ScreenState state) =>
+    const WalletScreen(key: Key('screen-wl-03-error'), variant: WalletVariant.error);
