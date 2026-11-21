@@ -178,6 +178,11 @@ class _ParentPinEntryState extends ConsumerState<ParentPinEntry> with SingleTick
                   ),
           ),
           NumberPad(dark: true, enabled: _status != PinEntryStatus.checking, onDigit: _digit, onDelete: _delete),
+          TextButton(
+            key: const Key('forgot-pin'),
+            onPressed: () => context.push('/screen/au-16-forgot-pin'),
+            child: const Text('Forgot PIN?', style: TextStyle(color: Kc.softGold, fontWeight: FontWeight.w800)),
+          ),
         ],
       ),
     );
