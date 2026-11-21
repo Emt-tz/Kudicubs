@@ -71,6 +71,7 @@ String? redirectFor({
   required bool parentUnlocked,
   required SystemStatus status,
   required bool online,
+  bool signedIn = true,
 }) {
   final path = uri.path;
   if (path.startsWith('/screen')) return null; // debug gallery and index are never guarded
@@ -82,7 +83,7 @@ String? redirectFor({
   };
   if (systemTarget != null) return path == systemTarget ? null : systemTarget;
   if (!online && _under(path, _needsNetwork)) return '/system/no-connection';
-  if (!onboarded && !_under(path, _openWhenNew)) return '/welcome';
+  if ((!onboarded || !signedIn) && !_under(path, _openWhenNew)) return '/welcome';
   if (_under(path, ['/parent']) && !parentUnlocked) {
     return Uri(path: '/gate', queryParameters: {'next': uri.toString()}).toString();
   }
@@ -97,6 +98,14 @@ Widget _screen(String id, ScreenState state, BuildContext context) {
 
 ScreenState _stateParam(String? s) =>
     ScreenState.values.firstWhere((v) => v.name == s, orElse: () => ScreenState.normal);
+
+bool _hasSession(Ref ref) {
+  try {
+    return ref.read(supabaseClientProvider).auth.currentSession != null;
+  } catch (_) {
+    return true;
+  }
+}
 
 final routerProvider = Provider<GoRouter>((ref) {
   final refresh = ValueNotifier<int>(0);
@@ -116,6 +125,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       parentUnlocked: ref.read(parentUnlockedProvider),
       status: ref.read(systemStatusProvider),
       online: ref.read(onlineProvider),
+      signedIn: _hasSession(ref),
     ),
     errorBuilder: (context, state) => Scaffold(
       backgroundColor: Kc.cream,
