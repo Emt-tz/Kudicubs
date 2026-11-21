@@ -203,6 +203,8 @@ class TextFieldKc extends StatelessWidget {
         TextField(
           controller: controller,
           keyboardType: keyboardType,
+          autocorrect: keyboardType != TextInputType.emailAddress,
+          enableSuggestions: keyboardType != TextInputType.emailAddress,
           obscureText: obscure,
           maxLength: maxLength,
           autofocus: autofocus,

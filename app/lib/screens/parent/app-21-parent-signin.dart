@@ -224,6 +224,8 @@ class _ParentSignInViewState extends ConsumerState<ParentSignInView> {
           key: const Key('signin-email'),
           controller: _emailCtl,
           keyboardType: TextInputType.emailAddress,
+          autocorrect: false,
+          enableSuggestions: false,
           autofillHints: const [AutofillHints.email],
           style: PT.strong(18, color: Kc.brown),
           cursorColor: Kc.brown,
