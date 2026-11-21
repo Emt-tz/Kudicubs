@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lock-out and recovery</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:48px 24px 32px;gap:16px">
+  <div style="color:#FBE57E;font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase">For grown-ups</div>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">Let's take a short pause</h1>
+  <p style="margin:0;font-size:18px;line-height:1.4">That PIN did not match a few times, so the parent area is resting for a little while. Nothing has been lost.</p>
+  <div style="background:rgba(255,255,255,.1);border-radius:20px;padding:20px;text-align:center">
+    <div style="font-size:15px;color:#FBE57E;font-weight:700">You can try again in</div>
+    <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:60px;line-height:1.1">4:32</div>
+  </div>
+  <h2 style="margin:8px 0 0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:22px">Forgot your PIN?</h2>
+  <p style="margin:0;font-size:16px;line-height:1.4">We can email a one-time code to the parent email on this account. It is sent to p***@example.com.</p>
+  <button style="min-height:60px;border-radius:999px;border:2px solid #FBCE16;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px">Email me a code</button>
+  <div style="flex:1"></div>
+  <div style="background:rgba(255,255,255,.08);border-radius:16px;padding:14px 16px;font-size:15px;line-height:1.4">Your child's coins, badges and progress are safe. They can keep playing right now.</div>
+  <button style="min-height:56px;border-radius:999px;border:2px solid #FBE57E;background:transparent;color:#FBE57E;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:20px">Back to the game</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

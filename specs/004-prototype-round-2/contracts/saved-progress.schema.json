@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kudicubs.app/prototype/saved-progress/1.0.0",
+  "title": "KudiCubs prototype saved progress",
+  "description": "Device-only progress for the clickable prototype (spec 004 FR-027). localStorage key kudicubs.proto.progress. Fictional game data only: never an email, PIN, gate answer or real name (FR-028).",
+  "type": "object",
+  "required": [
+    "schema",
+    "profile",
+    "events",
+    "sample"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "sample": {
+      "type": "boolean"
+    },
+    "profile": {
+      "type": "object",
+      "required": [
+        "nickname",
+        "avatarId",
+        "band",
+        "region",
+        "onboarded"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "nickname": {
+          "enum": [
+            "Ama",
+            "Kofi",
+            "Zara",
+            "Tobi",
+            null
+          ],
+          "description": "Preset list only (KC.data.nicknames), or null until the child picks one (FR-024); never free text."
+        },
+        "avatarId": {
+          "enum": [
+            "cub-friend-1",
+            "cub-friend-2",
+            "cub-friend-3",
+            "cub-friend-4"
+          ]
+        },
+        "band": {
+          "enum": [
+            "b4_6"
+          ]
+        },
+        "region": {
+          "enum": [
+            "gh",
+            "ng",
+            "uk"
+          ]
+        },
+        "onboarded": {
+          "type": "boolean"
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "type": "object",
+        "required": [
+          "t",
+          "n",
+          "date",
+          "run",
+          "mission",
+          "label"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "t": {
+            "enum": [
+              "earn",
+              "bonus",
+              "daily",
+              "save",
+              "spend",
+              "xp",
+              "badge",
+              "pillar",
+              "mission_done",
+              "mission_replay"
+            ]
+          },
+          "n": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "date": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "run": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "mission": {
+            "enum": [
+              "lost-coins",
+              "sample"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "pattern": "^[a-z_]+(\\.[a-z0-9_]+)*$"
+          },
+          "badge": {
+            "type": "string",
+            "pattern": "^badge\\.[a-z_]+$"
+          },
+          "pillar": {
+            "enum": [
+              "know",
+              "understand",
+              "decide",
+              "invest",
+              "share"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

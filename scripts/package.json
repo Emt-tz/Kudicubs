@@ -1,0 +1,16 @@
+{
+  "name": "kudicubs-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Seed data and access tests for the local KudiCubs Supabase stack",
+  "scripts": {
+    "seed": "node seed.mjs",
+    "reset": "node seed.mjs --reset",
+    "test": "node --test access-tests.mjs",
+    "audit": "npm audit --omit=dev --audit-level=moderate"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.119.2"
+  }
+}

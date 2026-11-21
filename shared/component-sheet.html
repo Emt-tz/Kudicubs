@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>KudiCubs adult components</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="adult-components.css">
+</head>
+<body data-surface="adult">
+<header class="kc-top-nav"><div class="kc-wrap">
+  <a class="kc-brand" href="component-sheet.html"><img src="brand/logo-on-white.svg" alt="KudiCubs"></a>
+  <nav aria-label="Example"><a href="#buttons" aria-current="page">Buttons</a><a href="#forms">Forms</a><a href="#data">Data</a></nav>
+</div></header>
+<main class="kc-wrap kc-section kc-stack">
+  <h1>Adult components</h1>
+  <p class="kc-muted">The shared set for the website, dashboards and hub. Every component is shown in its states.</p>
+
+  <section id="buttons" aria-labelledby="b-h"><h2 id="b-h">Buttons</h2>
+    <p class="kc-row"><button class="kc-btn">Primary</button><button class="kc-btn kc-quiet">Quiet</button><button class="kc-btn" disabled>Disabled</button><button class="kc-btn is-loading">Loading</button></p>
+  </section>
+
+  <section id="forms" aria-labelledby="f-h"><h2 id="f-h">Form fields</h2>
+    <div class="kc-grid kc-cols-2">
+      <div class="kc-field"><label for="f1">Default</label><input id="f1" value="parent@example.com"><div class="kc-hint">Helper text sits here.</div></div>
+      <div class="kc-field is-error"><label for="f2">Error</label><input id="f2" value="parent@"><div class="kc-error" role="alert">Please check the email address.</div></div>
+    </div>
+  </section>
+
+  <section id="data" aria-labelledby="d-h"><h2 id="d-h">Cards, stats, charts, table and empty state</h2>
+    <div class="kc-grid kc-cols-3">
+      <div class="kc-card"><h3>Card</h3><p>Compact by default.</p><span class="kc-badge-pill">Badge pill</span></div>
+      <div class="kc-stat"><span class="kc-stat-n">120</span><span class="kc-stat-l">Coins</span></div>
+      <div class="kc-chart"><h3>Chart shell</h3><div class="kc-bar" role="img" aria-label="Know: 60%"><span style="width:60%"></span></div></div>
+    </div>
+    <div class="kc-table-wrap"><table class="kc-table"><thead><tr><th>Nickname</th><th>Band</th><th>Region</th></tr></thead><tbody><tr><td>Ama</td><td>4–6</td><td>Ghana</td></tr><tr><td>Kofi</td><td>7–9</td><td>Nigeria</td></tr></tbody></table></div>
+    <div class="kc-empty"><img src="brand/kudi-wave.webp" alt=""><p>Nothing here yet. Play a mission to get started.</p></div>
+  </section>
+
+  <section aria-labelledby="t-h"><h2 id="t-h">Tabs and navigation</h2>
+    <div class="kc-tabs" role="tablist"><button role="tab" aria-selected="true">Overview</button><button role="tab" aria-selected="false">Skills</button><button role="tab" aria-selected="false">Badges</button></div>
+    <nav class="kc-side-nav" aria-label="Side navigation example"><a href="#" aria-current="page">Family</a><a href="#">Devices</a></nav>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>New-device sign-in</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:48px 24px 32px;gap:14px">
+  <div style="color:#FBE57E;font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase">Sign in on a new device</div>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:32px;line-height:1.1">Enter your code</h1>
+  <p style="margin:0;font-size:16px;line-height:1.4">We emailed a 6-digit code to p***@example.com. It works once.</p>
+  <label for="code" style="font-weight:800;font-size:15px;color:#FBE57E">One-time code</label>
+  <div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px">
+    <input id="code" aria-label="Digit 1" value="1" style="min-width:0;height:60px;border-radius:12px;border:2px solid #FBCE16;background:rgba(255,255,255,.12);color:#FEF5E0;text-align:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px">
+    <input aria-label="Digit 2" value="2" style="min-width:0;height:60px;border-radius:12px;border:2px solid #FBCE16;background:rgba(255,255,255,.12);color:#FEF5E0;text-align:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px">
+    <input aria-label="Digit 3" value="3" style="min-width:0;height:60px;border-radius:12px;border:2px solid #FBCE16;background:rgba(255,255,255,.12);color:#FEF5E0;text-align:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px">
+    <input aria-label="Digit 4" value="" style="min-width:0;height:60px;border-radius:12px;border:2px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#FEF5E0;text-align:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px">
+    <input aria-label="Digit 5" value="" style="min-width:0;height:60px;border-radius:12px;border:2px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#FEF5E0;text-align:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px">
+    <input aria-label="Digit 6" value="" style="min-width:0;height:60px;border-radius:12px;border:2px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#FEF5E0;text-align:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px">
+  </div>
+  <a style="display:flex;align-items:center;min-height:48px;color:#FBE57E;font-weight:800;font-size:16px;text-decoration:underline">Send a new code</a>
+  <h2 style="margin:6px 0 0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:22px">Whose device is this?</h2>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+    <button style="min-height:150px;border-radius:20px;border:3px solid #FBCE16;background:#FBE57E;color:#3E2312;padding:14px;text-align:left;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;line-height:1.1">This is my phone</span><span style="font-size:14px;font-weight:700;line-height:1.35">Opens to the PIN-protected parent view of all children.</span></button>
+    <button style="min-height:150px;border-radius:20px;border:3px solid rgba(255,255,255,.4);background:rgba(255,255,255,.08);color:#FEF5E0;padding:14px;text-align:left;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;line-height:1.1">Family device</span><span style="font-size:14px;font-weight:700;line-height:1.35">Children can play here. The parent area stays behind the gate.</span></button>
+  </div>
+  <div style="flex:1"></div>
+  <button style="min-height:60px;border-radius:999px;border:2px solid #FBCE16;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px">Continue</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

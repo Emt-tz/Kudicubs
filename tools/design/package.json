@@ -1,0 +1,34 @@
+{
+  "name": "kudicubs-design-tools",
+  "private": true,
+  "version": "0.4.0",
+  "type": "module",
+  "description": "Dev-only checks for the KudiCubs design system and prototype (specs 002\u2013004).",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "tokens": "node build-tokens.mjs",
+    "contrast": "node check-contrast.mjs",
+    "usage": "node check-tokens-usage.mjs",
+    "test": "playwright test",
+    "check": "node build-tokens.mjs && node check-contrast.mjs && node check-brand.mjs --art && node check-no-tts.mjs && node check-tokens-usage.mjs && node build-narration.mjs --check && node check-audio.mjs && node build-info.mjs && node build-sw.mjs --check && node build-site.mjs --check && node check-coverage.mjs && node check-references.mjs && playwright test",
+    "brand": "node check-brand.mjs --art",
+    "notts": "node check-no-tts.mjs",
+    "narration": "node build-narration.mjs",
+    "sw": "node build-sw.mjs",
+    "audio": "node check-audio.mjs",
+    "release-gate": "node check-no-tts.mjs --release",
+    "serve": "node serve.mjs",
+    "smoke": "playwright test --project=smoke",
+    "check:strict": "node build-tokens.mjs && node check-contrast.mjs && node check-brand.mjs --art && node check-no-tts.mjs && node check-tokens-usage.mjs && node build-narration.mjs --check && node check-audio.mjs && node build-info.mjs && node build-sw.mjs --check && node build-site.mjs --check && node check-coverage.mjs --strict && node check-references.mjs --strict && playwright test",
+    "site": "node build-site.mjs",
+    "serve:site": "node build-site.mjs && node serve.mjs --root dist",
+    "coverage": "node check-coverage.mjs --write",
+    "references": "node check-references.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1",
+    "ajv": "8.20.0"
+  }
+}

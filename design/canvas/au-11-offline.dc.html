@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>No connection during sign-up</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:0 0 28px;gap:16px">
+  <div style="background:#FBE57E;color:#3E2312;display:flex;align-items:center;gap:10px;padding:14px 24px;font-weight:800;font-size:15px">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3E2312" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M2 8.8a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 20h.01M3 3l18 18"/></svg>
+    You are offline
+  </div>
+  <div style="padding:20px 24px 0;display:flex;flex-direction:column;gap:16px;flex:1">
+    <div style="color:#FBE57E;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase">Parent setup · Step 6 of 6</div>
+    <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">We could not finish setting up</h1>
+    <p style="margin:0;font-size:17px;line-height:1.4">Your phone has no internet connection right now. Nothing has been lost.</p>
+    <div style="background:rgba(255,255,255,.1);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:12px;align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBE57E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M5 12l5 5 9-10"/></svg><span style="font-size:16px">Your child's friend and nickname are saved on this phone.</span></div>
+      <div style="display:flex;gap:12px;align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBE57E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M5 12l5 5 9-10"/></svg><span style="font-size:16px">Your PIN is saved on this phone only.</span></div>
+      <div style="display:flex;gap:12px;align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBE57E" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></svg><span style="font-size:16px">Your online family account is not created yet. Reconnect to finish.</span></div>
+    </div>
+    <div style="flex:1"></div>
+    <button style="width:100%;height:60px;border-radius:999px;border:0;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px">Try again</button>
+    <a style="color:#FBE57E;text-align:center;font-weight:700;font-size:16px;min-height:48px;display:flex;align-items:center;justify-content:center;text-decoration:underline">Play now, finish setup later</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

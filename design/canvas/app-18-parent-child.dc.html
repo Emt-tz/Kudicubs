@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>One child</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:40px 20px 28px;gap:14px">
+  <a style="display:flex;align-items:center;min-height:48px;color:#FBE57E;font-weight:800;font-size:16px;text-decoration:none">‹ All children</a>
+  <div style="display:flex;align-items:center;gap:14px">
+    <div style="width:64px;height:64px;border-radius:999px;background:#F68C1F;border:3px solid #FBE57E;flex:none"></div>
+    <div><h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:32px;line-height:1.05">Ama</h1><div style="font-size:15px;color:#FBE57E;font-weight:700">Age 4–6 · Ghana (GH₵)</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+    <div style="background:rgba(255,255,255,.1);border-radius:16px;padding:12px"><div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px;line-height:1">Level 2</div><div style="font-size:13px;color:#FBE57E;font-weight:700">Market Helper</div></div>
+    <div style="background:rgba(255,255,255,.1);border-radius:16px;padding:12px"><div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px;line-height:1">3</div><div style="font-size:13px;color:#FBE57E;font-weight:700">Badges</div></div>
+    <div style="background:rgba(255,255,255,.1);border-radius:16px;padding:12px"><div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px;line-height:1">GH₵120</div><div style="font-size:13px;color:#FBE57E;font-weight:700">Wallet</div></div>
+  </div>
+  <h2 style="margin:6px 0 0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:20px">Skills growing</h2>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div><div style="display:flex;justify-content:space-between;font-weight:800;font-size:15px;margin-bottom:4px"><span>Know</span><span>30%</span></div><div style="height:12px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden"><div style="width:30%;height:100%;background:#FBCE16"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;font-weight:800;font-size:15px;margin-bottom:4px"><span>Understand</span><span>20%</span></div><div style="height:12px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden"><div style="width:20%;height:100%;background:#FBCE16"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;font-weight:800;font-size:15px;margin-bottom:4px"><span>Decide</span><span>10%</span></div><div style="height:12px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden"><div style="width:10%;height:100%;background:#FBCE16"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;font-weight:800;font-size:15px;margin-bottom:4px"><span>Invest</span><span>0%</span></div><div style="height:12px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden"><div style="width:0%;height:100%;background:#FBCE16"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;font-weight:800;font-size:15px;margin-bottom:4px"><span>Share</span><span>10%</span></div><div style="height:12px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden"><div style="width:10%;height:100%;background:#FBCE16"></div></div></div>
+  </div>
+  <h2 style="margin:6px 0 0;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:20px">Recent play</h2>
+  <div style="background:rgba(255,255,255,.1);border-radius:16px;padding:12px 14px;font-size:15px;line-height:1.4"><strong>The Lost Coins</strong> · today<br><span style="color:#FBE57E">Chose a sticker with 15 coins</span></div>
+  <div style="background:rgba(255,255,255,.1);border-radius:16px;padding:12px 14px;font-size:15px;line-height:1.4"><strong>The Lost Coins</strong> · yesterday<br><span style="color:#FBE57E">Saved 40 coins in the jar</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

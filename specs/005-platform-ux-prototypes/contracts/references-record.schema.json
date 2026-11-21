@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "references-record.schema.json",
+  "title": "KudiCubs design references and originality review",
+  "description": "Contract 1.0.0 for docs/design/references.json. Spec FR-021, FR-022.",
+  "type": "object",
+  "required": ["version", "references", "reviews"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "const": "1.0.0" },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "url", "platform", "pattern", "differs", "verdict"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^REF-[0-9]{2,3}$" },
+          "url": { "type": "string", "format": "uri" },
+          "platform": { "enum": ["app", "website", "parent-dashboard", "team-console", "hub"] },
+          "pattern": { "type": "string", "minLength": 5 },
+          "influences": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["platform", "screen"],
+              "additionalProperties": false,
+              "properties": {
+                "platform": { "enum": ["app", "website", "parent-dashboard", "team-console", "hub"] },
+                "screen": { "type": "string", "minLength": 1 }
+              }
+            }
+          },
+          "differs": { "type": "string", "minLength": 10 },
+          "verdict": { "enum": ["adopted", "adapted", "rejected"] },
+          "rejectReason": { "type": "string", "minLength": 5 }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "verdict": { "const": "rejected" } } },
+            "then": { "required": ["rejectReason"] }
+          },
+          {
+            "if": { "properties": { "verdict": { "enum": ["adopted", "adapted"] } } },
+            "then": { "required": ["influences"], "properties": { "influences": { "minItems": 1 } } }
+          }
+        ]
+      }
+    },
+    "reviews": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["date", "reviewer", "method", "result"],
+        "additionalProperties": false,
+        "properties": {
+          "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+          "reviewer": { "type": "string", "minLength": 2 },
+          "method": { "type": "string", "minLength": 10 },
+          "result": { "enum": ["pass", "rework"] }
+        }
+      }
+    }
+  }
+}

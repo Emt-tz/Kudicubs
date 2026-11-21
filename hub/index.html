@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>KudiCubs design set</title>
+<link rel="icon" href="shared/brand/app-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="shared/tokens.css">
+<link rel="stylesheet" href="shared/adult-components.css">
+<link rel="stylesheet" href="hub.css">
+</head>
+<body data-surface="adult">
+<a class="kc-skip" href="#main">Skip to the set</a>
+<header class="kc-top-nav">
+  <div class="kc-wrap">
+    <a class="kc-brand" href="./" aria-label="KudiCubs design set"><img src="shared/brand/logo-on-white.svg" alt="KudiCubs"></a>
+    <nav aria-label="Sections">
+      <a href="#platforms">Platforms</a>
+      <a href="#roles">Journeys to try</a>
+      <a href="#guide">Review guide</a>
+      <a href="#system">Design system</a>
+      <a href="#changes">What changed</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="kc-section hub-hero">
+    <div class="kc-wrap hub-hero-grid">
+      <div>
+        <h1>The KudiCubs design set</h1>
+        <p class="hub-tag">Play. Earn. Roar!</p>
+        <p>One link for the mobile app, the website and the dashboards. Everything here is a clickable prototype with a fictional family. Nothing is saved or sent, and nothing here is a real person.</p>
+        <p class="kc-row"><span class="kc-badge-pill" id="hub-version">Version …</span><span class="kc-badge-pill" id="hub-date">…</span><span class="kc-badge-pill" id="hub-commit" hidden></span></p>
+        <p class="kc-muted" id="hub-coverage" aria-live="polite">Loading coverage…</p>
+      </div>
+      <img class="hub-kudi" src="shared/brand/kudi-wave.webp" alt="Kudi the Cub waving">
+    </div>
+  </section>
+
+  <section class="kc-section" id="platforms" aria-labelledby="platforms-h">
+    <div class="kc-wrap">
+      <h2 id="platforms-h">Three platforms</h2>
+      <div class="kc-grid kc-cols-3">
+        <article class="kc-card">
+          <h3>Mobile app</h3>
+          <p>The child's game in all four age bands, and the parent area behind the grown-up gate. Best on a phone, in portrait, with the sound on.</p>
+          <ul class="hub-try"><li>Pick an age band and play one mission</li><li>Change the country in the reviewer menu</li><li>Try the parent area</li></ul>
+          <p><a class="kc-btn" href="app/">Open the app</a></p>
+        </article>
+        <article class="kc-card">
+          <h3>Website</h3>
+          <p>The public site for parents: what KudiCubs is, how it keeps children safe, how to get it.</p>
+          <ul class="hub-try"><li>Find the safety page</li><li>Use the FAQ and the contact form</li><li>Start family sign-in</li></ul>
+          <p><a class="kc-btn" href="website/index.html">Open the website</a></p>
+        </article>
+        <article class="kc-card">
+          <h3>Dashboards</h3>
+          <p>The Parent Dashboard for following the family, and a small Team Console for staff.</p>
+          <ul class="hub-try"><li>Sign in with the demo code</li><li>Find a child's strongest skill</li><li>Try the support and content roles</li></ul>
+          <p><a class="kc-btn" href="dashboard/index.html">Open the dashboards</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="kc-section" id="roles" aria-labelledby="roles-h">
+    <div class="kc-wrap">
+      <h2 id="roles-h">Journeys to try</h2>
+      <p>Pick who you are. The list comes from the journey and story map, so it always matches what has been designed.</p>
+      <div class="kc-tabs" role="tablist" aria-label="Choose a role" id="hub-roles">
+        <button role="tab" id="tab-child" aria-selected="true" aria-controls="hub-journeys" data-role="child">A child</button>
+        <button role="tab" id="tab-parent" aria-selected="false" aria-controls="hub-journeys" data-role="parent">A parent</button>
+        <button role="tab" id="tab-visitor" aria-selected="false" aria-controls="hub-journeys" data-role="visitor">A visitor</button>
+        <button role="tab" id="tab-staff" aria-selected="false" aria-controls="hub-journeys" data-role="staff">Staff</button>
+        <button role="tab" id="tab-reviewer" aria-selected="false" aria-controls="hub-journeys" data-role="reviewer">A reviewer</button>
+      </div>
+      <div id="hub-journeys" role="tabpanel" tabindex="0" aria-labelledby="tab-child" class="hub-journeys"></div>
+      <p class="kc-muted" id="hub-nojs">This list needs the build data. If it is empty, open the set from the published link.</p>
+    </div>
+  </section>
+
+  <section class="kc-section" id="guide" aria-labelledby="guide-h">
+    <div class="kc-wrap">
+      <h2 id="guide-h">Review guide</h2>
+      <div class="kc-grid kc-cols-2">
+        <div class="kc-card">
+          <h3>How to open each platform</h3>
+          <ul>
+            <li><strong>App</strong>: use a phone in portrait. On a laptop, narrow the window to phone width. Hold the KudiCubs logo for 2 seconds to open the reviewer menu (country, voice, jump to a screen, load sample data, restart).</li>
+            <li><strong>Website</strong>: works on a phone, a tablet and a laptop.</li>
+            <li><strong>Dashboards</strong>: the demo email is <code>parent@example.com</code> and the demo code is <code>123456</code>. A reviewer button on each view lets you force the wrong-code, expired, empty and error states.</li>
+          </ul>
+        </div>
+        <div class="kc-card">
+          <h3>Things to know</h3>
+          <ul>
+            <li>The voice you hear in the app is a <strong>scratch voice</strong> for demos only. Human recordings must replace it before any public release.</li>
+            <li>One fictional family appears everywhere, so numbers match between the app and the dashboards.</li>
+            <li>The legal pages hold placeholder text pending review.</li>
+            <li>This set is kept out of search engines.</li>
+          </ul>
+          <p><a class="kc-btn kc-quiet" href="https://github.com/emt-tz/Kudicubs/issues" rel="noopener">Send feedback</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kc-section" id="system" aria-labelledby="system-h">
+    <div class="kc-wrap">
+      <h2 id="system-h">One brand, one design system</h2>
+      <div class="kc-grid kc-cols-2">
+        <div class="kc-card"><h3>Shared components</h3><p>The same logo, colours, type and Kudi appear on every platform. The adult-surface components used by the website, dashboards and this hub are shown in every state.</p><p><a class="kc-btn kc-quiet" href="shared/component-sheet.html">See the component sheet</a></p></div>
+        <div class="kc-card"><h3>Design references</h3><p>Ideas from public design galleries are recorded with how KudiCubs differs, and one concept was rejected because it showed real banking. Nothing was copied.</p><p><a class="kc-btn kc-quiet" href="https://github.com/emt-tz/Kudicubs/blob/main/docs/design/design-references.md" rel="noopener">Read the references and the originality review</a></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kc-section" id="changes" aria-labelledby="changes-h">
+    <div class="kc-wrap">
+      <h2 id="changes-h">What changed</h2>
+      <ul id="hub-changes"><li>Loading the change list…</li></ul>
+    </div>
+  </section>
+</main>
+
+<footer class="kc-section hub-foot">
+  <div class="kc-wrap"><p class="kc-muted">KudiCubs prototype set. Fictional data only. Not for public release while the scratch voice is in use.</p></div>
+</footer>
+<script src="hub-data.js"></script>
+<script src="hub.js"></script>
+</body>
+</html>

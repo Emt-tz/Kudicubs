@@ -1,0 +1,1514 @@
+[
+ {
+  "file": "ob-01-splash.dc.html",
+  "id": "ob-01-splash",
+  "title": "Splash and loading",
+  "section": "App 1. Launch and welcome",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "Main.dc.html",
+  "id": "Main",
+  "title": "Welcome",
+  "section": "App 1. Launch and welcome",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ob-02-intro-1.dc.html",
+  "id": "ob-02-intro-1",
+  "title": "Intro 1: Play",
+  "section": "App 1. Launch and welcome",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ob-03-intro-2.dc.html",
+  "id": "ob-03-intro-2",
+  "title": "Intro 2: Earn",
+  "section": "App 1. Launch and welcome",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ob-04-intro-3.dc.html",
+  "id": "ob-04-intro-3",
+  "title": "Intro 3: Roar",
+  "section": "App 1. Launch and welcome",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-02-age.dc.html",
+  "id": "app-02-age",
+  "title": "Age band",
+  "section": "App 1. Launch and welcome",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-03-avatar.dc.html",
+  "id": "app-03-avatar",
+  "title": "Avatar and nickname",
+  "section": "App 2. Child setup and the grown-up gate",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ob-05-avatar-empty.dc.html",
+  "id": "ob-05-avatar-empty",
+  "title": "Avatar: nothing chosen",
+  "section": "App 2. Child setup and the grown-up gate",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ob-06-gate-hold.dc.html",
+  "id": "ob-06-gate-hold",
+  "title": "Gate: press and hold",
+  "section": "App 2. Child setup and the grown-up gate",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-04-gate.dc.html",
+  "id": "app-04-gate",
+  "title": "Gate: maths question",
+  "section": "App 2. Child setup and the grown-up gate",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ob-07-gate-wrong.dc.html",
+  "id": "ob-07-gate-wrong",
+  "title": "Gate: wrong answer",
+  "section": "App 2. Child setup and the grown-up gate",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ob-08-gate-locked.dc.html",
+  "id": "ob-08-gate-locked",
+  "title": "Gate: wait and retry",
+  "section": "App 2. Child setup and the grown-up gate",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-01-pin-create.dc.html",
+  "id": "au-01-pin-create",
+  "title": "Create PIN",
+  "section": "App 3. Parent setup: PIN, country, email",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-02-pin-weak.dc.html",
+  "id": "au-02-pin-weak",
+  "title": "PIN too easy",
+  "section": "App 3. Parent setup: PIN, country, email",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-03-pin-mismatch.dc.html",
+  "id": "au-03-pin-mismatch",
+  "title": "PIN does not match",
+  "section": "App 3. Parent setup: PIN, country, email",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-04-region.dc.html",
+  "id": "au-04-region",
+  "title": "Choose country",
+  "section": "App 3. Parent setup: PIN, country, email",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-05-email.dc.html",
+  "id": "au-05-email",
+  "title": "Parent email",
+  "section": "App 3. Parent setup: PIN, country, email",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-06-email-invalid.dc.html",
+  "id": "au-06-email-invalid",
+  "title": "Email error",
+  "section": "App 3. Parent setup: PIN, country, email",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-07-code.dc.html",
+  "id": "au-07-code",
+  "title": "Enter emailed code",
+  "section": "App 4. Verify and join the Pride",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-08-code-wrong.dc.html",
+  "id": "au-08-code-wrong",
+  "title": "Code wrong",
+  "section": "App 4. Verify and join the Pride",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-09-code-expired.dc.html",
+  "id": "au-09-code-expired",
+  "title": "Code expired",
+  "section": "App 4. Verify and join the Pride",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-10-code-sending.dc.html",
+  "id": "au-10-code-sending",
+  "title": "Verifying (loading)",
+  "section": "App 4. Verify and join the Pride",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-11-offline.dc.html",
+  "id": "au-11-offline",
+  "title": "No connection",
+  "section": "App 4. Verify and join the Pride",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-12-joined.dc.html",
+  "id": "au-12-joined",
+  "title": "You joined the Pride",
+  "section": "App 4. Verify and join the Pride",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-13-signin.dc.html",
+  "id": "au-13-signin",
+  "title": "Parent sign-in",
+  "section": "App 5. Returning parent sign-in",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-14-signin-sending.dc.html",
+  "id": "au-14-signin-sending",
+  "title": "Sign-in sending",
+  "section": "App 5. Returning parent sign-in",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-15-signin-error.dc.html",
+  "id": "au-15-signin-error",
+  "title": "Sign-in error",
+  "section": "App 5. Returning parent sign-in",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-16-forgot-pin.dc.html",
+  "id": "au-16-forgot-pin",
+  "title": "Forgot PIN",
+  "section": "App 5. Returning parent sign-in",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-17-recovery-sent.dc.html",
+  "id": "au-17-recovery-sent",
+  "title": "Recovery code sent",
+  "section": "App 5. Returning parent sign-in",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "au-18-session-expired.dc.html",
+  "id": "au-18-session-expired",
+  "title": "Session expired",
+  "section": "App 5. Returning parent sign-in",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-05-home.dc.html",
+  "id": "app-05-home",
+  "title": "Home",
+  "section": "App 6. Home and its states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "hm-01-first-visit.dc.html",
+  "id": "hm-01-first-visit",
+  "title": "Home: first visit",
+  "section": "App 6. Home and its states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "hm-02-loading.dc.html",
+  "id": "hm-02-loading",
+  "title": "Home: loading",
+  "section": "App 6. Home and its states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "hm-03-idle-hint.dc.html",
+  "id": "hm-03-idle-hint",
+  "title": "Home: idle hint",
+  "section": "App 6. Home and its states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "hm-04-offline.dc.html",
+  "id": "hm-04-offline",
+  "title": "Home: offline",
+  "section": "App 6. Home and its states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "hm-05-error.dc.html",
+  "id": "hm-05-error",
+  "title": "Home: error",
+  "section": "App 6. Home and its states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "hm-06-daily-progress.dc.html",
+  "id": "hm-06-daily-progress",
+  "title": "Daily challenge",
+  "section": "App 7. Daily challenge and rewards",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "hm-07-daily-complete.dc.html",
+  "id": "hm-07-daily-complete",
+  "title": "Daily complete",
+  "section": "App 7. Daily challenge and rewards",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-09-reward.dc.html",
+  "id": "app-09-reward",
+  "title": "Reward",
+  "section": "App 7. Daily challenge and rewards",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-20-level-up.dc.html",
+  "id": "ms-20-level-up",
+  "title": "Level up",
+  "section": "App 7. Daily challenge and rewards",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-21-badge-earned.dc.html",
+  "id": "ms-21-badge-earned",
+  "title": "New badge",
+  "section": "App 7. Daily challenge and rewards",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-22-leave-confirm.dc.html",
+  "id": "ms-22-leave-confirm",
+  "title": "Leave mission?",
+  "section": "App 7. Daily challenge and rewards",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-06-mission-intro.dc.html",
+  "id": "app-06-mission-intro",
+  "title": "Mission intro",
+  "section": "App 8. Ages 4\u20136: The Lost Coins",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-07-find-coins.dc.html",
+  "id": "app-07-find-coins",
+  "title": "Find the coins",
+  "section": "App 8. Ages 4\u20136: The Lost Coins",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-01-find-hint.dc.html",
+  "id": "ms-01-find-hint",
+  "title": "Find: idle hint",
+  "section": "App 8. Ages 4\u20136: The Lost Coins",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-02-sort-jars.dc.html",
+  "id": "ms-02-sort-jars",
+  "title": "Sort into jars",
+  "section": "App 8. Ages 4\u20136: The Lost Coins",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-03-count.dc.html",
+  "id": "ms-03-count",
+  "title": "Count the coins",
+  "section": "App 8. Ages 4\u20136: The Lost Coins",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-08-decision.dc.html",
+  "id": "app-08-decision",
+  "title": "Save or spend",
+  "section": "App 8. Ages 4\u20136: The Lost Coins",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-04-result-save.dc.html",
+  "id": "ms-04-result-save",
+  "title": "Result: saved",
+  "section": "App 9. Ages 4\u20136: results and states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-05-result-spend.dc.html",
+  "id": "ms-05-result-spend",
+  "title": "Result: spent",
+  "section": "App 9. Ages 4\u20136: results and states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-06-summary.dc.html",
+  "id": "ms-06-summary",
+  "title": "Round summary",
+  "section": "App 9. Ages 4\u20136: results and states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-07-replay.dc.html",
+  "id": "ms-07-replay",
+  "title": "Replay",
+  "section": "App 9. Ages 4\u20136: results and states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-08-mission-loading.dc.html",
+  "id": "ms-08-mission-loading",
+  "title": "Mission loading",
+  "section": "App 9. Ages 4\u20136: results and states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-09-mission-error.dc.html",
+  "id": "ms-09-mission-error",
+  "title": "Could not save play",
+  "section": "App 9. Ages 4\u20136: results and states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-10-7-9-intro.dc.html",
+  "id": "ms-10-7-9-intro",
+  "title": "7\u20139 intro",
+  "section": "App 10. Ages 7\u20139: Birthday Party",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-10-band-7-9.dc.html",
+  "id": "app-10-band-7-9",
+  "title": "7\u20139 decision",
+  "section": "App 10. Ages 7\u20139: Birthday Party",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-11-7-9-result-success.dc.html",
+  "id": "ms-11-7-9-result-success",
+  "title": "7\u20139 result: success",
+  "section": "App 10. Ages 7\u20139: Birthday Party",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-12-7-9-result-retry.dc.html",
+  "id": "ms-12-7-9-result-retry",
+  "title": "7\u20139 result: try again",
+  "section": "App 10. Ages 7\u20139: Birthday Party",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-13-7-9-summary.dc.html",
+  "id": "ms-13-7-9-summary",
+  "title": "7\u20139 summary",
+  "section": "App 10. Ages 7\u20139: Birthday Party",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-14-7-9-saving-error.dc.html",
+  "id": "ms-14-7-9-saving-error",
+  "title": "7\u20139 saving error",
+  "section": "App 10. Ages 7\u20139: Birthday Party",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-15-10-12-intro.dc.html",
+  "id": "ms-15-10-12-intro",
+  "title": "10\u201312 intro",
+  "section": "App 11. Ages 10\u201312: Clothing Brand",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-16-10-12-resource.dc.html",
+  "id": "ms-16-10-12-resource",
+  "title": "10\u201312 resources",
+  "section": "App 11. Ages 10\u201312: Clothing Brand",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-11-band-10-12.dc.html",
+  "id": "app-11-band-10-12",
+  "title": "10\u201312 market",
+  "section": "App 11. Ages 10\u201312: Clothing Brand",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-17-10-12-result-success.dc.html",
+  "id": "ms-17-10-12-result-success",
+  "title": "10\u201312 result: success",
+  "section": "App 11. Ages 10\u201312: Clothing Brand",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-18-10-12-result-retry.dc.html",
+  "id": "ms-18-10-12-result-retry",
+  "title": "10\u201312 result: try again",
+  "section": "App 11. Ages 10\u201312: Clothing Brand",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-19-10-12-summary.dc.html",
+  "id": "ms-19-10-12-summary",
+  "title": "10\u201312 summary",
+  "section": "App 11. Ages 10\u201312: Clothing Brand",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-23-13-15-intro.dc.html",
+  "id": "ms-23-13-15-intro",
+  "title": "13\u201315 intro",
+  "section": "App 12. Ages 13\u201315: Side Hustle",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-12-band-13-15.dc.html",
+  "id": "app-12-band-13-15",
+  "title": "13\u201315 budget",
+  "section": "App 12. Ages 13\u201315: Side Hustle",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-24-13-15-market.dc.html",
+  "id": "ms-24-13-15-market",
+  "title": "13\u201315 market",
+  "section": "App 12. Ages 13\u201315: Side Hustle",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-25-13-15-result-profit.dc.html",
+  "id": "ms-25-13-15-result-profit",
+  "title": "13\u201315 result: profit",
+  "section": "App 12. Ages 13\u201315: Side Hustle",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-13-retry.dc.html",
+  "id": "app-13-retry",
+  "title": "13\u201315 result: try again",
+  "section": "App 12. Ages 13\u201315: Side Hustle",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "ms-26-13-15-summary.dc.html",
+  "id": "ms-26-13-15-summary",
+  "title": "13\u201315 summary",
+  "section": "App 12. Ages 13\u201315: Side Hustle",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-14-wallet.dc.html",
+  "id": "app-14-wallet",
+  "title": "Wallet",
+  "section": "App 13. Wallet and progress",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "wl-01-empty.dc.html",
+  "id": "wl-01-empty",
+  "title": "Wallet: empty",
+  "section": "App 13. Wallet and progress",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "wl-02-loading.dc.html",
+  "id": "wl-02-loading",
+  "title": "Wallet: loading",
+  "section": "App 13. Wallet and progress",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "wl-03-error.dc.html",
+  "id": "wl-03-error",
+  "title": "Wallet: error",
+  "section": "App 13. Wallet and progress",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-15-progress.dc.html",
+  "id": "app-15-progress",
+  "title": "Progress",
+  "section": "App 13. Wallet and progress",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pr-01-progress-empty.dc.html",
+  "id": "pr-01-progress-empty",
+  "title": "Progress: empty",
+  "section": "App 13. Wallet and progress",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pr-02-badge-locked.dc.html",
+  "id": "pr-02-badge-locked",
+  "title": "Badge: locked",
+  "section": "App 14. Badges and profile",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pr-03-badge-earned.dc.html",
+  "id": "pr-03-badge-earned",
+  "title": "Badge: earned",
+  "section": "App 14. Badges and profile",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-16-profile.dc.html",
+  "id": "app-16-profile",
+  "title": "Profile",
+  "section": "App 14. Badges and profile",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pr-04-profile-sound-off.dc.html",
+  "id": "pr-04-profile-sound-off",
+  "title": "Profile: sound off",
+  "section": "App 14. Badges and profile",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pr-05-avatar-change.dc.html",
+  "id": "pr-05-avatar-change",
+  "title": "Change avatar",
+  "section": "App 14. Badges and profile",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pr-06-profile-loading.dc.html",
+  "id": "pr-06-profile-loading",
+  "title": "Profile: loading",
+  "section": "App 14. Badges and profile",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-17-parent-children.dc.html",
+  "id": "app-17-parent-children",
+  "title": "Children",
+  "section": "App 15. Parent area: children",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-01-children-empty.dc.html",
+  "id": "pa-01-children-empty",
+  "title": "Children: empty",
+  "section": "App 15. Parent area: children",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-02-children-loading.dc.html",
+  "id": "pa-02-children-loading",
+  "title": "Children: loading",
+  "section": "App 15. Parent area: children",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-03-add-child.dc.html",
+  "id": "pa-03-add-child",
+  "title": "Add a child",
+  "section": "App 15. Parent area: children",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-04-add-child-error.dc.html",
+  "id": "pa-04-add-child-error",
+  "title": "Add a child: error",
+  "section": "App 15. Parent area: children",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-18-parent-child.dc.html",
+  "id": "app-18-parent-child",
+  "title": "One child",
+  "section": "App 15. Parent area: children",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-05-child-no-play.dc.html",
+  "id": "pa-05-child-no-play",
+  "title": "Child: no play yet",
+  "section": "App 16. Parent area: child and settings",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-19-parent-settings.dc.html",
+  "id": "app-19-parent-settings",
+  "title": "Settings",
+  "section": "App 16. Parent area: child and settings",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-06-settings-saved.dc.html",
+  "id": "pa-06-settings-saved",
+  "title": "Settings: saved",
+  "section": "App 16. Parent area: child and settings",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-07-band-confirm.dc.html",
+  "id": "pa-07-band-confirm",
+  "title": "Change age band",
+  "section": "App 16. Parent area: child and settings",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-08-region.dc.html",
+  "id": "pa-08-region",
+  "title": "Change country",
+  "section": "App 16. Parent area: child and settings",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-09-device-mode.dc.html",
+  "id": "pa-09-device-mode",
+  "title": "Device mode",
+  "section": "App 16. Parent area: child and settings",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-20-parent-lockout.dc.html",
+  "id": "app-20-parent-lockout",
+  "title": "PIN lock-out",
+  "section": "App 17. Parent area: security and account",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-21-parent-signin.dc.html",
+  "id": "app-21-parent-signin",
+  "title": "New-device sign-in",
+  "section": "App 17. Parent area: security and account",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-10-signout-confirm.dc.html",
+  "id": "pa-10-signout-confirm",
+  "title": "Sign out?",
+  "section": "App 17. Parent area: security and account",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "app-22-parent-delete.dc.html",
+  "id": "app-22-parent-delete",
+  "title": "Delete account",
+  "section": "App 17. Parent area: security and account",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-11-delete-processing.dc.html",
+  "id": "pa-11-delete-processing",
+  "title": "Deleting (loading)",
+  "section": "App 17. Parent area: security and account",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "pa-12-deleted.dc.html",
+  "id": "pa-12-deleted",
+  "title": "Deleted",
+  "section": "App 17. Parent area: security and account",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "sy-01-update-required.dc.html",
+  "id": "sy-01-update-required",
+  "title": "Update required",
+  "section": "App 18. System states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "sy-02-maintenance.dc.html",
+  "id": "sy-02-maintenance",
+  "title": "Maintenance",
+  "section": "App 18. System states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "sy-03-server-error.dc.html",
+  "id": "sy-03-server-error",
+  "title": "Server error",
+  "section": "App 18. System states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "sy-04-no-connection.dc.html",
+  "id": "sy-04-no-connection",
+  "title": "No connection",
+  "section": "App 18. System states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "sy-05-loading-generic.dc.html",
+  "id": "sy-05-loading-generic",
+  "title": "Loading",
+  "section": "App 18. System states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "sy-06-empty-generic.dc.html",
+  "id": "sy-06-empty-generic",
+  "title": "Empty",
+  "section": "App 18. System states",
+  "platform": "mobile",
+  "w": 390,
+  "h": 844
+ },
+ {
+  "file": "web-01-home.dc.html",
+  "id": "web-01-home",
+  "title": "Home",
+  "section": "Website 1. Discover",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-01-how-it-works.dc.html",
+  "id": "wb-01-how-it-works",
+  "title": "How it works",
+  "section": "Website 1. Discover",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "web-02-age-bands.dc.html",
+  "id": "web-02-age-bands",
+  "title": "Age bands",
+  "section": "Website 1. Discover",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "web-03-safety.dc.html",
+  "id": "web-03-safety",
+  "title": "Safety",
+  "section": "Website 2. Safety and get the app",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "web-04-get-app.dc.html",
+  "id": "web-04-get-app",
+  "title": "Get the app",
+  "section": "Website 2. Safety and get the app",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-02-get-app-sent.dc.html",
+  "id": "wb-02-get-app-sent",
+  "title": "Get the app: link sent",
+  "section": "Website 2. Safety and get the app",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-03-faq.dc.html",
+  "id": "wb-03-faq",
+  "title": "FAQ",
+  "section": "Website 3. FAQ and contact",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-04-faq-empty.dc.html",
+  "id": "wb-04-faq-empty",
+  "title": "FAQ: no results",
+  "section": "Website 3. FAQ and contact",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-05-contact.dc.html",
+  "id": "wb-05-contact",
+  "title": "Contact",
+  "section": "Website 3. FAQ and contact",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-06-contact-error.dc.html",
+  "id": "wb-06-contact-error",
+  "title": "Contact: errors",
+  "section": "Website 4. Contact states",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-07-contact-sending.dc.html",
+  "id": "wb-07-contact-sending",
+  "title": "Contact: sending",
+  "section": "Website 4. Contact states",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-08-contact-sent.dc.html",
+  "id": "wb-08-contact-sent",
+  "title": "Contact: sent",
+  "section": "Website 4. Contact states",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-09-signin.dc.html",
+  "id": "wb-09-signin",
+  "title": "Family sign-in",
+  "section": "Website 5. Family sign-in",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-10-signin-error.dc.html",
+  "id": "wb-10-signin-error",
+  "title": "Sign-in: error",
+  "section": "Website 5. Family sign-in",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-11-signin-sending.dc.html",
+  "id": "wb-11-signin-sending",
+  "title": "Sign-in: sending",
+  "section": "Website 5. Family sign-in",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-12-privacy.dc.html",
+  "id": "wb-12-privacy",
+  "title": "Privacy",
+  "section": "Website 6. Legal and not found",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-13-terms.dc.html",
+  "id": "wb-13-terms",
+  "title": "Terms",
+  "section": "Website 6. Legal and not found",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "wb-14-404.dc.html",
+  "id": "wb-14-404",
+  "title": "Page not found",
+  "section": "Website 6. Legal and not found",
+  "platform": "website",
+  "w": 1440,
+  "h": 1000
+ },
+ {
+  "file": "dp-01-signin.dc.html",
+  "id": "dp-01-signin",
+  "title": "Sign in",
+  "section": "Parent Dashboard 1. Sign in",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-02-signin-error.dc.html",
+  "id": "dp-02-signin-error",
+  "title": "Sign in: error",
+  "section": "Parent Dashboard 1. Sign in",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-03-signin-loading.dc.html",
+  "id": "dp-03-signin-loading",
+  "title": "Sign in: sending code",
+  "section": "Parent Dashboard 1. Sign in",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-04-code.dc.html",
+  "id": "dp-04-code",
+  "title": "Enter code",
+  "section": "Parent Dashboard 2. Verify the code",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-05-code-error.dc.html",
+  "id": "dp-05-code-error",
+  "title": "Code: wrong",
+  "section": "Parent Dashboard 2. Verify the code",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-06-code-expired.dc.html",
+  "id": "dp-06-code-expired",
+  "title": "Code: expired",
+  "section": "Parent Dashboard 2. Verify the code",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dash-01-overview.dc.html",
+  "id": "dash-01-overview",
+  "title": "Overview",
+  "section": "Parent Dashboard 3. Overview and its states",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-07-overview-loading.dc.html",
+  "id": "dp-07-overview-loading",
+  "title": "Overview: loading",
+  "section": "Parent Dashboard 3. Overview and its states",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-08-overview-empty.dc.html",
+  "id": "dp-08-overview-empty",
+  "title": "Overview: new family",
+  "section": "Parent Dashboard 3. Overview and its states",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-09-overview-error.dc.html",
+  "id": "dp-09-overview-error",
+  "title": "Overview: error",
+  "section": "Parent Dashboard 4. Overview error and child",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dash-02-child.dc.html",
+  "id": "dash-02-child",
+  "title": "Child",
+  "section": "Parent Dashboard 4. Overview error and child",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-10-child-no-play.dc.html",
+  "id": "dp-10-child-no-play",
+  "title": "Child: no play yet",
+  "section": "Parent Dashboard 4. Overview error and child",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-11-skills.dc.html",
+  "id": "dp-11-skills",
+  "title": "Skills",
+  "section": "Parent Dashboard 5. Skills, activity, badges",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-12-activity.dc.html",
+  "id": "dp-12-activity",
+  "title": "Activity",
+  "section": "Parent Dashboard 5. Skills, activity, badges",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-13-badges.dc.html",
+  "id": "dp-13-badges",
+  "title": "Badges",
+  "section": "Parent Dashboard 5. Skills, activity, badges",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-14-settings-child.dc.html",
+  "id": "dp-14-settings-child",
+  "title": "Child settings",
+  "section": "Parent Dashboard 6. Child settings",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-15-settings-saved.dc.html",
+  "id": "dp-15-settings-saved",
+  "title": "Child settings: saved",
+  "section": "Parent Dashboard 6. Child settings",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-16-settings-error.dc.html",
+  "id": "dp-16-settings-error",
+  "title": "Child settings: errors",
+  "section": "Parent Dashboard 6. Child settings",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-17-settings-family.dc.html",
+  "id": "dp-17-settings-family",
+  "title": "Family settings",
+  "section": "Parent Dashboard 7. Family settings and devices",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-18-pin-change-error.dc.html",
+  "id": "dp-18-pin-change-error",
+  "title": "PIN change: errors",
+  "section": "Parent Dashboard 7. Family settings and devices",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dash-03-devices-data.dc.html",
+  "id": "dash-03-devices-data",
+  "title": "Devices and data",
+  "section": "Parent Dashboard 7. Family settings and devices",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-19-signout-device-confirm.dc.html",
+  "id": "dp-19-signout-device-confirm",
+  "title": "Sign out a device?",
+  "section": "Parent Dashboard 8. Devices and data",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-20-export-ready.dc.html",
+  "id": "dp-20-export-ready",
+  "title": "Export ready",
+  "section": "Parent Dashboard 8. Devices and data",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-21-delete-confirm.dc.html",
+  "id": "dp-21-delete-confirm",
+  "title": "Delete data?",
+  "section": "Parent Dashboard 8. Devices and data",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-22-deleted.dc.html",
+  "id": "dp-22-deleted",
+  "title": "Data deleted",
+  "section": "Parent Dashboard 9. Deletion, reports, notifications",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-23-monthly-summary.dc.html",
+  "id": "dp-23-monthly-summary",
+  "title": "Monthly summary",
+  "section": "Parent Dashboard 9. Deletion, reports, notifications",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 1100
+ },
+ {
+  "file": "dp-24-notifications.dc.html",
+  "id": "dp-24-notifications",
+  "title": "Notifications",
+  "section": "Parent Dashboard 9. Deletion, reports, notifications",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-25-session-timeout.dc.html",
+  "id": "dp-25-session-timeout",
+  "title": "Session timed out",
+  "section": "Parent Dashboard 10. Session and error pages",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-26-forbidden.dc.html",
+  "id": "dp-26-forbidden",
+  "title": "No access (403)",
+  "section": "Parent Dashboard 10. Session and error pages",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "dp-27-not-found.dc.html",
+  "id": "dp-27-not-found",
+  "title": "Not found (404)",
+  "section": "Parent Dashboard 10. Session and error pages",
+  "platform": "dashboard",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "tc-01-signin.dc.html",
+  "id": "tc-01-signin",
+  "title": "Staff sign-in",
+  "section": "Team Console 1. Sign in and families",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "tc-02-families.dc.html",
+  "id": "tc-02-families",
+  "title": "Families",
+  "section": "Team Console 1. Sign in and families",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "tc-03-families-empty.dc.html",
+  "id": "tc-03-families-empty",
+  "title": "Families: no results",
+  "section": "Team Console 1. Sign in and families",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "tc-04-families-loading.dc.html",
+  "id": "tc-04-families-loading",
+  "title": "Families: loading",
+  "section": "Team Console 2. Family states",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "tc-05-family.dc.html",
+  "id": "tc-05-family",
+  "title": "Family detail",
+  "section": "Team Console 2. Family states",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "tc-06-family-not-found.dc.html",
+  "id": "tc-06-family-not-found",
+  "title": "Family not found",
+  "section": "Team Console 2. Family states",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "team-01-content.dc.html",
+  "id": "team-01-content",
+  "title": "Content",
+  "section": "Team Console 3. Content and missions",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "tc-07-content-empty.dc.html",
+  "id": "tc-07-content-empty",
+  "title": "Content: no results",
+  "section": "Team Console 3. Content and missions",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "tc-08-mission.dc.html",
+  "id": "tc-08-mission",
+  "title": "Mission detail",
+  "section": "Team Console 3. Content and missions",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "tc-09-no-access.dc.html",
+  "id": "tc-09-no-access",
+  "title": "No access (403)",
+  "section": "Team Console 4. Access, errors, sign-out",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "tc-10-error.dc.html",
+  "id": "tc-10-error",
+  "title": "Server error",
+  "section": "Team Console 4. Access, errors, sign-out",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ },
+ {
+  "file": "tc-11-signed-out.dc.html",
+  "id": "tc-11-signed-out",
+  "title": "Signed out",
+  "section": "Team Console 4. Access, errors, sign-out",
+  "platform": "team",
+  "w": 1440,
+  "h": 900
+ }
+]

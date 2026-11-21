@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Choose region</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:48px 24px 28px;gap:16px">
+  <div style="color:#FBE57E;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase">Parent setup · Step 4 of 6</div>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">Where does your family live?</h1>
+  <p style="margin:0;font-size:17px;line-height:1.4">We use local coins and everyday examples your child will recognise. You can change this later.</p>
+  <div role="radiogroup" aria-label="Region" style="display:flex;flex-direction:column;gap:12px">
+    <button role="radio" aria-checked="true" style="min-height:84px;border-radius:20px;border:3px solid #FBCE16;background:rgba(251,206,22,.16);color:#FEF5E0;display:flex;align-items:center;gap:14px;padding:12px 16px;text-align:left">
+      <span style="width:48px;height:48px;border-radius:999px;background:#FBAA19;border:3px solid #FEF5E0;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:18px;color:#3E2312;flex:none">GH₵</span>
+      <span style="flex:1"><strong style="display:block;font-size:19px">Ghana</strong><span style="font-size:15px;color:#FBE57E">Cedi coins · kelewele, sobolo</span></span>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FBCE16" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>
+    </button>
+    <button role="radio" aria-checked="false" style="min-height:84px;border-radius:20px;border:2px solid rgba(255,255,255,.35);background:transparent;color:#FEF5E0;display:flex;align-items:center;gap:14px;padding:12px 16px;text-align:left">
+      <span style="width:48px;height:48px;border-radius:999px;background:#FBAA19;border:3px solid #FEF5E0;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;color:#3E2312;flex:none">₦</span>
+      <span style="flex:1"><strong style="display:block;font-size:19px">Nigeria</strong><span style="font-size:15px;color:#FBE57E">Naira coins · puff-puff, zobo</span></span>
+    </button>
+    <button role="radio" aria-checked="false" style="min-height:84px;border-radius:20px;border:2px solid rgba(255,255,255,.35);background:transparent;color:#FEF5E0;display:flex;align-items:center;gap:14px;padding:12px 16px;text-align:left">
+      <span style="width:48px;height:48px;border-radius:999px;background:#FBAA19;border:3px solid #FEF5E0;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;color:#3E2312;flex:none">£</span>
+      <span style="flex:1"><strong style="display:block;font-size:19px">United Kingdom</strong><span style="font-size:15px;color:#FBE57E">Pound coins · biscuit, lemonade</span></span>
+    </button>
+  </div>
+  <p style="margin:0;font-size:14px;color:#FBE57E">Coins are pretend. They are not real money.</p>
+  <div style="flex:1"></div>
+  <button style="width:100%;height:60px;border-radius:999px;border:0;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px">Next</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

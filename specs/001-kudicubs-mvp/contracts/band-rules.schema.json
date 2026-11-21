@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kudicubs.app/band-rules/1.0.0",
+  "title": "KudiCubs Band Rules",
+  "description": "Per-age-band engine configuration. Shipped inside the app binary (never in downloadable packs) so content cannot weaken safety rules. Defaults per band are listed in research.md R9.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "version", "band", "outcomes", "retry", "timePressure", "narration", "text", "numeracy", "idleHints", "decision"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "version": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+    "band": { "enum": ["b4_6", "b7_9", "b10_12", "b13_15"] },
+    "outcomes": {
+      "type": "object", "additionalProperties": false, "required": ["failureAllowed", "negativeToneHandling"],
+      "properties": {
+        "failureAllowed": { "type": "boolean", "description": "false for b4_6 (Constitution III)" },
+        "negativeToneHandling": { "enum": ["render_gentle_variant", "render_as_is"], "description": "b4_6 MUST be render_gentle_variant" }
+      }
+    },
+    "retry": {
+      "type": "object", "additionalProperties": false, "required": ["offer"],
+      "properties": {
+        "offer": { "enum": ["not_applicable", "after_unsuccessful_round", "always"], "description": "b7_9+ MUST be after_unsuccessful_round or always" },
+        "keepsEarnedRewards": { "const": true }
+      }
+    },
+    "timePressure": {
+      "type": "object", "additionalProperties": false, "required": ["mode"],
+      "properties": {
+        "mode": { "enum": ["off", "soft", "allowed"], "description": "b4_6 MUST be off; b7_9 soft" },
+        "minSeconds": { "type": "integer", "minimum": 0 },
+        "timerEndsRound": { "type": "boolean", "description": "MUST be false for soft" }
+      }
+    },
+    "narration": {
+      "type": "object", "additionalProperties": false, "required": ["requiredForAllPrompts", "autoplay"],
+      "properties": {
+        "requiredForAllPrompts": { "const": true, "description": "All bands (Constitution VII, FR-044)" },
+        "autoplay": { "type": "boolean" },
+        "playableWithoutReading": { "type": "boolean", "description": "MUST be true for b4_6 (FR-028)" }
+      }
+    },
+    "text": {
+      "type": "object", "additionalProperties": false, "required": ["maxWordsPerPrompt"],
+      "properties": { "maxWordsPerPrompt": { "type": "integer", "minimum": 1 }, "iconRequiredOnChoices": { "type": "boolean" } }
+    },
+    "numeracy": {
+      "type": "object", "additionalProperties": false, "required": ["maxNumber", "operations"],
+      "properties": {
+        "maxNumber": { "type": "integer", "minimum": 1 },
+        "operations": { "type": "array", "items": { "enum": ["count", "add", "subtract", "multiply", "percent", "interest"] } }
+      }
+    },
+    "idleHints": {
+      "type": "object", "additionalProperties": false, "required": ["firstAfterSeconds", "escalateAfterSeconds"],
+      "properties": {
+        "firstAfterSeconds": { "type": "integer", "minimum": 1 },
+        "escalateAfterSeconds": { "type": "array", "items": { "type": "integer", "minimum": 1 } }
+      }
+    },
+    "decision": {
+      "type": "object", "additionalProperties": false, "required": ["minChoices", "maxChoices"],
+      "properties": { "minChoices": { "type": "integer", "minimum": 2 }, "maxChoices": { "type": "integer", "maximum": 3 } }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "band": { "const": "b4_6" } } },
+      "then": {
+        "properties": {
+          "outcomes": { "properties": { "failureAllowed": { "const": false }, "negativeToneHandling": { "const": "render_gentle_variant" } } },
+          "retry": { "properties": { "offer": { "const": "not_applicable" } } },
+          "timePressure": { "properties": { "mode": { "const": "off" } } },
+          "narration": { "required": ["playableWithoutReading"], "properties": { "playableWithoutReading": { "const": true } } }
+        }
+      },
+      "else": {
+        "properties": {
+          "retry": { "properties": { "offer": { "enum": ["after_unsuccessful_round", "always"] } } }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "band": { "const": "b7_9" } } },
+      "then": { "properties": { "timePressure": { "properties": { "mode": { "const": "soft" }, "timerEndsRound": { "const": false } } } } }
+    }
+  ]
+}

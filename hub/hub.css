@@ -1,0 +1,15 @@
+/* Hub page only: layout on top of shared/adult-components.css. Tokens only. */
+.hub-hero { background: var(--kc-color-brand-soft-gold); }
+.hub-hero-grid { display: grid; gap: var(--kc-space-6); align-items: center; grid-template-columns: 1fr; }
+.hub-kudi { width: 160px; height: auto; justify-self: center; }
+.hub-tag { font: 800 var(--kc-typography-title-size)/1.2 var(--kc-font-display); margin-bottom: var(--kc-space-3); }
+.hub-try { margin: 0 0 var(--kc-space-4); padding-left: var(--kc-space-5); }
+.hub-journeys { margin-top: var(--kc-space-4); }
+.hub-journeys ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--kc-space-3); }
+.hub-journeys li { background: var(--kc-color-bg-card); border: var(--kc-size-border-thin) solid var(--kc-color-derived-peach-shade); border-radius: var(--kc-radius-md); padding: var(--kc-space-3) var(--kc-space-4); }
+.hub-journeys .hub-links { display: flex; gap: var(--kc-space-2); flex-wrap: wrap; margin-top: var(--kc-space-2); }
+.hub-journeys .hub-links a { display: inline-flex; align-items: center; min-height: var(--kc-adult-target-min); padding: 0 var(--kc-space-3); border-radius: var(--kc-radius-pill); background: var(--kc-color-brand-soft-gold); font-weight: 700; text-decoration: none; }
+.hub-journeys .hub-status { font-size: var(--kc-typography-caption-size); color: var(--kc-color-text-secondary); }
+.hub-foot { border-top: var(--kc-size-border-thin) solid var(--kc-color-derived-peach-shade); }
+@media (min-width: 640px) { .hub-hero-grid { grid-template-columns: 1fr 220px; } .hub-kudi { width: 200px; } }
+@media (min-width: 1024px) { .hub-journeys ul { grid-template-columns: 1fr 1fr; } }

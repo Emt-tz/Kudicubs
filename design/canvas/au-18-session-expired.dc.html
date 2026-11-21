@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Session expired</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:56px 24px 28px;gap:16px">
+  <img src="/_blob/99b23ccfe9664e4aac19be05e83141b3" alt="KudiCubs" style="width:170px;height:auto">
+  <h1 style="margin:8px 0 0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">You were signed out for safety</h1>
+  <p style="margin:0;font-size:17px;line-height:1.4">The grown-up area closes by itself after a while with no activity. It keeps the account private if the phone is left unlocked.</p>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
+    <div style="width:130px;height:130px;border-radius:999px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center">
+      <svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="#FBE57E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Signed out"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+    </div>
+    <div style="background:rgba(255,255,255,.1);border-radius:16px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FBE57E" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="10"/><path d="M12 11v5M12 7.5v.5"/></svg>
+      <span style="font-size:15px;line-height:1.4">Your children can keep playing. Nothing has been lost.</span>
+    </div>
+  </div>
+  <button style="width:100%;height:60px;border-radius:999px;border:0;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px">Sign in again</button>
+  <a style="color:#FBE57E;text-align:center;font-weight:700;font-size:16px;min-height:48px;display:flex;align-items:center;justify-content:center;text-decoration:underline">Back to the game</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

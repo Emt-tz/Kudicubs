@@ -1,0 +1,11 @@
+# Brief for screen-building agents (spec 006)
+
+You turn accepted designs into working screens. Source of truth for the LOOK: `design/canvas/<id>.dc.html` (inline-styled HTML artboard; phone = 390x844, web = 1440 wide). Source for BEHAVIOUR: specs/006-build-kudicubs-platform/spec.md + plan.md, docs/design/journey-map.md, the prototype in `prototype/` (screens.js, screens-bands.js, screens-parent.js, missions/*.js) and constitution rules (`.specify/memory/constitution.md`): ages 4–6 never see failure screens; 7–15 always get retry and keep everything earned; fictional currency only (GH₵ ₦ £); one obvious primary action per child screen; touch targets ≥ 48 dp / 44 px.
+
+Rules
+- Edit ONLY the files listed for you. Never edit core/foundation files, other agents' files, or generated registries. If you need a shared helper, put it inside your own folder. If core is missing something essential, work around it locally and mention it in your report.
+- Do NOT git commit, do NOT run `supabase db reset`, `scripts/seed.mjs --reset`, or stop/start Supabase. The backend is running at http://127.0.0.1:56321 (see plan.md); demo accounts and codes: supabase/README.md.
+- Every screen must be REAL: wired to the real repositories/queries (no hard-coded sample data), handle loading / empty / error / offline for real, and also honour the demo-state override so each design variant can be opened directly (app: the `ScreenState` argument; web: `?state=` via `getDemoState`, plus real behaviour).
+- Match the design: copy copy-text exactly, same colours, spacing, imagery (brand images from the assets already copied), same states and error messages.
+- Verify your own work with the narrowest commands (several agents share the machine): app: `cd app && dart analyze lib/screens/<your folders>` and `flutter test test/<your test>.dart` (write at least one widget test file for your area); web: `cd web && npx tsc --noEmit` and run your own dev server with `NEXT_DIST_DIR=.next-<yourname> npx next dev -p <your port>` then check pages with curl/Playwright against that port. Never run `next build` or `rm -rf .next` (shared dirs).
+- Finish with a short report: screens done (ids), anything not done and why, files created, any core gaps. Keep code tidy and typed; no dead stubs left for your ids (every id in your list must be real).

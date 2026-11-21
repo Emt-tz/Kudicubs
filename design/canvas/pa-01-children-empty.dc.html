@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Children empty</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#3E2312;font-family:'Nunito',sans-serif;color:#FEF5E0;display:flex;flex-direction:column;padding:48px 20px 28px;gap:16px">
+  <div style="color:#FBE57E;font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase">Parent area</div>
+  <h1 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1.1">Your children</h1>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;background:rgba(255,255,255,.08);border:2px dashed #FBE57E;border-radius:24px;padding:28px 20px">
+    <img src="/_blob/48e3ae69e739b1993bd3c631e26d7f36" alt="Kudi waving" style="width:170px;height:auto">
+    <h2 style="margin:0;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px;line-height:1.1">No children yet</h2>
+    <p style="margin:0;font-size:17px;line-height:1.4;max-width:290px">Add your first child so they can join the Pride and start playing.</p>
+    <button style="min-height:56px;padding:0 32px;border-radius:999px;border:2px solid #3E2312;background:#FBCE16;color:#3E2312;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;box-shadow:0 4px 0 #FBE57E">Add a child</button>
+  </div>
+  <button style="min-height:52px;border-radius:999px;border:0;background:rgba(255,255,255,.14);color:#FEF5E0;font-weight:800;font-size:16px;font-family:'Nunito',sans-serif">Back to the game</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

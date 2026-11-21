@@ -1,0 +1,1017 @@
+{
+  "app": [
+    {
+      "id": "ob-01-splash",
+      "platform": "app",
+      "route": "/splash",
+      "state": "loading"
+    },
+    {
+      "id": "Main",
+      "platform": "app",
+      "route": "/welcome",
+      "state": "normal"
+    },
+    {
+      "id": "ob-02-intro-1",
+      "platform": "app",
+      "route": "/intro/1",
+      "state": "normal"
+    },
+    {
+      "id": "ob-03-intro-2",
+      "platform": "app",
+      "route": "/intro/2",
+      "state": "normal"
+    },
+    {
+      "id": "ob-04-intro-3",
+      "platform": "app",
+      "route": "/intro/3",
+      "state": "normal"
+    },
+    {
+      "id": "app-02-age",
+      "platform": "app",
+      "route": "/age",
+      "state": "normal"
+    },
+    {
+      "id": "app-03-avatar",
+      "platform": "app",
+      "route": "/avatar",
+      "state": "normal"
+    },
+    {
+      "id": "ob-05-avatar-empty",
+      "platform": "app",
+      "route": "/screen/ob-05-avatar-empty",
+      "state": "empty"
+    },
+    {
+      "id": "ob-06-gate-hold",
+      "platform": "app",
+      "route": "/screen/ob-06-gate-hold",
+      "state": "normal"
+    },
+    {
+      "id": "app-04-gate",
+      "platform": "app",
+      "route": "/gate",
+      "state": "normal"
+    },
+    {
+      "id": "ob-07-gate-wrong",
+      "platform": "app",
+      "route": "/screen/ob-07-gate-wrong",
+      "state": "normal"
+    },
+    {
+      "id": "ob-08-gate-locked",
+      "platform": "app",
+      "route": "/screen/ob-08-gate-locked",
+      "state": "normal"
+    },
+    {
+      "id": "au-01-pin-create",
+      "platform": "app",
+      "route": "/pin/create",
+      "state": "normal"
+    },
+    {
+      "id": "au-02-pin-weak",
+      "platform": "app",
+      "route": "/screen/au-02-pin-weak",
+      "state": "normal"
+    },
+    {
+      "id": "au-03-pin-mismatch",
+      "platform": "app",
+      "route": "/screen/au-03-pin-mismatch",
+      "state": "normal"
+    },
+    {
+      "id": "au-04-region",
+      "platform": "app",
+      "route": "/region",
+      "state": "normal"
+    },
+    {
+      "id": "au-05-email",
+      "platform": "app",
+      "route": "/email",
+      "state": "normal"
+    },
+    {
+      "id": "au-06-email-invalid",
+      "platform": "app",
+      "route": "/screen/au-06-email-invalid",
+      "state": "error"
+    },
+    {
+      "id": "au-07-code",
+      "platform": "app",
+      "route": "/code",
+      "state": "normal"
+    },
+    {
+      "id": "au-08-code-wrong",
+      "platform": "app",
+      "route": "/screen/au-08-code-wrong",
+      "state": "normal"
+    },
+    {
+      "id": "au-09-code-expired",
+      "platform": "app",
+      "route": "/screen/au-09-code-expired",
+      "state": "normal"
+    },
+    {
+      "id": "au-10-code-sending",
+      "platform": "app",
+      "route": "/screen/au-10-code-sending",
+      "state": "loading"
+    },
+    {
+      "id": "au-11-offline",
+      "platform": "app",
+      "route": "/screen/au-11-offline",
+      "state": "offline"
+    },
+    {
+      "id": "au-12-joined",
+      "platform": "app",
+      "route": "/joined",
+      "state": "normal"
+    },
+    {
+      "id": "au-13-signin",
+      "platform": "app",
+      "route": "/signin",
+      "state": "normal"
+    },
+    {
+      "id": "au-14-signin-sending",
+      "platform": "app",
+      "route": "/screen/au-14-signin-sending",
+      "state": "loading"
+    },
+    {
+      "id": "au-15-signin-error",
+      "platform": "app",
+      "route": "/screen/au-15-signin-error",
+      "state": "error"
+    },
+    {
+      "id": "au-16-forgot-pin",
+      "platform": "app",
+      "route": "/screen/au-16-forgot-pin",
+      "state": "normal"
+    },
+    {
+      "id": "au-17-recovery-sent",
+      "platform": "app",
+      "route": "/screen/au-17-recovery-sent",
+      "state": "normal"
+    },
+    {
+      "id": "au-18-session-expired",
+      "platform": "app",
+      "route": "/screen/au-18-session-expired",
+      "state": "normal"
+    },
+    {
+      "id": "app-05-home",
+      "platform": "app",
+      "route": "/home",
+      "state": "normal"
+    },
+    {
+      "id": "hm-01-first-visit",
+      "platform": "app",
+      "route": "/screen/hm-01-first-visit",
+      "state": "normal"
+    },
+    {
+      "id": "hm-02-loading",
+      "platform": "app",
+      "route": "/screen/hm-02-loading",
+      "state": "loading"
+    },
+    {
+      "id": "hm-03-idle-hint",
+      "platform": "app",
+      "route": "/screen/hm-03-idle-hint",
+      "state": "normal"
+    },
+    {
+      "id": "hm-04-offline",
+      "platform": "app",
+      "route": "/screen/hm-04-offline",
+      "state": "offline"
+    },
+    {
+      "id": "hm-05-error",
+      "platform": "app",
+      "route": "/screen/hm-05-error",
+      "state": "error"
+    },
+    {
+      "id": "hm-06-daily-progress",
+      "platform": "app",
+      "route": "/daily",
+      "state": "normal"
+    },
+    {
+      "id": "hm-07-daily-complete",
+      "platform": "app",
+      "route": "/screen/hm-07-daily-complete",
+      "state": "normal"
+    },
+    {
+      "id": "app-09-reward",
+      "platform": "app",
+      "route": "/screen/app-09-reward",
+      "state": "normal"
+    },
+    {
+      "id": "ms-20-level-up",
+      "platform": "app",
+      "route": "/screen/ms-20-level-up",
+      "state": "normal"
+    },
+    {
+      "id": "ms-21-badge-earned",
+      "platform": "app",
+      "route": "/screen/ms-21-badge-earned",
+      "state": "normal"
+    },
+    {
+      "id": "ms-22-leave-confirm",
+      "platform": "app",
+      "route": "/screen/ms-22-leave-confirm",
+      "state": "normal"
+    },
+    {
+      "id": "app-06-mission-intro",
+      "platform": "app",
+      "route": "/mission/4-6",
+      "state": "normal"
+    },
+    {
+      "id": "app-07-find-coins",
+      "platform": "app",
+      "route": "/screen/app-07-find-coins",
+      "state": "normal"
+    },
+    {
+      "id": "ms-01-find-hint",
+      "platform": "app",
+      "route": "/screen/ms-01-find-hint",
+      "state": "normal"
+    },
+    {
+      "id": "ms-02-sort-jars",
+      "platform": "app",
+      "route": "/screen/ms-02-sort-jars",
+      "state": "normal"
+    },
+    {
+      "id": "ms-03-count",
+      "platform": "app",
+      "route": "/screen/ms-03-count",
+      "state": "normal"
+    },
+    {
+      "id": "app-08-decision",
+      "platform": "app",
+      "route": "/screen/app-08-decision",
+      "state": "normal"
+    },
+    {
+      "id": "ms-04-result-save",
+      "platform": "app",
+      "route": "/screen/ms-04-result-save",
+      "state": "normal"
+    },
+    {
+      "id": "ms-05-result-spend",
+      "platform": "app",
+      "route": "/screen/ms-05-result-spend",
+      "state": "normal"
+    },
+    {
+      "id": "ms-06-summary",
+      "platform": "app",
+      "route": "/screen/ms-06-summary",
+      "state": "normal"
+    },
+    {
+      "id": "ms-07-replay",
+      "platform": "app",
+      "route": "/screen/ms-07-replay",
+      "state": "normal"
+    },
+    {
+      "id": "ms-08-mission-loading",
+      "platform": "app",
+      "route": "/screen/ms-08-mission-loading",
+      "state": "loading"
+    },
+    {
+      "id": "ms-09-mission-error",
+      "platform": "app",
+      "route": "/screen/ms-09-mission-error",
+      "state": "error"
+    },
+    {
+      "id": "ms-10-7-9-intro",
+      "platform": "app",
+      "route": "/mission/7-9",
+      "state": "normal"
+    },
+    {
+      "id": "app-10-band-7-9",
+      "platform": "app",
+      "route": "/screen/app-10-band-7-9",
+      "state": "normal"
+    },
+    {
+      "id": "ms-11-7-9-result-success",
+      "platform": "app",
+      "route": "/screen/ms-11-7-9-result-success",
+      "state": "normal"
+    },
+    {
+      "id": "ms-12-7-9-result-retry",
+      "platform": "app",
+      "route": "/screen/ms-12-7-9-result-retry",
+      "state": "normal"
+    },
+    {
+      "id": "ms-13-7-9-summary",
+      "platform": "app",
+      "route": "/screen/ms-13-7-9-summary",
+      "state": "normal"
+    },
+    {
+      "id": "ms-14-7-9-saving-error",
+      "platform": "app",
+      "route": "/screen/ms-14-7-9-saving-error",
+      "state": "error"
+    },
+    {
+      "id": "ms-15-10-12-intro",
+      "platform": "app",
+      "route": "/mission/10-12",
+      "state": "normal"
+    },
+    {
+      "id": "ms-16-10-12-resource",
+      "platform": "app",
+      "route": "/screen/ms-16-10-12-resource",
+      "state": "normal"
+    },
+    {
+      "id": "app-11-band-10-12",
+      "platform": "app",
+      "route": "/screen/app-11-band-10-12",
+      "state": "normal"
+    },
+    {
+      "id": "ms-17-10-12-result-success",
+      "platform": "app",
+      "route": "/screen/ms-17-10-12-result-success",
+      "state": "normal"
+    },
+    {
+      "id": "ms-18-10-12-result-retry",
+      "platform": "app",
+      "route": "/screen/ms-18-10-12-result-retry",
+      "state": "normal"
+    },
+    {
+      "id": "ms-19-10-12-summary",
+      "platform": "app",
+      "route": "/screen/ms-19-10-12-summary",
+      "state": "normal"
+    },
+    {
+      "id": "ms-23-13-15-intro",
+      "platform": "app",
+      "route": "/mission/13-15",
+      "state": "normal"
+    },
+    {
+      "id": "app-12-band-13-15",
+      "platform": "app",
+      "route": "/screen/app-12-band-13-15",
+      "state": "normal"
+    },
+    {
+      "id": "ms-24-13-15-market",
+      "platform": "app",
+      "route": "/screen/ms-24-13-15-market",
+      "state": "normal"
+    },
+    {
+      "id": "ms-25-13-15-result-profit",
+      "platform": "app",
+      "route": "/screen/ms-25-13-15-result-profit",
+      "state": "normal"
+    },
+    {
+      "id": "app-13-retry",
+      "platform": "app",
+      "route": "/screen/app-13-retry",
+      "state": "normal"
+    },
+    {
+      "id": "ms-26-13-15-summary",
+      "platform": "app",
+      "route": "/screen/ms-26-13-15-summary",
+      "state": "normal"
+    },
+    {
+      "id": "app-14-wallet",
+      "platform": "app",
+      "route": "/wallet",
+      "state": "normal"
+    },
+    {
+      "id": "wl-01-empty",
+      "platform": "app",
+      "route": "/screen/wl-01-empty",
+      "state": "empty"
+    },
+    {
+      "id": "wl-02-loading",
+      "platform": "app",
+      "route": "/screen/wl-02-loading",
+      "state": "loading"
+    },
+    {
+      "id": "wl-03-error",
+      "platform": "app",
+      "route": "/screen/wl-03-error",
+      "state": "error"
+    },
+    {
+      "id": "app-15-progress",
+      "platform": "app",
+      "route": "/progress",
+      "state": "normal"
+    },
+    {
+      "id": "pr-01-progress-empty",
+      "platform": "app",
+      "route": "/screen/pr-01-progress-empty",
+      "state": "empty"
+    },
+    {
+      "id": "pr-02-badge-locked",
+      "platform": "app",
+      "route": "/screen/pr-02-badge-locked",
+      "state": "normal"
+    },
+    {
+      "id": "pr-03-badge-earned",
+      "platform": "app",
+      "route": "/badges",
+      "state": "normal"
+    },
+    {
+      "id": "app-16-profile",
+      "platform": "app",
+      "route": "/profile",
+      "state": "normal"
+    },
+    {
+      "id": "pr-04-profile-sound-off",
+      "platform": "app",
+      "route": "/screen/pr-04-profile-sound-off",
+      "state": "normal"
+    },
+    {
+      "id": "pr-05-avatar-change",
+      "platform": "app",
+      "route": "/screen/pr-05-avatar-change",
+      "state": "normal"
+    },
+    {
+      "id": "pr-06-profile-loading",
+      "platform": "app",
+      "route": "/screen/pr-06-profile-loading",
+      "state": "loading"
+    },
+    {
+      "id": "app-17-parent-children",
+      "platform": "app",
+      "route": "/parent",
+      "state": "normal"
+    },
+    {
+      "id": "pa-01-children-empty",
+      "platform": "app",
+      "route": "/screen/pa-01-children-empty",
+      "state": "empty"
+    },
+    {
+      "id": "pa-02-children-loading",
+      "platform": "app",
+      "route": "/screen/pa-02-children-loading",
+      "state": "loading"
+    },
+    {
+      "id": "pa-03-add-child",
+      "platform": "app",
+      "route": "/screen/pa-03-add-child",
+      "state": "normal"
+    },
+    {
+      "id": "pa-04-add-child-error",
+      "platform": "app",
+      "route": "/screen/pa-04-add-child-error",
+      "state": "error"
+    },
+    {
+      "id": "app-18-parent-child",
+      "platform": "app",
+      "route": "/parent/child/:id",
+      "state": "normal"
+    },
+    {
+      "id": "pa-05-child-no-play",
+      "platform": "app",
+      "route": "/screen/pa-05-child-no-play",
+      "state": "normal"
+    },
+    {
+      "id": "app-19-parent-settings",
+      "platform": "app",
+      "route": "/parent/settings",
+      "state": "normal"
+    },
+    {
+      "id": "pa-06-settings-saved",
+      "platform": "app",
+      "route": "/screen/pa-06-settings-saved",
+      "state": "normal"
+    },
+    {
+      "id": "pa-07-band-confirm",
+      "platform": "app",
+      "route": "/screen/pa-07-band-confirm",
+      "state": "normal"
+    },
+    {
+      "id": "pa-08-region",
+      "platform": "app",
+      "route": "/screen/pa-08-region",
+      "state": "normal"
+    },
+    {
+      "id": "pa-09-device-mode",
+      "platform": "app",
+      "route": "/screen/pa-09-device-mode",
+      "state": "normal"
+    },
+    {
+      "id": "app-20-parent-lockout",
+      "platform": "app",
+      "route": "/screen/app-20-parent-lockout",
+      "state": "normal"
+    },
+    {
+      "id": "app-21-parent-signin",
+      "platform": "app",
+      "route": "/screen/app-21-parent-signin",
+      "state": "normal"
+    },
+    {
+      "id": "pa-10-signout-confirm",
+      "platform": "app",
+      "route": "/screen/pa-10-signout-confirm",
+      "state": "normal"
+    },
+    {
+      "id": "app-22-parent-delete",
+      "platform": "app",
+      "route": "/screen/app-22-parent-delete",
+      "state": "normal"
+    },
+    {
+      "id": "pa-11-delete-processing",
+      "platform": "app",
+      "route": "/screen/pa-11-delete-processing",
+      "state": "loading"
+    },
+    {
+      "id": "pa-12-deleted",
+      "platform": "app",
+      "route": "/screen/pa-12-deleted",
+      "state": "normal"
+    },
+    {
+      "id": "sy-01-update-required",
+      "platform": "app",
+      "route": "/system/update-required",
+      "state": "normal"
+    },
+    {
+      "id": "sy-02-maintenance",
+      "platform": "app",
+      "route": "/system/maintenance",
+      "state": "normal"
+    },
+    {
+      "id": "sy-03-server-error",
+      "platform": "app",
+      "route": "/system/server-error",
+      "state": "error"
+    },
+    {
+      "id": "sy-04-no-connection",
+      "platform": "app",
+      "route": "/system/no-connection",
+      "state": "offline"
+    },
+    {
+      "id": "sy-05-loading-generic",
+      "platform": "app",
+      "route": "/system/loading",
+      "state": "loading"
+    },
+    {
+      "id": "sy-06-empty-generic",
+      "platform": "app",
+      "route": "/system/empty",
+      "state": "empty"
+    }
+  ],
+  "web": [
+    {
+      "id": "web-01-home",
+      "platform": "web",
+      "url": "/",
+      "state": "default"
+    },
+    {
+      "id": "wb-01-how-it-works",
+      "platform": "web",
+      "url": "/how-it-works",
+      "state": "default"
+    },
+    {
+      "id": "web-02-age-bands",
+      "platform": "web",
+      "url": "/age-bands",
+      "state": "default"
+    },
+    {
+      "id": "web-03-safety",
+      "platform": "web",
+      "url": "/safety",
+      "state": "default"
+    },
+    {
+      "id": "web-04-get-app",
+      "platform": "web",
+      "url": "/get-the-app",
+      "state": "default"
+    },
+    {
+      "id": "wb-02-get-app-sent",
+      "platform": "web",
+      "url": "/get-the-app?sent=1",
+      "state": "sent"
+    },
+    {
+      "id": "wb-03-faq",
+      "platform": "web",
+      "url": "/faq",
+      "state": "default"
+    },
+    {
+      "id": "wb-04-faq-empty",
+      "platform": "web",
+      "url": "/faq?q=zzzz",
+      "state": "no-results"
+    },
+    {
+      "id": "wb-05-contact",
+      "platform": "web",
+      "url": "/contact",
+      "state": "default"
+    },
+    {
+      "id": "wb-06-contact-error",
+      "platform": "web",
+      "url": "/contact?state=error",
+      "state": "error"
+    },
+    {
+      "id": "wb-07-contact-sending",
+      "platform": "web",
+      "url": "/contact?state=sending",
+      "state": "sending"
+    },
+    {
+      "id": "wb-08-contact-sent",
+      "platform": "web",
+      "url": "/contact?state=sent",
+      "state": "sent"
+    },
+    {
+      "id": "wb-09-signin",
+      "platform": "web",
+      "url": "/family/signin",
+      "state": "default"
+    },
+    {
+      "id": "wb-10-signin-error",
+      "platform": "web",
+      "url": "/family/signin?state=error",
+      "state": "error"
+    },
+    {
+      "id": "wb-11-signin-sending",
+      "platform": "web",
+      "url": "/family/signin?state=sending",
+      "state": "sending"
+    },
+    {
+      "id": "wb-12-privacy",
+      "platform": "web",
+      "url": "/privacy",
+      "state": "default"
+    },
+    {
+      "id": "wb-13-terms",
+      "platform": "web",
+      "url": "/terms",
+      "state": "default"
+    },
+    {
+      "id": "wb-14-404",
+      "platform": "web",
+      "url": "/this-page-does-not-exist",
+      "state": "not-found",
+      "status": 404
+    },
+    {
+      "id": "dp-01-signin",
+      "platform": "web",
+      "url": "/dashboard/signin",
+      "state": "default"
+    },
+    {
+      "id": "dp-02-signin-error",
+      "platform": "web",
+      "url": "/dashboard/signin?state=error",
+      "state": "error"
+    },
+    {
+      "id": "dp-03-signin-loading",
+      "platform": "web",
+      "url": "/dashboard/signin?state=loading",
+      "state": "loading"
+    },
+    {
+      "id": "dp-04-code",
+      "platform": "web",
+      "url": "/dashboard/code",
+      "state": "default"
+    },
+    {
+      "id": "dp-05-code-error",
+      "platform": "web",
+      "url": "/dashboard/code?state=wrong",
+      "state": "wrong"
+    },
+    {
+      "id": "dp-06-code-expired",
+      "platform": "web",
+      "url": "/dashboard/code?state=expired",
+      "state": "expired"
+    },
+    {
+      "id": "dash-01-overview",
+      "platform": "web",
+      "url": "/dashboard",
+      "state": "default"
+    },
+    {
+      "id": "dp-07-overview-loading",
+      "platform": "web",
+      "url": "/dashboard?state=loading",
+      "state": "loading"
+    },
+    {
+      "id": "dp-08-overview-empty",
+      "platform": "web",
+      "url": "/dashboard?state=empty",
+      "state": "empty"
+    },
+    {
+      "id": "dp-09-overview-error",
+      "platform": "web",
+      "url": "/dashboard?state=error",
+      "state": "error"
+    },
+    {
+      "id": "dash-02-child",
+      "platform": "web",
+      "url": "/dashboard/children/{child}",
+      "state": "default"
+    },
+    {
+      "id": "dp-10-child-no-play",
+      "platform": "web",
+      "url": "/dashboard/children/{child}?state=empty",
+      "state": "empty"
+    },
+    {
+      "id": "dp-11-skills",
+      "platform": "web",
+      "url": "/dashboard/children/{child}/skills",
+      "state": "default"
+    },
+    {
+      "id": "dp-12-activity",
+      "platform": "web",
+      "url": "/dashboard/children/{child}/activity",
+      "state": "default"
+    },
+    {
+      "id": "dp-13-badges",
+      "platform": "web",
+      "url": "/dashboard/children/{child}/badges",
+      "state": "default"
+    },
+    {
+      "id": "dp-14-settings-child",
+      "platform": "web",
+      "url": "/dashboard/children/{child}/settings",
+      "state": "default"
+    },
+    {
+      "id": "dp-15-settings-saved",
+      "platform": "web",
+      "url": "/dashboard/children/{child}/settings?state=saved",
+      "state": "saved"
+    },
+    {
+      "id": "dp-16-settings-error",
+      "platform": "web",
+      "url": "/dashboard/children/{child}/settings?state=error",
+      "state": "error"
+    },
+    {
+      "id": "dp-17-settings-family",
+      "platform": "web",
+      "url": "/dashboard/settings",
+      "state": "default"
+    },
+    {
+      "id": "dp-18-pin-change-error",
+      "platform": "web",
+      "url": "/dashboard/settings?state=pin-error",
+      "state": "pin-error"
+    },
+    {
+      "id": "dash-03-devices-data",
+      "platform": "web",
+      "url": "/dashboard/devices",
+      "state": "default"
+    },
+    {
+      "id": "dp-19-signout-device-confirm",
+      "platform": "web",
+      "url": "/dashboard/devices?state=confirm-signout",
+      "state": "confirm-signout"
+    },
+    {
+      "id": "dp-20-export-ready",
+      "platform": "web",
+      "url": "/dashboard/devices?state=export-ready",
+      "state": "export-ready"
+    },
+    {
+      "id": "dp-21-delete-confirm",
+      "platform": "web",
+      "url": "/dashboard/devices?state=confirm-delete",
+      "state": "confirm-delete"
+    },
+    {
+      "id": "dp-22-deleted",
+      "platform": "web",
+      "url": "/dashboard/deleted",
+      "state": "default"
+    },
+    {
+      "id": "dp-23-monthly-summary",
+      "platform": "web",
+      "url": "/dashboard/summary",
+      "state": "default"
+    },
+    {
+      "id": "dp-24-notifications",
+      "platform": "web",
+      "url": "/dashboard/notifications",
+      "state": "default"
+    },
+    {
+      "id": "dp-25-session-timeout",
+      "platform": "web",
+      "url": "/dashboard/session-timeout",
+      "state": "default"
+    },
+    {
+      "id": "dp-26-forbidden",
+      "platform": "web",
+      "url": "/dashboard/forbidden",
+      "state": "default"
+    },
+    {
+      "id": "dp-27-not-found",
+      "platform": "web",
+      "url": "/dashboard/not-found-demo",
+      "state": "not-found",
+      "status": 404
+    },
+    {
+      "id": "tc-01-signin",
+      "platform": "web",
+      "url": "/team/signin",
+      "state": "default"
+    },
+    {
+      "id": "tc-02-families",
+      "platform": "web",
+      "url": "/team/families",
+      "state": "default"
+    },
+    {
+      "id": "tc-03-families-empty",
+      "platform": "web",
+      "url": "/team/families?q=no-match",
+      "state": "empty"
+    },
+    {
+      "id": "tc-04-families-loading",
+      "platform": "web",
+      "url": "/team/families?state=loading",
+      "state": "loading"
+    },
+    {
+      "id": "tc-05-family",
+      "platform": "web",
+      "url": "/team/families/{family}",
+      "state": "default"
+    },
+    {
+      "id": "tc-06-family-not-found",
+      "platform": "web",
+      "url": "/team/families/00000000-0000-0000-0000-000000000000",
+      "state": "not-found",
+      "status": 404
+    },
+    {
+      "id": "team-01-content",
+      "platform": "web",
+      "url": "/team/content",
+      "state": "default"
+    },
+    {
+      "id": "tc-07-content-empty",
+      "platform": "web",
+      "url": "/team/content?q=no-match",
+      "state": "empty"
+    },
+    {
+      "id": "tc-08-mission",
+      "platform": "web",
+      "url": "/team/content/{mission}",
+      "state": "default"
+    },
+    {
+      "id": "tc-09-no-access",
+      "platform": "web",
+      "url": "/team/no-access",
+      "state": "default"
+    },
+    {
+      "id": "tc-10-error",
+      "platform": "web",
+      "url": "/team/error",
+      "state": "default"
+    },
+    {
+      "id": "tc-11-signed-out",
+      "platform": "web",
+      "url": "/team/signed-out",
+      "state": "default"
+    }
+  ]
+}

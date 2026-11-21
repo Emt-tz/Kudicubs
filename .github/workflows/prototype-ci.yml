@@ -1,0 +1,41 @@
+# 004 FR-040 (contracts/ci-and-deploy.md §1): the full validation suite on every pull request.
+name: prototype-ci
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: prototype-ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: tools/design
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tools/design/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium webkit
+      - name: ffprobe (for check-audio)
+        run: command -v ffprobe || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+      - name: npm run check (generators in check mode, brand, contrast, no-TTS, tokens, narration, audio, sw, Playwright)
+        run: npm run check
+        env:
+          CI: 'true'
+      - name: Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            tools/design/playwright-report/
+            tools/design/test-results/
+          retention-days: 14

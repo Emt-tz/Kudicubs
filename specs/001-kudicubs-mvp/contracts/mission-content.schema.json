@@ -1,0 +1,903 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kudicubs.app/mission/1.0.0",
+  "title": "KudiCubs Mission",
+  "description": "Versioned mission content interpreted by the mission engine. Strings are ARB keys resolved from the pack's l10n/{locale}.arb; narration keys resolve to audio/{locale}/{key}.m4a. Contains no executable code.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "version",
+    "world",
+    "ageBand",
+    "stage",
+    "order",
+    "pillars",
+    "concepts",
+    "intro",
+    "steps",
+    "rewards"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^(mc|bg|fm|sh)\\.[a-z0-9_]{2,40}$",
+      "description": "World prefix + slug, e.g. mc.lost_coins"
+    },
+    "version": {
+      "$ref": "#/$defs/semver"
+    },
+    "world": {
+      "enum": [
+        "money_choices",
+        "build_grow",
+        "founder_mode",
+        "side_hustle"
+      ]
+    },
+    "ageBand": {
+      "$ref": "#/$defs/ageBand"
+    },
+    "stage": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "pillars": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/pillar"
+      }
+    },
+    "concepts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/key"
+      }
+    },
+    "vars": {
+      "type": "object",
+      "description": "Mission-scoped variables with initial values; written by steps, read by conditions and models.",
+      "additionalProperties": {
+        "type": [
+          "number",
+          "string",
+          "boolean"
+        ]
+      }
+    },
+    "intro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "titleKey",
+        "goalKey",
+        "narrationKey",
+        "sceneArt"
+      ],
+      "properties": {
+        "titleKey": {
+          "$ref": "#/$defs/key"
+        },
+        "goalKey": {
+          "$ref": "#/$defs/key"
+        },
+        "narrationKey": {
+          "$ref": "#/$defs/key"
+        },
+        "sceneArt": {
+          "$ref": "#/$defs/asset"
+        },
+        "kudiState": {
+          "type": "string",
+          "default": "talk"
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/step"
+      }
+    },
+    "rewards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "firstCompletion",
+        "replay"
+      ],
+      "properties": {
+        "firstCompletion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "coins",
+            "xp"
+          ],
+          "properties": {
+            "coins": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "xp": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "badges": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/key"
+              },
+              "uniqueItems": true
+            }
+          }
+        },
+        "replay": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "xp"
+          ],
+          "properties": {
+            "xp": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "bonuses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "when",
+              "coins"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/key"
+              },
+              "when": {
+                "$ref": "#/$defs/condition"
+              },
+              "coins": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "xp": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "badge": {
+                "$ref": "#/$defs/key"
+              },
+              "firstCompletionOnly": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+    },
+    "ageBand": {
+      "enum": [
+        "b4_6",
+        "b7_9",
+        "b10_12",
+        "b13_15"
+      ]
+    },
+    "pillar": {
+      "enum": [
+        "know",
+        "understand",
+        "decide",
+        "invest",
+        "share"
+      ]
+    },
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z][a-zA-Z0-9_.]{1,80}$"
+    },
+    "asset": {
+      "type": "string",
+      "pattern": "^(art|rive|audio)/[a-z0-9_/.-]+$"
+    },
+    "stepId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{1,40}$"
+    },
+    "condition": {
+      "description": "Declarative condition over mission vars. No code.",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "var",
+            "op",
+            "value"
+          ],
+          "properties": {
+            "var": {
+              "type": "string"
+            },
+            "op": {
+              "enum": [
+                "eq",
+                "neq",
+                "gt",
+                "gte",
+                "lt",
+                "lte"
+              ]
+            },
+            "value": {
+              "type": [
+                "number",
+                "string",
+                "boolean"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "all"
+          ],
+          "properties": {
+            "all": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/condition"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "any"
+          ],
+          "properties": {
+            "any": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/condition"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "effect": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "kind",
+            "category"
+          ],
+          "properties": {
+            "type": {
+              "const": "wallet"
+            },
+            "kind": {
+              "enum": [
+                "earn",
+                "bonus",
+                "spend",
+                "save",
+                "unsave",
+                "interest"
+              ]
+            },
+            "coins": {
+              "type": "integer"
+            },
+            "coinsFromVar": {
+              "type": "string"
+            },
+            "xp": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "category": {
+              "type": "string"
+            },
+            "itemId": {
+              "type": "string"
+            }
+          },
+          "description": "Wallet event. 'coins' is a signed delta; 'coinsFromVar' reads a non-negative amount from a var and the engine applies the sign implied by 'kind' (spend/save negative, earn/bonus/unsave positive)."
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "var",
+            "value"
+          ],
+          "properties": {
+            "type": {
+              "const": "setVar"
+            },
+            "var": {
+              "type": "string"
+            },
+            "value": {
+              "type": [
+                "number",
+                "string",
+                "boolean"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "badge"
+          ],
+          "properties": {
+            "type": {
+              "const": "badge"
+            },
+            "badge": {
+              "$ref": "#/$defs/key"
+            }
+          }
+        }
+      ]
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tone",
+        "messageKey",
+        "narrationKey"
+      ],
+      "properties": {
+        "when": {
+          "$ref": "#/$defs/condition"
+        },
+        "tone": {
+          "enum": [
+            "positive",
+            "neutral",
+            "negative"
+          ],
+          "description": "negative is only rendered where band rules allow failure outcomes; otherwise the gentle variant is used"
+        },
+        "messageKey": {
+          "$ref": "#/$defs/key"
+        },
+        "narrationKey": {
+          "$ref": "#/$defs/key"
+        },
+        "gentleMessageKey": {
+          "$ref": "#/$defs/key"
+        },
+        "gentleNarrationKey": {
+          "$ref": "#/$defs/key"
+        },
+        "animation": {
+          "$ref": "#/$defs/asset"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effect"
+          }
+        }
+      }
+    },
+    "stepBase": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "promptKey",
+        "narrationKey"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stepId"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "promptKey": {
+          "$ref": "#/$defs/key"
+        },
+        "narrationKey": {
+          "$ref": "#/$defs/key"
+        },
+        "art": {
+          "$ref": "#/$defs/asset"
+        },
+        "explainer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "textKey",
+            "narrationKey"
+          ],
+          "description": "Short, skippable, non-blocking concept explainer (Constitution II, FR-021).",
+          "properties": {
+            "textKey": {
+              "$ref": "#/$defs/key"
+            },
+            "narrationKey": {
+              "$ref": "#/$defs/key"
+            }
+          }
+        },
+        "next": {
+          "$ref": "#/$defs/stepId",
+          "description": "Default: the following step in the array"
+        },
+        "branches": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "when",
+              "next"
+            ],
+            "properties": {
+              "when": {
+                "$ref": "#/$defs/condition"
+              },
+              "next": {
+                "$ref": "#/$defs/stepId"
+              }
+            }
+          }
+        }
+      }
+    },
+    "step": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/decisionStep"
+        },
+        {
+          "$ref": "#/$defs/resourceStep"
+        },
+        {
+          "$ref": "#/$defs/actionResultStep"
+        },
+        {
+          "$ref": "#/$defs/marketStep"
+        },
+        {
+          "$ref": "#/$defs/summaryStep"
+        },
+        {
+          "$ref": "#/$defs/activityStep"
+        }
+      ]
+    },
+    "decisionStep": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stepBase"
+        }
+      ],
+      "properties": {
+        "kind": {
+          "const": "decision"
+        },
+        "storeAs": {
+          "type": "string"
+        },
+        "feedbackPreview": {
+          "type": "boolean",
+          "default": false
+        },
+        "choices": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "labelKey",
+              "narrationKey",
+              "icon"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "labelKey": {
+                "$ref": "#/$defs/key"
+              },
+              "narrationKey": {
+                "$ref": "#/$defs/key"
+              },
+              "icon": {
+                "$ref": "#/$defs/asset"
+              },
+              "costCoins": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "effects": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/effect"
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "choices",
+        "storeAs"
+      ],
+      "unevaluatedProperties": false
+    },
+    "resourceStep": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stepBase"
+        }
+      ],
+      "properties": {
+        "kind": {
+          "const": "resource_management"
+        },
+        "budget": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "object",
+              "required": [
+                "fromVar"
+              ],
+              "properties": {
+                "fromVar": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "mustStayWithinBudget": {
+          "type": "boolean",
+          "default": true
+        },
+        "storeAs": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "labelKey",
+              "icon",
+              "unitCost"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "labelKey": {
+                "$ref": "#/$defs/key"
+              },
+              "icon": {
+                "$ref": "#/$defs/asset"
+              },
+              "marketExample": {
+                "type": "string",
+                "description": "Region market-example key that supplies label and art per region"
+              },
+              "unitCost": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "min": {
+                "type": "integer",
+                "minimum": 0,
+                "default": 0
+              },
+              "max": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "default": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "need",
+                    "want",
+                    "supply",
+                    "marketing",
+                    "staff"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "budget",
+        "items",
+        "storeAs"
+      ],
+      "unevaluatedProperties": false
+    },
+    "actionResultStep": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stepBase"
+        }
+      ],
+      "properties": {
+        "kind": {
+          "const": "action_result"
+        },
+        "outcomes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/outcome"
+          },
+          "description": "First matching outcome wins; the last one SHOULD have no 'when' (default)"
+        }
+      },
+      "required": [
+        "outcomes"
+      ],
+      "unevaluatedProperties": false
+    },
+    "marketStep": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stepBase"
+        }
+      ],
+      "properties": {
+        "kind": {
+          "const": "market_simulation"
+        },
+        "model": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "params"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "price_demand_v1"
+              ]
+            },
+            "params": {
+              "type": "object"
+            },
+            "inputs": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "model input -> mission var"
+            },
+            "outputs": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "model output -> mission var (e.g. sales, revenue, satisfaction)"
+            }
+          }
+        },
+        "durationSeconds": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 180
+        },
+        "rivals": {
+          "type": "array",
+          "description": "Computer-controlled rivals only (FR-040).",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "nameKey",
+              "avatar",
+              "strategy"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "nameKey": {
+                "$ref": "#/$defs/key"
+              },
+              "avatar": {
+                "$ref": "#/$defs/asset"
+              },
+              "strategy": {
+                "enum": [
+                  "cheap",
+                  "premium",
+                  "balanced",
+                  "marketing_heavy"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "model",
+        "durationSeconds"
+      ],
+      "unevaluatedProperties": false
+    },
+    "summaryStep": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stepBase"
+        }
+      ],
+      "properties": {
+        "kind": {
+          "const": "round_summary"
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "revenue",
+              "costs",
+              "profit",
+              "customers",
+              "satisfaction",
+              "saved",
+              "spent"
+            ]
+          }
+        },
+        "recap": {
+          "type": "array",
+          "description": "Celebratory recap lines (required for b4_6 instead of metrics).",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "textKey",
+              "narrationKey"
+            ],
+            "properties": {
+              "textKey": {
+                "$ref": "#/$defs/key"
+              },
+              "narrationKey": {
+                "$ref": "#/$defs/key"
+              },
+              "when": {
+                "$ref": "#/$defs/condition"
+              }
+            }
+          }
+        },
+        "wentWell": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/outcome"
+          }
+        },
+        "tryNext": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/outcome"
+          }
+        },
+        "successWhen": {
+          "$ref": "#/$defs/condition",
+          "description": "Defines 'unsuccessful round' for the band's retry rule; ignored for b4_6"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "activityStep": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stepBase"
+        }
+      ],
+      "properties": {
+        "kind": {
+          "const": "activity"
+        },
+        "game": {
+          "enum": [
+            "find_items",
+            "sort_into_jars",
+            "count_items"
+          ],
+          "description": "Registered Flame mini-game (research.md Flag F2)"
+        },
+        "params": {
+          "type": "object"
+        },
+        "outputs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "game result -> mission var (e.g. allCorrectFirstTry)"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effect"
+          },
+          "description": "Applied when the activity completes (e.g. earn the coins found)"
+        }
+      },
+      "required": [
+        "game",
+        "params"
+      ],
+      "unevaluatedProperties": false
+    }
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "version": "1.1.0",
+  "screens": [
+    {
+      "id": "welcome",
+      "title": "Welcome",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "age-select",
+      "title": "Age selection",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "avatar",
+      "title": "Avatar",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "parent-gate",
+      "title": "Parent gate",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "home",
+      "title": "Home",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "mission-intro",
+      "title": "Mission intro",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "activity-find",
+      "title": "Find the coins",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "activity-sort",
+      "title": "Sort into jars",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "activity-count",
+      "title": "Count the coins",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "decision",
+      "title": "Save or spend",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "result-save",
+      "title": "Result: save",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "result-spend",
+      "title": "Result: spend",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "summary",
+      "title": "Summary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "reward",
+      "title": "Reward",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "wallet",
+      "title": "Wallet",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "progress",
+      "title": "Progress",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "daily-challenge",
+      "title": "Daily challenge",
+      "states": [
+        "default",
+        "done"
+      ]
+    },
+    {
+      "id": "level-up",
+      "title": "Level up",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "badge-detail",
+      "title": "Badge detail",
+      "states": [
+        "earned",
+        "locked"
+      ]
+    },
+    {
+      "id": "profile",
+      "title": "Profile",
+      "states": [
+        "default"
+      ],
+      "refs": [
+        "REF-03"
+      ]
+    },
+    {
+      "id": "m7-intro",
+      "title": "7\u20139 The Birthday Party: intro",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "m7-decision",
+      "title": "7\u20139 The Birthday Party: decision",
+      "states": [
+        "default",
+        "selected"
+      ]
+    },
+    {
+      "id": "m7-result",
+      "title": "7\u20139 The Birthday Party: result",
+      "states": [
+        "default",
+        "retry"
+      ]
+    },
+    {
+      "id": "m7-summary",
+      "title": "7\u20139 The Birthday Party: summary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "m10-intro",
+      "title": "10\u201312 The Clothing Brand: intro",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "m10-resource",
+      "title": "10\u201312 The Clothing Brand: raise the money",
+      "states": [
+        "default",
+        "selected"
+      ]
+    },
+    {
+      "id": "m10-market",
+      "title": "10\u201312 The Clothing Brand: market month",
+      "states": [
+        "default",
+        "selected"
+      ]
+    },
+    {
+      "id": "m10-result",
+      "title": "10\u201312 The Clothing Brand: result",
+      "states": [
+        "default",
+        "retry"
+      ]
+    },
+    {
+      "id": "m10-summary",
+      "title": "10\u201312 The Clothing Brand: summary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "m13-intro",
+      "title": "13\u201315 Side Hustle: intro",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "m13-budget",
+      "title": "13\u201315 Side Hustle: budget",
+      "states": [
+        "default",
+        "selected"
+      ]
+    },
+    {
+      "id": "m13-market",
+      "title": "13\u201315 Side Hustle: market",
+      "states": [
+        "default",
+        "selected"
+      ]
+    },
+    {
+      "id": "m13-result",
+      "title": "13\u201315 Side Hustle: result",
+      "states": [
+        "default",
+        "retry"
+      ]
+    },
+    {
+      "id": "m13-summary",
+      "title": "13\u201315 Side Hustle: summary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "parent-home",
+      "title": "Parent: your family",
+      "states": [
+        "default"
+      ],
+      "refs": [
+        "REF-03"
+      ]
+    },
+    {
+      "id": "parent-child",
+      "title": "Parent: one child",
+      "states": [
+        "default"
+      ],
+      "refs": [
+        "REF-04"
+      ]
+    },
+    {
+      "id": "parent-add-child",
+      "title": "Parent: add a child",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "parent-settings",
+      "title": "Parent: settings",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "parent-region",
+      "title": "Parent: region",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "parent-pin-recover",
+      "title": "Parent: reset PIN",
+      "states": [
+        "default",
+        "done"
+      ]
+    },
+    {
+      "id": "parent-lockout",
+      "title": "Parent: PIN resting",
+      "states": [
+        "default",
+        "over"
+      ]
+    },
+    {
+      "id": "parent-signin",
+      "title": "Parent: sign in with a code",
+      "states": [
+        "default",
+        "wrong",
+        "expired",
+        "resent"
+      ]
+    },
+    {
+      "id": "parent-device-mode",
+      "title": "Parent: this device",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "parent-delete",
+      "title": "Parent: delete the family account",
+      "states": [
+        "default",
+        "confirm",
+        "erased"
+      ]
+    },
+    {
+      "id": "parent-signed-out",
+      "title": "Parent: signed out",
+      "states": [
+        "default"
+      ]
+    }
+  ]
+}

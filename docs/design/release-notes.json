@@ -1,0 +1,11 @@
+{
+  "version": "0.4.0",
+  "changes": [
+    "New share hub: one link for the app, the website and the dashboards, with journeys to try by role.",
+    "Mobile app: the 7–9, 10–12 and 13–15 worlds each get a playable mission, plus profile, daily challenge, level-up and badge detail screens.",
+    "Mobile app: a complete parent area behind the grown-up gate (children, settings, PIN recovery, new-device sign-in, delete account).",
+    "New website for parents: what KudiCubs is, safety, how to get the app, FAQ, contact and sign-in.",
+    "New Parent Dashboard and a small Team Console, built on one fictional family.",
+    "One design system across all platforms, a journey and story coverage map, and a design references record."
+  ]
+}

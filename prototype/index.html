@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FBCE16">
+  <meta name="robots" content="noindex, nofollow">
+  <title>KudiCubs prototype</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/brand/app-icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/brand/app-icon-192.png">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/components.css">
+</head>
+<body>
+  <!-- Load-failure guard (004 FR-051, research R17): the only inline script. If any script or data file fails to load,
+       or the app fails while starting, the friendly panel below replaces the app. It needs nothing from the other files,
+       so its few words are built in here (the one exception to strings-from-the-strings-file, Constitution VI).
+       It reloads only when tapped, never by itself. -->
+  <script>
+    window.kcBootFail = function () {
+      var p = document.getElementById('kc-boot-fail'), ph = document.getElementById('kc-phone');
+      if (!p) { document.addEventListener('DOMContentLoaded', window.kcBootFail); return; }
+      if (ph) ph.hidden = true;
+      p.hidden = false;
+    };
+    document.addEventListener('DOMContentLoaded', function () {
+      var KC = window.KC;
+      // every file must have loaded: data, build info, voice manifest, core, activities, celebration and screens
+      if (!KC || !KC.data || !KC.build || !KC.regions || !KC.audioManifest || !KC.start || !KC.activitySort || !KC.celebrate || !KC.screens || !KC.missions || !KC.screens['profile'] || !KC.screens['parent-home']) { window.kcBootFail(); return; }
+      try { KC.start(); } catch (e) { window.kcBootFail(); }
+    });
+  </script>
+  <div class="kc-desk">
+    <div id="kc-boot-fail" class="kc-boot-fail" role="alert" hidden>
+      <img src="assets/brand/kudi-wave.webp" alt="Kudi the Cub" onerror="this.onerror=null;this.src='assets/brand/kudi-wave.png'">
+      <p class="kc-boot-fail-text">Oops! Kudi dropped something.</p>
+      <button type="button" class="kc-btn kc-btn--primary kc-boot-fail-btn" data-component="primary-button" onclick="location.reload()">
+        <img src="assets/art/icons/replay.svg" alt="" aria-hidden="true"><span>Tap to try again</span>
+      </button>
+    </div>
+    <div class="kc-phone" id="kc-phone">
+      <header class="kc-header">
+        <button id="kc-back" class="kc-back" data-component="icon-button" hidden>
+          <img src="assets/art/icons/back.svg" alt="" aria-hidden="true">
+        </button>
+        <span class="kc-spacer" id="kc-back-spacer" aria-hidden="true"></span>
+        <button id="kc-logo" class="kc-logo" data-component="icon-button">
+          <img src="assets/brand/logo-on-white.svg" alt="" aria-hidden="true">
+        </button>
+        <button id="kc-replay" class="kc-replay" data-component="replay-button" data-replay>
+          <img src="assets/art/icons/replay.svg" alt="" aria-hidden="true">
+        </button>
+      </header>
+      <div id="kc-caption" class="kc-caption" data-component="narration-caption" data-caption-state="hidden" aria-live="polite"></div>
+      <main id="kc-screen" class="kc-screen"></main>
+      <nav id="kc-bottom-nav" class="kc-bottom-nav" data-component="bottom-nav" hidden>
+        <button data-route="home"><img src="assets/art/icons/home.svg" alt="" aria-hidden="true"><span class="kc-label"></span></button>
+        <button data-route="wallet"><img src="assets/art/icons/wallet-jar.svg" alt="" aria-hidden="true"><span class="kc-label"></span></button>
+        <button data-route="progress"><img src="assets/art/icons/path.svg" alt="" aria-hidden="true"><span class="kc-label"></span></button>
+      </nav>
+      <div id="kc-overlay" class="kc-overlay" aria-hidden="true"></div>
+      <div id="kc-reviewer" class="kc-reviewer" data-component="reviewer-menu" data-reviewer role="dialog" aria-modal="true" hidden></div>
+    </div>
+  </div>
+
+  <script src="assets/data/mock-data.js" onerror="kcBootFail()"></script>
+  <script src="assets/data/build-info.js" onerror="kcBootFail()"></script>
+  <script src="assets/data/regions.js" onerror="kcBootFail()"></script>
+  <script src="assets/data/audio-manifest.js" onerror="kcBootFail()"></script>
+  <script src="assets/app.js" onerror="kcBootFail()"></script>
+  <script src="assets/activities.js" onerror="kcBootFail()"></script>
+  <script src="assets/celebrate.js" onerror="kcBootFail()"></script>
+  <script src="assets/screens.js" onerror="kcBootFail()"></script>
+  <script src="assets/missions/band-7-9.js" onerror="kcBootFail()"></script>
+  <script src="assets/missions/band-10-12.js" onerror="kcBootFail()"></script>
+  <script src="assets/missions/band-13-15.js" onerror="kcBootFail()"></script>
+  <script src="assets/screens-bands.js" onerror="kcBootFail()"></script>
+  <script src="assets/screens-parent.js" onerror="kcBootFail()"></script>
+</body>
+</html>
