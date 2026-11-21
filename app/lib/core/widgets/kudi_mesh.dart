@@ -61,6 +61,7 @@ class KudiMeshPainter extends CustomPainter {
   final KudiMotion motion;
   final double aspect; // picture width / height
 
+  static const _margin = .035;
   static const _cols = 26;
   static const _rows = 28;
 
@@ -73,18 +74,12 @@ class KudiMeshPainter extends CustomPainter {
     final t = motion.seconds;
 
     // Arm angle: the greeting pose waves, others only sway a little; he gestures more while talking or hopping.
-    final gesture = 1 + motion.talk * .7 + motion.hop * .9;
-    final armAngle =
-        (rig.wave
-            ? .17 * math.sin(t * 2 * math.pi / 1.25) + .05 * math.sin(t * 2.7)
-            : .045 * math.sin(t * 2 * math.pi / 2.4)) *
-        gesture;
+    final gesture = (1 + motion.talk * .35 + motion.hop * .45).clamp(1.0, 1.5);
+    final armAngle = (rig.wave ? .06 * math.sin(t * 2 * math.pi / 1.25) + .018 * math.sin(t * 2.7) : .022 * math.sin(t * 2 * math.pi / 2.4)) * gesture;
     final tailAngle =
         .13 * math.sin(t * 2 * math.pi / 1.7 + .6) + .05 * math.sin(t * 3.1);
-    final lookX = .0075 * math.sin(t * .8) + .004 * math.sin(t * 2.1);
-    final lookY = .004 * math.sin(t * .6 + 1);
 
-    Offset toPx(Offset f) => Offset(f.dx * w, f.dy * h);
+    Offset toPx(Offset f) => Offset((_margin + f.dx * (1 - 2 * _margin)) * w, f.dy * h);
     final sh = toPx(rig.shoulder),
         hd = toPx(rig.hand),
         tb = toPx(rig.tailBase),
@@ -96,7 +91,7 @@ class KudiMeshPainter extends CustomPainter {
     for (var r = 0; r <= _rows; r++) {
       for (var c = 0; c <= _cols; c++) {
         final u = c / _cols, v = r / _rows;
-        var p = Offset(u * w, v * h);
+        var p = Offset((_margin + u * (1 - 2 * _margin)) * w, v * h);
         tex[i] = u * iw;
         tex[i + 1] = v * ih;
 
@@ -105,7 +100,7 @@ class KudiMeshPainter extends CustomPainter {
         // Near the hand the pull reaches further and is full strength, so the hand and coin turn as one piece.
         final grip = _smooth(.5, 1, ad.t);
         final aw =
-            (1 - _smooth(.05 * w * (1 + .9 * grip), .15 * w * (1 + .8 * grip), ad.dist)) *
+            (1 - _smooth(.05 * w * (1 + .5 * grip), .12 * w * (1 + .2 * grip), ad.dist)) *
             _smooth(.04, .65, ad.t);
         if (aw > 0) {
           p = _rotate(p, sh, armAngle * aw);
@@ -125,23 +120,6 @@ class KudiMeshPainter extends CustomPainter {
           );
         }
 
-        // Eyes: look around a touch, and squash shut when blinking.
-        for (final e in rig.eyes) {
-          final ec = toPx(e);
-          final dx = (p.dx - ec.dx) / w, dy = (p.dy - ec.dy) / h;
-          final d = math.sqrt(dx * dx + dy * dy * (h / w) * (h / w));
-          final ew = 1 - _smooth(.045, .085, d);
-          if (ew > 0) {
-            var y = p.dy;
-            var x = p.dx;
-            y = ec.dy + (y - ec.dy) * (1 - .93 * motion.blink * ew);
-            if (motion.blink < .3) {
-              x += lookX * w * ew;
-              y += lookY * h * ew;
-            }
-            p = Offset(x, y);
-          }
-        }
         pos[i] = p.dx;
         pos[i + 1] = p.dy;
         i += 2;
@@ -173,6 +151,32 @@ class KudiMeshPainter extends CustomPainter {
       BlendMode.srcOver,
       paint,
     );
+
+    // Blink: a fur-coloured lid comes down over each real eye, ending in a closed-eye line.
+    if (motion.blink > .02) {
+      final fur = Paint()..color = const Color(0xFFF9D708);
+      final line = Paint()
+        ..color = const Color(0xFF3D2314)
+        ..style = PaintingStyle.stroke
+        ..strokeCap = StrokeCap.round
+        ..strokeWidth = w * .013;
+      for (final e in rig.eyes) {
+        final c = toPx(e);
+        final rx = w * .048 * (1 - 2 * _margin), ry = h * .05;
+        final top = c.dy - ry;
+        final bottom = top + 2 * ry * motion.blink;
+        canvas.drawRRect(RRect.fromLTRBR(c.dx - rx, top - 1, c.dx + rx, bottom, Radius.circular(rx * .9)), fur);
+        if (motion.blink > .75) {
+          final y = c.dy + ry * .05;
+          canvas.drawPath(
+            Path()
+              ..moveTo(c.dx - rx * .85, y - ry * .08)
+              ..quadraticBezierTo(c.dx, y + ry * .3, c.dx + rx * .85, y - ry * .08),
+            line,
+          );
+        }
+      }
+    }
   }
 
   ({double dist, double t}) _segment(Offset p, Offset a, Offset b) {
