@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'logic.dart';
+import 'player.dart';
 
-/// Canvas `ms-09-mission-error`: Could not save play. Section: App 9. Ages 4–6: results and states.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_ms_09_mission_error(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-ms-09-mission-error'),
-    title: 'Could not save play',
-    child: Center(child: Text('TODO ms-09-mission-error')),
-  );
-}
+/// Canvas `ms-09-mission-error`: Could not save yet. Ages 4–6, The Lost Coins. Real screen: see player.dart.
+Widget build_ms_09_mission_error(BuildContext context, ScreenState state) =>
+    LostCoinsPlayer(
+      key: ValueKey('ms-09-mission-error/${state.name}'),
+      id: 'ms-09-mission-error',
+      state: state,
+      start: Phase46.summary,
+    );

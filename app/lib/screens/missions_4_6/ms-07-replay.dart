@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'logic.dart';
+import 'player.dart';
 
-/// Canvas `ms-07-replay`: Replay. Section: App 9. Ages 4–6: results and states.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_ms_07_replay(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-ms-07-replay'),
-    title: 'Replay',
-    child: Center(child: Text('TODO ms-07-replay')),
-  );
-}
+/// Canvas `ms-07-replay`: Play again?. Ages 4–6, The Lost Coins. Real screen: see player.dart.
+Widget build_ms_07_replay(BuildContext context, ScreenState state) =>
+    LostCoinsPlayer(
+      key: ValueKey('ms-07-replay/${state.name}'),
+      id: 'ms-07-replay',
+      state: state,
+      start: Phase46.replay,
+    );

@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'logic.dart';
+import 'player.dart';
 
-/// Canvas `ms-03-count`: Count the coins. Section: App 8. Ages 4–6: The Lost Coins.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_ms_03_count(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-ms-03-count'),
-    title: 'Count the coins',
-    child: Center(child: Text('TODO ms-03-count')),
-  );
-}
+/// Canvas `ms-03-count`: Count the coins. Ages 4–6, The Lost Coins. Real screen: see player.dart.
+Widget build_ms_03_count(BuildContext context, ScreenState state) =>
+    LostCoinsPlayer(
+      key: ValueKey('ms-03-count/${state.name}'),
+      id: 'ms-03-count',
+      state: state,
+      start: Phase46.count,
+    );

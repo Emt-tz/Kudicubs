@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'logic.dart';
+import 'player.dart';
 
-/// Canvas `app-08-decision`: Save or spend. Section: App 8. Ages 4–6: The Lost Coins.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_app_08_decision(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-app-08-decision'),
-    title: 'Save or spend',
-    child: Center(child: Text('TODO app-08-decision')),
-  );
-}
+/// Canvas `app-08-decision`: Save or spend. Ages 4–6, The Lost Coins. Real screen: see player.dart.
+Widget build_app_08_decision(BuildContext context, ScreenState state) =>
+    LostCoinsPlayer(
+      key: ValueKey('app-08-decision/${state.name}'),
+      id: 'app-08-decision',
+      state: state,
+      start: Phase46.decision,
+    );

@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'logic.dart';
+import 'player.dart';
 
-/// Canvas `ms-05-result-spend`: Result: spent. Section: App 9. Ages 4–6: results and states.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_ms_05_result_spend(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-ms-05-result-spend'),
-    title: 'Result: spent',
-    child: Center(child: Text('TODO ms-05-result-spend')),
-  );
-}
+/// Canvas `ms-05-result-spend`: Result: spent. Ages 4–6, The Lost Coins. Real screen: see player.dart.
+Widget build_ms_05_result_spend(BuildContext context, ScreenState state) =>
+    LostCoinsPlayer(
+      key: ValueKey('ms-05-result-spend/${state.name}'),
+      id: 'ms-05-result-spend',
+      state: state,
+      start: Phase46.resultSpend,
+    );
