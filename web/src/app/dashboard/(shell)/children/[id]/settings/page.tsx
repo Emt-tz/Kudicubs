@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -108,8 +109,7 @@ export default async function Page({ params, searchParams }: { params: Promise<{
           <aside className="db-side">
             {child ? (
               <div className="db-child-card">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`/avatars/${initial.avatar}.svg`} alt="" />
+                <Image src={`/avatars/${initial.avatar}.svg`} alt="" width={72} height={72} unoptimized />
                 <div>
                   <strong>{child.nickname}</strong>
                   <span className="muted" style={{ fontSize: 13 }}>

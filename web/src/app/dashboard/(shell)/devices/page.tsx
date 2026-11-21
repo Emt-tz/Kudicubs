@@ -28,7 +28,6 @@ export default async function Page({ searchParams }: { searchParams: Promise<SP>
   const variant = getDemoVariant(sp, ["confirm-signout", "export-ready", "confirm-delete"] as const);
   const supabase = await createClient();
   const [{ devices, failed: devicesFailed }, { children, failed: childrenFailed }] = await Promise.all([loadDevices(supabase), loadChildren(supabase)]);
-  const now = Date.now();
 
   const confirm = first(sp.confirm);
   const confirmDelete = variant === "confirm-delete" || confirm === "delete";
@@ -147,7 +146,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<SP>
                     <tr key={d.id}>
                       <td><strong>{d.label}</strong></td>
                       <td>{deviceMode(d.mode)}</td>
-                      <td><span className={`db-status${deviceActive(d.last_seen, now) ? " on" : ""}`}>{deviceActive(d.last_seen, now) ? "Active now" : "Idle"}</span></td>
+                      <td><span className={`db-status${deviceActive(d.last_seen) ? " on" : ""}`}>{deviceActive(d.last_seen) ? "Active now" : "Idle"}</span></td>
                       <td title={formatDate(d.last_seen)}>{timeAgo(d.last_seen)}</td>
                       <td>
                         <Link className="btn btn-sm" href={`/dashboard/devices?confirm=${d.id}`} scroll={false} aria-label={`Sign out ${d.label}`}>Sign out</Link>

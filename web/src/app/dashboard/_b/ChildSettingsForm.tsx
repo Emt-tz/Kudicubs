@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useActionState, useState } from "react";
 import { saveChild } from "./actions";
@@ -112,7 +113,7 @@ export function ChildSettingsForm({
         {AVATARS.map((a, i) => (
           <label key={a} className="db-avatar-opt">
             <input type="radio" name="avatar" value={a} checked={avatar === a} onChange={() => setAvatar(a)} aria-label={`Cub friend ${i + 1}`} />
-            <span>{/* eslint-disable-next-line @next/next/no-img-element */}<img src={`/avatars/${a}.svg`} alt="" /></span>
+            <span><Image src={`/avatars/${a}.svg`} alt="" width={48} height={48} unoptimized /></span>
           </label>
         ))}
         {errors.avatar ? <div className="db-field-error" style={{ flexBasis: "100%" }}>{errors.avatar}</div> : null}
