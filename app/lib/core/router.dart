@@ -108,6 +108,10 @@ bool _hasSession(Ref ref) {
 }
 
 final routerProvider = Provider<GoRouter>((ref) {
+  // A phone marked "set up" but with no account (older builds) starts setup afresh.
+  if (ref.read(onboardedProvider) && !_hasSession(ref)) {
+    Future.microtask(() => ref.read(onboardedProvider.notifier).set(false));
+  }
   final refresh = ValueNotifier<int>(0);
   void bump(Object? a, Object? b) => refresh.value++;
   ref.listen(onboardedProvider, bump);
@@ -125,7 +129,6 @@ final routerProvider = Provider<GoRouter>((ref) {
       parentUnlocked: ref.read(parentUnlockedProvider),
       status: ref.read(systemStatusProvider),
       online: ref.read(onlineProvider),
-      signedIn: _hasSession(ref),
     ),
     errorBuilder: (context, state) => Scaffold(
       backgroundColor: Kc.cream,
