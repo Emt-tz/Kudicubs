@@ -1,3 +1,4 @@
+import 'narrator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -91,7 +92,7 @@ String? redirectFor({
 Widget _screen(String id, ScreenState state, BuildContext context) {
   final builder = registry[id];
   if (builder == null) return Scaffold(body: Center(child: Text('Unknown screen: $id')));
-  return builder(context, state);
+  return NarrateOnShow(screenId: id, child: builder(context, state));
 }
 
 ScreenState _stateParam(String? s) =>
