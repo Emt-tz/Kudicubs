@@ -47,7 +47,7 @@ class _GateViewState extends ConsumerState<GateView> {
   Timer? _ticker;
   bool _left = false;
 
-  GateMachine get _machine => _local ?? ref.read(gateMachineProvider);
+  late final GateMachine _machine;
 
   bool get _isFlow => widget.variant == null;
 
@@ -72,6 +72,7 @@ class _GateViewState extends ConsumerState<GateView> {
     } else {
       ref.read(gateMachineProvider).restart();
     }
+    _machine = _local ?? ref.read(gateMachineProvider);
     _machine.addListener(_onChange);
     _ticker = Timer.periodic(const Duration(seconds: 1), (_) {
       if (_machine.phase == GatePhase.locked) {
