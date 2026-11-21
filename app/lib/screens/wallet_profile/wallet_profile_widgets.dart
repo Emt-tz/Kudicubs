@@ -53,12 +53,12 @@ class WpPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Kc.cream,
         body: SafeArea(
-          bottom: nav == null,
+          bottom: false,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(child: Padding(padding: padding, child: child)),
-              if (nav != null) SafeArea(top: false, child: WpBottomNav(current: nav!)),
+              if (nav != null) WpBottomNav(current: nav!) else SizedBox(height: MediaQuery.paddingOf(context).bottom),
             ],
           ),
         ),
@@ -72,8 +72,8 @@ class WpBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        height: 84,
-        padding: const EdgeInsets.fromLTRB(Kc.s3, Kc.s2, Kc.s3, Kc.s3),
+        height: 84 + MediaQuery.paddingOf(context).bottom,
+        padding: EdgeInsets.fromLTRB(Kc.s3, Kc.s2, Kc.s3, Kc.s3 + MediaQuery.paddingOf(context).bottom),
         decoration: const BoxDecoration(
           color: Kc.white,
           border: Border(top: BorderSide(color: Kc.brown, width: Kc.border)),

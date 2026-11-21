@@ -190,6 +190,7 @@ class KcBottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     const items = [('Home', Icons.home_rounded), ('Wallet', Icons.account_balance_wallet_rounded), ('Progress', Icons.bar_chart_rounded)];
     return Container(
+      padding: EdgeInsets.only(bottom: MediaQuery.paddingOf(context).bottom),
       decoration: const BoxDecoration(color: Kc.white, border: Border(top: BorderSide(color: Kc.brown, width: Kc.border))),
       child: Row(children: [
         for (var i = 0; i < items.length; i++)

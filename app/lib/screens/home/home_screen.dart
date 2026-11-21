@@ -106,6 +106,7 @@ class HomeScreen extends ConsumerWidget {
           key: screenKey,
           backgroundColor: Kc.cream,
           body: SafeArea(
+            bottom: false,
             child: Column(children: [
               if (offline) Padding(
                 padding: const EdgeInsets.fromLTRB(Kc.s5, Kc.s3, Kc.s5, 0),
