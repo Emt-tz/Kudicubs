@@ -2,14 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/screen_state.dart';
-import '../../core/widgets/widgets.dart';
+import 'parent_add_child_view.dart';
 
-/// Canvas `pa-03-add-child`: Add a child. Section: App 15. Parent area: children.
-/// Replace the body with the real screen; keep the signature and the key.
-Widget build_pa_03_add_child(BuildContext context, ScreenState state) {
-  return const ScreenScaffold(
-    key: Key('screen-pa-03-add-child'),
-    title: 'Add a child',
-    child: Center(child: Text('TODO pa-03-add-child')),
-  );
-}
+/// Canvas `pa-03-add-child`: Add a child. Real form: nickname, age band, country; saves to `child_profiles`.
+Widget build_pa_03_add_child(BuildContext context, ScreenState state) =>
+    AddChildView(key: const Key('screen-pa-03-add-child'), state: state);
