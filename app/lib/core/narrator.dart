@@ -28,6 +28,9 @@ class Narrator {
   static final instance = Narrator._();
   AudioPlayer? _player;
 
+  /// True while a voice line is playing, so Kudi can move his mouth-side of things (bounce) in time.
+  final ValueNotifier<bool> speaking = ValueNotifier(false);
+
   static bool _ctxSet = false;
 
   Future<void> say(String lineId) async {
@@ -45,9 +48,10 @@ class Narrator {
         );
         _ctxSet = true;
       }
-      final player = _player ??= AudioPlayer();
+      final player = _player ??= (AudioPlayer()..onPlayerComplete.listen((_) => speaking.value = false));
       await player.stop();
       await player.play(AssetSource('audio/en-GH/$lineId.m4a'), volume: 1.0);
+      speaking.value = true;
     } catch (e) {
       // No audio engine (tests, unsupported device): stay silent, but leave a trace.
       // ignore: avoid_print
@@ -56,6 +60,7 @@ class Narrator {
   }
 
   Future<void> stop() async {
+    speaking.value = false;
     try {
       await _player?.stop();
     } catch (_) {}

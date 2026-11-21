@@ -29,6 +29,7 @@ void main() {
     await tester.tap(find.text('Later'));
     await tester.tap(find.text('Retry'));
     await tester.tap(find.text('7'));
+    await tester.ensureVisible(find.byIcon(Icons.backspace_outlined));
     await tester.tap(find.byIcon(Icons.backspace_outlined));
     expect([taps, retries], [2, 1]);
     expect(digits, ['7', '<']);
