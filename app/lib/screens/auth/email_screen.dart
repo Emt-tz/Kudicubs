@@ -190,6 +190,19 @@ class _EmailScreenState extends ConsumerState<EmailScreen> {
                   : 'Only you see this email. We use it to sign you in and to warn you before an unused account is deleted. We never share it or use it for ads.',
               style: AuthText.small,
             ),
+          if (mode == EmailMode.signup && !sending) ...[
+            const SizedBox(height: Kc.s3),
+            Center(
+              child: TextButton(
+                key: const Key('skip-email'),
+                onPressed: () async {
+                  await ref.read(onboardedProvider.notifier).set(true);
+                  if (context.mounted) context.go('/home');
+                },
+                child: Text('Skip for now', style: KcText.label.copyWith(color: Kc.softGold, fontWeight: FontWeight.w800)),
+              ),
+            ),
+          ],
           if (mode == EmailMode.recovery)
             Text('Your child\'s coins, badges and progress stay exactly as they are.', style: AuthText.body),
           if (notFound && mode == EmailMode.signin) ...[
