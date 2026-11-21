@@ -97,13 +97,10 @@ class _GateViewState extends ConsumerState<GateView> {
         currentPath(context)?.startsWith('/gate') == true) {
       _left = true;
       final next = GoRouterState.of(context).uri.queryParameters['next'];
+      // A family that is already set up enters its PIN; a new one creates it.
+      final base = ref.read(onboardedProvider) ? '/parent-pin' : '/pin/create';
       context.go(
-        next == null
-            ? '/pin/create'
-            : Uri(
-                path: '/pin/create',
-                queryParameters: {'next': next},
-              ).toString(),
+        next == null ? base : Uri(path: base, queryParameters: {'next': next}).toString(),
       );
     }
   }

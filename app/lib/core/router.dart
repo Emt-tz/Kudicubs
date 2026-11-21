@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../screens/parent/parent_pin_entry.dart';
 import '../screens/registry.dart';
 import 'data/providers.dart';
 import 'screen_state.dart';
@@ -141,6 +142,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/screen/:id',
         builder: (context, state) =>
             _screen(state.pathParameters['id']!, _stateParam(state.uri.queryParameters['state']), context),
+      ),
+      // Parent PIN entry, reached from the grown-up gate once the family is set up.
+      GoRoute(
+        path: '/parent-pin',
+        builder: (context, state) => ParentPinEntry(next: state.uri.queryParameters['next'] ?? '/parent'),
       ),
       GoRoute(path: '/screens', builder: (context, state) => const ScreensIndexPage()),
     ],
